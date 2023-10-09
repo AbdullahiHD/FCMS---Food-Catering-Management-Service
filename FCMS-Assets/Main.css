@@ -1,99 +1,100 @@
 /* Reset some default styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* Set background and primary font color */
-  body {
-    background-color: #202020;
-    color: #D6D6D6;
-    font-family: Arial, sans-serif;
-  }
-  
-  /* Header styling */
-  header {
-    background-color: #202020;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  /* Navigation menu */
-  /* nav {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Set background and primary font color */
+body {
+  background-color: #202020;
+  color: #D6D6D6;
+  font-family: Arial, sans-serif;
+}
+
+/* Header styling */
+header {
+  background-color: #202020;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Navigation menu */
+/* nav {
     background-color: #333533;
     text-align: center;
     padding: 10px;
   } */
-  
-  ul {
-    list-style-type: none;
-  }
-  
-  li {
-    display: inline;
-    margin-right: 20px;
-  }
-  
-  /* Main content container */
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  /* Heading styles */
-  h1, h2, h3 {
-    color: #FFD100;
-    font-family: 'Helvetica Neue', sans-serif;
-    margin-bottom: 20px;
-  }
-  
-  h1 {
-    font-size: 36px;
-  }
-  
-  h2 {
-    font-size: 24px;
-  }
-  
-  h3 {
-    font-size: 18px;
-  }
-  
-  /* Paragraph styles */
-  p {
-    font-size: 16px;
-    line-height: 1.5;
-    margin-bottom: 20px;
-  }
-  
-  /* Accent color for links */
-  a {
-    color: #FFD100;
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-  
-  a:hover {
-    color: #FFEE32;
-  }
-  
-  /* Modern button design */
-  .button {
-    display: inline-block;
-    background-color: #FFD100;
-    color: #202020;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .button:hover {
-    background-color: #FFEE32;
-    color: #333533;
-  }
-  
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  display: inline;
+  margin-right: 20px;
+}
+
+/* Main content container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Heading styles */
+h1,
+h2,
+h3 {
+  color: #FFD100;
+  font-family: 'Helvetica Neue', sans-serif;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+/* Paragraph styles */
+p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* Accent color for links */
+a {
+  color: #FFD100;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #FFEE32;
+}
+
+/* Modern button design */
+.button {
+  display: inline-block;
+  background-color: #FFD100;
+  color: #202020;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #FFEE32;
+  color: #333533;
+}
