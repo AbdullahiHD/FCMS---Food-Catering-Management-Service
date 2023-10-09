@@ -1,0 +1,241 @@
+*{
+    
+  margin: 0;
+  box-sizing: border-box;
+  
+  
+}
+
+
+.homenav{
+  background-image: url(../FCMS-Assets/images/hero-slider-1.jpg);
+  height: 100vh;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  
+
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: rgb(11, 11, 10);
+  position: fixed; /* This makes the navbar fixed at the top */
+  top: 0; /* Position it at the top of the viewport */
+  left: 0; /* Position it at the left of the viewport */
+  width: 100%; /* Ensure it takes the full width */
+  z-index: 1000; /* This ensures the navbar is always on top of other content */
+}
+
+
+
+span{
+  color:goldenrod;
+}
+
+nav ul li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 10px 25px ;
+
+}
+nav ul li a {
+  color: goldenrod;
+  font-family: 'Franklin Gothic Medium', sans-serif;
+  text-decoration:none ;
+  font-weight: bold;
+  text-transform: capitalize;
+  font-size: 17px;
+  
+}
+
+.registrationbutton {
+  background-color: goldenrod;
+  color: white;
+  font-family: 'Franklin Gothic Medium', sans-serif;
+  text-decoration:none ;
+  border: 2px dotted transparent;
+  font-weight: bold;
+  padding: 10px 25px;
+  border-radius: 10px;
+  transition: transform .3s;
+  margin-right: 50px;
+
+}
+
+.registrationbutton:hover{
+  transform: scale(1.1);
+}
+
+nav ul li a {
+  position: relative;
+  /* ... (rest of your styles) */
+}
+
+/* Before and After pseudo-elements represent the two lines */
+nav ul li a::before, 
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px; /* Height of the line */
+  background-color: goldenrod; /* Line color */
+  transition: all 0.3s ease;
+}
+
+/* First line appears from the left */
+nav ul li a::before {
+  bottom: 1px; /* Slight offset from the bottom to create gap between two lines */
+}
+
+/* Second line appears from the right */
+nav ul li a::after {
+  bottom: -3px; /* Slight offset from the bottom */
+  right: 0;
+  left: auto;
+  transform: scaleX(-1); /* Invert it to make it appear from right */
+}
+
+/* On hover, the lines animate to full width */
+nav ul li a:hover::before, 
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+.info{
+  position: absolute;
+  top: 50%;
+  left: 8%;
+  transform: scale(1); /* Start at its normal size */
+}
+
+.fadeIn{
+  animation: fadeInScale 1s forwards;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0; /* At the start of the animation, the text will be transparent */
+        transform: scale(0.95); /* Start a bit smaller */
+    }
+    to {
+        opacity: 1; /* At the end of the animation, the text will be fully visible */
+        transform: scale(1); /* At the end of the animation, the text will be at its normal size */
+    }
+}
+
+h4{
+  color: white;
+  font-size: 45px;
+  font-family: sans-serif;
+}
+.logolink{
+  margin-left: 40px;
+}
+
+h5{
+  padding-top: 40px;
+  color: white;
+  font-family: verdana;
+  font-size: 16px;
+}
+
+/**
+Menu Section
+**/
+
+.Menudiv {
+  background-color: #000000;
+}
+
+.menutext1{
+  padding-top: 30px;
+  padding-bottom: 20px;
+  color: goldenrod;
+  text-align: center;
+  font-size: 16px;
+  padding-top: 100px;
+}
+
+.section-text{
+  color: #e0e0e0;
+  text-align: center;
+  padding-top: 10px;
+  padding-left: 350px;
+  padding-right: 350px;
+  padding-bottom: 40px;
+  font-family: 'Segoe UI', Tahoma,Verdana, sans-serif;
+  padding-bottom: 100px;
+}
+.menutext2{
+  color: #e0e0e0;
+  text-align: center;
+  font-family: Verdana, Tahoma, sans-serif;
+}
+
+/* General styling for the section */
+.section.service {
+  background-color: #000000;
+  padding: 50px 0;
+}
+
+/* Styling for the grid list containing the service cards */
+.grid-list {
+  display: flex;
+  justify-content: space-between;
+  gap: 100px;
+  list-style: none;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+/* Styling for each service card */
+.service-card {
+  background-color: #000;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-grow: 1;
+  max-width: 280px;
+  box-sizing: border-box;
+}
+
+/* Styling for the image within the card */
+.service-card .img-cover {
+  display: block;
+  width: 350px;
+  height: 300px;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .img-cover {
+  transform: scale(1.1);
+}
+
+/* Styling for the card content */
+.card-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.card-content .card-title a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.card-content .card-title a:hover {
+  color: #e0e0e0;
+}
+
+/* Styling for the card title */
+.title-4 {
+  margin: 0;
+}
