@@ -20,17 +20,17 @@
   }
   
   /* Navigation menu */
-  nav {
+  /* nav {
     background-color: #333533;
     text-align: center;
     padding: 10px;
-  }
+  } */
   
-  nav ul {
+  ul {
     list-style-type: none;
   }
   
-  nav li {
+  li {
     display: inline;
     margin-right: 20px;
   }
