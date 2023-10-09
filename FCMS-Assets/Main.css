@@ -1,100 +1,195 @@
 /* Reset some default styles */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Set background and primary font color */
-body {
-  background-color: #202020;
-  color: #D6D6D6;
-  font-family: Arial, sans-serif;
-}
-
-/* Header styling */
-header {
-  background-color: #202020;
-  padding: 20px;
-  text-align: center;
-}
-
-/* Navigation menu */
-/* nav {
-    background-color: #333533;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Set background and primary font color */
+  body {
+    background-color: #202020;
+    color: #D6D6D6;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Header styling */
+  header {
+    background-color: #202020;
+    padding: 20px;
     text-align: center;
-    padding: 10px;
-  } */
+  }
 
-ul {
-  list-style-type: none;
-}
+  /* Custom Navigation bar */
+  /* ================== */
+  /* ================== */
 
-li {
-  display: inline;
-  margin-right: 20px;
-}
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 8%;
+    padding-right: 8%;
+    background-color: rgb(11, 11, 10);
+    position: fixed; /* This makes the navbar fixed at the top */
+    top: 0; /* Position it at the top of the viewport */
+    left: 0; /* Position it at the left of the viewport */
+    width: 100%; /* Ensure it takes the full width */
+    z-index: 1000; /* This ensures the navbar is always on top of other content */
+  }
+  
+  
+  
+  span{
+    color:#FFD100;
+  }
+  
+  nav ul li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 10px 25px ;
+  
+  }
+  nav ul li a {
+    color: #FFD100;
+    text-decoration:none ;
+    font-family: 'Franklin Gothic Medium', sans-serif;
+    font-weight: bold;
+    text-transform: capitalize;
+    font-size: 17px;
+  
+  }
 
-/* Main content container */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
+  .registrationbutton {
+      background-color:#FFD100;
+      color: white;
+      font-family: 'Franklin Gothic Medium', sans-serif;
+      text-decoration:none ;
+      border: 2px dotted transparent;
+      font-weight: bold;
+      padding: 10px 25px;
+      border-radius: 40px;
+      transition: transform .3s;
+  
+  }
+  
+  .registrationbutton:hover{
+    transform: scale(1.1);
+  }
 
-/* Heading styles */
-h1,
-h2,
-h3 {
-  color: #FFD100;
-  font-family: 'Helvetica Neue', sans-serif;
-  margin-bottom: 20px;
-}
+  /**
+  **/
 
-h1 {
-  font-size: 36px;
-}
+  nav ul li a {
+    position: relative;
+    /* ... (rest of your styles) */
+  }
+  
+  /* Before and After pseudo-elements represent the two lines */
+  nav ul li a::before, 
+  nav ul li a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px; /* Height of the line */
+    background-color:#FFD100; /* Line color */
+    transition: all 0.3s ease;
+  }
+  
+  /* First line appears from the left */
+  nav ul li a::before {
+    bottom: 1px; /* Slight offset from the bottom to create gap between two lines */
+  }
+  
+  /* Second line appears from the right */
+  nav ul li a::after {
+    bottom: -3px; /* Slight offset from the bottom */
+    right: 0;
+    left: auto;
+    transform: scaleX(-1); /* Invert it to make it appear from right */
+  }
+  
+  /* On hover, the lines animate to full width */
+  nav ul li a:hover::before, 
+  nav ul li a:hover::after {
+    width: 100%;
+  }
+  
+  /* =================================== */ 
+  /* =================================== */ 
 
-h2 {
-  font-size: 24px;
-}
 
-h3 {
-  font-size: 18px;
-}
-
-/* Paragraph styles */
-p {
-  font-size: 16px;
-  line-height: 1.5;
-  margin-bottom: 20px;
-}
-
-/* Accent color for links */
-a {
-  color: #FFD100;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-a:hover {
-  color: #FFEE32;
-}
-
-/* Modern button design */
-.button {
-  display: inline-block;
-  background-color: #FFD100;
-  color: #202020;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.button:hover {
-  background-color: #FFEE32;
-  color: #333533;
-}
+  ul {
+    list-style-type: none;
+  }
+  
+  li {
+    display: inline;
+    margin-right: 20px;
+  }
+  
+  /* Main content container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Heading styles */
+  h1, h2, h3 {
+    color: #FFD100;
+    font-family: 'Helvetica Neue', sans-serif;
+    margin-bottom: 20px;
+  }
+  
+  h1 {
+    font-size: 36px;
+  }
+  
+  h2 {
+    font-size: 24px;
+  }
+  
+  h3 {
+    font-size: 18px;
+  }
+  
+  /* Paragraph styles */
+  p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  
+  /* Accent color for links */
+  a {
+    color: #FFD100;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  a:hover {
+    color: #FFEE32;
+  }
+  
+  /* Modern button design */
+  button {
+    display: inline-block;
+    background-color: #FFD100;
+    color: #202020;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #FFEE32;
+    color: #333533;
+  }
+  
