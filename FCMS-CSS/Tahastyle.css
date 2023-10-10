@@ -242,12 +242,14 @@ Menu Section
 .card-content {
   padding: 20px;
   text-align: center;
+  padding-bottom: 100px;
 }
 
 .card-content .card-title a {
   color: #fff;
   text-decoration: none;
   transition: color 0.3s ease;
+  
 }
 
 .card-content .card-title a:hover {
@@ -257,4 +259,115 @@ Menu Section
 /* Styling for the card title */
 .title-4 {
   margin: 0;
+
 }
+
+
+
+
+.about-section {
+  background-color: #171616;  /* Dark Grey Background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0;
+}
+
+.about-image {
+  flex: 1;
+  padding: 0 20px;
+}
+
+.about-image img {
+  max-width: 180%;
+  height: 180%;
+  border-radius: 8px;
+}
+
+.about-content {
+  flex: 2;
+  padding: 0 20px;
+  color: #e0e0e0;  /* Light Grey Text Color */
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif; /* Choose a suitable font */
+  text-align: center;
+  padding-left: 300px;
+}
+
+.about-content h2 {
+  color: goldenrod;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.about-content p {
+  font-size: 18px;
+}
+
+.team-section {
+  background-color: black;
+  color: white;
+  padding: 50px 0;
+  text-align: center;
+}
+
+.team-section h2 {
+  font-size: 32px;
+  margin-bottom: 50px;
+  color: goldenrod;
+}
+
+.team-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* This will ensure that there is space between each member */
+  gap: 20px;
+  max-width: 660px; /* This width will accommodate 3 members with a width of 200px each and a gap of 20px between them */
+  margin: 0 auto;    /* Centering the container */
+}
+
+.team-member {
+  flex: 0 0 calc(33.3333% - 20px); /* This ensures each member takes up one-third of the container width minus the gap */
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.team-member img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.team-member:hover img {
+  transform: scale(1.1);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Transparent black */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.overlay span {
+  color: white;
+  font-size: 18px;   /* Increased size for better readability on larger circles */
+  text-transform: uppercase;
+}
+
+.team-member:hover .overlay {
+  opacity: 1;
+}
+
+
