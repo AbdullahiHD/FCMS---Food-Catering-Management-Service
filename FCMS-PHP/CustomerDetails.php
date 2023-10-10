@@ -17,6 +17,9 @@
 
     <!-- Link the navbar style css -->
     <link rel="stylesheet" href="../FCMS-CSS/Tahastyle.css">
+
+    <script src="../FCMS-JavaScripts/Validation.js"></script>
+
 </head>
 
 <body>
@@ -32,7 +35,6 @@
                 <li><a href="">Home</a></li>
                 <li><a href="">Menu</a></li>
                 <li><a href="">About</a></li>
-                <li><a href="">Our Team</a></li>
                 <li><a href="">Contact</a></li>
                 
             </ul>
@@ -57,7 +59,7 @@
         </div>
        
 
-    <form id="form" method="post" action="SignUp.php" >
+    <form id="form" method="post" action="SignUp.php" onsubmit="return validateForm()">
         <!--Fieldset1-Personal Details-->
         <fieldset>
             <legend class="leg"> PERSONAL DETAILS</legend>
@@ -65,7 +67,7 @@
             <input type="text" id="hfname" name="hfname"  placeholder="Your first name"> <br>
 
             <label for="hlname">Last Name</label>
-            <input type="text" id="hhlname" name="hlname" placeholder="Your last name"> <br>
+            <input type="text" id="hlname" name="hlname" placeholder="Your last name"> <br>
 
             <label for="hemail">Email</label>
             <input type="text" id="hemail" name="hemail" placeholder="abc1@hotmail.com"><br>
