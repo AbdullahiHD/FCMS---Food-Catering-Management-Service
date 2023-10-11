@@ -9,14 +9,38 @@
     <meta name="author" content="Abdullahi">
     <title>Creating Customer Account</title>
 
-    <link rel="stylesheet" href="Styles2/SignUp2.css">
+    <!-- Linl the general layout css -->
+    <link rel="stylesheet" href="../FCMS-Assets/Main.css"> 
 
-    <script src="JsScripts/Script1.js"></script>
+    <!-- Link to this pages css -->
+    <link rel="stylesheet" href="../FCMS-CSS/CreateDetails.css">
 
+    <!-- Link the navbar style css -->
+    <link rel="stylesheet" href="../FCMS-CSS/Tahastyle.css">
+
+    <script src="../FCMS-JavaScripts/Validation.js"></script>
 </head>
 
 <body>
+    <header>
+        <!-- Navigation bar -->
+        <nav>
 
+            <!-- Adding logo -->
+            <a href="#" class="logolink">
+            <img src="../FCMS-Assets/images/culinarycue.png" width="160" height="30" alt="CulinaryCue - Home">
+            </a>
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">Menu</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Contact</a></li>
+                
+            </ul>
+            <a href="" class="registrationbutton">Login</a>
+
+        </nav>
+    </header>
     <div  class="general-layout" >
         <div class="hcontent">
             <h1> Customer Account Creation</h1>
