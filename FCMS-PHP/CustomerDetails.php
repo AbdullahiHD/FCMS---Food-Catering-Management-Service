@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,20 +47,10 @@
         <!-- Brief Heading and content -->
         <div class="hcontent">
             <h1> Customer Sign Up</h1>
-
-            <p>
-                Signing up for our catering service application opens the door to a world of convenience and culinary delights. 
-                Enjoy seamless event planning with a vast selection of catering options, personalized recommendations, and efficient 
-                vendor selection. Our platform simplifies budget management and offers a hassle-free planning experience. Say goodbye 
-                to event planning stress and embrace the ease of organizing memorable gatherings. Join us today to unlock a world of
-                catering solutions tailored to your unique preferences and requirements.
-                Kindly proceed to provide details for your profile then complete account creation with providing us with your preferred login credentials details
-
-            </p>
         </div>
        
 
-    <form id="form" method="post" action="SignUp.php" onsubmit="return validateForm()">
+    <form id="form" method="post" action="CustomerDetails.php" onsubmit="return validateForm()">
         <!--Fieldset1-Personal Details-->
         <fieldset>
             <legend class="leg"> PERSONAL DETAILS</legend>
@@ -101,3 +92,50 @@
 </body>
 
 </html>
+
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$databaseName = "FCMS";
+
+// Create a new mysqli connection
+$conn = new mysqli($servername, $username, $password, $databaseName);
+
+// Check if the connection was successful
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Initialize variables
+$fname = $lname = $email = $phone = $streetadd = $city = $state = $postcode = "";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Sanitize and validate input
+    $fname = filter_var($_POST["hfname"], FILTER_SANITIZE_STRING);
+    $lname = filter_var($_POST["hlname"], FILTER_SANITIZE_STRING);
+    $email = filter_var($_POST["hemail"], FILTER_SANITIZE_EMAIL);
+    $phone = filter_var($_POST["hphone"], FILTER_SANITIZE_STRING);
+    $streetadd = filter_var($_POST["hstreetadd"], FILTER_SANITIZE_STRING);
+    $city = filter_var($_POST["hcity"], FILTER_SANITIZE_STRING);
+    $state = filter_var($_POST["hstate"], FILTER_SANITIZE_STRING);
+    $postcode = filter_var($_POST["hpostcode"], FILTER_SANITIZE_STRING);
+
+    // Inserting the user details into the database
+    $insert_sql = "INSERT INTO customers (Firstname, Lastname, Email, Phone, Address, City, State, Postcode) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $insert_stmt = $conn->prepare($insert_sql);
+    $insert_stmt->bind_param("ssssssss", $fname, $lname, $email, $phone, $streetadd, $city, $state, $postcode);
+
+    if ($insert_stmt->execute()) {
+        echo '<script>alert("Registration successful. You can now proceed to login.");</script>';
+        echo '<script>window.location = "Login.php";</script>';
+    } else {
+        echo "Error: " . $insert_stmt->error;
+    }
+
+    $insert_stmt->close();
+}
+
+// Close the database connection
+$conn->close();
+?>
