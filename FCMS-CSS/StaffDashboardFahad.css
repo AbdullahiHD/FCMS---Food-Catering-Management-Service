@@ -75,3 +75,94 @@
   .team-member:hover .overlay {
     opacity: 1;
   }
+
+
+
+
+
+
+
+
+
+
+  /* ===================================== */
+  /* STAFF PENDING REQUESTS */
+  /* ===================================== */
+
+  .requests-content {
+    margin-top: 60px;
+  }
+
+  .frequest-div {
+    background-color: #333533;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: box-shadow 0.3s ease-in-out; /* Add transition for hover effect */
+    height: 100px; 
+}
+
+
+  .frequest-div:hover {
+    box-shadow: 0 0 5px #FFD100; /* Add shadow on hover */
+  }
+
+  .request-title {
+      margin: 0; 
+      font-size: 25px;
+      color: #D6D6D6;
+  }
+
+  .action-buttons {
+      display: flex;
+      gap: 10px;
+  }
+
+  .accept-button, .reject-button {
+      padding: 5px 10px;
+      border: none;
+      cursor: pointer;
+  }
+
+
+
+
+
+
+
+  
+  /* ===================================== */
+  /* STAFF ACTIVE ORDERS */
+  /* ===================================== */
+
+
+  .orders-content {
+    margin-top: 60px;
+  }
+
+  .forder-div {
+    background-color: #333533;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px; 
+  }
+
+  .forder-div:hover {
+    box-shadow: 0 0 5px #FFD100; /* Add shadow on hover */
+  }
+
+
+  .order-title {
+    margin: 0; 
+    color: #D6D6D6;
+    font-size: 25px; 
+  }
+
+
