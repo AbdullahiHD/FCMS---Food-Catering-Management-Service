@@ -39,7 +39,7 @@
                 <li><a href="">Contact</a></li>
                 
             </ul>
-            <a href="" class="registrationbutton">Login</a>
+            <a href="../FCMS-HTML/Login.html" class="registrationbutton">Login</a>
 
         </nav>
     </header>
@@ -128,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($insert_stmt->execute()) {
         echo '<script>alert("Registration successful. You can now proceed to login.");</script>';
-        echo '<script>window.location = "Login.php";</script>';
+        echo '<script>window.location = "../FCMS-HTML/Login.html";</script>';
     } else {
         echo "Error: " . $insert_stmt->error;
     }

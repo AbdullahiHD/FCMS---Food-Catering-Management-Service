@@ -3,47 +3,75 @@
 
 // Sign Up page validation
 function validateSignUp() {
-    // Initializing variables
-    var username = document.getElementById("husername").value.trim();
+    var username = document.getElementById("husername").value;
     var password = document.getElementById("hpass").value;
     var confpass = document.getElementById("hconfpass").value;
 
     // Reset any previous error messages
-    document.getElementById("username_err").innerHTML = "";
-    document.getElementById("password_err").innerHTML = "";
-    document.getElementById("confpass_err").innerHTML = "";
+    document.getElementById("username_err").textContent = "";
+    document.getElementById("password_err").textContent = "";
+    document.getElementById("confpass_err").textContent = "";
 
-    // Check if the username is empty
-    if (username === "") {
-        document.getElementById("username_err").innerHTML = "Username is required";
+    // Check if the username is empty or contains only spaces
+    if (username.trim() === "") {
+        showError("username_err", "Username is required.");
         return false;
     }
 
     // Check if the username is not more than 20 characters
     if (username.length > 20) {
-        document.getElementById("username_err").innerHTML = "Username should not be more than 20 characters";
+        showError("username_err", "Username should not be more than 20 characters.");
         return false;
     }
 
-    // Check if the password is empty
-    if (password === "") {
-        document.getElementById("password_err").innerHTML = "Password is required";
+    // Check if the password is empty or contains spaces
+    if (password.trim() === "" || /\s/.test(password)) {
+        showError("password_err", "Password is required and should not contain spaces.");
         return false;
     }
 
     // Check if the password is not less than 8 characters
     if (password.length < 8) {
-        document.getElementById("password_err").innerHTML = "Password should be at least 8 characters";
+        showError("password_err", "Password should be at least 8 characters.");
+        return false;
+    }
+
+    // Check if the confirm password matches the password
+    if (confpass.trim() === "") {
+        showError("confpass_err", "Confirm Password is required.");
         return false;
     }
 
     // Check if the confirm password matches the password
     if (password !== confpass) {
-        document.getElementById("confpass_err").innerHTML = "Passwords do not match";
+        showError("confpass_err", "Passwords do not match.");
         return false;
     }
 
-    return true; // Submit the form if all validations pass
+    // Check if the username is available
+    var isAvailable = isUsernameAvailable(username);
+    if (!isAvailable) {
+        showError("username_err", "Username is already taken.");
+        return false;
+    }
+    
+    return true;
+}
+
+// function isUsernameAvailable(username) {
+    
+//     return checkUsernameAvailabilityInDatabase(username);
+// }
+
+function showError(id, message) {
+    var errorElement = document.getElementById(id);
+    errorElement.textContent = message;
+    errorElement.style.color = "red"; // Change the color to red
+    errorElement.style.animation = "popup 0.3s ease-in-out"; // Add a pop-up animation
+
+    setTimeout(function () {
+        errorElement.style.animation = "";
+    }, 300);
 }
 
 function validateForm() {

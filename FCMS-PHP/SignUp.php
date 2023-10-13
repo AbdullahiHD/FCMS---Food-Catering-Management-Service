@@ -28,47 +28,8 @@
     <!-- Link the navbar style CSS -->
     <link rel="stylesheet" href="../FCMS-CSS/Tahastyle.css">
 
-    <script>
-        function validateSignUp() {
-            var username = document.forms["form"]["husername"].value;
-            var password = document.forms["form"]["hpass"].value;
-            var confpass = document.forms["form"]["hconfpass"].value;
-            var usernameRegex = /^[A-Za-z]{1,20}$/;
-
-            // Reset previous error messages
-            document.getElementById("username_err").textContent = "";
-            document.getElementById("password_err").textContent = "";
-            document.getElementById("confpass_err").textContent = "";
-
-            // Validate username
-            if (username === "") {
-                document.getElementById("username_err").textContent = "Username is required.";
-                return false;
-            } else if (!username.match(usernameRegex)) {
-                document.getElementById("username_err").textContent = "Username should only contain alphabetic characters and be up to 20 characters long.";
-                return false;
-            }
-
-            // Validate password
-            if (password === "") {
-                document.getElementById("password_err").textContent = "Password is required.";
-                return false;
-            } else if (password.length < 8) {
-                document.getElementById("password_err").textContent = "Password should be at least 8 characters long.";
-                return false;
-            }
-
-            // Validate confirm password
-            if (confpass === "") {
-                document.getElementById("confpass_err").textContent = "Confirm Password is required.";
-                return false;
-            } else if (confpass !== password) {
-                document.getElementById("confpass_err").textContent = "Passwords do not match.";
-                return false;
-            }
-            return true;
-        }
-    </script>
+    <script src="../FCMS-JavaScripts/Validation.js"></script>
+    
 </head>
 
 <body>
@@ -92,24 +53,31 @@
             <h1>Customer Profile Creation</h1>
         </div>
         <form id="form" method="post" action="SignUp.php" novalidate="novalidate" onsubmit="return validateSignUp()">
-            <!-- Fieldset3-Login -->
-            <fieldset>
-                <legend class="leg"> Login Details</legend>
-                <input type="text" name="husername" placeholder="Username"> <br>
-                <span id="username_err" class="error-message"></span>
+    <!-- Fieldset3-Login -->
+    <fieldset>
+        <legend class="leg">Login Details</legend>
+        <input type="text" id="husername" name="husername" placeholder="Username"> <br>
+        <div class="error-container">
+            <span id="username_err" class="error-message"></span>
+        </div>
 
-                <input type="password" name="hpass" placeholder="Password"> <br>
-                <span id="password_err" class="error-message"></span>
+        <input type="password" id="hpass" name="hpass" placeholder="Password"> <br>
+        <div class="error-container">
+            <span id="password_err" class="error-message"></span>
+        </div>
 
-                <input type="password" name="hconfpass" placeholder="Confirm Password"> <br>
-                <span id="confpass_err" class="error-message"></span>
-            </fieldset>
-            <!-- Buttons -->
-            <div class="button-container">
-                <button type="submit" value="Submit" name="submit">Submit</button>
-                <button type="reset" value="Reset">Reset</button>
-            </div>
-        </form>
+        <input type="password" id="hconfpass" name="hconfpass" placeholder="Confirm Password"> <br>
+        <div class="error-container">
+            <span id="confpass_err" class="error-message"></span>
+        </div>
+    </fieldset>
+    <!-- Buttons -->
+    <div class="button-container">
+        <button type="submit" value="Submit" name="submit">Submit</button>
+        <button type="reset" value="Reset">Reset</button>
+    </div>
+</form>
+
     </div>
 </body>
 
@@ -133,6 +101,19 @@ if ($conn->connect_error)
 $username = $password = $confpass = "";
 $username_err = $password_err = $confpass_err = "";
 
+// Function to check username availability
+function isUsernameAvailable($username, $conn) {
+    // SQL query to check if the username already exists
+    $sql = "SELECT UserId FROM users WHERE username = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $stmt->store_result();
+
+    // If there are no rows, the username is available
+    return $stmt->num_rows === 0;
+}
+
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") 
 {
@@ -141,19 +122,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $password = $_POST["hpass"];
     $confpass = $_POST["hconfpass"];
 
-    // Check if the username already exists
-    $sql = "SELECT UserId FROM users WHERE username = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $stmt->store_result();
-
-    if ($stmt->num_rows > 0) 
+    if (!isUsernameAvailable($username, $conn)) 
     {
         $username_err = "Username is already taken.";
     }
+    // // Check if the username already exists
+    // $sql = "SELECT UserId FROM users WHERE username = ?";
+    // $stmt = $conn->prepare($sql);
+    // $stmt->bind_param("s", $username);
+    // $stmt->execute();
+    // $stmt->store_result();
 
-    $stmt->close();
+    // if ($stmt->num_rows > 0) 
+    // {
+    //     $username_err = "Username is already taken.";
+    // }
+
+    // $stmt->close();
 
     // If there are no errors, proceed with registration
     if (empty($username_err) && empty($password_err) && empty($confpass_err)) 
@@ -176,8 +161,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
         $insert_stmt->close();
     }
+    else {
+        // Display any errors
+        echo "";
+    }
 }
 
 // Closing the database connection
 $conn->close();
 ?>
+
