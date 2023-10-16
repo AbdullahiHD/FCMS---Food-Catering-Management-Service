@@ -370,4 +370,95 @@ Menu Section
   opacity: 1;
 }
 
+/* Contact Footer */
+
+.footer {
+  background-image: url('../FCMS-Assets/images/footer-bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 50px 0;
+  color: #e0e0e0;
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.contact-icons img {
+  width: 40px;
+  height: 40px;
+  margin: 0 10px;
+}
+
+h2 {
+  margin-top: 40px;
+  margin-bottom: 30px;
+  font-size: 24px;
+}
+
+.user-options {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.user-option {
+  width: 30%;
+  border: 2px solid #e0e0e0;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.6);  /* Semi-transparent dark background for readability */
+  transition: background-color 0.3s;
+}
+
+.user-option:hover {
+  background-color: rgba(0, 0, 0, 0.8);  /* Darker background on hover */
+}
+
+button.login, 
+button.signup {
+  padding: 10px 20px;
+  margin-top: 20px;
+  border: none;
+  background-color: goldenrod;
+  color: #333;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  
+}
+
+button.login:hover, 
+button.signup:hover {
+  background-color:goldenrod;
+}
+.wimg {
+  width : 100px;
+  height: 100px;
+}
+.contact-icons img {
+  width: 50px;  /* Set the desired width */
+  height: 50px;  /* Set the desired height */
+  margin: 0 10px;
+  object-fit: cover;  /* This ensures that images retain their aspect ratio */
+}
+
+.btn-style {
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  background-color: goldenrod;
+  color: #333;
+  cursor: pointer;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+
+
 
