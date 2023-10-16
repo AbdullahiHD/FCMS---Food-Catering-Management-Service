@@ -55,8 +55,8 @@ input[type="password"] {
 /* Style for proceed and resret buttons */
 button[type="submit"],
 button[type="reset"] {
-    background-color: #ffd700;
-    color: #fff;
+    background-color: #ee9b0b;
+    color: #0b0707;
     width: 160px;
     height: 40px;
     margin: 15px 30px;
@@ -71,7 +71,7 @@ button[type="reset"] {
 /* Hover effect on the buttons */
 button[type="submit"]:hover,
 button[type="reset"]:hover {
-    background-color: #f9ecb0;
+    background-color: #f3e70d;
     color: #000;
 }
 

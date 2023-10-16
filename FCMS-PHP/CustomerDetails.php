@@ -121,7 +121,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $postcode = filter_var($_POST["hpostcode"], FILTER_SANITIZE_STRING);
 
     // Inserting the user details into the database
-    $insert_sql = "INSERT INTO customers (Firstname, Lastname, Email, Phone, Address, City, State, Postcode) 
+    $insert_sql = "INSERT INTO customers (Firstname, Lastname, Email, Phone, `Address`, City, `State`, Postcode) 
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     $insert_stmt = $conn->prepare($insert_sql);
     $insert_stmt->bind_param("ssssssss", $fname, $lname, $email, $phone, $streetadd, $city, $state, $postcode);

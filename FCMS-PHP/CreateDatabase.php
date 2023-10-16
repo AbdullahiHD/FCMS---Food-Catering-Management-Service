@@ -14,7 +14,7 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// Create a new database (if it doesn't exist)
+// Create a FCMS database 
 $databaseName = "FCMS"; 
 $createDatabaseQuery = "CREATE DATABASE IF NOT EXISTS $databaseName";
 
@@ -27,8 +27,8 @@ if (mysqli_query($conn, $createDatabaseQuery)) {
 // Connect to the newly created database
 mysqli_select_db($conn, $databaseName);
 
-// Create a new table within the database (if it doesn't exist)
-$tableName = "Users";   // Replace with your desired table name
+// Creating a users table
+$tableName = "Users";  
 $createTableQuery = "
     CREATE TABLE IF NOT EXISTS $tableName (
         UserId INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -50,20 +50,19 @@ if (mysqli_query($conn, $createTableQuery)) {
     echo "Error creating table: " . mysqli_error($conn) . "\n";
 }
 
-// Create a new table within the database (if it doesn't exist)
-$tableName = "Customers";   // Replace with your desired table name
+// Creating an Orders table 
+$tableName = "Orders";
 $createTableQuery = "
     CREATE TABLE IF NOT EXISTS $tableName (
-        UserId INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        Firstname VARCHAR(255) NOT NULL,
-        Lastname VARCHAR(255) NOT NULL,
-        Email VARCHAR(255) NOT NULL,
-        Phone INT(255) NOT NULL,
-        Address VARCHAR(255) NOT NULL,
-	    City VARCHAR(255) NOT NULL,
-        Postcode VARCHAR(255) NOT NULL,
-        LastOrder VARCHAR(255) NOT NULL,
-	    NumberOfOrders VARCHAR (255) NOT NULL,
+        OrderID INT AUTO_INCREMENT PRIMARY KEY,
+        CustomerName VARCHAR(255),
+        EventTime TIME,
+        EventDate DATETIME,
+        DeliveryAddress VARCHAR(255),
+        NumberOfAttendees INT,
+        MenuID INT,
+        OrderStatus VARCHAR(255),
+        
         CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         DeletedAt TIMESTAMP NULL
@@ -76,6 +75,34 @@ if (mysqli_query($conn, $createTableQuery)) {
 } else {
     echo "Error creating table: " . mysqli_error($conn) . "\n";
 }
+
+// Creating an Orders table 
+$tableName = "Requests";
+$createTableQuery = "
+    CREATE TABLE IF NOT EXISTS $tableName (
+        RequestID INT AUTO_INCREMENT PRIMARY KEY,
+        CustomerName VARCHAR(255),
+        EventTime TIME,
+        EventDate DATETIME,
+        DeliveryAddress VARCHAR(255),
+        NumberOfAttendees INT,
+        MenuID INT,
+        RequestStatus VARCHAR(255),
+        PaymentStatus VARCHAR(255),
+        CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        DeletedAt TIMESTAMP NULL
+       
+    )
+";
+
+if (mysqli_query($conn, $createTableQuery)) {
+    echo "\nTable created successfully.\n";
+} else {
+    echo "Error creating table: " . mysqli_error($conn) . "\n";
+}
+
+
 
 // Close the database connection
 mysqli_close($conn);

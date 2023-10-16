@@ -40,7 +40,7 @@
                 <img src="../FCMS-Assets/images/culinarycue.png" width="160" height="30" alt="CulinaryCue - Home">
             </a>
             <ul>
-                <li><a href="">Home</a></li>
+                <li><a href="../FCMS-HTML/TahaIndex.html">Home</a></li>
                 <li><a href="">Menu</a></li>
                 <li><a href="">About</a></li>
                 <li><a href="">Contact</a></li>
@@ -50,6 +50,7 @@
     </header>
     <div class="general-layout">
         <div class="hcontent">
+            <br><br><br><br>
             <h1>Customer Profile Creation</h1>
         </div>
         <form id="form" method="post" action="SignUp.php" novalidate="novalidate" onsubmit="return validateSignUp()">
@@ -70,6 +71,8 @@
         <div class="error-container">
             <span id="confpass_err" class="error-message"></span>
         </div>
+
+        
     </fieldset>
     <!-- Buttons -->
     <div class="button-container">
@@ -83,6 +86,9 @@
 
 </html>
 <?php
+
+session_start();
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -98,21 +104,20 @@ if ($conn->connect_error)
 }
 
 // Initialize variables
-$username = $password = $confpass = "";
-$username_err = $password_err = $confpass_err = "";
+//$username = $password = $confpass = "";
 
 // Function to check username availability
-function isUsernameAvailable($username, $conn) {
-    // SQL query to check if the username already exists
-    $sql = "SELECT UserId FROM users WHERE username = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $stmt->store_result();
+// function isUsernameAvailable($username, $conn) {
+//     // SQL query to check if the username already exists
+//     $sql = "SELECT UserId FROM users WHERE username = ?";
+//     $stmt = $conn->prepare($sql);
+//     $stmt->bind_param("s", $username);
+//     $stmt->execute();
+//     $stmt->store_result();
 
-    // If there are no rows, the username is available
-    return $stmt->num_rows === 0;
-}
+//     // If there are no rows, the username is available
+//     return $stmt->num_rows === 0;
+// }
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") 
@@ -122,21 +127,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $password = $_POST["hpass"];
     $confpass = $_POST["hconfpass"];
 
-    if (!isUsernameAvailable($username, $conn)) 
-    {
-        $username_err = "Username is already taken.";
-    }
-    // // Check if the username already exists
-    // $sql = "SELECT UserId FROM users WHERE username = ?";
-    // $stmt = $conn->prepare($sql);
-    // $stmt->bind_param("s", $username);
-    // $stmt->execute();
-    // $stmt->store_result();
+    $username_err = $password_err = $confpass_err = "";
 
-    // if ($stmt->num_rows > 0) 
+    // if (!isUsernameAvailable($username, $conn)) 
     // {
     //     $username_err = "Username is already taken.";
     // }
+    // Check if the username already exists
+    $sql = "SELECT UserId FROM users WHERE username = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $stmt->store_result();
+
+    if ($stmt->num_rows > 0) 
+    {
+        $username_err = "Username is already taken.";
+
+    }
 
     // $stmt->close();
 
