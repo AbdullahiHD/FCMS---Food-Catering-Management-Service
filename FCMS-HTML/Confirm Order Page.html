@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Order - Online Food & Beverage Catering Service</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: black;
+            box-shadow: 0 0 10px white(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            color: gold;
+            border: 2px solid black;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .total {
+            text-align: right;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button-container button {
+            background-color: gold;
+            color: black;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .button-container button:hover {
+            background-color: white;
+        }
+
+        .container .button-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }
+
+        .navbar {
+            background-color: gold;
+            width: 200px;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+        }
+
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navbar li {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: black;
+            display: block;
+        }
+
+        .navbar a:hover {
+            background-color: black;
+            color: gold;
+        }
+
+        .content {
+            margin-left: 220px;
+            padding: 20px;
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 8%;
+            padding-right: 8%;
+            background-color: rgb(11, 11, 10);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        span {
+            color: goldenrod;
+        }
+
+        nav ul li {
+            list-style-type: none;
+            display: inline-block;
+            padding: 10px 25px;
+        }
+
+        nav ul li a {
+            color: goldenrod;
+            text-decoration: none;
+            font-family: 'Franklin Gothic Medium', sans-serif;
+            font-weight: bold;
+            text-transform: capitalize;
+            font-size: 17px;
+        }
+
+        .registrationbutton {
+            background-color: goldenrod;
+            color: white;
+            font-family: 'Franklin Gothic Medium', sans-serif;
+            text-decoration: none;
+            border: 2px dotted transparent;
+            font-weight: bold;
+            padding: 10px 25px;
+            border-radius: 40px;
+            transition: transform .3s;
+        }
+
+        .registrationbutton:hover {
+            transform: scale(1.1);
+        }
+
+        nav ul li a {
+            position: relative;
+        }
+
+        nav ul li a::before,
+        nav ul li a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: goldenrod;
+            transition: all 0.3s ease;
+        }
+
+        nav ul li a::before {
+            bottom: 1px;
+        }
+
+        nav ul li a::after {
+            bottom: -3px;
+            right: 0;
+            left: auto;
+            transform: scaleX(-1);
+        }
+
+        nav ul li a:hover::before,
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .back-button {
+            display: inline-block;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        /* Add the new CSS for the two tables */
+        .order-summary-table {
+            margin-bottom: 20px;
+            border: 2px solid black;
+        }
+
+        .menu-selection-table {
+            border: 2px solid white;
+        }
+
+        /* Style for the three columns */
+        .menu-selection-table th {
+            background-color: #f2f2f2;
+        }
+
+        .menu-selection-table td {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h1>Summary my Order</h1>
+    </header>
+    <div class="container">
+        <!-- First table for order details -->
+        <div class="container">
+            <div class="data">
+                <strong>Event Date:</strong> July 15, 2023
+            </div>
+            <div class="data">
+                <strong>Event Time:</strong> 6:00 PM
+            </div>
+            <div class ="data">
+                <strong>Delivery Address:</strong> 123 Main Street, City, State
+            </div>
+            <div class="data">
+                <strong>Contact Information:</strong> John Doe - johndoe@email.com
+            </div>
+            <!-- Additional data for client's name and phone number -->
+            <div class="data">
+                <strong>Client's Name:</strong> John Doe
+            </div>
+            <div class="data">
+                <strong>Phone Number:</strong> +1 123-456-7890
+            </div>
+
+        <!-- Second table for selected menu with three columns -->
+        <table class="menu-selection-table">
+            <tr>
+                <th>Type of Dish</th>
+                <th>Items</th>
+                <th>Quantities</th>
+            </tr>
+            <tr>
+                <td>Appetizers</td>
+                <td>Mini Spring Rolls</td>
+                <td>25 pieces</td>
+            </tr>
+            <tr>
+                <td>Main Course</td>
+                <td>Grilled Chicken with Herbs</td>
+                <td>50 servings</td>
+            </tr>
+            <tr>
+                <td>Dessert</td>
+                <td>Chocolate Mousse</td>
+                <td>30 servings</td>
+            </tr>
+            <tr>
+                <td>Beverages</td>
+                <td>Soft Drinks</td>
+                <td>100 cans</td>
+            </tr>
+        </table>
+
+        <div class="button-container">
+            <a href="Quotation and Billing Page.html">
+                <button>Confirm my Order</button>
+            </a>
+            <a href="Display food menu in cart.html">
+                <button>Re-Order</button>
+            </a>
+            <a href="Home Page.html">
+                <button>Cancel my order</button>
+            </a>
+        </div>
+    </div>
+    <div class="content">
+        <!-- Content for your pages goes here -->
+    </div>
+    <nav>
+        <a href="#" class="logolink">
+            <img src="./assets/images/culinarycue.png" width="160" height="30" alt="CulinaryCue - Home">
+        </a>
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">Menu</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Our Team</a></li>
+            <li><a href="">Contact</a></li>
+        </ul>
+        <a href="" class="registrationbutton">Login</a>
+        <a href="" class="registrationbutton">Login</a>
+    </nav>
+</body>
+</html>
