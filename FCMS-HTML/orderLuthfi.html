@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Summary</title>
+    <link rel="stylesheet" href="../FCMS-Assets/Main.css">
+    <link rel="stylesheet" href="../FCMS-CSS/menu_styleLuthfi.css">
+    <style>
+        /* Additional CSS for this specific page */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: fit-content; /* Center vertically */
+            margin: 0;
+            padding: 0;
+            background-color: #202020;
+        }
+
+        .container {
+            margin-top: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80%;
+            background-color: black;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #FFD100;
+        }
+
+        .order-summary-box {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .order-summary-box h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .order-details {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .order-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .order-buttons button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #FFD100;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body class="">
+
+    <nav>
+    
+        <a href="#" class="logolink">
+          <img src="../FCMS-Assets/images/culinarycue.png" width="160" height="30" alt="CulinaryCue - Home">
+        </a>
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">Menu</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Our Team</a></li>
+            <li><a href="">Contact</a></li>
+            
+        </ul>
+        <a href="" class="registrationbutton">Login</a>
+    
+    </nav>
+
+    <div class="container">
+        <!-- Order Summary Box -->
+        <div class="order-summary-box">
+            <h2>Order Summary</h2>
+            <div class="order-details">
+                <p>Product: Menu 1</p>
+                <p>Price: 60 RM</p>
+            </div>
+            <div class="order-buttons">
+                <button>Edit Order</button>
+                <button>Confirm Order</button>
+            </div>
+        </div>
+    </div>
+    <script src="/FCMS-JavaScripts/scriptLuthfi.js"></script>
+</body>
+</html>

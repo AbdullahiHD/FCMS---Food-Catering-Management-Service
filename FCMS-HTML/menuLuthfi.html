@@ -4,10 +4,184 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Menu</title>
     <link rel="stylesheet" href="../FCMS-Assets/Main.css">
     <link rel="stylesheet" href="../FCMS-CSS/menu_styleLuthfi.css">
+    <style>
+        /* Additional CSS for this specific page */
+        body {
+            font-family: Arial, sans-serif;
+            display:flex;
+            align-items: center;
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+            background-color: #202020;
+            margin-bottom: 20px;
+        }
+
+        .menu-box {
+            display: flex;
+            flex-wrap:wrap;
+            justify-content: space-around;
+            align-items: flex-start;
+            border: 2px solid #FFD100;
+            padding: 10px;
+            max-width: 100%;
+            background-color: 202020;
+        }
+        .menu-item p{
+            margin-top: 5px;
+            color: #FFD100;
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+        .menu-item {
+            text-align: center;
+            flex: 0 0 30%;
+            max-width: 300px;
+            margin: 10px;
+            position: relative;
+            padding: 10px;
+        }
+
+        .menu-item .image-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-item img {
+            width: 250px;
+            height: 250px;
+            border: 1px solid #FFD100;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item:hover {
+            /* Change the border color to trigger hover effect */
+            border: 1px solid #FFD100;
+        }
+
+        .menu-item:hover img {
+            transform: scale(1.04);
+        }
+
+        .menu-item .additional-info {
+            position: fixed;
+            bottom: 0;
+            left: 25%;
+            height: fit-content;
+            width: 50%;
+            background-color: black;
+            display: flex;
+            flex-direction: row; /* Arrange content horizontally */
+            justify-content: flex-start; /* Align content to the left */
+            align-items: center;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            padding: 15px;
+            z-index: 1;
+        }
+
+         /* Use pointer-events to prevent hover on .additional-info */
+         .menu-item .additional-info {
+            pointer-events: none;
+        }
+
+        .menu-item:hover .additional-info {
+            opacity: 0.99;
+            transform: scale(1);
+            pointer-events: auto; /* Re-enable pointer events on hover */
+            z-index: 2; /* Set a higher z-index value on hover */
+        }
+
+        /* Style the additional info elements */
+        .menu-item .additional-info img {
+            width: 400px; /* Adjust the image size as needed */
+            height: 400px; /* Adjust the image size as needed */
+            margin-right: 20px; /* Add spacing between image and text */
+        }
+
+        .menu-item .additional-info .text-container {
+            display: flex;
+            flex-direction: column; /* Stack content top to bottom */
+            align-items: flex-start; /* Align content to the left */
+        }
+
+        .menu-item .additional-info .text-container h3 {
+            color: #FFD100;
+            font-size: 58px;
+            margin: 0;
+        }
+
+        .menu-item .additional-info .text-container p {
+            color: white;
+            font-size: 24px;
+            margin: 0;
+            margin-top: 5px;
+        }
+
+        .menu-select-button {
+            margin-top: 10px;
+            display: inline-block;
+            background-color: #FFD100;
+            color: #202020;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .menu-select-button:hover {
+            background-color: #FFEE32;
+            color: #333533;
+        }
+
+        .form-container {
+            align-items: center;
+            margin-top: 50px;
+            width: 600px;
+            padding: 10px;
+            border: 0px solid white;
+            border-radius: 1px;
+            background-color:black;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            color: #FFD100;
+            font-family: 'Helvetica Neue', sans-serif;
+            font-size: 18px;
+        }
+
+        input[type="text"],
+        input[type="time"],
+        input[type="date"],
+        input[type="number"] {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        
+        .selected-output {
+            margin-top: 10px;
+        }
+        .selected-output p {
+            display: none;
+        }
+            
+    </style>
 </head>
+
 <body class="">
 
     <nav>
@@ -28,30 +202,87 @@
     
     
     </nav>
-    
-    <div class="container">
-        <header>
-            <h1>Food Menu</h1>
-            <div class="shopping">
-                <img src="../FCMS-Assets/images/cart.svg">
-                <span class="quantity">0</span>
+
+    <div class="form-container">
+        <h2>Event Details Form</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="event-time">Event Time:</label>
+            <input type="time" id="event-time" name="event-time" required>
+
+            <label for="event-date">Event Date:</label>
+            <input type="date" id="event-date" name="event-date" required>
+
+            <label for="delivery-address">Delivery Address:</label>
+            <input type="text" id="delivery-address" name="delivery-address" required>
+
+            <label for="attendees">Number Of Attendees:</label>
+            <input type="number" id="attendees" name="attendees" required>
+        </form>
+    </div>
+
+    <div class="menu-box">
+        <div class="menu-item" id="Menu 1"> 
+            <img src="../FCMS-Assets/images/hero-slider-1.jpg" alt="Menu 1">
+            <br>
+            <p id="menu_1">Menu 1</p>
+            <p id="price_1">60 RM</p>
+            <div class="additional-info">
+                <img src="../FCMS-Assets/images/hero-slider-1.jpg" alt="Menu 1 Enlarged">
+                <div class="text-container">
+                    <h3>Menu 1</h3>
+                    <p>Appetiser</p>
+                    <p>Main Dish</p>
+                    <p>Dessert</p>
+                    <p>Drink</p>
+                </div>
             </div>
-        </header>
-
-        <div class="list">
-          
+            <button class="menu-select-button">Select</button>
+        </div>
+        <div class="menu-item" id="Menu 2">
+            <img src="../FCMS-Assets/images/hero-slider-2.jpg" alt="Menu 2"> 
+            <br>
+            <p id="menu_2">Menu 2</p>
+            <p id="price_2">60 RM</p>
+            <div class="additional-info">
+                <img src="../FCMS-Assets/images/hero-slider-2.jpg" alt="Menu 2 Enlarged">
+                <div class="text-container">
+                    <h3>Menu 2</h3>
+                    <p>Appetiser</p>
+                    <p>Main Dish</p>
+                    <p>Dessert</p>
+                    <p>Drink</p>
+                </div>
+            </div>
+            <button class="menu-select-button">Select</button>
+        </div>
+        <div class="menu-item" id="Menu 3">
+            <img src="../FCMS-Assets/images/hero-slider-3.jpg"alt="Menu 3">
+            <br>
+            <p id="menu_3">Menu 3</p>
+            <p id="price_3">80 RM</p>
+            <div class="additional-info">
+                <img src="../FCMS-Assets/images/hero-slider-3.jpg"alt="Menu 3">
+                <div class="text-container">
+                    <h3>Menu 3</h3>
+                    <p>Appetiser</p>
+                    <p>Main Dish</p>
+                    <p>Dessert</p>
+                    <p>Drink</p>
+                </div>
+            </div>
+            <button class="menu-select-button">Select</button>
         </div>
     </div>
-    <div class="cart">
-        <h1>Your Cart</h1>
-        <ul class="listCart">
-        </ul>
-        <div class="checkOut">
-            <div class="total">0 RM</div>
-            <div class="closeShopping">Close</div>
-        </div>
-    </div>
 
-    <script src="../FCMS-JavaScripts/menu_scriptLuthfi.js"></script>
+    <div class="selected-output">
+        <p id="selected-menu"></p>
+    </div>
+   
+    <button class="create-event-button">Create Event Booking</button>
+
+    <script src="/FCMS-JavaScripts/scriptLuthfi.js"></script>
 </body>
 </html>
