@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu</title>
     <link rel="stylesheet" href="../FCMS-Assets/Main.css">
-    <link rel="stylesheet" href="../FCMS-CSS/menu_styleLuthfi.css">
     <style>
         /* Additional CSS for this specific page */
         body {
@@ -28,7 +27,7 @@
             border: 2px solid #FFD100;
             padding: 10px;
             max-width: 100%;
-            background-color: 202020;
+            background-color: black;
         }
         .menu-item p{
             margin-top: 5px;
@@ -67,7 +66,7 @@
 
         .menu-item .additional-info {
             position: fixed;
-            bottom: 0;
+            bottom: 50%;
             left: 25%;
             height: fit-content;
             width: 50%;
@@ -147,6 +146,7 @@
             border: 0px solid white;
             border-radius: 1px;
             background-color:black;
+            margin-bottom: 10px;
         }
 
         form {
@@ -174,9 +174,13 @@
         
         .selected-output {
             margin-top: 10px;
+            background-color: #FFD100;
+            color: #202020;
+            margin-bottom: 10px;
         }
         .selected-output p {
             display: none;
+            padding: 0px 10px;
         }
             
     </style>
@@ -221,7 +225,6 @@
             <label for="attendees">Number Of Attendees:</label>
             <input type="number" id="attendees" name="attendees" required>
         </form>
-        <br><br>
     </div>
 
     <div class="menu-box">
@@ -284,6 +287,6 @@
    
     <button class="create-event-button">Create Event Booking</button>
 
-    <script src="/FCMS-JavaScripts/scriptLuthfi.js"></script>
+    <script src="../FCMS-JavaScripts/scriptLuthfi.js"></script>
 </body>
 </html>

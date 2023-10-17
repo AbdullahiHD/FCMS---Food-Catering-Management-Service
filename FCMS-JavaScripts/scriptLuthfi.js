@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('Please select a menu item first.');
         } else {
             // Redirect to another webpage and include product ID and price as URL parameters
-            var redirectUrl = 'anotherpage.html' + '?productId=' + selectedProductId + '&price=' + selectedPrice;
+            var redirectUrl = 'orderLuthfi.html' + '?productId=' + selectedProductId + '&price=' + selectedPrice;
             window.location.href = redirectUrl;
         }
     });
