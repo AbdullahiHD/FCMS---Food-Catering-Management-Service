@@ -27,10 +27,7 @@
             border: 2px solid #FFD100;
             padding: 10px;
             max-width: 100%;
-            border-radius: 8px;
             background-color: black;
-            margin-left: 20px;
-            margin-right: 20px;
         }
         .menu-item p{
             margin-top: 5px;
@@ -44,7 +41,6 @@
             margin: 10px;
             position: relative;
             padding: 10px;
-            border-radius: 8px;
         }
 
         .menu-item .image-container {
@@ -83,7 +79,6 @@
             transform: scale(0.8);
             transition: opacity 0.3s ease, transform 0.3s ease;
             padding: 15px;
-            border-radius: 8px;
             z-index: 1;
         }
 
@@ -149,7 +144,7 @@
             width: 600px;
             padding: 10px;
             border: 0px solid white;
-            border-radius: 8px;
+            border-radius: 1px;
             background-color:black;
             margin-bottom: 10px;
         }
@@ -207,6 +202,9 @@
             
         </ul>
         <a href="" class="registrationbutton">Login</a>
+    
+    
+    
     </nav>
 
     <div class="form-container">
@@ -230,15 +228,15 @@
     </div>
 
     <div class="menu-box">
-        <div class="menu-item" id="Menu 1"> 
+        <div class="menu-item" id="Menu 1" data-price="60"> 
             <img src="../FCMS-Assets/images/hero-slider-1.jpg" alt="Menu 1">
             <br>
-            <p id="menu_1">Desi Cuisine</p>
-            <p id="price_1">70 RM</p>
+            <p id="menu_1">Menu 1</p>
+            <p id="price_1">60 RM</p>
             <div class="additional-info">
                 <img src="../FCMS-Assets/images/hero-slider-1.jpg" alt="Menu 1 Enlarged">
                 <div class="text-container">
-                    <h3>Desi Cuisine</h3>
+                    <h3>Menu 1</h3>
                     <p>Appetiser</p>
                     <p>Main Dish</p>
                     <p>Dessert</p>
@@ -247,11 +245,11 @@
             </div>
             <button class="menu-select-button">Select</button>
         </div>
-        <div class="menu-item" id="Menu 2">
+        <div class="menu-item" id="Menu 2" data-price="60">
             <img src="../FCMS-Assets/images/hero-slider-2.jpg" alt="Menu 2"> 
             <br>
-            <p id="menu_2">Malay Cuisine</p>
-            <p id="price_2">75 RM</p>
+            <p id="menu_2">Menu 2</p>
+            <p id="price_2">60 RM</p>
             <div class="additional-info">
                 <img src="../FCMS-Assets/images/hero-slider-2.jpg" alt="Menu 2 Enlarged">
                 <div class="text-container">
@@ -263,11 +261,12 @@
                 </div>
             </div>
             <button class="menu-select-button">Select</button>
+
         </div>
-        <div class="menu-item" id="Menu 3">
+        <div class="menu-item" id="Menu 3" data-price="80">
             <img src="../FCMS-Assets/images/hero-slider-3.jpg"alt="Menu 3">
             <br>
-            <p id="menu_3">Arabian Cuisine</p>
+            <p id="menu_3">Menu 3</p>
             <p id="price_3">80 RM</p>
             <div class="additional-info">
                 <img src="../FCMS-Assets/images/hero-slider-3.jpg"alt="Menu 3">
@@ -280,57 +279,7 @@
                 </div>
             </div>
             <button class="menu-select-button">Select</button>
-        </div>
-        <div class="menu-item" id="Menu 4">
-            <img src="../FCMS-Assets/images/hero-slider-1.jpg" alt="Menu 1">
-            <br>
-            <p id="menu_4">Somali Cuisine</p>
-            <p id="price_4">60 RM</p>
-            <div class="additional-info">
-                <img src="../FCMS-Assets/images/hero-slider-1.jpg" alt="Menu 1 Enlarged">
-                <div class="text-container">
-                    <h3>Italian Cuisine</h3>
-                    <p>Appetiser</p>
-                    <p>Main Dish</p>
-                    <p>Dessert</p>
-                    <p>Drink</p>
-                </div>
-            </div>
-            <button class="menu-select-button">Select</button>
-        </div>
-        <div class="menu-item" id="Menu 5">
-            <img src="../FCMS-Assets/images/hero-slider-1.jpg" alt="Menu 1">
-            <br>
-            <p id="menu_5">Italian Cuisine</p>
-            <p id="price_5">70 RM</p>
-            <div class="additional-info">
-                <img src="../FCMS-Assets/images/hero-slider-1.jpg" alt="Menu 1 Enlarged">
-                <div class="text-container">
-                    <h3>Italian Cuisine</h3>
-                    <p>Appetiser</p>
-                    <p>Main Dish</p>
-                    <p>Dessert</p>
-                    <p>Drink</p>
-                </div>
-            </div>
-            <button class="menu-select-button">Select</button>
-        </div>
-        <div class="menu-item" id="Menu 4">
-            <img src="../FCMS-Assets/images/hero-slider-1.jpg" alt="Menu 1">
-            <br>
-            <p id="menu_6">Latin Cuisine</p>
-            <p id="price_6">65 RM</p>
-            <div class="additional-info">
-                <img src="../FCMS-Assets/images/hero-slider-1.jpg" alt="Menu 1 Enlarged">
-                <div class="text-container">
-                    <h3>Italian Cuisine</h3>
-                    <p>Appetiser</p>
-                    <p>Main Dish</p>
-                    <p>Dessert</p>
-                    <p>Drink</p>
-                </div>
-            </div>
-            <button class="menu-select-button">Select</button>
+
         </div>
     </div>
 
@@ -338,7 +287,7 @@
         <p id="selected-menu"></p>
     </div>
    
-    <button class="create-event-button">Create Event Booking</button>
+    <button class="create-event-button create-event">Create Event Booking</button>
 
     <script src="../FCMS-JavaScripts/scriptLuthfi.js"></script>
 </body>
