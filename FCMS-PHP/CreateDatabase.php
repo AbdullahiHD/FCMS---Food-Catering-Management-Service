@@ -62,7 +62,6 @@ $createTableQuery = "
         NumberOfAttendees INT,
         MenuID INT,
         OrderStatus VARCHAR(255),
-        
         CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         DeletedAt TIMESTAMP NULL

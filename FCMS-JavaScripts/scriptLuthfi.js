@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Store the selected product ID and price in sessionStorage
             sessionStorage.setItem('selectedProductId', productId);
             sessionStorage.setItem('selectedPrice', price);
-
+            
             // Enable the "Create Event Booking" button
             createEventButton.disabled = false;
         });
