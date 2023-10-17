@@ -39,3 +39,45 @@
 </body>
 </html>
 
+
+<?php
+$servername = "localhost";
+$username = "root"; 
+$password = ""; 
+$dbname = "fcms";
+
+// Create a connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check the connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// SQL query to retrieve only "Active" orders with a limit of 5 
+$sql = "SELECT * FROM Orders WHERE OrderStatus = 'Active' LIMIT 5";
+$result = $conn->query($sql);
+
+// Check if there are orders
+if ($result->num_rows > 0) {
+    // Array to hold orders
+    $orders = array();
+
+    // Fetch data and add it to the array
+    while ($row = $result->fetch_assoc()) {
+        $orders[] = $row;
+    }
+
+    // Convert the ordersto JSON format
+    $json_orders = json_encode($orders);
+
+    // Output the data or JSON to the browser
+    echo $json_orders;
+
+} else {
+    echo "No active orders found.";
+}
+
+// Close the database connection
+$conn->close();
+?>
