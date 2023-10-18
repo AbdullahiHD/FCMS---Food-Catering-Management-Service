@@ -11,12 +11,12 @@
     <!-- Navbar -->
     <nav>
         <a href="#" class="logolink">
-          <img src="../FCMS-Assets/images/culinarycue.png" width="160" height="30" alt="CulinaryCue - Home">
+          <img src="../FCMS-Assets/images/culinarycue.png" width="100px" height="60px" alt="CulinaryCue - Home">
         </a>
         <ul>
-            <li><a href="StaffDashboardFahad.html">Dashboard</a></li>
-            <li><a href="StaffPendingRequestsFahad.html">Pending Requests</a></li>
-            <li><a href="StaffActiveOrdersFahad.html">Active Orders</a></li>
+            <li><a href="StaffDashboardFahad.php">Dashboard</a></li>
+            <li><a href="StaffPendingRequestsFahad.php">Pending Requests</a></li>
+            <li><a href="StaffActiveOrdersFahad.php">Active Orders</a></li>
         </ul>
     </nav>
     
@@ -54,7 +54,7 @@
                     echo "Error: " . $sql . "<br>" . $conn->error;
                 }
 
-                // Next, delete the request from the "Requests" table
+                //delete the request from the "Requests" table
                 $sql = "DELETE FROM Requests WHERE RequestID = $requestId";
 
                 if ($conn->query($sql) === TRUE) {
@@ -67,10 +67,6 @@
             if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['rejectRequest'])) {
                 $requestId = $_POST['requestId'];
 
-                // Perform any necessary actions for rejecting the request
-                // For example, you can log the refund action here.
-
-                // Next, delete the request from the "Requests" table
                 $sql = "DELETE FROM Requests WHERE RequestID = $requestId";
 
                 if ($conn->query($sql) === TRUE) {

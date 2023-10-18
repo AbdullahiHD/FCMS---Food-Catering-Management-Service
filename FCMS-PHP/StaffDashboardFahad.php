@@ -13,12 +13,12 @@
     <nav>
     
         <a href="#" class="logolink">
-          <img src="../FCMS-Assets/images/culinarycue.png" width="160" height="30" alt="CulinaryCue - Home">
+        <img src="../FCMS-Assets/images/culinarycue.png" width="100px" height="60px" alt="CulinaryCue - Home">
         </a>
         <ul>
-            <li><a href="StaffDashboardFahad.html">Dashboard</a></li>
-            <li><a href="StaffPendingRequestsFahad.html">Pending Requests</a></li>
-            <li><a href="StaffActiveOrdersFahad.html">Active Orders</a></li>
+            <li><a href="StaffDashboardFahad.php">Dashboard</a></li>
+            <li><a href="StaffPendingRequestsFahad.php">Pending Requests</a></li>
+            <li><a href="StaffActiveOrdersFahad.php">Active Orders</a></li>
             
         </ul> 
     
