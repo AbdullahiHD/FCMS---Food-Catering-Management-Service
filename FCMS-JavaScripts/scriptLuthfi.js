@@ -1,4 +1,30 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Check if the current page is orderSummary.html
+    if (window.location.pathname.endsWith('orderSummary.html')) {
+        // Get URL parameters and populate the order summary elements here
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('name');
+        const eventTime = urlParams.get('eventTime');
+        const eventDate = urlParams.get('eventDate');
+        const deliveryAddress = urlParams.get('deliveryAddress');
+        const attendees = urlParams.get('attendees');
+        const productId = urlParams.get('productId');
+        const price = urlParams.get('price');
+
+        // Populate the order summary elements
+        document.getElementById('name').textContent = name;
+        document.getElementById('event-time').textContent = eventTime;
+        document.getElementById('event-date').textContent = eventDate;
+        document.getElementById('delivery-address').textContent = deliveryAddress;
+        document.getElementById('attendees').textContent = attendees;
+        document.getElementById('menu-item').textContent = productId; // You might want to retrieve the actual product name based on the ID
+        document.getElementById('selected-menu').textContent = price;
+
+        // Calculate total price and display it
+        var totalPrice = parseFloat(price) * parseInt(attendees);
+        document.getElementById('totalPrice').textContent = totalPrice + ' RM';
+    }
+    
     var menuItems = document.querySelectorAll('.menu-item');
     var selectedMenu = document.getElementById('selected-menu');
     var createEventButton = document.querySelector('.create-event');
@@ -32,41 +58,52 @@ document.addEventListener('DOMContentLoaded', function () {
         var eventTime = document.getElementById('event-time').value;
         var eventDate = document.getElementById('event-date').value;
         var deliveryAddress = document.getElementById('delivery-address').value;
-        var attendees = document.getElementById('attendees').textContent; // Get attendees from the summary
+        var attendees = document.getElementById('attendees').value;
+
+        // Validate attendees to be a positive integer
+        if (!attendees || isNaN(attendees) || parseInt(attendees) <= 0) {
+            alert('Please enter a valid number of attendees.');
+            return;
+        }
+        // Input validation for eventTime (non-empty string)
+        if (!eventTime.trim()) {
+            alert('Please enter a valid event time.');
+            return;
+        }
+
+        // Input validation for eventDate (non-empty string)
+        if (!eventDate.trim()) {
+            alert('Please enter a valid event date.');
+            return;
+        }
+
+        // Input validation for name and deliveryAddress (non-empty string)
+        if (!name.trim() || !deliveryAddress.trim()) {
+            alert('Please enter valid name and delivery address.');
+            return;
+        }
         
+        var selectedProductId = sessionStorage.getItem('selectedProductId');
+        var selectedPrice = sessionStorage.getItem('selectedPrice');
+        var name = encodeURIComponent(document.getElementById('name').value);
+        var eventTime = encodeURIComponent(document.getElementById('event-time').value);
+        var eventDate = encodeURIComponent(document.getElementById('event-date').value);
+        var deliveryAddress = encodeURIComponent(document.getElementById('delivery-address').value);
+        var attendees = encodeURIComponent(document.getElementById('attendees').value);
+
         if (!selectedProductId || !selectedPrice) {
             alert('Please select a menu item first.');
         } else {
             // Redirect to orderLuthfi.html with form input and menu item data as URL parameters
-            var redirectUrl = 'orderLuthfi.html' + '?productId=' + selectedProductId + '&price=' + selectedPrice +
-                              '&name=' + encodeURIComponent(name) +
-                              '&eventTime=' + encodeURIComponent(eventTime) +
-                              '&eventDate=' + encodeURIComponent(eventDate) +
-                              '&deliveryAddress=' + encodeURIComponent(deliveryAddress) +
-                              '&attendees=' + encodeURIComponent(attendees);
+            var redirectUrl = 'orderLuthfi.html' + 
+                  '?productId=' + selectedProductId + 
+                  '&price=' + selectedPrice +
+                  '&name=' + name +
+                  '&eventTime=' + eventTime +
+                  '&eventDate=' + eventDate +
+                  '&deliveryAddress=' + deliveryAddress +
+                  '&attendees=' + attendees;
             window.location.href = redirectUrl;
         }
     });
-
-    
-    
-    // Determine the product name based on productId (you can customize this logic)
-    var productName;
-    if (productId === 'Menu 1') {
-        productName = 'Menu 1';
-    } else if (productId === 'Menu 2') {
-        productName = 'Menu 2';
-    } else if (productId === 'Menu 3') {
-        productName = 'Menu 3';
-    } else {
-        productName = 'Unknown Menu';
-    }
-    
-    // Set product details in the order summary
-    document.getElementById('productName').textContent = productName;
-    document.getElementById('menuPrice').textContent = price;
-    
-    // Calculate total price
-    var totalPrice = price * attendees;
-    document.getElementById('totalPrice').textContent = totalPrice;
 });
