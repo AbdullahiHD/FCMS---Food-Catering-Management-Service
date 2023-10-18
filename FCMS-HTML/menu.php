@@ -26,7 +26,8 @@
             align-items: flex-start;
             border: 2px solid #FFD100;
             padding: 10px;
-            max-width: 100%;
+            width: 100%; /* Set the width to 100% */
+            max-width: 960px; /* Set a maximum width for larger screens */
             background-color: black;
         }
         .menu-item p{
@@ -36,11 +37,12 @@
         }
         .menu-item {
             text-align: center;
-            flex: 0 0 30%;
-            max-width: 300px;
+            flex: 0 0 30%; /* Set the flex basis to 30% */
+            max-width: calc(33.333% - 20px); /* Set the maximum width for 3 items with margin */
             margin: 10px;
             position: relative;
             padding: 10px;
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
         }
 
         .menu-item .image-container {
@@ -65,11 +67,11 @@
         }
 
         .menu-item .additional-info {
-            position: fixed;
-            bottom: 50%;
-            left: 25%;
+            position: absolute;
+            bottom: 101%;
+            left: -10%;
             height: fit-content;
-            width: 50%;
+            width: fit-content;
             background-color: black;
             display: flex;
             flex-direction: row; /* Arrange content horizontally */
@@ -96,15 +98,15 @@
 
         /* Style the additional info elements */
         .menu-item .additional-info img {
-            width: 400px; /* Adjust the image size as needed */
-            height: 400px; /* Adjust the image size as needed */
+            width: 300px; /* Adjust the image size as needed */
+            height: 300px; /* Adjust the image size as needed */
             margin-right: 20px; /* Add spacing between image and text */
         }
 
         .menu-item .additional-info .text-container {
             display: flex;
             flex-direction: column; /* Stack content top to bottom */
-            align-items: flex-start; /* Align content to the left */
+            align-items: center; /* Align content to the left */
         }
 
         .menu-item .additional-info .text-container h3 {
@@ -164,7 +166,8 @@
         input[type="text"],
         input[type="time"],
         input[type="date"],
-        input[type="number"] {
+        input[type="number"],
+        select[id="event-type"] {
             padding: 8px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
@@ -212,6 +215,15 @@
         <form>
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
+
+            <label for="event-type">Event Type:</label>
+            <select id="event-type" name="event-type" required>
+                <option value="" disabled selected>Select Event Type</option>
+                <option value="Wedding">Wedding</option>
+                <option value="Birthday">Birthday</option>
+                <option value="Corporate">Corporate</option>
+                <option value="Other">Other</option>
+            </select>
 
             <label for="event-time">Event Time:</label>
             <input type="time" id="event-time" name="event-time" required>
@@ -370,6 +382,6 @@
    
     <button class="create-event-button create-event">Create Event Booking</button>
 
-    <script src="../FCMS-JavaScripts/scriptLuthfi.js"></script>
+    <script src="../FCMS-JavaScripts/menuScript.js"></script>
 </body>
 </html>
