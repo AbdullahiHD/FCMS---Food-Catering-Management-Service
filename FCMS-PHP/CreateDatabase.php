@@ -50,6 +50,34 @@ if (mysqli_query($conn, $createTableQuery)) {
     echo "Error creating table: " . mysqli_error($conn) . "\n";
 }
 
+// Creating a users table
+$tableName = "Customers";  
+$createTableQuery = "
+    CREATE TABLE IF NOT EXISTS $tableName (
+    CustomerId INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    Firstname VARCHAR(255) NOT NULL,
+    Lastname VARCHAR(255) NOT NULL,
+    Email VARCHAR(255) NOT NULL,
+    Phone VARCHAR(255) NOT NULL,
+    Street VARCHAR(255) NOT NULL,
+    City VARCHAR(255) NOT NULL,
+    State VARCHAR(255) NOT NULL,
+    Postcode VARCHAR(255) NOT NULL,
+    LastOrder VARCHAR(255) NOT NULL,
+    NumberOfOrders VARCHAR(255) NOT NULL,
+    CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    DeletedAt TIMESTAMP NULL
+   
+    )
+";
+
+if (mysqli_query($conn, $createTableQuery)) {
+    echo "\nTable created successfully.\n";
+} else {
+    echo "Error creating table: " . mysqli_error($conn) . "\n";
+}
+
 // Creating an Orders table 
 $tableName = "Orders";
 $createTableQuery = "
@@ -75,7 +103,7 @@ if (mysqli_query($conn, $createTableQuery)) {
     echo "Error creating table: " . mysqli_error($conn) . "\n";
 }
 
-// Creating an Orders table 
+// Creating an Requests table 
 $tableName = "Requests";
 $createTableQuery = "
     CREATE TABLE IF NOT EXISTS $tableName (
