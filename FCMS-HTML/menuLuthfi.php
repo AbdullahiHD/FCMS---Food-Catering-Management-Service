@@ -227,8 +227,70 @@
         </form>
     </div>
 
-    <div class="menu-box">
-        <div class="menu-item" id="Menu 1" data-price="60"> 
+    <!-- Added php code on 18th/10/2023 Abdullahi -->
+    <?php
+
+    // session_start();
+
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $databaseName = "FCMS";
+
+    // Creating a new mysqli connection
+    $conn = new mysqli($servername, $username, $password, $databaseName);
+
+    // Check if the connection was successful
+    if ($conn->connect_error) 
+    {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Query to fetch data for all menus, including the image file path
+    $sql = "SELECT * FROM menus";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        echo '<div class="menu-box">';
+        while ($row = $result->fetch_assoc()) {
+            echo '<div class="menu-item" id="Menu ' . $row["MenuID"] . '" data-price="' . $row["Price"] . '">';
+            
+            // Retrieve the image file path from the database
+            $imagePath = $row["file_path"];
+
+            // Display the image with the retrieved file path on hover effect
+            echo '    <img src="' . $imagePath . '" alt="' . $row["MenuName"] . '">';
+            
+            echo '    <br>';
+            echo '    <p id="menu_' . $row["MenuID"] . '">' . $row["MenuName"] . '</p>';
+            echo '    <p id="price_' . $row["MenuID"] . '">' . $row["Price"] . ' RM</p>';
+            echo '    <div class="additional-info">';
+            echo '        <img src="' . $imagePath . '" alt="' . $row["MenuName"] . ' Enlarged">';
+            echo '        <div class="text-container">';
+            echo '            <h3>' . $row["MenuName"] . '</h3>';
+            echo '            <p>' . $row["Appetizer"] . '</p>';
+            echo '            <p>' . $row["MainDish"] . '</p>';
+            echo '            <p>' . $row["Dessert"] . '</p>';
+            echo '            <p>' . $row["Drink"] . '</p>';
+            echo '        </div>';
+            echo '    </div>';
+            echo '    <button class="menu-select-button">Select</button>';
+            echo '</div>';
+        }
+        echo '</div>';
+    } else {
+        echo "No menu items found.";
+    }
+
+    // Close the database connection
+    $conn->close();
+?>
+
+    <!-- ?> -->
+
+    
+    <!-- <div class="menu-box"> -->
+        <!-- <div class="menu-item" id="Menu 1" data-price="60"> 
             <img src="../FCMS-Assets/images/hero-slider-1.jpg" alt="Menu 1">
             <br>
             <p id="menu_1">Menu 1</p>
@@ -242,8 +304,9 @@
                     <p>Dessert</p>
                     <p>Drink</p>
                 </div>
-            </div>
-            <button class="menu-select-button">Select</button>
+            </div> -->
+
+            <!-- <button class="menu-select-button">Select</button>
         </div>
         <div class="menu-item" id="Menu 2" data-price="60">
             <img src="../FCMS-Assets/images/hero-slider-2.jpg" alt="Menu 2"> 
@@ -298,7 +361,7 @@
             </div>
             <button class="menu-select-button">Select</button>
         
-        </div>
+        </div> -->
     </div>
 
     <div class="selected-output">

@@ -129,6 +129,30 @@ if (mysqli_query($conn, $createTableQuery)) {
     echo "Error creating table: " . mysqli_error($conn) . "\n";
 }
 
+// Creating an Requests table 
+$tableName = "Menus";
+$createTableQuery = "
+    CREATE TABLE IF NOT EXISTS $tableName (
+        MenuID INT AUTO_INCREMENT PRIMARY KEY,
+        MenuName VARCHAR(255),
+        Appetizer VARCHAR(255) NOT NULL,
+        MainDish VARCHAR(255) NOT NULL,
+        Dessert VARCHAR(255) NOT NULL,
+        Drink VARCHAR(255) NOT NULL,
+        Price INT NOT NULL,
+        AddedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        DeletedAt TIMESTAMP NULL
+       
+    )
+";
+
+if (mysqli_query($conn, $createTableQuery)) {
+    echo "\nTable created successfully.\n";
+} else {
+    echo "Error creating table: " . mysqli_error($conn) . "\n";
+}
+
 
 
 // Close the database connection
