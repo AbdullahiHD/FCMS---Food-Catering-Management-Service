@@ -7,6 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            font-size: 18px;
             background-color: #f3f3f3;
             color: white; /* Change text color to white */
             margin: 0;
@@ -17,14 +18,14 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background-color: black;
+            background-color: #202020;
             box-shadow: 0 0 10px white(0, 0, 0, 0.1);
             border-radius: 5px;
         }
 
         h1 {
             text-align: center;
-            color: white;
+            color:gold;
         }
 
         table {
@@ -32,7 +33,7 @@
             border-collapse: collapse;
             margin-top: 20px;
             color: gold;
-            border: 2px solid black;
+            border: 2px solid white;
         }
 
         th, td {
@@ -42,7 +43,7 @@
         }
 
         th {
-            background-color: #f2f2f2;
+            background-color: #202020;
         }
 
         .total {
@@ -79,7 +80,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: black;
+            background-color: #202020;
         }
 
         .navbar {
@@ -221,7 +222,7 @@
 
         /* Style for the three columns */
         .menu-selection-table th {
-            background-color: #f2f2f2;
+            background-color: #202020;
         }
 
         .menu-selection-table td {
@@ -235,7 +236,7 @@
         <br>
         <br>
         <br>
-        <h1>Summary my Order</h1>
+        <h1>Quotation and Billing</h1>
     </header>
     <div class="container">
         <!-- First table for order details -->
@@ -261,43 +262,76 @@
             </div>
 
         <!-- Second table for selected menu with three columns -->
-        <table class="menu-selection-table">
-            <tr>
-                <th>Type of Dish</th>
-                <th>Items</th>
-                <th>Quantities</th>
-            </tr>
-            <tr>
-                <td>Appetizers</td>
-                <td>Mini Spring Rolls</td>
-                <td>25 pieces</td>
-            </tr>
-            <tr>
-                <td>Main Course</td>
-                <td>Grilled Chicken with Herbs</td>
-                <td>50 servings</td>
-            </tr>
-            <tr>
-                <td>Dessert</td>
-                <td>Chocolate Mousse</td>
-                <td>30 servings</td>
-            </tr>
-            <tr>
-                <td>Beverages</td>
-                <td>Soft Drinks</td>
-                <td>100 cans</td>
-            </tr>
+        <table>
+            <br>
+            <br>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Item 1</td>
+                    <td>2</td>
+                    <td>$10.00</td>
+                    <td>$20.00</td>
+                </tr>
+                <tr>
+                    <td>Item 2</td>
+                    <td>3</td>
+                    <td>$15.00</td>
+                    <td>$45.00</td>
+                </tr>
+                <tr>
+                    <td>Item 3</td>
+                    <td>1</td>
+                    <td>$8.00</td>
+                    <td>$8.00</td>
+                </tr>
+                <tr>
+                    <td>Item 4</td>
+                    <td>2</td>
+                    <td>$12.00</td>
+                    <td>$24.00</td>
+                </tr>
+                <tr>
+                    <td>Item 5</td>
+                    <td>4</td>
+                    <td>$9.00</td>
+                    <td>$36.00</td>
+                </tr>
+                <tr>
+                    <td>Item 6</td>
+                    <td>1</td>
+                    <td>$11.00</td>
+                    <td>$11.00</td>
+                </tr>
+                <tr>
+                <tr>
+                    <td colspan="2"><b>Subtotal:</b></td>
+                    <td colspan="2"><b>$269.00</b></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><b>Tax (7%):</b></td>
+                    <td colspan="2"><b>$18.83</b></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><b>Total:</b></td>
+                    <td colspan="2"><b>$287.83</b></td>
+                </tr>
+            </tbody>
         </table>
 
         <div class="button-container">
-            <a href="Quotation and Billing Page.html">
-                <button>Confirm my Order</button>
+            <a href="Payment Gateway.html">
+                <button>Generate Invoice</button>
             </a>
-            <a href="Display food menu in cart.html">
-                <button>Re-Order</button>
-            </a>
-            <a href="Home Page.html">
-                <button>Cancel my order</button>
+            <a href="orderLuthfi.html">
+                <button>Go Back</button>
             </a>
         </div>
     </div>
