@@ -25,14 +25,14 @@
   .team-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; /* This will ensure that there is space between each member */
+    justify-content: space-between; 
     gap: 20px;
-    max-width: 660px; /* This width will accommodate 3 members with a width of 200px each and a gap of 20px between them */
-    margin: 0 auto;    /* Centering the container */
+    max-width: 660px; 
+    margin: 0 auto;    
   }
   
   .team-member {
-    flex: 0 0 calc(33.3333% - 20px); /* This ensures each member takes up one-third of the container width minus the gap */
+    flex: 0 0 calc(33.3333% - 20px); 
     position: relative;
     width: 200px;
     height: 200px;
@@ -58,7 +58,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Transparent black */
+    background-color: rgba(0, 0, 0, 0.6); 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,7 +68,7 @@
   
   .overlay span {
     color: white;
-    font-size: 18px;   /* Increased size for better readability on larger circles */
+    font-size: 18px;  
     text-transform: uppercase;
   }
   
@@ -101,13 +101,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: box-shadow 0.3s ease-in-out; /* Add transition for hover effect */
+    transition: box-shadow 0.3s ease-in-out; 
     height: 100px; 
 }
 
 
   .frequest-div:hover {
-    box-shadow: 0 0 5px #FFD100; /* Add shadow on hover */
+    box-shadow: 0 0 5px #FFD100; 
   }
 
   .request-title {
@@ -139,30 +139,53 @@
   /* ===================================== */
 
 
-  .orders-content {
-    margin-top: 60px;
+   .orders-content {
+    margin-top: 70px;
   }
 
-  .forder-div {
-    background-color: #333533;
-    border-radius: 10px;
+
+  .task-assignment {
+    background-color: #202020;
     padding: 10px;
-    margin: 10px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100px; 
+    border-radius: 5px;
+    display: none;  
+    text-align: right;
+    min-height: 300px;
+    width: 900px;
+    margin-left: 10px;  
   }
 
-  .forder-div:hover {
-    box-shadow: 0 0 5px #FFD100; /* Add shadow on hover */
+  .order-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      flex: 1; 
   }
 
+  .order-div {
+      background-color: #333533;
+      border-radius: 10px;
+      padding: 10px;
+      margin: 10px 0;
+      display: flex;
+      flex-direction: row;  
+      align-items: flex-start;
+      transition: box-shadow 0.3s ease-in-out;
+      min-height: 100px;
+      cursor: pointer; 
+  }
+
+  .order-div:hover {
+      box-shadow: 0 0 5px #FFD100;
+  }
 
   .order-title {
-    margin: 0; 
-    color: #D6D6D6;
-    font-size: 25px; 
+      margin: 0;
+      font-size: 25px;
+      font-weight: bold;
+      color: #d6d6d6;
   }
 
-
+  .order-details {
+      display: none;
+  }
