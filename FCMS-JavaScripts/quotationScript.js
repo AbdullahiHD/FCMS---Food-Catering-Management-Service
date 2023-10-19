@@ -1,3 +1,5 @@
+
+// Adding an event listener 
 document.addEventListener('DOMContentLoaded', function () {
     // Get URL parameters and populate the order summary elements here
     const urlParams = new URLSearchParams(window.location.search);
@@ -26,5 +28,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Calculate total price and display it
     var totalPrice = parseFloat(menuPrice) * parseInt(attendees);
-    document.getElementById('total-price').textContent = totalPrice + ' RM';
+    document.getElementById('total-price').textContent = totalPrice;
 });
