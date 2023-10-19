@@ -39,7 +39,7 @@ if (isset($_POST['login'])) {
             $permission = $row['Permission'];
             switch ($permission) {
                 case "Customer":
-                    header("Location: ../FCMS-PGP/menu.php");
+                    header("Location: ../FCMS-PHP/menu.php");
                     break;
                 case "Staff":
                     header("Location: ../FCMS-PHP/StaffDashboardFahad.php");
