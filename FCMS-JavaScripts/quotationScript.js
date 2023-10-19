@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const menuId = urlParams.get('menuId');
     const menuName = urlParams.get('menuName');
     const menuPrice = urlParams.get('menuPrice');
-    var confirmOrderButton = document.querySelector('.confirm-order');
 
     
 
@@ -28,18 +27,4 @@ document.addEventListener('DOMContentLoaded', function () {
     // Calculate total price and display it
     var totalPrice = parseFloat(menuPrice) * parseInt(attendees);
     document.getElementById('total-price').textContent = totalPrice + ' RM';
-
-    confirmOrderButton.addEventListener('click', function () {
-        var redirectUrl = 'Quotation and Billing Page.html' + 
-                '?menuId=' + menuId +
-                '&menuName=' + menuName +
-                '&menuPrice=' + menuPrice +
-                '&name=' + name +
-                '&eventType=' + eventType +
-                '&eventTime=' + eventTime +
-                '&eventDate=' + eventDate +
-                '&deliveryAddress=' + deliveryAddress +
-                '&attendees=' + attendees;
-            window.location.href = redirectUrl;
-    });
 });
