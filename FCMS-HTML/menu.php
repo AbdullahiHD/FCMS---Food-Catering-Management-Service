@@ -26,7 +26,8 @@
             align-items: flex-start;
             border: 2px solid #FFD100;
             padding: 10px;
-            max-width: 100%;
+            width: 100%; /* Set the width to 100% */
+            max-width: 960px; /* Set a maximum width for larger screens */
             background-color: black;
         }
         .menu-item p{
@@ -36,11 +37,12 @@
         }
         .menu-item {
             text-align: center;
-            flex: 0 0 30%;
-            max-width: 300px;
+            flex: 0 0 30%; /* Set the flex basis to 30% */
+            max-width: calc(33.333% - 20px); /* Set the maximum width for 3 items with margin */
             margin: 10px;
             position: relative;
             padding: 10px;
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
         }
 
         .menu-item .image-container {
@@ -65,11 +67,11 @@
         }
 
         .menu-item .additional-info {
-            position: fixed;
-            bottom: 50%;
-            left: 25%;
+            position: absolute;
+            bottom: 101%;
+            left: -10%;
             height: fit-content;
-            width: 50%;
+            width: fit-content;
             background-color: black;
             display: flex;
             flex-direction: row; /* Arrange content horizontally */
@@ -96,15 +98,15 @@
 
         /* Style the additional info elements */
         .menu-item .additional-info img {
-            width: 400px; /* Adjust the image size as needed */
-            height: 400px; /* Adjust the image size as needed */
+            width: 300px; /* Adjust the image size as needed */
+            height: 300px; /* Adjust the image size as needed */
             margin-right: 20px; /* Add spacing between image and text */
         }
 
         .menu-item .additional-info .text-container {
             display: flex;
             flex-direction: column; /* Stack content top to bottom */
-            align-items: flex-start; /* Align content to the left */
+            align-items: center; /* Align content to the left */
         }
 
         .menu-item .additional-info .text-container h3 {
@@ -164,7 +166,8 @@
         input[type="text"],
         input[type="time"],
         input[type="date"],
-        input[type="number"] {
+        input[type="number"],
+        select[id="event-type"] {
             padding: 8px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
@@ -213,6 +216,15 @@
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
 
+            <label for="event-type">Event Type:</label>
+            <select id="event-type" name="event-type" required>
+                <option value="" disabled selected>Select Event Type</option>
+                <option value="Wedding">Wedding</option>
+                <option value="Birthday">Birthday</option>
+                <option value="Corporate">Corporate</option>
+                <option value="Other">Other</option>
+            </select>
+
             <label for="event-time">Event Time:</label>
             <input type="time" id="event-time" name="event-time" required>
 
@@ -227,8 +239,70 @@
         </form>
     </div>
 
-    <div class="menu-box">
-        <div class="menu-item" id="Menu 1" data-price="60"> 
+    <!-- Added php code on 18th/10/2023 Abdullahi -->
+    <?php
+
+    // session_start();
+
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $databaseName = "FCMS";
+
+    // Creating a new mysqli connection
+    $conn = new mysqli($servername, $username, $password, $databaseName);
+
+    // Check if the connection was successful
+    if ($conn->connect_error) 
+    {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Query to fetch data for all menus, including the image file path
+    $sql = "SELECT * FROM menus";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        echo '<div class="menu-box">';
+        while ($row = $result->fetch_assoc()) {
+            echo '<div class="menu-item" id="Menu ' . $row["MenuID"] . '" data-price="' . $row["Price"] . '">';
+            
+            // Retrieve the image file path from the database
+            $imagePath = $row["file_path"];
+
+            // Display the image with the retrieved file path on hover effect
+            echo '    <img src="' . $imagePath . '" alt="' . $row["MenuName"] . '">';
+            
+            echo '    <br>';
+            echo '    <p id="menu_' . $row["MenuID"] . '">' . $row["MenuName"] . '</p>';
+            echo '    <p id="price_' . $row["MenuID"] . '">' . $row["Price"] . ' RM</p>';
+            echo '    <div class="additional-info">';
+            echo '        <img src="' . $imagePath . '" alt="' . $row["MenuName"] . ' Enlarged">';
+            echo '        <div class="text-container">';
+            echo '            <h3>' . $row["MenuName"] . '</h3>';
+            echo '            <p>' . $row["Appetizer"] . '</p>';
+            echo '            <p>' . $row["MainDish"] . '</p>';
+            echo '            <p>' . $row["Dessert"] . '</p>';
+            echo '            <p>' . $row["Drink"] . '</p>';
+            echo '        </div>';
+            echo '    </div>';
+            echo '    <button class="menu-select-button">Select</button>';
+            echo '</div>';
+        }
+        echo '</div>';
+    } else {
+        echo "No menu items found.";
+    }
+
+    // Close the database connection
+    $conn->close();
+?>
+
+    <!-- ?> -->
+
+    
+    <!-- <div class="menu-box"> -->
+        <!-- <div class="menu-item" id="Menu 1" data-price="60"> 
             <img src="../FCMS-Assets/images/hero-slider-1.jpg" alt="Menu 1">
             <br>
             <p id="menu_1">Menu 1</p>
@@ -242,8 +316,9 @@
                     <p>Dessert</p>
                     <p>Drink</p>
                 </div>
-            </div>
-            <button class="menu-select-button">Select</button>
+            </div> -->
+
+            <!-- <button class="menu-select-button">Select</button>
         </div>
         <div class="menu-item" id="Menu 2" data-price="60">
             <img src="../FCMS-Assets/images/hero-slider-2.jpg" alt="Menu 2"> 
@@ -298,7 +373,7 @@
             </div>
             <button class="menu-select-button">Select</button>
         
-        </div>
+        </div> -->
     </div>
 
     <div class="selected-output">
@@ -307,6 +382,6 @@
    
     <button class="create-event-button create-event">Create Event Booking</button>
 
-    <script src="../FCMS-JavaScripts/scriptLuthfi.js"></script>
+    <script src="../FCMS-JavaScripts/menuScript.js"></script>
 </body>
 </html>
