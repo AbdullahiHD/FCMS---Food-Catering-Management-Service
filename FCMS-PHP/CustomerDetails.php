@@ -128,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($insert_stmt->execute()) {
         echo '<script>alert("Registration successful. You can now proceed to login.");</script>';
-        echo '<script>window.location = "../FCMS-HTML/Login.html";</script>';
+        echo '<script>window.location = "../FCMS-PHP/Login.php";</script>';
     } else {
         echo "Error: " . $insert_stmt->error;
     }
