@@ -129,7 +129,7 @@ if (mysqli_query($conn, $createTableQuery)) {
     echo "Error creating table: " . mysqli_error($conn) . "\n";
 }
 
-// Creating an Requests table 
+// Creating an Menus table 
 $tableName = "Menus";
 $createTableQuery = "
     CREATE TABLE IF NOT EXISTS $tableName (
@@ -152,6 +152,32 @@ if (mysqli_query($conn, $createTableQuery)) {
 } else {
     echo "Error creating table: " . mysqli_error($conn) . "\n";
 }
+
+// Creating an Sales table 
+$tableName = "Sales";
+$createTableQuery = "
+    CREATE TABLE IF NOT EXISTS $tableName (
+        PaymentID INT AUTO_INCREMENT PRIMARY KEY,
+        CustomerName VARCHAR(255),
+        OrderID INT(255) NOT NULL,
+        MenuID INT(255) NOT NULL,
+        MenuName VARCHAR(255) NOT NULL,
+        UnitPrice INT(255) NOT NULL,
+        TotalPrice INT(255) NOT NULL,
+        CreatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        UpdatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        DeletedAt TIMESTAMP NULL
+       
+    )
+";
+
+if (mysqli_query($conn, $createTableQuery)) {
+    echo "\nTable created successfully.\n";
+} else {
+    echo "Error creating table: " . mysqli_error($conn) . "\n";
+}
+
+
 
 
 

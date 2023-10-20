@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,8 @@
             font-family: Arial, sans-serif;
             font-size: 18px;
             background-color: #f3f3f3;
-            color: white; /* Change text color to white */
+            color: white;
+            /* Change text color to white */
             margin: 0;
             padding: 0;
         }
@@ -25,7 +27,7 @@
 
         h1 {
             text-align: center;
-            color:gold;
+            color: gold;
         }
 
         table {
@@ -36,7 +38,8 @@
             border: 2px solid white;
         }
 
-        th, td {
+        th,
+        td {
             border: 1px solid #ccc;
             padding: 10px;
             text-align: left;
@@ -230,6 +233,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <br>
@@ -241,28 +245,44 @@
     <div class="container">
         <!-- First table for order details -->
         <div class="container">
-            <div class="data">
-                <strong>Event Date:</strong> July 15, 2023
-            </div>
-            <div class="data">
-                <strong>Event Time:</strong> 6:00 PM
-            </div>
-            <div class ="data">
-                <strong>Delivery Address:</strong> 123 Main Street, City, State
-            </div>
-            <div class="data">
-                <strong>Contact Information:</strong> John Doe - johndoe@email.com
-            </div>
-            <!-- Additional data for client's name and phone number -->
-            <div class="data">
-                <strong>Client's Name:</strong> John Doe
-            </div>
-            <div class="data">
-                <strong>Phone Number:</strong> +1 123-456-7890
-            </div>
+            <!-- Include your quotation and billing content here -->
+            <p>Name: <span id="name">John Doe</span></p>
+            <p>Event Type: <span id="event-type">Party</span></p>
+            <p>Event Time: <span id="event-time">12:00 PM</span></p>
+            <p>Event Date: <span id="event-date">2023-10-20</span></p>
+            <p>Delivery Address: <span id="delivery-address">123 Main St</span></p>
+            <p>Number of Attendees: <span id="attendees">50</span></p>
+            <p>Menu Id: <span id="menu-id">1</span></p>
+            <p>Menu Choice: <span id="menu-name">Menu A</span></p>
+            <p>Price per Menu: <span id="menu-price">50</span> RM</p>
+            <p>Total Price: <span id="total-price">2500</span> RM</p>
 
+            <!-- Create a form to submit the data to the Payment Gateway -->
+            <form id="payment-form" action="../FCMS-PHP/Paymentgateway.php" method="GET">
+                <!-- Hidden input fields to store the data -->
+                <input type="hidden" name="name" id="name-input">
+                <input type="hidden" name="eventType" id="event-type-input">
+                <input type="hidden" name="eventTime" id="event-time-input">
+                <input type="hidden" name="eventDate" id="event-date-input">
+                <input type="hidden" name="deliveryAddress" id="delivery-address-input">
+                <input type="hidden" name="attendees" id="attendees-input">
+                <input type="hidden" name="menuId" id="menu-id-input">
+                <input type="hidden" name="menuName" id="menu-name-input">
+                <input type="hidden" name="menuPrice" id="menu-price-input">
+                <input type="hidden" name="totalPrice" id="total-price-input">
+
+                <!-- Button to submit the form -->
+                <div class="button-container">
+                    <button type="button" onclick="submitForm()">Proceed To Payment</button>
+                    <a href="orderSummary.html">
+                        <button>Go Back</button>
+                    </a>
+                </div>
+
+            </form>
+        </div>
         <!-- Second table for selected menu with three columns -->
-        
+
         <table>
             <br>
             <br>
@@ -327,14 +347,14 @@
             </tbody>
         </table>
 
-        <div class="button-container">
-            <a href="Payment Gateway.html">
+        <!-- <div class="button-container">
+            <a href="Paymentgateway.php">
                 <button>Generate Invoice</button>
             </a>
-            <a href="orderLuthfi.html">
+            <a href="orderSummary.html">
                 <button>Go Back</button>
             </a>
-        </div>
+        </div> -->
     </div>
     <div class="content">
         <!-- Content for your pages goes here -->
@@ -353,5 +373,7 @@
         <a href="" class="registrationbutton">Login</a>
         <a href="" class="registrationbutton">Login</a>
     </nav>
+    <script src="../FCMS-JavaScripts/quotationScript.js"></script>
 </body>
+
 </html>

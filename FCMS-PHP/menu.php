@@ -380,7 +380,7 @@
         <p id="selected-menu"></p>
     </div>
    
-    <button class="create-event-button create-event">Create Event Booking</button>
+    <button type="submit" value="Submit" name="submit" class="create-event-button create-event">Create Event Booking</button>
 
     <script src="../FCMS-JavaScripts/menuScript.js"></script>
 </body>

@@ -24,6 +24,12 @@ function validateSignUp() {
         return false;
     }
 
+    // Check if the username is available
+    if (existingUsernames.includes(username)) {
+        showError("username_err", "Username is already taken.");
+        return false;
+    }
+
     // Check if the password is empty or contains spaces
     if (password.trim() === "" || /\s/.test(password)) {
         showError("password_err", "Password is required and should not contain spaces.");
@@ -48,20 +54,8 @@ function validateSignUp() {
         return false;
     }
 
-    // Check if the username is available
-    var isAvailable = isUsernameAvailable(username);
-    if (!isAvailable) {
-        showError("username_err", "Username is already taken.");
-        return false;
-    }
-    
     return true;
 }
-
-// function isUsernameAvailable(username) {
-    
-//     return checkUsernameAvailabilityInDatabase(username);
-// }
 
 function showError(id, message) {
     var errorElement = document.getElementById(id);
