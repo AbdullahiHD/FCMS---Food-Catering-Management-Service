@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('Please select a menu item first.');
         } else {  
             // Redirect to orderLuthfi.html with form input and menu item data as URL parameters
-            var redirectUrl = 'orderSummary.html' + 
+            var redirectUrl = '../FCMS-HTML/orderSummary.html' + 
                 '?menuId=' + selectedMenuId +
                 '&menuName=' + selectedMenuName +
                 '&menuPrice=' + selectedMenuPrice +

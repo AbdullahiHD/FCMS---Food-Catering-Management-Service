@@ -6,17 +6,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu</title>
     <link rel="stylesheet" href="../FCMS-Assets/Main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         /* Additional CSS for this specific page */
         body {
-            font-family: Arial, sans-serif;
             display:flex;
             align-items: center;
             flex-direction: column;
+            min-height:100vh;
             margin: 0;
             padding: 0;
-            background-color: #202020;
-            margin-bottom: 20px;
+            background-image: url(../FCMS-Assets/images/hero-slider-1.jpg);
+        }
+
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+
+        .footer {
+        margin-top: 20px;
+        position: relative;
+        width: 100%;
+        background: #000000;
+        min-height: 100px;
+        padding: 20px 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        
+        }
+
+        .social-icon,
+        .menu {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px 0;
+        flex-wrap: wrap;
+        }
+
+        .social-icon__item,
+        .menu__item {
+        list-style: none;
+        }
+
+        .social-icon__link {
+        font-size: 2rem;
+        color: #fff;
+        margin: 0 10px;
+        display: inline-block;
+        transition: 0.5s;
+        }
+        .social-icon__link:hover {
+        transform: translateY(-10px);
+        }
+
+        .menu__link {
+        font-size: 1.2rem;
+        color: #fff;
+        margin: 0 10px;
+        display: inline-block;
+        transition: 0.5s;
+        text-decoration: none;
+        opacity: 0.75;
+        font-weight: 300;
+        }
+
+        .menu__link:hover {
+        opacity: 1;
+        }
+
+        .footer p {
+        color: #fff;
+        margin: 15px 0 10px 0;
+        font-size: 1rem;
+        font-weight: 300;
         }
 
         .menu-box {
@@ -37,7 +101,7 @@
         }
         .menu-item {
             text-align: center;
-            flex: 0 0 30%; /* Set the flex basis to 30% */
+            flex: 0 0 80%; /* Set the flex basis to 30% */
             max-width: calc(33.333% - 20px); /* Set the maximum width for 3 items with margin */
             margin: 10px;
             position: relative;
@@ -142,8 +206,8 @@
 
         .form-container {
             align-items: center;
-            margin-top: 50px;
-            width: 600px;
+            margin-top: 80px;
+            width: 40%;
             padding: 10px;
             border: 0px solid white;
             border-radius: 1px;
@@ -185,6 +249,12 @@
             display: none;
             padding: 0px 10px;
         }
+        @media screen and (max-width: 768px) {
+        /* Add responsive styles for smaller screens */
+        .menu-box {
+            flex-direction: column;
+            align-items: center;
+        }
             
     </style>
 </head>
@@ -194,7 +264,7 @@
     <nav>
     
         <a href="#" class="logolink">
-          <img src="../FCMS-Assets/images/culinarycue.png" width="160" height="30" alt="CulinaryCue - Home">
+          <img src="../FCMS-Assets/images/culinarycue.png" width="100" height="60" alt="CulinaryCue - Home">
         </a>
         <ul>
             <li><a href="">Home</a></li>
@@ -382,6 +452,32 @@
    
     <button type="submit" value="Submit" name="submit" class="create-event-button create-event">Create Event Booking</button>
 
+    <footer class="footer">
+        <ul class="social-icon">
+            <li class="social-icon__item"><a class="social-icon__link" href="#">
+                <ion-icon name="logo-facebook"></ion-icon>
+            </a></li>
+            <li class="social-icon__item"><a class="social-icon__link" href="#">
+                <ion-icon name="logo-twitter"></ion-icon>
+            </a></li>
+            <li class="social-icon__item"><a class="social-icon__link" href="#">
+                <ion-icon name="logo-linkedin"></ion-icon>
+            </a></li>
+            <li class="social-icon__item"><a class="social-icon__link" href="#">
+                <ion-icon name="logo-instagram"></ion-icon>
+            </a></li>
+        </ul>
+        <ul class="menu">
+            <li class="menu__item"><a class="menu__link" href="#homenav">Home</a></li>
+            <li class="menu__item"><a class="menu__link" href="#NavMenu">Menu</a></li>
+            <li class="menu__item"><a class="menu__link" href="#Navabout">About</a></li>
+            <li class="menu__item"><a class="menu__link" href="#Navteam">Our Team</a></li>
+            <li class="menu__item"><a class="menu__link" href="#Navcontact">Contact</a></li>
+        </ul>
+        
+    </footer>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="../FCMS-JavaScripts/menuScript.js"></script>
 </body>
 </html>

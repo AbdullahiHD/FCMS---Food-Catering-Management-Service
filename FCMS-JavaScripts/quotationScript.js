@@ -29,6 +29,14 @@ document.addEventListener('DOMContentLoaded', function () {
     // Calculate total price and display it
     var totalPrice = parseFloat(menuPrice) * parseInt(attendees);
     document.getElementById('total-price').textContent = totalPrice;
+
+    // Calculate tax and display it
+    var tax = parseFloat(totalPrice) * 0.07;
+    document.getElementById('tax-price').textContent = tax;
+
+    // Calculate total price + tax and display it
+    var taxTotal = parseFloat(totalPrice) + parseFloat(tax);
+    document.getElementById('tax-total').textContent = taxTotal;
 });
 
 // Function to set form input values and submit the form

@@ -5,29 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurant Quotation and Billing</title>
+    <link rel="stylesheet" href="../FCMS-Assets/Main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            font-size: 18px;
-            background-color: #f3f3f3;
-            color: white;
-            /* Change text color to white */
+            display:flex;
+            align-items: center;
+            flex-direction: column;
+            min-height:100vh;
             margin: 0;
             padding: 0;
+            background-image: url(../FCMS-Assets/images/hero-slider-1.jpg);
         }
 
         .container {
-            max-width: 800px;
-            margin: 0 auto;
+            position: relative;
+            width: 80%;
+            margin-top: 80px;
             padding: 20px;
-            background-color: #202020;
+            background-color: black;
             box-shadow: 0 0 10px white(0, 0, 0, 0.1);
             border-radius: 5px;
-        }
-
-        h1 {
-            text-align: center;
-            color: gold;
         }
 
         table {
@@ -54,7 +52,6 @@
             font-weight: bold;
             font-size: 18px;
         }
-
         .button-container {
             text-align: center;
             margin-top: 20px;
@@ -80,137 +77,10 @@
             justify-content: center;
         }
 
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #202020;
-        }
-
-        .navbar {
-            background-color: gold;
-            width: 200px;
-            height: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            overflow-y: auto;
-        }
-
-        .navbar ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .navbar li {
-            padding: 10px;
-            text-align: center;
-        }
-
-        .navbar a {
-            text-decoration: none;
-            color: black;
-            display: block;
-        }
-
-        .navbar a:hover {
-            background-color: black;
-            color: gold;
-        }
-
         .content {
             margin-left: 220px;
             padding: 20px;
             color: white;
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-top: 0px;
-            padding-bottom: 0px;
-            padding-left: 8%;
-            padding-right: 8%;
-            background-color: rgb(11, 11, 10);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-
-        span {
-            color: goldenrod;
-        }
-
-        nav ul li {
-            list-style-type: none;
-            display: inline-block;
-            padding: 10px 25px;
-        }
-
-        nav ul li a {
-            color: goldenrod;
-            text-decoration: none;
-            font-family: 'Franklin Gothic Medium', sans-serif;
-            font-weight: bold;
-            text-transform: capitalize;
-            font-size: 17px;
-        }
-
-        .registrationbutton {
-            background-color: goldenrod;
-            color: white;
-            font-family: 'Franklin Gothic Medium', sans-serif;
-            text-decoration: none;
-            border: 2px dotted transparent;
-            font-weight: bold;
-            padding: 10px 25px;
-            border-radius: 40px;
-            transition: transform .3s;
-        }
-
-        .registrationbutton:hover {
-            transform: scale(1.1);
-        }
-
-        nav ul li a {
-            position: relative;
-        }
-
-        nav ul li a::before,
-        nav ul li a::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: goldenrod;
-            transition: all 0.3s ease;
-        }
-
-        nav ul li a::before {
-            bottom: 1px;
-        }
-
-        nav ul li a::after {
-            bottom: -3px;
-            right: 0;
-            left: auto;
-            transform: scaleX(-1);
-        }
-
-        nav ul li a:hover::before,
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        .back-button {
-            display: inline-block;
-            text-decoration: none;
-            border-radius: 5px;
         }
 
         /* Add the new CSS for the two tables */
@@ -231,20 +101,89 @@
         .menu-selection-table td {
             padding: 10px;
         }
+
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+
+        .footer {
+        margin-top: 20px;
+        position: relative;
+        width: 100%;
+        background: #000000;
+        min-height: 100px;
+        padding: 20px 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        }
+
+        .social-icon,
+        .menu {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px 0;
+        flex-wrap: wrap;
+        }
+
+        .social-icon__item,
+        .menu__item {
+        list-style: none;
+        }
+
+        .social-icon__link {
+        font-size: 2rem;
+        color: #fff;
+        margin: 0 10px;
+        display: inline-block;
+        transition: 0.5s;
+        }
+        .social-icon__link:hover {
+        transform: translateY(-10px);
+        }
+
+        .menu__link {
+        font-size: 1.2rem;
+        color: #fff;
+        margin: 0 10px;
+        display: inline-block;
+        transition: 0.5s;
+        text-decoration: none;
+        opacity: 0.75;
+        font-weight: 300;
+        }
+
+        .menu__link:hover {
+        opacity: 1;
+        }
+
+        .footer p {
+        color: #fff;
+        margin: 15px 0 10px 0;
+        font-size: 1rem;
+        font-weight: 300;
+        }
     </style>
 </head>
 
 <body>
-    <header>
-        <br>
-        <br>
-        <br>
-        <br>
-        <h1>Quotation and Billing</h1>
-    </header>
-    <div class="container">
-        <!-- First table for order details -->
+    <nav>
+        <a href="#" class="logolink">
+            <img src="../FCMS-Assets/images/culinarycue.png" width="100" height="60" alt="CulinaryCue - Home">
+        </a>
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">Menu</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Our Team</a></li>
+            <li><a href="">Contact</a></li>
+        </ul>
+        <a href="" class="registrationbutton">Login</a>
+    </nav>
         <div class="container">
+            <h2>Quotation and Billing</h2>
             <!-- Include your quotation and billing content here -->
             <p>Name: <span id="name">John Doe</span></p>
             <p>Event Type: <span id="event-type">Party</span></p>
@@ -256,7 +195,6 @@
             <p>Menu Choice: <span id="menu-name">Menu A</span></p>
             <p>Price per Menu: <span id="menu-price">50</span> RM</p>
             <p>Total Price: <span id="total-price">2500</span> RM</p>
-
             <!-- Create a form to submit the data to the Payment Gateway -->
             <form id="payment-form" action="../FCMS-PHP/Paymentgateway.php" method="GET">
                 <!-- Hidden input fields to store the data -->
@@ -270,82 +208,53 @@
                 <input type="hidden" name="menuName" id="menu-name-input">
                 <input type="hidden" name="menuPrice" id="menu-price-input">
                 <input type="hidden" name="totalPrice" id="total-price-input">
-
+                <table>
+                    <br>
+                    <br>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span id="menu-name"></span></td>
+                            <td><span id="attendees"></span> RM</td>
+                            <td><span id="menu-price"></span> RM</td>
+                            <td><span id="total-price"></span> RM</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><b>Tax (7%):</b></td>
+                            <td colspan="2"><b><span id="tax-price"></span> RM</b></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><b>Total:</b></td>
+                            <td colspan="2"><b><span id="tax-total"></span> RM</b></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
                 <!-- Button to submit the form -->
                 <div class="button-container">
+                    
                     <button type="button" onclick="submitForm()">Proceed To Payment</button>
-                    <a href="orderSummary.html">
-                        <button>Go Back</button>
-                    </a>
                 </div>
-
+                
             </form>
+            <div class="button-container">
+                <a href="../FCMS-HTML/orderSummary.html">
+                    <button>Go Back</button>
+                </a>
+            </div>
+            
         </div>
+        
         <!-- Second table for selected menu with three columns -->
 
-        <table>
-            <br>
-            <br>
-            <thead>
-                <tr>
-                    <th>Item</th>
-                    <th>Quantity</th>
-                    <th>Unit Price</th>
-                    <th>Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Item 1</td>
-                    <td>2</td>
-                    <td>$10.00</td>
-                    <td>$20.00</td>
-                </tr>
-                <tr>
-                    <td>Item 2</td>
-                    <td>3</td>
-                    <td>$15.00</td>
-                    <td>$45.00</td>
-                </tr>
-                <tr>
-                    <td>Item 3</td>
-                    <td>1</td>
-                    <td>$8.00</td>
-                    <td>$8.00</td>
-                </tr>
-                <tr>
-                    <td>Item 4</td>
-                    <td>2</td>
-                    <td>$12.00</td>
-                    <td>$24.00</td>
-                </tr>
-                <tr>
-                    <td>Item 5</td>
-                    <td>4</td>
-                    <td>$9.00</td>
-                    <td>$36.00</td>
-                </tr>
-                <tr>
-                    <td>Item 6</td>
-                    <td>1</td>
-                    <td>$11.00</td>
-                    <td>$11.00</td>
-                </tr>
-                <tr>
-                <tr>
-                    <td colspan="2"><b>Subtotal:</b></td>
-                    <td colspan="2"><b>$269.00</b></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><b>Tax (7%):</b></td>
-                    <td colspan="2"><b>$18.83</b></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><b>Total:</b></td>
-                    <td colspan="2"><b>$287.83</b></td>
-                </tr>
-            </tbody>
-        </table>
+       
 
         <!-- <div class="button-container">
             <a href="Paymentgateway.php">
@@ -355,25 +264,34 @@
                 <button>Go Back</button>
             </a>
         </div> -->
-    </div>
-    <div class="content">
-        <!-- Content for your pages goes here -->
-    </div>
-    <nav>
-        <a href="#" class="logolink">
-            <img src="../FCMS-Assets/images/culinarycue.png" width="160" height="30" alt="CulinaryCue - Home">
-        </a>
-        <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="">Menu</a></li>
-            <li><a href="">About</a></li>
-            <li><a href="">Our Team</a></li>
-            <li><a href="">Contact</a></li>
-        </ul>
-        <a href="" class="registrationbutton">Login</a>
-        <a href="" class="registrationbutton">Login</a>
-    </nav>
-    <script src="../FCMS-JavaScripts/quotationScript.js"></script>
+        <footer class="footer">
+            <ul class="social-icon">
+                <li class="social-icon__item"><a class="social-icon__link" href="#">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                </a></li>
+                <li class="social-icon__item"><a class="social-icon__link" href="#">
+                    <ion-icon name="logo-twitter"></ion-icon>
+                </a></li>
+                <li class="social-icon__item"><a class="social-icon__link" href="#">
+                    <ion-icon name="logo-linkedin"></ion-icon>
+                </a></li>
+                <li class="social-icon__item"><a class="social-icon__link" href="#">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                </a></li>
+            </ul>
+            <ul class="menu">
+                <li class="menu__item"><a class="menu__link" href="#homenav">Home</a></li>
+                <li class="menu__item"><a class="menu__link" href="#NavMenu">Menu</a></li>
+                <li class="menu__item"><a class="menu__link" href="#Navabout">About</a></li>
+                <li class="menu__item"><a class="menu__link" href="#Navteam">Our Team</a></li>
+                <li class="menu__item"><a class="menu__link" href="#Navcontact">Contact</a></li>
+            </ul>
+            
+        </footer>
+    
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <script src="../FCMS-JavaScripts/quotationScript.js"></script>
 </body>
 
 </html>
