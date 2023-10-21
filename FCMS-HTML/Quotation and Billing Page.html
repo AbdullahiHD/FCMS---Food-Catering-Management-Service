@@ -21,7 +21,8 @@
         .container {
             position: relative;
             width: 80%;
-            margin-top: 80px;
+            margin-top: 100px;
+            margin-bottom: auto;
             padding: 20px;
             background-color: black;
             box-shadow: 0 0 10px white(0, 0, 0, 0.1);
@@ -105,7 +106,7 @@
         @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
 
         .footer {
-        margin-top: 20px;
+        margin-top: auto;
         position: relative;
         width: 100%;
         background: #000000;
@@ -185,16 +186,12 @@
         <div class="container">
             <h2>Quotation and Billing</h2>
             <!-- Include your quotation and billing content here -->
-            <p>Name: <span id="name">John Doe</span></p>
-            <p>Event Type: <span id="event-type">Party</span></p>
-            <p>Event Time: <span id="event-time">12:00 PM</span></p>
-            <p>Event Date: <span id="event-date">2023-10-20</span></p>
+            <p>Name: <span id="name"></span></p>
+            <p>Event Type: <span id="event-type"></span></p>
+            <p>Event Time: <span id="event-time"></span></p>
+            <p>Event Date: <span id="event-date"></span></p>
+            <p>Menu Id: <span id="menu-id"></span></p>
             <p>Delivery Address: <span id="delivery-address">123 Main St</span></p>
-            <p>Number of Attendees: <span id="attendees">50</span></p>
-            <p>Menu Id: <span id="menu-id">1</span></p>
-            <p>Menu Choice: <span id="menu-name">Menu A</span></p>
-            <p>Price per Menu: <span id="menu-price">50</span> RM</p>
-            <p>Total Price: <span id="total-price">2500</span> RM</p>
             <!-- Create a form to submit the data to the Payment Gateway -->
             <form id="payment-form" action="../FCMS-PHP/Paymentgateway.php" method="GET">
                 <!-- Hidden input fields to store the data -->
@@ -222,7 +219,7 @@
                     <tbody>
                         <tr>
                             <td><span id="menu-name"></span></td>
-                            <td><span id="attendees"></span> RM</td>
+                            <td><span id="attendees"></span>x</td>
                             <td><span id="menu-price"></span> RM</td>
                             <td><span id="total-price"></span> RM</td>
                         </tr>
@@ -245,7 +242,7 @@
                 
             </form>
             <div class="button-container">
-                <a href="../FCMS-HTML/orderSummary.html">
+                <a href="javascript:history.back()">
                     <button>Go Back</button>
                 </a>
             </div>

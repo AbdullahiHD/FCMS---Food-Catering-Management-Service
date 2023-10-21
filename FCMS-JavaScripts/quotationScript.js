@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const menuPrice = urlParams.get('menuPrice');
 
 
-
     // Populate the order summary elements
     document.getElementById('name').textContent = name;
     document.getElementById('event-type').textContent = eventType;
@@ -67,4 +66,5 @@ function submitForm() {
 
     // Submit the form
     document.getElementById('payment-form').submit();
+    
 }
