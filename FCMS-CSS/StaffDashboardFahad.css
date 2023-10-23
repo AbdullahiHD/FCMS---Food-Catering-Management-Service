@@ -1,131 +1,82 @@
-.content{
-    margin-top: 60px;
+.content {
+  margin-top: 100px;
 }
 
-#dashboard-heading{
-    font-size: 50px;
-    margin-left: 20px;
+#dashboard-heading {
+  font-size: 50px;
+  margin-left: 20px;
 }
 
 /* Team Section CSS */
 
 .team-section {
-    background-color: #202020;
-    color: white;
-    padding: 50px 0;
-    text-align: center;
-  }
-  
-  .team-section h2 {
-    font-size: 32px;
-    margin-bottom: 50px;
-    color: #FFD100;
-  }
-  
-  .team-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between; 
-    gap: 20px;
-    max-width: 660px; 
-    margin: 0 auto;    
-  }
-  
-  .team-member {
-    flex: 0 0 calc(33.3333% - 20px); 
-    position: relative;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-bottom: 30px;
-  }
-  
-  .team-member img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-  
-  .team-member:hover img {
-    transform: scale(1.1);
-  }
-  
-  .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  .overlay span {
-    color: white;
-    font-size: 18px;  
-    text-transform: uppercase;
-  }
-  
-  .team-member:hover .overlay {
-    opacity: 1;
-  }
+  background-color: #202020;
+  color: white;
+  padding: 50px 0;
+  text-align: center;
+}
 
+.team-section h2 {
+  font-size: 32px;
+  margin-bottom: 50px;
+  color: #FFD100;
+}
 
+.team-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 660px;
+  margin: 0 auto;
+}
 
+.team-member {
+  flex: 0 0 calc(33.3333% - 20px);
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
 
+.team-member img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
 
+.team-member:hover img {
+  transform: scale(1.1);
+}
 
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
 
+.overlay span {
+  color: white;
+  font-size: 18px;
+  text-transform: uppercase;
+}
 
-
-
-  /* ===================================== */
-  /* STAFF PENDING REQUESTS */
-  /* ===================================== */
-
-  .requests-content {
-    margin-top: 60px;
-  }
-
-  .frequest-div {
-    background-color: #333533;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: box-shadow 0.3s ease-in-out; 
-    height: 100px; 
+.team-member:hover .overlay {
+  opacity: 1;
 }
 
 
-  .frequest-div:hover {
-    box-shadow: 0 0 5px #FFD100; 
-  }
-
-  .request-title {
-      margin: 0; 
-      font-size: 25px;
-      color: #D6D6D6;
-  }
-
-  .action-buttons {
-      display: flex;
-      gap: 10px;
-  }
-
-  .accept-button, .reject-button {
-      padding: 5px 10px;
-      border: none;
-      cursor: pointer;
-  }
 
 
 
@@ -133,59 +84,151 @@
 
 
 
-  
-  /* ===================================== */
-  /* STAFF ACTIVE ORDERS */
-  /* ===================================== */
+
+/* ===================================== */
+/* STAFF PENDING REQUESTS */
+/* ===================================== */
+
+.requests-content {
+  margin-top: 100px;
+  margin-left: 20px;
+}
+
+.frequest-div {
+  background-color: #333533;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: box-shadow 0.3s ease-in-out;
+  height: 100px;
+}
 
 
-   .orders-content {
-    margin-top: 70px;
-  }
+.frequest-div:hover {
+  box-shadow: 0 0 5px #FFD100;
+}
+
+.request-title {
+  margin: 0;
+  font-size: 25px;
+  color: #D6D6D6;
+}
+
+.action-buttons {
+  display: flex;
+}
+
+.accept-button,
+.reject-button {
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+}
 
 
-  .task-assignment {
-    background-color: #202020;
-    padding: 10px;
-    border-radius: 5px;
-    display: none;  
-    text-align: right;
-    min-height: 300px;
-    width: 900px;
-    margin-left: 10px;  
-  }
 
-  .order-content {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      flex: 1; 
-  }
 
-  .order-div {
-      background-color: #333533;
-      border-radius: 10px;
-      padding: 10px;
-      margin: 10px 0;
-      display: flex;
-      flex-direction: row;  
-      align-items: flex-start;
-      transition: box-shadow 0.3s ease-in-out;
-      min-height: 100px;
-      cursor: pointer; 
-  }
 
-  .order-div:hover {
-      box-shadow: 0 0 5px #FFD100;
-  }
 
-  .order-title {
-      margin: 0;
-      font-size: 25px;
-      font-weight: bold;
-      color: #d6d6d6;
-  }
 
-  .order-details {
-      display: none;
-  }
+
+/* ===================================== */
+/* STAFF ACTIVE ORDERS */
+/* ===================================== */
+
+.orders-content {
+  margin-top: 100px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.order-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  margin-right: 10px;
+}
+
+.order-div {
+  background-color: #333533;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  position: relative;
+  transition: box-shadow 0.3s ease-in-out;
+  min-height: 100px;
+  cursor: pointer;
+}
+
+.order-div:hover {
+  box-shadow: 0 0 5px #FFD100;
+}
+
+.order-title {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  color: #d6d6d6;
+}
+
+.order-details {
+  display: none;
+}
+
+.task-assignment {
+  background-color: #202020;
+  padding: 10px;
+  border-radius: 5px;
+  display: none;
+  text-align: left;
+  width: 650px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  flex-direction: column;
+}
+
+/* Style the dropdown labels */
+.task-assignment label {
+  display: block;
+  color: #d6d6d6;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+strong {
+  color: #FFD100;
+}
+
+/* Style the dropdown menus */
+.task-assignment select {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #d6d6d6;
+  border-radius: 5px;
+  background-color: #333533;
+  color: #d6d6d6;
+  margin-bottom: 10px;
+}
+
+
+.task-assignment button {
+  background-color: #FFD100;
+  color: #333533;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.task-assignment button:hover {
+  background-color: #FFC000;
+}

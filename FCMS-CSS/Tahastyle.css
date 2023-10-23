@@ -19,107 +19,7 @@
 
 }
 
-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  background-color: rgb(11, 11, 10);
-  position: fixed;
-  /* This makes the navbar fixed at the top */
-  top: 0;
-  /* Position it at the top of the viewport */
-  left: 0;
-  /* Position it at the left of the viewport */
-  width: 100%;
-  /* Ensure it takes the full width */
-  z-index: 1000;
-  /* This ensures the navbar is always on top of other content */
-}
 
-
-
-span {
-  color: goldenrod;
-}
-
-nav ul li {
-  list-style-type: none;
-  display: inline-block;
-  padding: 10px 25px;
-
-}
-
-nav ul li a {
-  color: goldenrod;
-  font-family: 'Franklin Gothic Medium', sans-serif;
-  text-decoration: none;
-  font-weight: bold;
-  text-transform: capitalize;
-  font-size: 17px;
-
-}
-
-.registrationbutton {
-  background-color: goldenrod;
-  color: white;
-  font-family: 'Franklin Gothic Medium', sans-serif;
-  text-decoration: none;
-  border: 2px dotted transparent;
-  font-weight: bold;
-  padding: 10px 25px;
-  border-radius: 10px;
-  transition: transform .3s;
-  margin-right: 50px;
-
-}
-
-.registrationbutton:hover {
-  transform: scale(1.1);
-}
-
-nav ul li a {
-  position: relative;
-  /* ... (rest of your styles) */
-}
-
-/* Before and After pseudo-elements represent the two lines */
-nav ul li a::before,
-nav ul li a::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  /* Height of the line */
-  background-color: goldenrod;
-  /* Line color */
-  transition: all 0.3s ease;
-}
-
-/* First line appears from the left */
-nav ul li a::before {
-  bottom: 1px;
-  /* Slight offset from the bottom to create gap between two lines */
-}
-
-/* Second line appears from the right */
-nav ul li a::after {
-  bottom: -3px;
-  /* Slight offset from the bottom */
-  right: 0;
-  left: auto;
-  transform: scaleX(-1);
-  /* Invert it to make it appear from right */
-}
-
-/* On hover, the lines animate to full width */
-nav ul li a:hover::before,
-nav ul li a:hover::after {
-  width: 100%;
-}
 
 .info {
   position: absolute;
@@ -249,7 +149,7 @@ Menu Section
   color: #fff;
   text-decoration: none;
   transition: color 0.3s ease;
-  
+
 }
 
 .card-content .card-title a:hover {
@@ -266,7 +166,8 @@ Menu Section
 
 
 .about-section {
-  background-color: #171616;  /* Dark Grey Background */
+  background-color: #171616;
+  /* Dark Grey Background */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -287,8 +188,10 @@ Menu Section
 .about-content {
   flex: 2;
   padding: 0 20px;
-  color: #e0e0e0;  /* Light Grey Text Color */
-  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif; /* Choose a suitable font */
+  color: #e0e0e0;
+  /* Light Grey Text Color */
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+  /* Choose a suitable font */
   text-align: center;
   padding-left: 300px;
 }
@@ -319,14 +222,18 @@ Menu Section
 .team-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; /* This will ensure that there is space between each member */
+  justify-content: space-between;
+  /* This will ensure that there is space between each member */
   gap: 20px;
-  max-width: 660px; /* This width will accommodate 3 members with a width of 200px each and a gap of 20px between them */
-  margin: 0 auto;    /* Centering the container */
+  max-width: 660px;
+  /* This width will accommodate 3 members with a width of 200px each and a gap of 20px between them */
+  margin: 0 auto;
+  /* Centering the container */
 }
 
 .team-member {
-  flex: 0 0 calc(33.3333% - 20px); /* This ensures each member takes up one-third of the container width minus the gap */
+  flex: 0 0 calc(33.3333% - 20px);
+  /* This ensures each member takes up one-third of the container width minus the gap */
   position: relative;
   width: 200px;
   height: 200px;
@@ -352,7 +259,8 @@ Menu Section
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* Transparent black */
+  background-color: rgba(0, 0, 0, 0.6);
+  /* Transparent black */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -362,7 +270,8 @@ Menu Section
 
 .overlay span {
   color: white;
-  font-size: 18px;   /* Increased size for better readability on larger circles */
+  font-size: 18px;
+  /* Increased size for better readability on larger circles */
   text-transform: uppercase;
 }
 
@@ -411,15 +320,17 @@ h2 {
   border: 2px solid #e0e0e0;
   padding: 20px;
   border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.6);  /* Semi-transparent dark background for readability */
+  background-color: rgba(0, 0, 0, 0.6);
+  /* Semi-transparent dark background for readability */
   transition: background-color 0.3s;
 }
 
 .user-option:hover {
-  background-color: rgba(0, 0, 0, 0.8);  /* Darker background on hover */
+  background-color: rgba(0, 0, 0, 0.8);
+  /* Darker background on hover */
 }
 
-button.login, 
+button.login,
 button.signup {
   padding: 10px 20px;
   margin-top: 20px;
@@ -429,22 +340,27 @@ button.signup {
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.3s;
-  
+
 }
 
-button.login:hover, 
+button.login:hover,
 button.signup:hover {
-  background-color:goldenrod;
+  background-color: goldenrod;
 }
+
 .wimg {
-  width : 100px;
+  width: 100px;
   height: 100px;
 }
+
 .contact-icons img {
-  width: 50px;  /* Set the desired width */
-  height: 50px;  /* Set the desired height */
+  width: 50px;
+  /* Set the desired width */
+  height: 50px;
+  /* Set the desired height */
   margin: 0 10px;
-  object-fit: cover;  /* This ensures that images retain their aspect ratio */
+  object-fit: cover;
+  /* This ensures that images retain their aspect ratio */
 }
 
 .btn-style {
@@ -475,7 +391,7 @@ button.signup:hover {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  
+
 }
 
 .social-icon,
@@ -500,6 +416,7 @@ button.signup:hover {
   display: inline-block;
   transition: 0.5s;
 }
+
 .social-icon__link:hover {
   transform: translateY(-10px);
 }

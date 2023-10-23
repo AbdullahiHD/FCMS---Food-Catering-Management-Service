@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     <title>Creating Customer Account</title>
     <link rel="stylesheet" href="../FCMS-Assets/Main.css">
     <link rel="stylesheet" href="../FCMS-CSS/CreateDetails.css">
-    <link rel="stylesheet" href="../FCMS-CSS/Tahastyle.css">
+    <!-- <link rel="stylesheet" href="../FCMS-CSS/Tahastyle.css"> -->
     <script>
         var existingUsernames = <?php echo json_encode($usernames); ?>;
     </script>

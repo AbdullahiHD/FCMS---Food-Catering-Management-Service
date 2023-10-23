@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="../FCMS-CSS/CreateDetails.css">
 
     <!-- Link the navbar style css -->
-    <link rel="stylesheet" href="../FCMS-CSS/Tahastyle.css">
+    <!-- <link rel="stylesheet" href="../FCMS-CSS/Tahastyle.css"> -->
 
     <script src="../FCMS-JavaScripts/Validation.js"></script>
 
@@ -30,23 +30,23 @@
 
             <!-- Adding logo -->
             <a href="#" class="logolink">
-            <img src="../FCMS-Assets/images/culinarycue.png" width="160" height="30" alt="CulinaryCue - Home">
+            <img src="../FCMS-Assets/images/culinarycue.png" width="100px" height="60px" alt="CulinaryCue - Home">
             </a>
             <ul>
-                <li><a href="">Home</a></li>
-                <li><a href="">Menu</a></li>
-                <li><a href="">About</a></li>
-                <li><a href="">Contact</a></li>
+                <li><a href="../FCMS-HTML/TahaIndex.html">Home</a></li>
+                <li><a href="../FCMS-HTML/TahaIndex.html">Menu</a></li>
+                <li><a href="../FCMS-HTML/TahaIndex.html">About</a></li>
+                <li><a href="../FCMS-HTML/TahaIndex.html">Contact</a></li>
                 
             </ul>
-            <a href="../FCMS-HTML/Login.html" class="registrationbutton">Login</a>
+            <!-- <a href="../FCMS-HTML/Login.html" class="registrationbutton">Login</a> -->
 
         </nav>
     </header>
     
         <!-- Brief Heading and content -->
         <div class="hcontent">
-            <h1> Customer Sign Up</h1>
+            <h1> Customer Profile</h1>
         </div>
        
 
@@ -128,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($insert_stmt->execute()) {
         echo '<script>alert("Registration successful. You can now proceed to login.");</script>';
-        echo '<script>window.location = "../FCMS-HTML/Login.html";</script>';
+        echo '<script>window.location = "../FCMS-PHP/Login.php";</script>';
     } else {
         echo "Error: " . $insert_stmt->error;
     }
