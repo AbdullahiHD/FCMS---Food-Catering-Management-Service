@@ -100,16 +100,12 @@
   padding: 10px;
   margin: 10px 0;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
   transition: box-shadow 0.3s ease-in-out;
-  height: 100px;
+  height: auto;
+  justify-content: space-between;
 }
 
-
-.frequest-div:hover {
-  box-shadow: 0 0 5px #FFD100;
-}
 
 .request-title {
   margin: 0;
@@ -117,8 +113,17 @@
   color: #D6D6D6;
 }
 
+.request-details {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #333533;
+  border-radius: 5px;
+  color: #D6D6D6;
+}
+
 .action-buttons {
   display: flex;
+  justify-content: flex-end;
 }
 
 .accept-button,
@@ -130,12 +135,6 @@
 }
 
 
-
-
-
-
-
-
 /* ===================================== */
 /* STAFF ACTIVE ORDERS */
 /* ===================================== */
@@ -144,6 +143,10 @@
   margin-top: 100px;
   margin-left: 20px;
   margin-right: 20px;
+}
+
+.order-details-content{
+  margin-top: 100px;
 }
 
 .order-content {
@@ -184,10 +187,11 @@
 }
 
 .task-assignment {
+  margin-top: 100px;
   background-color: #202020;
   padding: 10px;
   border-radius: 5px;
-  display: none;
+  display: block;
   text-align: left;
   width: 650px;
   position: absolute;
@@ -231,4 +235,12 @@ strong {
 
 .task-assignment button:hover {
   background-color: #FFC000;
+}
+
+
+/* ORDER DETAILS PAGE */
+
+.orderdetails-div{
+  margin-left: 20px;
+  margin-right: 20px;
 }

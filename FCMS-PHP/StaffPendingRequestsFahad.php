@@ -11,7 +11,7 @@
     <!-- Navbar -->
     <nav>
         <a href="#" class="logolink">
-          <img src="../FCMS-Assets/images/culinarycue.png" width="100px" height="60px" alt="CulinaryCue - Home">
+            <img src="../FCMS-Assets/images/culinarycue.png" width="100px" height="60px" alt="CulinaryCue - Home">
         </a>
         <ul>
             <li><a href="StaffDashboardFahad.php">Dashboard</a></li>
@@ -19,7 +19,7 @@
             <li><a href="StaffActiveOrdersFahad.php">Active Orders</a></li>
         </ul>
     </nav>
-    
+
     <!-- Content for Pending Requests page -->
     <div class="requests-content">
         <h1>Pending Requests</h1>
@@ -85,6 +85,15 @@
                 while ($row = $result->fetch_assoc()) {
                     echo '<div class="frequest-div" id="request-' . $row['RequestID'] . '">';
                     echo '<h3 class="request-title">Request #'.$row['RequestID'].'</h3>';
+                    
+                    echo '<div class="request-details" id="request-details-' . $row['RequestID'] . '">';
+                    echo '<p><strong>Customer Name:</strong> ' . $row['CustomerName'] . '</p>';
+                    echo '<p><strong>Event Date:</strong> ' . $row['EventDate'] . '</p>';
+                    echo '<p><strong>Event Time:</strong> ' . $row['EventTime'] . '</p>';
+                    echo '<p><strong>Number of Attendees:</strong> ' . $row['NumberOfAttendees'] . '</p>';
+                    echo '<p><strong>Menu ID:</strong> ' . $row['MenuID'] . '</p>';
+                    echo '</div>';
+
                     echo '<div class="action-buttons">';
                     echo '<form method="post" action="">';
                     echo '<input type="hidden" name="requestId" value="' . $row['RequestID'] . '">';
@@ -102,14 +111,5 @@
             $conn->close();
         ?>
     </div>
-
-    <script>
-        function removeRequestDiv(requestId) {
-            var requestDiv = document.getElementById('request-' + requestId);
-            if (requestDiv) {
-                requestDiv.remove();
-            }
-        }
-    </script>
 </body>
 </html>

@@ -39,35 +39,7 @@
                 die("Connection failed: " . $conn->connect_error);
             }
 
-            $orderID = null; 
-
-            // Handle form submission
-            if (isset($_POST['saveButton'])) {
-                $orderID = $_POST['orderID'];
-
-                // Get the selected employee names and occupations and concatenate them
-                $assignedEmployees = '';
-                $occupations = ['EventPlanner', 'EventManager', 'ExecutiveChef', 'SousChef', 'LineCook', 'Dishwasher', 'Server', 'DeliveryDriver'];
-
-                foreach ($occupations as $occupation) {
-                    if (isset($_POST[$occupation])) {
-                        $selectedEmployee = $_POST[$occupation];
-                        $assignedEmployees .= "$selectedEmployee ($occupation), ";
-                    }
-                }
-
-                // Remove the trailing comma and space
-                $assignedEmployees = rtrim($assignedEmployees, ', ');
-
-                // Update the "AssignedEmployees" field in the "Orders" table
-                $updateQuery = "UPDATE Orders SET AssignedEmployees = '$assignedEmployees' WHERE OrderID = $orderID";
-
-                if ($conn->query($updateQuery) === TRUE) {
-                    echo "Assigned employees saved successfully for Order #$orderID.";
-                } else {
-                    echo "Error updating record: " . $conn->error;
-                }
-            }
+            $orderID = null;
 
             // SQL query to retrieve data from the "Orders" table
             $sql = "SELECT * FROM Orders WHERE OrderStatus = 'Active' LIMIT 5";
@@ -80,36 +52,7 @@
                     echo '<div class="order-div">';
                     echo '<div class="order-content">';
                     echo '<div class="order-title">Order #' . $orderID . '</div>';
-                    echo '<div class="order-details" style="display: none">';
-                    echo '<p><strong>Customer Name:</strong> ' . $row['CustomerName'] . '</p>';
-                    echo '<p><strong>Event Date:</strong> ' . $row['EventDate'] . '</p>';
-                    echo '<p><strong>Event Time:</strong> ' . $row['EventTime'] . '</p>';
-                    echo '<p><strong>Order Status:</strong> ' . $row['OrderStatus'] . '</p>';
-                    echo '<p><strong>Delivery Address:</strong> ' . $row['DeliveryAddress'] . '</p>';
-                    echo '<p><strong>Menu ID:</strong> ' . $row['MenuID'] . '</p>';
-                    echo '</div>';
-                    echo '<div class="task-assignment" style="display: none">';
-                    echo '<h3>Task Assignment System</h3>';
-                    echo '<form method="post" action="">';
-
-                    // Create a dropdown for each occupation and populate from Employees table
-                    $occupations = ['EventPlanner', 'EventManager', 'ExecutiveChef', 'SousChef', 'LineCook', 'Dishwasher', 'Server', 'DeliveryDriver'];
-                    foreach ($occupations as $occupation) {
-                        echo "<label for='$occupation'>$occupation:</label>";
-                        echo "<select name='$occupation' id='$occupation'>";
-                        // Query to retrieve employees by occupation
-                        $employeeQuery = "SELECT EmployeeName FROM Employees WHERE Occupation = '$occupation'";
-                        $employeeResult = $conn->query($employeeQuery);
-                        while ($employee = $employeeResult->fetch_assoc()) {
-                            echo "<option value='{$employee['EmployeeName']}'>{$employee['EmployeeName']}</option>";
-                        }
-                        echo "</select>";
-                    }
-
-                    echo '<input type="hidden" name="orderID" value="' . $orderID . '">';
-                    echo '<button type="submit" name="saveButton">Save</button>';
-                    echo '</form>';
-                    echo '</div>';
+                    echo '<a href="OrderDetailsPage.php?orderID=' . $orderID . '">View Order Details and Task Assignment</a>';
                     echo '</div>';
                     echo '</div>';
                 }
@@ -120,38 +63,6 @@
             // Close the database connection
             $conn->close();
         ?>
-
-
-        <script>
-            var orderDivs = document.querySelectorAll('.order-div');
-
-            orderDivs.forEach(function (orderDiv) {
-                var orderDetails = orderDiv.querySelector('.order-details');
-                var taskAssignment = orderDiv.querySelector('.task-assignment');
-                var expanded = false;
-
-                orderDiv.addEventListener('click', function () {
-                    if (expanded) {
-                        orderDetails.style.display = 'none';
-                        taskAssignment.style.display = 'none';
-                        orderDiv.style.minHeight = '100px';
-                    } else {
-                        orderDetails.style.display = 'block';
-                        taskAssignment.style.display = 'block';
-                        orderDiv.style.minHeight = '600px';
-                    }
-                    expanded = !expanded;
-                });
-            });
-
-            // Prevent click on dropdowns from triggering the orderDiv click event to stop event propogation
-            var dropdowns = document.querySelectorAll('select');
-            dropdowns.forEach(function (dropdown) {
-                dropdown.addEventListener('click', function (e) {
-                    e.stopPropagation(); 
-                });
-            });
-        </script>
     </div>
 </body>
 </html>
