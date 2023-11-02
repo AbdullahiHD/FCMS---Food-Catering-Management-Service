@@ -267,14 +267,14 @@
           <img src="../FCMS-Assets/images/culinarycue.png" width="100" height="60" alt="CulinaryCue - Home">
         </a>
         <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="">Menu</a></li>
-            <li><a href="">About</a></li>
-            <li><a href="">Our Team</a></li>
-            <li><a href="">Contact</a></li>
+            <li><a href="../FCMS-HTML/TahaIndex.html">Home</a></li>
+            <li><a href="menu.php">Menu</a></li>
+            <li><a href="../FCMS-HTML/TahaIndex.html">About</a></li>
+            <li><a href="../FCMS-HTML/TahaIndex.html">Our Team</a></li>
+            <li><a href="../FCMS-HTML/TahaIndex.html">Contact</a></li>
             
         </ul>
-        <a href="" class="registrationbutton">Login</a>
+        /* <a href="" class="registrationbutton">Login</a> */
     
     
     

@@ -73,14 +73,15 @@
             <a href="TahaIndex.html" class="logolink">
                 <img src="../FCMS-Assets/images/culinarycue.png" width="100px" height="60px" alt="CulinaryCue - Home">
             </a>
-            <ul>
-                <li><a href="TahaIndex.html">Home</a></li>
-                <li><a href="TahaIndex.html">Menu</a></li>
-                <li><a href="TahaIndex.html">About</a></li>
-                <li><a href="TahaIndex.html">Our Team</a></li>
-                <li><a href="TahaIndex.html">Contact</a></li>
+             <ul>
+                <li><a href="../FCMS-HTML/TahaIndex.html">Home</a></li>
+                <li><a href="../FCMS-PHP/menu.php">Menu</a></li>
+                <li><a href="../FCMS-HTML/TahaIndex.html">About</a></li>
+                <li><a href="../FCMS-HTML/TahaIndex.html">Our Team</a></li>
+                <li><a href="../FCMS-HTML/TahaIndex.html">Contact</a></li>
+            
             </ul>
-            <a class="registrationbutton" href="Login.html">Profile</a>
+            <!-- <a class="registrationbutton" href="Login.html">Profile</a> -->
         </nav>
     </div>
 

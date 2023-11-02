@@ -68,162 +68,114 @@ function showError(id, message) {
     }, 300);
 }
 
-function validateForm() {
-    var firstNameValid = checkFirstName('hfname');
-    var lastNameValid = checkLastName('hlname');
-    var emailValid = checkEmail('hemail');
-    var phoneValid = checkPhone('hphone');
-    var addressValid = checkStreetAddress('hstreetadd');
-    var cityValid = checkCity('hcity');
-    var stateValid = checkState('hstate');
-    var postcodeValid = checkPostcode('hpostcode');
+var errors = []; // This will hold all error messages
 
-    // Check if all validations pass
-    if (firstNameValid && lastNameValid && emailValid && phoneValid && addressValid && cityValid && stateValid && postcodeValid) {
-        return true; // Allow form submission
-    } else {
+function validateForm() {
+    errors = []; // Clear previous errors
+
+    checkFirstName('hfname');
+    checkLastName('hlname');
+    checkEmail('hemail');
+    checkPhone('hphone');
+    checkStreetAddress('hstreetadd');
+    checkCity('hcity');
+    checkState('hstate');
+    checkPostcode('hpostcode');
+
+    // Check if there are any errors
+    if (errors.length > 0) {
+        alert(errors.join("\n")); // Display all errors together
         return false; // Prevent form submission
     }
+
+    return true; // Allow form submission
 }
 
 function checkFirstName(hfname) {
-    // Get the input element by its ID
     var input = document.getElementById(hfname);
-    // Get the value of the input
     var inputValue = input.value.trim();
 
-    // Check if the input is empty
     if (inputValue === '') {
-        alertAndHighlight(input, 'First Name cannot be empty', 'error');
-        return false;
+        errors.push('First Name cannot be empty');
+        highlightError(input);
+    } else if (!/^[A-Za-z]+$/.test(inputValue)) {
+        errors.push('First Name should contain only alphabet characters');
+        highlightError(input);
+    } else if (inputValue.length > 20) {
+        errors.push('First Name length should not be more than 20 characters');
+        highlightError(input);
+    } else {
+        removeHighlight(input);
     }
-
-    // Check if the input contains only alphabet characters
-    var alphabetPattern = /^[A-Za-z]+$/;
-    if (!alphabetPattern.test(inputValue)) {
-        alertAndHighlight(input, 'First Name should contain only alphabet characters', 'error');
-        return false;
-    }
-
-    // Check if the input length is not more than 20
-    if (inputValue.length > 20) {
-        alertAndHighlight(input, 'First Name length should not be more than 20 characters', 'error');
-        return false;
-    }
-
-    // If all checks pass, remove the highlighting and set the border color to green
-    removeHighlight(input);
-    return true;
 }
 
 function checkLastName(hlname) {
-    // Get the input element by its ID
     var input = document.getElementById(hlname);
-    // Get the value of the input
     var inputValue = input.value.trim();
 
-    // Check if the input is empty
     if (inputValue === '') {
-        alertAndHighlight(input, 'Last Name cannot be empty', 'error');
-        return false;
+        errors.push('Last Name cannot be empty');
+        highlightError(input);
+    } else if (!/^[A-Za-z]+$/.test(inputValue)) {
+        errors.push('Last Name should contain only alphabet characters');
+        highlightError(input);
+    } else if (inputValue.length > 20) {
+        errors.push('Last Name length should not be more than 20 characters');
+        highlightError(input);
+    } else {
+        removeHighlight(input);
     }
-
-    // Check if the input contains only alphabet characters
-    var alphabetPattern = /^[A-Za-z]+$/;
-    if (!alphabetPattern.test(inputValue)) {
-        alertAndHighlight(input, 'Last Name should contain only alphabet characters', 'error');
-        return false;
-    }
-
-    // Check if the input length is not more than 20
-    if (inputValue.length > 20) {
-        alertAndHighlight(input, 'Last Name length should not be more than 20 characters', 'error');
-        return false;
-    }
-
-    // If all checks pass, remove the highlighting and set the border color to green
-    removeHighlight(input);
-    return true;
 }
 
 function checkEmail(hemail) {
-    // Get the input element by its ID
     var input = document.getElementById(hemail);
-    // Get the value of the input
     var inputValue = input.value.trim();
 
-    // Check if the input is empty
     if (inputValue === '') {
-        alertAndHighlight(input, 'Email cannot be empty', 'error');
-        return false;
+        errors.push('Email cannot be empty');
+        highlightError(input);
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inputValue)) {
+        errors.push('Invalid Email format');
+        highlightError(input);
+    } else {
+        removeHighlight(input);
     }
-
-    // Check if the input contains the "@" symbol
-    if (inputValue.indexOf('@') === -1) {
-        alertAndHighlight(input, 'Email should contain the "@" symbol', 'error');
-        return false;
-    }
-
-    // If all checks pass, remove the highlighting and set the border color to green
-    removeHighlight(input);
-    return true;
 }
 
 function checkPhone(hphone) {
-    // Get the input element by its ID
     var input = document.getElementById(hphone);
-    // Get the value of the input
     var inputValue = input.value.trim();
 
-    // Check if the input is empty
     if (inputValue === '') {
-        alertAndHighlight(input, 'Phone cannot be empty', 'error');
-        return false;
+        errors.push('Phone cannot be empty');
+        highlightError(input);
+    } else if (!/^[0-9+]+$/.test(inputValue)) {
+        errors.push('Phone should contain only numbers and the "+" symbol');
+        highlightError(input);
+    } else if (inputValue.length > 15) {
+        errors.push('Phone length should not be more than 15 characters');
+        highlightError(input);
+    } else {
+        removeHighlight(input);
     }
-
-    // Check if the input contains only valid characters (in this case, numbers and '+')
-    var phonePattern = /^[0-9+]+$/;
-    if (!phonePattern.test(inputValue)) {
-        alertAndHighlight(input, 'Phone should contain only numbers and the "+" symbol', 'error');
-        return false;
-    }
-
-    // Check if the input length is not more than 15 characters (adjust as needed)
-    if (inputValue.length > 15) {
-        alertAndHighlight(input, 'Phone length should not be more than 15 characters', 'error');
-        return false;
-    }
-
-    // If all checks pass, remove the highlighting and set the border color to green
-    removeHighlight(input);
-    return true;
 }
 
 function checkStreetAddress(hstreetadd) {
     var input = document.getElementById(hstreetadd);
     var inputValue = input.value.trim();
 
-    // Check if the input is empty
     if (inputValue === '') {
-        alertAndHighlight(input, 'Street Address cannot be empty', 'error');
-        return false;
+        errors.push('Street Address cannot be empty');
+        highlightError(input);
+    } else if (!/^[A-Za-z\s]+$/.test(inputValue)) {
+        errors.push('Street Address should contain only alphabet characters and spaces');
+        highlightError(input);
+    } else if (inputValue.length > 50) { // increased the max length for street addresses
+        errors.push('Street Address length should not be more than 50 characters');
+        highlightError(input);
+    } else {
+        removeHighlight(input);
     }
-
-    // Check if the input contains only alphabet characters
-    var alphabetPattern = /^[A-Za-z\s]+$/; // Allow spaces in Street Address
-    if (!alphabetPattern.test(inputValue)) {
-        alertAndHighlight(input, 'Street Address should contain only alphabet characters', 'error');
-        return false;
-    }
-
-    // Check if the input length is not more than 20
-    if (inputValue.length > 20) {
-        alertAndHighlight(input, 'Street Address length should not be more than 20 characters', 'error');
-        return false;
-    }
-
-    removeHighlight(input);
-    return true;
 }
 
 function checkCity(hcity) {
@@ -231,23 +183,17 @@ function checkCity(hcity) {
     var inputValue = input.value.trim();
 
     if (inputValue === '') {
-        alertAndHighlight(input, 'City/town cannot be empty', 'error');
-        return false;
+        errors.push('City cannot be empty');
+        highlightError(input);
+    } else if (!/^[A-Za-z\s]+$/.test(inputValue)) {
+        errors.push('City should contain only alphabet characters and spaces');
+        highlightError(input);
+    } else if (inputValue.length > 30) {
+        errors.push('City length should not be more than 30 characters');
+        highlightError(input);
+    } else {
+        removeHighlight(input);
     }
-
-    var alphabetPattern = /^[A-Za-z\s]+$/; // Allow spaces in City/town
-    if (!alphabetPattern.test(inputValue)) {
-        alertAndHighlight(input, 'City/town should contain only alphabet characters', 'error');
-        return false;
-    }
-
-    if (inputValue.length > 20) {
-        alertAndHighlight(input, 'City/town length should not be more than 20 characters', 'error');
-        return false;
-    }
-
-    removeHighlight(input);
-    return true;
 }
 
 function checkState(hstate) {
@@ -255,23 +201,17 @@ function checkState(hstate) {
     var inputValue = input.value.trim();
 
     if (inputValue === '') {
-        alertAndHighlight(input, 'State cannot be empty', 'error');
-        return false;
+        errors.push('State cannot be empty');
+        highlightError(input);
+    } else if (!/^[A-Za-z\s]+$/.test(inputValue)) {
+        errors.push('State should contain only alphabet characters and spaces');
+        highlightError(input);
+    } else if (inputValue.length > 30) {
+        errors.push('State length should not be more than 30 characters');
+        highlightError(input);
+    } else {
+        removeHighlight(input);
     }
-
-    var alphabetPattern = /^[A-Za-z\s]+$/; // Allow spaces in State
-    if (!alphabetPattern.test(inputValue)) {
-        alertAndHighlight(input, 'State should contain only alphabet characters', 'error');
-        return false;
-    }
-
-    if (inputValue.length > 20) {
-        alertAndHighlight(input, 'State length should not be more than 20 characters', 'error');
-        return false;
-    }
-
-    removeHighlight(input);
-    return true;
 }
 
 function checkPostcode(hpostcode) {
@@ -279,28 +219,31 @@ function checkPostcode(hpostcode) {
     var inputValue = input.value.trim();
 
     if (inputValue === '') {
-        alertAndHighlight(input, 'Postcode cannot be empty', 'error');
-        return false;
+        errors.push('Postcode cannot be empty');
+        highlightError(input);
+    } else if (!/^[0-9]+$/.test(inputValue)) {
+        errors.push('Postcode should contain only numbers');
+        highlightError(input);
+    } else if (inputValue.length > 10) {
+        errors.push('Postcode length should not be more than 10 characters');
+        highlightError(input);
+    } else {
+        removeHighlight(input);
     }
-
-    var postcodePattern = /^[0-9]+$/; // Allow only numbers for Postcode
-    if (!postcodePattern.test(inputValue)) {
-        alertAndHighlight(input, 'Postcode should contain only numbers', 'error');
-        return false;
-    }
-
-    if (inputValue.length > 10) {
-        alertAndHighlight(input, 'Postcode length should not be more than 10 characters', 'error');
-        return false;
-    }
-
-    removeHighlight(input);
-    return true;
 }
+
+function highlightError(element) {
+    element.style.borderColor = 'red';
+}
+
+function removeHighlight(element) {
+    element.style.borderColor = '';
+}
+
 
 // function validateSignUp() {
 //     var userNameValid = checkUserName('husername');
- 
+
 
 //     // Check if all validations pass
 //     if (userNameValid) {
