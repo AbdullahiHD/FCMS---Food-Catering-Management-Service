@@ -14,63 +14,52 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-if (isset($_POST['login'])) {
-    
+if (isset($_POST['submit'])) {
     $username = $_POST['username'];
-    $password = $_POST['password'];
+    $newPassword=$_POST['newpassword'];
+    $confirmNewPassword = $_POST['confirmnewpassword'];
 
-    // Query to check if the username and password match in the database
+    // Check if the new password and confirmation match
+    if ($newPassword != $confirmNewPassword) {
+        echo '<script>alert("New password and confirmation do not match. Please try again.");</script>';
+    } else {
+        // Query to check if the username exists in the database
     $sql = "SELECT * FROM users WHERE Username = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
-    
+
     if ($result->num_rows === 1) {
-        $row = $result->fetch_assoc();
-        
-        // Verify the password
-        if (password_verify($password, $row['Password'])) {
-            // Password is correct, store user data in a session
-            $_SESSION['user_id'] = $row['UserId'];
-            $_SESSION['username'] = $username;
 
-            // Check user permission and redirect accordingly
-            $permission = $row['Permission'];
-            switch ($permission) {
-                case "Customer":
-                    header("Location: ../FCMS-PHP/menu.php");
-                    break;
-                case "Staff":
-                    header("Location: ../FCMS-PHP/StaffDashboardFahad.php");
-                    break;
-                case "Admin":
-                    header("Location: ../FCMS-HTML/Dashboard.html");
-                    break;
-                default:
-                    // Handle other permissions or an error
-                    echo '<script>alert("Invalid permission. Please contact support.");</script>';
-            }
+        // Hash the new password before storing it in the database
+        $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
 
-            // Redirect to the Customer Dashboard or any other destination
-           // header("Location: Dashboard - Customers Page.html");
-            exit();
-        } else {
-            // Password is incorrect
-            echo '<script>alert("Incorrect username or password. Please try again.");</script>';
-        }
+        // Update the user's password in the database
+        $updateSql = "UPDATE users SET Password = ? WHERE Username = ?";
+        $updateStmt = $conn->prepare($updateSql);
+        $updateStmt->bind_param("ss", $hashedPassword, $username);
+        $updateStmt->execute();
+        $updateStmt->close();
+
+        // Display the new password in a JavaScript alert
+        echo '<script>alert("Your new password: ' . $newPassword . '");</script>';
+        header("Location: ../FCMS-PHP/Login.php");
     } else {
-        // Username not found
-        echo '<script>alert("Incorrect username or password. Please try again.");</script>';
+        // Email not found
+        echo '<script>alert("Username not found. Please try again.");</script>';
+    }
+        
     }
 
+    
+    
     $stmt->close();
 }
 
 // Close the database connection
 $conn->close();
 ?>
-
 
 <html>
 <style>
@@ -94,6 +83,7 @@ $conn->close();
         z-index: 1000;
         /* This ensures the navbar is always on top of other content */
     }
+
     span {
         color: goldenrod;
     }
@@ -314,40 +304,46 @@ $conn->close();
     }
 </style>
 <nav>
-    
-                <a href="../FCMS-HTML/TahaIndex.html" class="logolink">
-                  <img src="../FCMS-Assets/images/culinarycue.png" width="100px" height="60px" alt="CulinaryCue - Home">
-                </a>
-                <ul>
-                    <li><a href="../FCMS-HTML/TahaIndex.html">Home</a></li>
-                    <li><a href="../FCMS-HTML/menu.php">Menu</a></li>
-                    <li><a href="#Navabout">About</a></li>
-                    <li><a href="#Navteam">Our Team</a></li>
-                    <li><a href="#Navcontact">Contact</a></li>
-                    
-                </ul>
-                <a class="registrationbutton" href = "CustomerLogin.html">Login</a>
-    
-    
-            </nav>
+
+    <a href="../FCMS-HTML/TahaIndex.html" class="logolink">
+        <img src="../FCMS-Assets/images/culinarycue.png" width="100px" height="60px" alt="CulinaryCue - Home">
+    </a>
+    <ul>
+        <li><a href="../FCMS-HTML/TahaIndex.html">Home</a></li>
+        <li><a href="../FCMS-HTML/menu.php">Menu</a></li>
+        <li><a href="#Navabout">About</a></li>
+        <li><a href="#Navteam">Our Team</a></li>
+        <li><a href="#Navcontact">Contact</a></li>
+
+    </ul>
+    <a class="registrationbutton" href="CustomerLogin.html">Login</a>
+
+
+</nav>
 
 <body>
 
     <div class="container">
         <div class="wrapper">
-            <div class="title"><span>Login</span></div>
-            <form method="post" action="Login.php">
+            <div class="title"><span>Forgot Password</span></div>
+            <form method="post" action="ForgotPassword.php">
                 <div class="row">
                     <i class="fas fa-user"></i>
-                    <input type="text" id="username" name="username" placeholder="Your username" required><br>
+                    <input type="text" id="username" name="username" placeholder="Username" required><br>
                 </div>
+
                 <div class="row">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" id="password" name="password" placeholder="Your password" required><br>
+                    <i class="fas fa-user"></i>
+                    <input type="password" id="newpassword" name="newpassword" placeholder="New Password" required><br>
                 </div>
-                <div class="pass"><a href="ForgotPassword.php">Forgot password?</a></div>
+
+                <div class="row">
+                    <i class="fas fa-user"></i>
+                    <input type="password" id="confirmnewpassword" name="confirmnewpassword" placeholder="Confirm New Password" required><br>
+                </div>
+
                 <div class="row button">
-                    <input type="submit" name="login" value="Login">
+                    <input type="submit" name="submit" value="Submit">
                 </div>
             </form>
 
