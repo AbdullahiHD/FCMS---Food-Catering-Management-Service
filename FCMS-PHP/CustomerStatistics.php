@@ -16,8 +16,10 @@
     <!-- Link to this pages css -->
     <link rel="stylesheet" href="../FCMS-CSS/CreateDetails.css">
 
-    <!-- Link the navbar style css -->
-    <!-- <link rel="stylesheet" href="../FCMS-CSS/Tahastyle.css"> -->
+    <!-- Including D3 Library -->
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    
+    <script src="../FCMS-JavaScripts/CustomerD3.js"></script>
 
     <script src="../FCMS-JavaScripts/Validation.js"></script>
 
@@ -45,10 +47,45 @@
     
         <!-- Brief Heading and content -->
         <div class="hcontent">
+            <br><br>
             <h1> Customer Statistics</h1>
         </div>
-       
 
+        <div id="chart-container">
+            <svg id="bar-chart"></svg>
+        </div>
+
+        <!-- <button class="sortAsc-button">Sort - Ascending </button>
+        <button class="sortDesc-button">Sort - Descending</button>
+        -->
+
+        <!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
+    <footer class="footer">
+    <ul class="social-icon">
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-facebook"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-twitter"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-linkedin"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </a></li>
+    </ul>
+    <ul class="menu">
+      <li class="menu__item"><a class="menu__link" href="../FCMS-HTML/TahaIndex.html">Home</a></li>
+      <li class="menu__item"><a class="menu__link" href="../FCMS-HTML/TahaIndex.html">Menu</a></li>
+      <li class="menu__item"><a class="menu__link" href="../FCMS-HTML/TahaIndex.html">About</a></li>
+      <li class="menu__item"><a class="menu__link" href="../FCMS-HTML/TahaIndex.html">Our Team</a></li>
+      <li class="menu__item"><a class="menu__link" href="../FCMS-HTML/TahaIndex.html">Contact</a></li>
+    </ul>
+
+  </footer>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     
 </body>
 
@@ -68,35 +105,22 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Initialize variables
-$fname = $lname = $email = $phone = $streetadd = $city = $state = $postcode = "";
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Sanitize and validate input
-    $fname = filter_var($_POST["hfname"], FILTER_SANITIZE_STRING);
-    $lname = filter_var($_POST["hlname"], FILTER_SANITIZE_STRING);
-    $email = filter_var($_POST["hemail"], FILTER_SANITIZE_EMAIL);
-    $phone = filter_var($_POST["hphone"], FILTER_SANITIZE_STRING);
-    $streetadd = filter_var($_POST["hstreetadd"], FILTER_SANITIZE_STRING);
-    $city = filter_var($_POST["hcity"], FILTER_SANITIZE_STRING);
-    $state = filter_var($_POST["hstate"], FILTER_SANITIZE_STRING);
-    $postcode = filter_var($_POST["hpostcode"], FILTER_SANITIZE_STRING);
+// Fetch customer data
+$sql = "SELECT Firstname, NumberOfOrders FROM customers WHERE DeletedAt IS NULL AND NumberOfOrders > 3";
+$result = $conn->query($sql);
 
-    // Inserting the user details into the database
-    $insert_sql = "INSERT INTO customers (Firstname, Lastname, Email, Phone, `Address`, City, `State`, Postcode) 
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    $insert_stmt = $conn->prepare($insert_sql);
-    $insert_stmt->bind_param("ssssssss", $fname, $lname, $email, $phone, $streetadd, $city, $state, $postcode);
-
-    if ($insert_stmt->execute()) {
-        echo '<script>alert("Registration successful. You can now proceed to login.");</script>';
-        echo '<script>window.location = "../FCMS-PHP/Login.php";</script>';
-    } else {
-        echo "Error: " . $insert_stmt->error;
-    }
-
-    $insert_stmt->close();
+$customers = array();
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    $customers[] = $row;
+  }
+} else {
+  echo "0 results";
 }
-
-// Close the database connection
 $conn->close();
-?>
+
+// Output data as JSON
+// header('Content-Type: application/json');
+// echo json_encode($customers);
+// ?>

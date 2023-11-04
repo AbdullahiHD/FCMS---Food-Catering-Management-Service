@@ -141,3 +141,64 @@ button[type="reset"]:hover {
     flex-direction: column;
 
 }
+
+/* CSS for the chart container and the SVG canvas */
+#chart-container {
+    width: 100%;
+    max-width: 600px;
+    /* Set the max width for the container */
+    margin: 20px auto;
+    /* Center the container */
+    background-color: #f9f9f9;
+    /* Light background for contrast */
+    border: 1px solid #ccc;
+    /* Border for the container */
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Soft shadow for depth */
+}
+
+#bar-chart {
+    display: block;
+    /* SVG takes up the whole block */
+    margin: auto;
+    /* Center SVG in its container */
+    font-family: 'Arial', sans-serif;
+    /* Font for text elements */
+}
+
+/* CSS for the bars on mouseover */
+rect:hover {
+    fill: #ffa500;
+    /* A different shade of orange for better contrast */
+    cursor: pointer;
+    /* Change cursor to indicate interactivity */
+}
+
+/* CSS for the tooltip */
+#tooltip {
+    font-size: 12px;
+    font-weight: bold;
+    pointer-events: none;
+    /* Ensure the tooltip doesn't interfere with mouse events */
+}
+
+/* Adding classes for axis labels */
+.axis-label {
+    font-size: 14px;
+    fill: #666;
+}
+
+/* Styling the axis lines */
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #666;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-family: 'Arial', sans-serif;
+    font-size: 12px;
+    color: #666;
+}
