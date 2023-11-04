@@ -22,6 +22,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Enable the "Create Event Booking" button
             createEventButton.disabled = false;
+        
+            // Scroll down to the Create Event Booking button
+            selectedMenu.scrollIntoView({
+                behavior: 'smooth'
+            });
         });
     });
 

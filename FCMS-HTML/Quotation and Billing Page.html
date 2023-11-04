@@ -29,11 +29,17 @@
             border-radius: 5px;
         }
 
+        .container p{
+            color: #FFD100;
+        }
+        .container span{
+            color:white;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
-            color: gold;
+            margin-top: 10px;
             border: 2px solid white;
         }
 
@@ -42,15 +48,24 @@
             border: 1px solid #ccc;
             padding: 10px;
             text-align: left;
+            font-weight: bold;
+            color: white;
         }
 
         th {
             background-color: #202020;
+            color: #FFD100;
+            
         }
-
+        table span{ 
+            float: right;
+        }
+        
+        .menu-name span{
+            float: left;
+        }
         .total {
             text-align: right;
-            font-weight: bold;
             font-size: 18px;
         }
         .button-container {
@@ -59,7 +74,7 @@
         }
 
         .button-container button {
-            background-color: gold;
+            background-color: #FFD100;
             color: black;
             border: none;
             padding: 12px 24px;
@@ -76,12 +91,6 @@
         .container .button-container {
             display: flex;
             justify-content: center;
-        }
-
-        .content {
-            margin-left: 220px;
-            padding: 20px;
-            color: white;
         }
 
         /* Add the new CSS for the two tables */
@@ -210,7 +219,7 @@
                     <br>
                     <thead>
                         <tr>
-                            <th>Item</th>
+                            <th>Menu Item</th>
                             <th>Quantity</th>
                             <th>Unit Price</th>
                             <th>Subtotal</th>
@@ -218,18 +227,24 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><span id="menu-name"></span></td>
-                            <td><span id="attendees"></span>x</td>
+                            <td>
+                                <div class="menu-name">
+                                    <span id="menu-name"></span>
+                                </div>
+                            </td>
+                            <td>
+                                <span id="attendees"></span>
+                            </td>
                             <td>RM <span id="menu-price"></span></td>
                             <td>RM <span id="total-price"></span></td>
                         </tr>
                         <tr>
-                            <td colspan="2"><b>Tax (7%):</b></td>
-                            <td colspan="2"><b>RM <span id="tax-price"></span></b></td>
+                            <td colspan="2">Tax (7%):</td>
+                            <td colspan="2">RM <span id="tax-price"></span></td>
                         </tr>
                         <tr>
-                            <td colspan="2"><b>Total:</b></td>
-                            <td colspan="2"><b>RM <span id="tax-total"></span></b></td>
+                            <td colspan="2">Total:</td>
+                            <td colspan="2">RM <span id="tax-total"></span></td>
                         </tr>
                     </tbody>
                 </table>

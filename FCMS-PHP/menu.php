@@ -93,6 +93,7 @@
             width: 100%; /* Set the width to 100% */
             max-width: 960px; /* Set a maximum width for larger screens */
             background-color: black;
+            z-index: 1;
         }
         .menu-item p{
             margin-top: 5px;
@@ -114,6 +115,7 @@
             overflow: hidden;
         }
 
+
         .menu-item img {
             width: 250px;
             height: 250px;
@@ -121,31 +123,22 @@
             transition: transform 0.3s ease;
         }
 
-        .menu-item:hover {
-            /* Change the border color to trigger hover effect */
-            border: 1px solid #FFD100;
-        }
-
-        .menu-item:hover img {
-            transform: scale(1.04);
-        }
-
         .menu-item .additional-info {
-            position: absolute;
-            bottom: 101%;
-            left: -10%;
-            height: fit-content;
-            width: fit-content;
-            background-color: black;
+            position: fixed;
+            top: 0;
+            left: 0px;
+            width: 24vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.8); /* Adjust the background color and opacity */
             display: flex;
-            flex-direction: row; /* Arrange content horizontally */
-            justify-content: flex-start; /* Align content to the left */
+            justify-content: center;
             align-items: center;
+            flex-direction: column;
+            z-index: 2;
             opacity: 0;
-            transform: scale(0.8);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            padding: 15px;
-            z-index: 1;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
         }
 
          /* Use pointer-events to prevent hover on .additional-info */
@@ -153,21 +146,22 @@
             pointer-events: none;
         }
 
-        .menu-item:hover .additional-info {
-            opacity: 0.99;
+        .menu-item img:hover ~ .additional-info,
+        .menu-item .additional-info:hover {
+            opacity: 1;
             transform: scale(1);
             pointer-events: auto; /* Re-enable pointer events on hover */
-            z-index: 2; /* Set a higher z-index value on hover */
+            visibility: visible;
         }
 
         /* Style the additional info elements */
         .menu-item .additional-info img {
-            width: 300px; /* Adjust the image size as needed */
-            height: 300px; /* Adjust the image size as needed */
-            margin-right: 20px; /* Add spacing between image and text */
+            width: 400px; /* Adjust the image size as needed */
+            height: 400px; /* Adjust the image size as needed */
         }
 
         .menu-item .additional-info .text-container {
+            margin-top:20px;
             display: flex;
             flex-direction: column; /* Stack content top to bottom */
             align-items: center; /* Align content to the left */
@@ -175,7 +169,7 @@
 
         .menu-item .additional-info .text-container h3 {
             color: #FFD100;
-            font-size: 58px;
+            font-size: 40px;
             margin: 0;
         }
 
@@ -206,7 +200,7 @@
 
         .form-container {
             align-items: center;
-            margin-top: 80px;
+            margin-top: 100px;
             width: 40%;
             padding: 10px;
             border: 0px solid white;
@@ -267,14 +261,14 @@
           <img src="../FCMS-Assets/images/culinarycue.png" width="100" height="60" alt="CulinaryCue - Home">
         </a>
         <ul>
-            <li><a href="../FCMS-HTML/TahaIndex.html">Home</a></li>
-            <li><a href="menu.php">Menu</a></li>
-            <li><a href="../FCMS-HTML/TahaIndex.html">About</a></li>
-            <li><a href="../FCMS-HTML/TahaIndex.html">Our Team</a></li>
-            <li><a href="../FCMS-HTML/TahaIndex.html">Contact</a></li>
+            <li><a href="">Home</a></li>
+            <li><a href="">Menu</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Our Team</a></li>
+            <li><a href="">Contact</a></li>
             
         </ul>
-        /* <a href="" class="registrationbutton">Login</a> */
+        <a href="" class="registrationbutton">Login</a>
     
     
     

@@ -29,13 +29,15 @@ document.addEventListener('DOMContentLoaded', function () {
     var totalPrice = parseFloat(menuPrice) * parseInt(attendees);
     document.getElementById('total-price').textContent = totalPrice;
 
-    // Calculate tax and display it
+    // Calculate tax and display it with 2 decimal points
     var tax = parseFloat(totalPrice) * 0.07;
-    document.getElementById('tax-price').textContent = tax;
+    var formattedTax = tax.toFixed(2); // Round to 2 decimal points
+    document.getElementById('tax-price').textContent = formattedTax;
 
-    // Calculate total price + tax and display it
-    var taxTotal = parseFloat(totalPrice) + parseFloat(tax);
-    document.getElementById('tax-total').textContent = taxTotal;
+    // Calculate total price + tax and display it with 2 decimal points
+    var taxTotal = parseFloat(totalPrice) + parseFloat(formattedTax);
+    var formattedTaxTotal = taxTotal.toFixed(2); // Round to 2 decimal points
+    document.getElementById('tax-total').textContent = formattedTaxTotal;;
 });
 
 // Function to set form input values and submit the form
