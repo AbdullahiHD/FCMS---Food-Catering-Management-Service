@@ -27,9 +27,9 @@ if (isset($_SESSION['user_id'])) {
         $permission = $user['Permission'];
 
         // Check if the user is a staff member
-        if ($permission === 'staff') {
+        if ($permission === 'Staff') {
             // Query to fetch staff-specific information from the "staff" table
-            $staffQuery = "SELECT * FROM staff WHERE UserId = $userId";
+            $staffQuery = "SELECT * FROM Staff WHERE UserId = $userId";
             $staffResult = $conn->query($staffQuery);
 
             if ($staffResult && $staffResult->num_rows > 0) {
