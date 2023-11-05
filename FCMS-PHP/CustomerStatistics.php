@@ -122,5 +122,5 @@ $conn->close();
 
 // Output data as JSON
 // header('Content-Type: application/json');
-// echo json_encode($customers);
-// ?>
+echo json_encode($customers);
+?>
