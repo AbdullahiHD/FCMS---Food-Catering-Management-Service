@@ -68,11 +68,11 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: gainsboro;
+            background-color: #202020;
         }
 
         .navbar {
-            background-color: rgb(11, 11, 10);
+            background-color: #ccc;
             width: 210px;
             height: 100%;
             position: fixed;
@@ -94,7 +94,7 @@
 
         .navbar a {
             text-decoration: none;
-            color: gold;
+            color: black;
             display: block;
         }
 
@@ -201,8 +201,8 @@
        
     /* Style the dropdown button */
     .dropbtn {
-      background-color:  rgb(11, 11, 10);
-      color: gold;
+      background-color:  #ccc;
+      color: black;
       padding: 10px;
       font-size: 16px;
       border: none;
@@ -210,13 +210,13 @@
       margin-left: 60px;
       font-family: 'Times New Roman', sans-serif;
       font-size: 18px;
+
     }
 
     /* Style the dropdown content (hidden by default) */
     .dropdown-content {
       display: none;
       position: absolute;
-      background-color:rgba(0,0,0,0.2);
       min-width: 160px;
       box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
       z-index: 1;
@@ -225,7 +225,7 @@
 
         /* Style the dropdown links */
         .dropdown-content a {
-      color: gold;
+      color: black;
       padding: 12px 16px;
       text-decoration: none;
       display: block;
@@ -233,7 +233,7 @@
     
     /* Change color on hover */
     .dropdown-content a:hover {
-      background-color: rgba(0,0,0,0.2);
+      background-color: black;
     }
 
     /* Show the dropdown content when the button is clicked */
@@ -244,11 +244,12 @@
     .grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr); /* 2 columns with equal width */
-      gap: 20px  ; /* Adjust the gap between boxes */
+      gap: 50px  ; /* Adjust the gap between boxes */
       margin-top: 100px;
       margin-left: 350px;
       margin-right: 10px;
-      margin-bottom: 50px;
+      margin-bottom: 80px;
+      
     }
 
     /* Define a class for each box */
@@ -257,10 +258,15 @@
       padding: 10px;
       background: #f0f0f0;
       text-align: center;
-      height: 250px;
+      height: 220px;
       width: 350px;
-      
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
 
+    .box:hover {
+      transform: scale(1.05);
     }
 
     /* Style the image */
@@ -270,7 +276,12 @@
     }
 
 
-
+    .box p {
+      font-size: 18px; /* Adjust the font size */
+      color: gold; /* Set the text color to black */
+      margin-top: 20px; /* Adjust the margin between image and text */
+      text-decoration: none;
+}
 
 
 
@@ -290,7 +301,7 @@
             <li><a href="#">
                     <h1>Dashboard</h1>
                 </a></li>
-            <li><a href="Dashboard Staff page.html">Events</a></li>
+            <li><a href="EventsManagement.html">Events</a></li>
             <li><a href="Dashboard - Orders Page.html">Menus</a></li>
             <li><a class="back-button" href="javascript:history.back()">Go Back</a></li>
         
@@ -370,15 +381,15 @@
         <!-- Box 1 -->
         <div class="box">
           <a href="Dashboard Staff page.html">
-            <img src="image1.jpg" alt="Image 1">
+            <img src="C:\Users\BEATS\Desktop\(indivual) FCMS---Food-Catering-Management-Service\FCMS-Assets\images/staff 1.png" alt="staff 1">
             <p>Staff</p>
           </a>
         </div>
-    
+        
         <!-- Box 2 -->
         <div class="box">
           <a href="Dashboard - Orders Page.html">
-            <img src="image2.jpg" alt="Image 2">
+            <img src="C:\Users\BEATS\Desktop\(indivual) FCMS---Food-Catering-Management-Service\FCMS-Assets\images/orders 3.png" alt="orders 3">
             <p>Orders</p>
           </a>
         </div>
@@ -386,7 +397,7 @@
         <!-- Box 3 -->
         <div class="box">
           <a href="Dashboard - Customers Page.html">
-            <img src="image3.jpg" alt="Image 3">
+            <img src="C:\Users\BEATS\Desktop\(indivual) FCMS---Food-Catering-Management-Service\FCMS-Assets\images\customers 1.png" alt="customers 1">
             <p>Customers</p>
           </a>
         </div>
@@ -394,7 +405,7 @@
         <!-- Box 4 -->
         <div class="box">
           <a href="Dashboard Business Analytics Page.html">
-            <img src="image4.jpg" alt="Image 4">
+            <img src="C:\Users\BEATS\Desktop\(indivual) FCMS---Food-Catering-Management-Service\FCMS-Assets\images\profit 3.png" alt="profit 3">
             <p>Profits</p>
           </a>
         </div>
