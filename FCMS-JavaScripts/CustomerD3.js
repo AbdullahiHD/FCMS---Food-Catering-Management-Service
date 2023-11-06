@@ -7,249 +7,204 @@
 // description: [html files it works on : Index.html]
 // */
 
-function init() {
-    // Define the width and height of the SVG canvas
-    var w = 500;
-    var h = 450;
-    var padding = 30;
+// Assuming customerData is available and loaded properly from your PHP script
+// console.log(customerData); // Make sure this prints your data
 
-    // Select the SVG element by its ID
-    var svg = d3.select("#bar-chart")
-        .attr("width", w)
-        .attr("height", h);
+// document.addEventListener('DOMContentLoaded', function () {
+//     console.log(d3); // This should print the D3 object to confirm it's loaded
 
-    // Fetch the dataset from the PHP script
-    fetchData();
+//     // Append an SVG element to the div with the id 'chart'
+//     const svg = d3.select('#bar-chart')
+//         .append('svg')
+//         .attr('width', 600)
+//         .attr('height', 400)
+//         .style('background-color', 'lightblue'); // Ensure the background color is set
 
-    function updateChart(customers) {
-        // Map the dataset to extract the NumberOfOrders as an array of numbers
-        var dataset = customers.map(function (d) { return d.NumberOfOrders; });
+//     // Append a text element to the SVG; this is just for testing
+//     svg.append('text')
+//         .attr('x', 200)
+//         .attr('y', 200)
+//         .text('D3 is working!')
+//         .attr('font-size', '20px')
+//         .attr('fill', 'black');
 
-        // Define the scales based on the dataset
-        var xScale = d3.scaleBand()
-            .domain(d3.range(dataset.length))
-            .rangeRound([padding, w - padding])
-            .paddingInner(0.05);
+//     // Your code for visualizing customerData goes here
+// });
 
-        var yScale = d3.scaleLinear()
-            .domain([0, d3.max(dataset)])
-            .range([h - padding, padding]);
+document.addEventListener('DOMContentLoaded', function () {
+    // Ensure the SVG container has the correct ID
+    const svgContainer = d3.select('#bar-chart');
 
-        // Create rectangles for the bar chart
-        var bars = svg.selectAll("rect")
-            .data(dataset)
-            .enter()
-            .append("rect")
-            .attr("x", (d, i) => xScale(i))
-            .attr("y", d => yScale(d))
-            .attr("width", xScale.bandwidth())
-            .attr("height", d => h - padding - yScale(d))
-            .attr("fill", "slategrey")
-            .on("mouseover", function (event, d) {
-                d3.select(this)
-                    .transition()
-                    .duration(200)
-                    .attr("fill", "orange");
+    // Set dimensions and margins for the graph
+    var margin = { top: 20, right: 10, bottom: 50, left: 20 };
+    var width = 560 - margin.left - margin.right;
+    var height = 500 - margin.top - margin.bottom;
 
-                var xPosition = parseFloat(d3.select(this).attr("x")) + xScale.bandwidth() / 2;
-                var yPosition = parseFloat(d3.select(this).attr("y")) / 2 + h / 2;
+    // Append SVG object to the chart div
+    const svg = svgContainer
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
 
-                svg.append("text")
-                    .attr("id", "tooltip")
-                    .attr("x", xPosition)
-                    .attr("y", yPosition)
-                    .attr("text-anchor", "middle")
-                    .attr("fill", "white")
-                    .text(d);
-            })
-            .on("mouseout", function (d) {
-                d3.select("#tooltip").remove();
-                d3.select(this)
-                    .transition()
-                    .duration(200)
-                    .attr("fill", "slategrey");
-            });
+    // X axis
+    const x = d3.scaleBand()
+        .range([0, width])
+        .domain(customerData.map(d => d.City))
+        .padding(0.1); document.addEventListener('DOMContentLoaded', function () {
+            // Ensure the SVG container has the correct ID
+            const svgContainer = d3.select('#bar-chart');
 
-        // Labels for the x-axis could be added here if needed
-        // ...
-    }
+            // Set dimensions and margins for the graph
+            var margin = { top: 20, right: 10, bottom: 50, left: 20 };
+            var width = 560 - margin.left - margin.right;
+            var height = 500 - margin.top - margin.bottom;
 
-    function fetchData() {
-        // Assuming your PHP script is named 'CustomerStatistic.php' and outputs JSON
-        fetch('CustomerStatistic.php') // Path to your PHP script
-            .then(response => response.json())
-            .then(data => {
-                updateChart(data); // Update the chart with the fetched data
-            })
-            .catch(error => {
-                console.error('Error fetching data: ', error);
-            });
-    }
-}
+            // Append SVG object to the chart div
+            const svg = svgContainer
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+                .append("g")
+                .attr("transform", `translate(${margin.left},${margin.top})`);
 
-window.onload = init;
+            // X axis
+            const x = d3.scaleBand()
+                .range([0, width])
+                .domain(customerData.map(d => d.City))
+                .padding(0.1);
 
+            const xAxisGroup = svg.append("g")
+                .attr("transform", `translate(0, ${height})`)
+                .call(d3.axisBottom(x));
 
-    //     // X-Axis Scale
-    //     var xScale = d3.scaleBand() // Ordinal Scale Method
-    //         .domain(d3.range(dataset.length)) // Calculate the range of the domain
-    //         .rangeRound([0, w]) // Specifying the size of the range the domain needs to be mapped to
-    //         .paddingInner(0.05);    // Generating a padding value of 5% of the bandwidth
+            // Style the X axis lines and ticks
+            xAxisGroup.select(".domain").attr("stroke", "black").attr("stroke-width", "1");
+            xAxisGroup.selectAll("line").attr("stroke", "black").attr("stroke-width", "1");
 
-    //     // Y-Axis Scale
-    //     var yScale = d3.scaleLinear()
-    //         .domain([0, d3.max(dataset)])
-    //         .range([h, 0]);
-    
-    //     // var xAxis = d3.axisBottom(xScale)
-    //     //     .tickFormat(i => i + 1); // This is an example; format as needed
+            // Style the X axis labels
+            xAxisGroup.selectAll("text")
+                .attr("transform", "translate(-10,0)rotate(-45)")
+                .style("text-anchor", "end")
+                .attr("fill", "black") // Set the color of the text
+                .attr("font-weight", "bold"); // Make the text bold
 
-    //     // var yAxis = d3.axisLeft(yScale)
-    //     //     .ticks(5); // Adjust the number of ticks as needed
+            // Add Y axis
+            const y = d3.scaleLinear()
+                .domain([0, d3.max(customerData, d => +d.NumberOfCustomers)])
+                .range([height, 0]);
 
-    //     // // Append the x-axis
-    //     // svg.append("g")
-    //     //     .attr("class", "x axis")
-    //     //     .attr("transform", "translate(0," + (h - padding) + ")")
-    //     //     .call(xAxis);
+            const yAxisGroup = svg.append("g")
+                .call(d3.axisLeft(y));
 
-    //     // // Append the y-axis
-    //     // svg.append("g")
-    //     //     .attr("class", "y axis")
-    //     //     .attr("transform", "translate(" + padding + ",0)")
-    //     //     .call(yAxis);
+            // Style the Y axis lines and ticks
+            yAxisGroup.select(".domain").attr("stroke", "black").attr("stroke-width", "1");
+            yAxisGroup.selectAll("line").attr("stroke", "black").attr("stroke-width", "1");
 
-    //     // Create an SVG element and append it to the #chart-container of the HTML document
-    //     var svg = d3.select("#chart-container")
-    //         .append("svg")
-    //         .attr("width", w)
-    //         .attr("height", h);
+            // Style the Y axis labels
+            yAxisGroup.selectAll("text")
+                .attr("fill", "black") // Set the color of the text
+                .attr("font-weight", "bold"); // Make the text bold
 
-    //     // Create a new rectangle for each data point
-    //     svg.selectAll("rect")
-    //         .data(dataset)
-    //         .enter()
-    //         .append("rect")
-    //         .attr("x", function (d, i) {
-    //             return xScale(i);
-    //         })
-    //         .attr("y", function (d) {
-    //             return yScale(d);
-    //         })
-    //         // Initial grey colour
-    //         .attr("fill", "slategrey")
+            // Bars
+            svg.selectAll("mybar")
+                .data(customerData)
+                .join("rect")
+                .attr("x", d => x(d.City))
+                .attr("y", d => y(d.NumberOfCustomers))
+                .attr("width", x.bandwidth())
+                .attr("height", d => height - y(d.NumberOfCustomers))
+                .attr("fill", "#69b3a2");
 
-    //         //Changing bar colour to orange on mouseover with transition
-    //         .on("mouseover", function () {
-    //             d3.select(this)
-    //                 .transition()
-    //                 .duration(200)
-    //                 .attr("fill", "orange");
-    //         })
+            // Tooltip (assuming you have the correct CSS for .tooltip)
+            const tooltip = d3.select("body").append("div")
+                .attr("class", "tooltip")
+                .style("opacity", 0);
 
-    //         // Changing the bar color on mouseover as well as having a tool tip
-    //         .on("mouseover", function (event, d) {
-    //             var xPosition = parseFloat(d3.select(this).attr("x")) + xScale.bandwidth() / 2 - 7; // Adjusted to center the text
-    //             var yPosition = parseFloat(d3.select(this).attr("y")) + 14; // Adjusted so that the text is just under the bar roof
-
-    //             d3.select(this)
-    //                 .transition()
-    //                 .duration(200)
-    //                 .attr("fill", "orange");
-
-    //             svg.append("text")
-    //                 .attr("id", "tooltip")
-    //                 .attr("x", xPosition)
-    //                 .attr("y", yPosition)
-    //                 .attr("fill", "white")
-    //                 .text(d);
-
-    //         })
-
-    //         // Changing bar colour back to grey on removing the mouseover transition
-    //         .on("mouseout", function () {
-    //             svg.select("#tooltip").remove();
-    //             d3.select(this)
-    //                 .transition()
-    //                 .duration(200)
-    //                 .attr("fill", "slategrey");
-    //         })
-
-    //         .attr("width", xScale.bandwidth())
-    //         .attr("height", function (d) {
-    //             return h - yScale(d);
-    //         })
-
-    //     // add bar function
-    
-
-    //     // function to remove a bar
-   
+            // Add interactivity (tooltip)
+            svg.selectAll("rect")
+                .on("mouseover", function (event, d) {
+                    tooltip.transition()
+                        .duration(200)
+                        .style("opacity", .9);
+                    tooltip.html("City: " + d.City + "<br/>" + "Customers: " + d.NumberOfCustomers)
+                        .style("left", (event.pageX) + "px")
+                        .style("top", (event.pageY - 28) + "px");
+                })
+                .on("mouseout", function (d) {
+                    tooltip.transition()
+                        .duration(500)
+                        .style("opacity", 0);
+                });
+        });
 
 
+    const xAxisGroup = svg.append("g")
+        .attr("transform", `translate(0, ${height})`)
+        .call(d3.axisBottom(x));
 
-    //     // Sort Ascending Function
-    //     function sortBarsAscending() {
-    //         svg.selectAll("rect")
-    //             .sort(function (a, b) {
-    //                 return d3.ascending(a, b)
-    //             })
-    //             .transition()
-    //             .delay(200)
-    //             .duration(1500)
-    //             .attr("x", function (d, i) {
-    //                 return xScale(i);
-    //             });
-    //     }
+    // Style the X axis lines and ticks
+    xAxisGroup.select(".domain").attr("stroke", "black").attr("stroke-width", "1");
+    xAxisGroup.selectAll("line").attr("stroke", "black").attr("stroke-width", "1");
 
-    //     // Sort Descending Function
-    //     function sortBarsDescending() {
-    //         svg.selectAll("rect")
-    //             .sort(function (a, b) {
-    //                 return d3.descending(a, b)
-    //             })
-    //             .transition()
-    //             .delay(200)
-    //             .duration(2500)
-    //             .attr("x", function (d, i) {
-    //                 return xScale(i);
-    //             });
-    //     }
+    // Style the X axis labels
+    xAxisGroup.selectAll("text")
+        .attr("transform", "translate(-10,0)rotate(-45)")
+        .style("text-anchor", "end")
+        .attr("fill", "black") // Set the color of the text
+        .attr("font-weight", "bold"); // Make the text bold
 
-    //     // var padding = 30; // Padding for the axis
+    // Add Y axis
+    const y = d3.scaleLinear()
+        .domain([0, d3.max(customerData, d => +d.NumberOfCustomers)])
+        .range([height, 0]);
 
-    //     // // Create the x-axis
-    //     // var xAxis = d3.axisBottom(xScale)
-    //     //     .tickFormat(i => dataset[i]);
+    const yAxisGroup = svg.append("g")
+        .call(d3.axisLeft(y));
 
-    //     // // Create the y-axis
-    //     // var yAxis = d3.axisLeft(yScale)
-    //     //     .ticks(5);
+    // Style the Y axis lines and ticks
+    yAxisGroup.select(".domain").attr("stroke", "black").attr("stroke-width", "1");
+    yAxisGroup.selectAll("line").attr("stroke", "black").attr("stroke-width", "1");
 
-    //     // // Add the x-axis
-    //     // svg.append("g")
-    //     //     .attr("class", "x axis")
-    //     //     .attr("transform", "translate(0," + (h - padding) + ")")
-    //     //     .call(xAxis);
+    // Style the Y axis labels
+    yAxisGroup.selectAll("text")
+        .attr("fill", "black") // Set the color of the text
+        .attr("font-weight", "bold"); // Make the text bold
 
-    //     // // Add the y-axis
-    //     // svg.append("g")
-    //     //     .attr("class", "y axis")
-    //     //     .attr("transform", "translate(" + padding + ",0)")
-    //     //     .call(yAxis);
+    // Bars
+    svg.selectAll("mybar")
+        .data(customerData)
+        .join("rect")
+        .attr("x", d => x(d.City))
+        .attr("y", d => y(d.NumberOfCustomers))
+        .attr("width", x.bandwidth())
+        .attr("height", d => height - y(d.NumberOfCustomers))
+        .attr("fill", "#69b3a2");
 
-    //     // Sort Ascending button
-    //     d3.select(".sortAsc-button")
-    //         .on("click", sortBarsAscending);
+    // Tooltip (assuming you have the correct CSS for .tooltip)
+    const tooltip = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
 
-    //     // Sort Descending button
-    //     d3.select(".sortDesc-button")
-    //         .on("click", sortBarsDescending);
+    // Add interactivity (tooltip)
+    svg.selectAll("rect")
+        .on("mouseover", function (event, d) {
+            tooltip.transition()
+                .duration(200)
+                .style("opacity", .9);
+            tooltip.html("City: " + d.City + "<br/>" + "Customers: " + d.NumberOfCustomers)
+                .style("left", (event.pageX) + "px")
+                .style("top", (event.pageY - 28) + "px");
+        })
+        .on("mouseout", function (d) {
+            tooltip.transition()
+                .duration(500)
+                .style("opacity", 0);
+        });
+});
 
-    // }
-// }
 
-// window.onload = init;
+
+
 
 
 

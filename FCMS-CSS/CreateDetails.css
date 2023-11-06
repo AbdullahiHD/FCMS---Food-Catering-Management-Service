@@ -1,4 +1,6 @@
 
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
 /* Content Styling */
 .hcontent {
     text-align: center;
@@ -126,7 +128,6 @@ button[type="reset"]:hover {
     }
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
 
 .footer {
     margin-top: 20px;
@@ -144,63 +145,61 @@ button[type="reset"]:hover {
 
 /* CSS for the chart container and the SVG canvas */
 #chart-container {
-    width: 100%;
-    max-width: 600px;
-    /* Set the max width for the container */
+    width: 700px;
     margin: 20px auto;
-    /* Center the container */
     background-color: #f9f9f9;
-    /* Light background for contrast */
-    border: 1px solid #ccc;
-    /* Border for the container */
-    padding: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 60px;
-    /* Soft shadow for depth */
+    border: 1px solid #0b0303;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(185, 26, 26, 0.1);
+    margin-bottom: 70px;
 }
 
 #bar-chart {
-    display: block;
-    /* SVG takes up the whole block */
+    /* width: 100%; */
+    max-width: 700px;
     margin: auto;
-    /* Center SVG in its container */
+    height: 500px;
+    display: block;
     font-family: 'Arial', sans-serif;
-    margin-bottom: 80px;
-    /* Font for text elements */
 }
 
 /* CSS for the bars on mouseover */
 rect:hover {
     fill: #ffa500;
-    /* A different shade of orange for better contrast */
     cursor: pointer;
-    /* Change cursor to indicate interactivity */
 }
 
 /* CSS for the tooltip */
-#tooltip {
-    font-size: 12px;
-    font-weight: bold;
+.tooltip {
+    position: absolute;
+    text-align: center;
+    width: auto;
+    height: auto;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: rgb(5, 95, 211);
+    border: 0px;
+    border-radius: 8px;
     pointer-events: none;
-    /* Ensure the tooltip doesn't interfere with mouse events */
+    opacity: 0;
 }
 
 /* Adding classes for axis labels */
-.axis-label {
-    font-size: 14px;
-    fill: #666;
-}
+/* .axis-label {
+    font-size: 12px;
+    fill: #0f0101;
+} */
 
 /* Styling the axis lines */
-.axis path,
+/* .axis path,
 .axis line {
     fill: none;
-    stroke: #666;
+    stroke: #190202;
     shape-rendering: crispEdges;
-}
+} */
 
-.axis text {
+/* .axis text {
     font-family: 'Arial', sans-serif;
     font-size: 12px;
-    color: #666;
-}
+    color: #1a0202;
+} */
