@@ -7,6 +7,13 @@
     <title>Menu</title>
     <link rel="stylesheet" href="../FCMS-Assets/Main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Include jQuery UI Datepicker styles -->
+    <!-- Include jQuery UI Datepicker styles -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- Include jQuery and jQuery UI libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
     <style>
         /* Additional CSS for this specific page */
         body {
@@ -249,6 +256,11 @@
             flex-direction: column;
             align-items: center;
         }
+
+        .highlighted-date {
+            background-color: red; /* Set the background color for highlighted dates */
+            color: white; /* Set the text color for highlighted dates */
+        }
             
     </style>
 </head>
@@ -292,9 +304,11 @@
             <label for="event-time">Event Time:</label>
             <input type="time" id="event-time" name="event-time" required>
 
+            
             <label for="event-date">Event Date:</label>
-            <input type="date" id="event-date" name="event-date" required>
-
+            <input id="event-date" name="event-date" required>
+           
+            
             <label for="delivery-address">Delivery Address:</label>
             <input type="text" id="delivery-address" name="delivery-address" required>
 
@@ -357,9 +371,26 @@
     } else {
         echo "No menu items found.";
     }
+    // Query to fetch event dates from ORDERS table
+    $sql = "SELECT eventDate FROM ORDERS";
+    $result = $conn->query($sql);
+
+    $eventDates = array();
+
+    if ($result->num_rows > 0) {
+        while($row = $result->fetch_assoc()) {
+            $eventDates[] = $row["eventDate"];
+        }
+    }
+
 
     // Close the database connection
     $conn->close();
+
+    // Echo the $eventDates array as a JSON object into a JavaScript variable
+    echo '<script>';
+    echo 'const eventDatesArray = ' . json_encode($eventDates) . ';';
+    echo '</script>';
 ?>
 
     <!-- ?> -->
@@ -470,6 +501,7 @@
         </ul>
         
     </footer>
+
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="../FCMS-JavaScripts/menuScript.js"></script>
