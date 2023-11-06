@@ -2,7 +2,36 @@ document.addEventListener('DOMContentLoaded', function () {
     var menuItems = document.querySelectorAll('.menu-item');
     var selectedMenu = document.getElementById('selected-menu');
     var createEventButton = document.querySelector('.create-event');
+    var eventDateInput = document.getElementById("event-date");
+    var takenDates = eventDatesArray || []; // Ensure the eventDatesArray is defined
+
+    $(eventDateInput).datepicker({
+        beforeShowDay: function(date) {
+            var dateString = $.datepicker.formatDate('yy-mm-dd', date);
+            // Check if the date is in the eventDatesArray
+            if (takenDates.includes(dateString)) {
+                // Highlight the date in red and make it unselectable
+                return [true, 'highlighted-date', 'Date already taken'];
+            }
+            // Dates not in the eventDatesArray are selectable
+            return [true, ''];
+        },
+        onSelect: function(selectedEventDate) {
+            var formattedDate = $.datepicker.formatDate('yy-mm-dd', new Date(selectedEventDate));
+            alert('Dates Booked: ' + takenDates);
+            alert('Date selected: ' + formattedDate);
+            // Here you can update eventDateInput if needed
+            eventDateInput.value = formattedDate;
+            if (takenDates.includes(eventDateInput.value)) {
+                alert('Sorry, the selected date is already taken. Please choose another date.');
+                eventDateInput.value = ''; // Clear the input field
+            }
+        }
+    });    
+
+
     createEventButton.disabled = true; // Initially, disable the button
+
 
     menuItems.forEach(function (menuItem) {
         menuItem.addEventListener('click', function () {
@@ -28,6 +57,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 behavior: 'smooth'
             });
         });
+    });
+
+    eventDateInput.addEventListener('change', function () {
+        var selectedEventDate = eventDateInput.value;
+        alert(selectedEventDate);
+        if (takenDates.includes(selectedEventDate)) {
+            alert('Sorry, the selected date is already taken. Please choose another date.');
+            eventDateInput.value = ''; // Clear the input field
+        }
     });
 
     createEventButton.addEventListener('click', function () {
