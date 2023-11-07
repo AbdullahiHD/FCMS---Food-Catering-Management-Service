@@ -101,6 +101,7 @@
             max-width: 960px; /* Set a maximum width for larger screens */
             background-color: black;
             z-index: 1;
+            margin-top: 100px;
         }
         .menu-item p{
             margin-top: 5px;
@@ -204,41 +205,6 @@
             background-color: #FFEE32;
             color: #333533;
         }
-
-        .form-container {
-            align-items: center;
-            margin-top: 100px;
-            width: 40%;
-            padding: 10px;
-            border: 0px solid white;
-            border-radius: 1px;
-            background-color:black;
-            margin-bottom: 10px;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        label {
-            margin-bottom: 5px;
-            color: #FFD100;
-            font-family: 'Helvetica Neue', sans-serif;
-            font-size: 18px;
-        }
-
-        input[type="text"],
-        input[type="time"],
-        input[id="event-date"],
-        input[type="number"],
-        select[id="event-type"] {
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 14px;
-        }
         
         .selected-output {
             margin-top: 10px;
@@ -286,40 +252,8 @@
     
     </nav>
 
-    <div class="form-container">
-        <h2>Event Details Form</h2>
-        <form>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="event-type">Event Type:</label>
-            <select id="event-type" name="event-type" required>
-                <option value="" disabled selected>Select Event Type</option>
-                <option value="Wedding">Wedding</option>
-                <option value="Birthday">Birthday</option>
-                <option value="Corporate">Corporate</option>
-                <option value="Other">Other</option>
-            </select>
-
-            <label for="event-time">Event Time:</label>
-            <input type="time" id="event-time" name="event-time" required>
-
-            
-            <label for="event-date">Event Date:</label>
-            <input id="event-date" name="event-date" required>
-           
-            
-            <label for="delivery-address">Delivery Address:</label>
-            <input type="text" id="delivery-address" name="delivery-address" required>
-
-            <label for="attendees">Number Of Attendees:</label>
-            <input type="number" id="attendees" name="attendees" required>
-        </form>
-    </div>
-
     <!-- Added php code on 18th/10/2023 Abdullahi -->
     <?php
-
     // session_start();
 
     $servername = "localhost";
@@ -340,6 +274,7 @@
     $sql = "SELECT * FROM menus";
     $result = $conn->query($sql);
 
+    
     if ($result->num_rows > 0) {
         echo '<div class="menu-box">';
         while ($row = $result->fetch_assoc()) {
@@ -364,7 +299,8 @@
             echo '            <p>' . $row["Drink"] . '</p>';
             echo '        </div>';
             echo '    </div>';
-            echo '    <button class="menu-select-button">Select</button>';
+            echo '    <button class="menu-select-button">Edit</button>';
+            echo '    <button class="menu-select-button">Delete</button>';
             echo '</div>';
         }
         echo '</div>';
