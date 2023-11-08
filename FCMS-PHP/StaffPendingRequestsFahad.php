@@ -17,6 +17,7 @@
             <li><a href="StaffDashboardFahad.php">Dashboard</a></li>
             <li><a href="StaffPendingRequestsFahad.php">Pending Requests</a></li>
             <li><a href="StaffActiveOrdersFahad.php">Active Orders</a></li>
+            <li><a href="StaffProfilePage.php">Profile</a></li>
         </ul>
     </nav>
 
