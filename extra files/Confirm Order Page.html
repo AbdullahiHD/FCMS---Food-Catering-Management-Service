@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Container for the grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2 columns with equal width */
+      gap: 20px  ; /* Adjust the gap between boxes */
+      margin-top: 150px;
+      margin-left: 300px;
+      margin-right: 10px;
+
+    }
+
+    /* Define a class for each box */
+    .box {
+      border: 2px solid #333;
+      padding: 10px;
+      background: #f0f0f0;
+      text-align: center;
+      height: 250px;
+      width: 250px;
+      
+
+    }
+
+    /* Style the image */
+    .box img {
+      max-width: 100%;
+      height: auto;
+    }
+
+
+  </style>
+</head>
+<body>
+  <div class="grid">
+    <!-- Box 1 -->
+    <div class="box">
+      <a href="page1.html">
+        <img src="image1.jpg" alt="Image 1">
+        <p>Box 1</p>
+      </a>
+    </div>
+
+    <!-- Box 2 -->
+    <div class="box">
+      <a href="page2.html">
+        <img src="image2.jpg" alt="Image 2">
+        <p>Box 2</p>
+      </a>
+    </div>
+
+    <!-- Box 3 -->
+    <div class="box">
+      <a href="page3.html">
+        <img src="image3.jpg" alt="Image 3">
+        <p>Box 3</p>
+      </a>
+    </div>
+
+    <!-- Box 4 -->
+    <div class="box">
+      <a href="page4.html">
+        <img src="image4.jpg" alt="Image 4">
+        <p>Box 4</p>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

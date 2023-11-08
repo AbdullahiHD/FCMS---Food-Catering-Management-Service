@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }
+
+        .navbar {
+            background-color: gold;
+            width: 200px;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+        }
+
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navbar li {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: black;
+            display: block;
+        }
+
+        .navbar a:hover {
+            background-color: black;
+            color: gold;
+        }
+
+        .content {
+            margin-left: 220px;
+            padding: 20px;
+            color: white;
+        }
+        nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 8%;
+    padding-right: 8%;
+    background-color: rgb(11, 11, 10);
+    position: fixed; /* This makes the navbar fixed at the top */
+    top: 0; /* Position it at the top of the viewport */
+    left: 0; /* Position it at the left of the viewport */
+    width: 100%; /* Ensure it takes the full width */
+    z-index: 1000; /* This ensures the navbar is always on top of other content */
+  }
+  
+  
+  
+  span{
+    color:goldenrod;
+  }
+  
+  nav ul li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 10px 25px ;
+  
+  }
+  nav ul li a {
+    color: goldenrod;
+    text-decoration:none ;
+    font-family: 'Franklin Gothic Medium', sans-serif;
+    font-weight: bold;
+    text-transform: capitalize;
+    font-size: 17px;
+  
+  }
+
+  .registrationbutton {
+      background-color: goldenrod;
+      color: white;
+      font-family: 'Franklin Gothic Medium', sans-serif;
+      text-decoration:none ;
+      border: 2px dotted transparent;
+      font-weight: bold;
+      padding: 10px 25px;
+      border-radius: 40px;
+      transition: transform .3s;
+  
+  }
+  
+  .registrationbutton:hover{
+    transform: scale(1.1);
+  }
+
+  /**
+  **/
+
+  nav ul li a {
+    position: relative;
+    /* ... (rest of your styles) */
+  }
+  
+  /* Before and After pseudo-elements represent the two lines */
+  nav ul li a::before, 
+  nav ul li a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px; /* Height of the line */
+    background-color: goldenrod; /* Line color */
+    transition: all 0.3s ease;
+  }
+  
+  /* First line appears from the left */
+  nav ul li a::before {
+    bottom: 1px; /* Slight offset from the bottom to create gap between two lines */
+  }
+  
+  /* Second line appears from the right */
+  nav ul li a::after {
+    bottom: -3px; /* Slight offset from the bottom */
+    right: 0;
+    left: auto;
+    transform: scaleX(-1); /* Invert it to make it appear from right */
+  }
+  
+  /* On hover, the lines animate to full width */
+  nav ul li a:hover::before, 
+  nav ul li a:hover::after {
+    width: 100%;
+  }
+  
+  .back-button {
+            display: inline-block;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li><a href="#"><h1>Dashboard</h1></a></li>
+            <li><a href="#"><h1>Dashboard</h1></a></li>
+            <li><a href="#"><h1>Home</h1></a></li>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <li><a class="back-button" href="javascript:history.back()">Go Back</a></li>
+        </ul>
+    </div>
+
+    
+
+    
+    <div class="content">
+        <!-- Content for your pages goes here -->
+    </div>
+    <nav>
+    
+        <a href="#" class="logolink">
+          <img src="./assets/images/culinarycue.png" width="160" height="30" alt="CulinaryCue - Home">
+        </a>
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="">Menu</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Our Team</a></li>
+            <li><a href="">Contact</a></li>
+            
+        </ul>
+        <a href="" class="registrationbutton">Login</a>
+        <a href="" class="registrationbutton">Login</a>
+    
+    
+    </nav>
+</body>
+</html>
