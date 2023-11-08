@@ -161,6 +161,20 @@
     </style>
 </head>
 <body>
+    <header>
+        <nav>
+            <a href="#" class="logolink">
+                <img src="../FCMS-Assets/images/culinarycue.png" width="100" height="60" alt="CulinaryCue - Home">
+            </a>
+            <ul>
+                <li><a href="../FCMS-HTML/TahaIndex.html">Home</a></li>
+                <li><a href="../FCMS-HTML/TahaIndex.html">Menu</a></li>
+                <li><a href="../FCMS-HTML/TahaIndex.html">About</a></li>
+                <li><a href="../FCMS-HTML/TahaIndex.html">Contact</a></li>
+            </ul>
+            <!-- <a href="../FCMS-PHP/Login.php" class="registrationbutton">Login</a> -->
+        </nav>
+    </header>
     <div class="container">
         <div class="feedback-form">
             <h1>Feedback Form</h1>
@@ -175,7 +189,7 @@
                 <input type="tel" id="phone" name="phone">
 
                 <label for="feedback">Feedback:</label>
-                <textarea id="feedback" name="feedback" rows="4"></textarea>
+                <textarea id="feedback" name="feedback" rows="10"></textarea>
             </form>
         </div>
         <div class="button-container">
@@ -187,18 +201,58 @@
     <div class="content">
         <!-- Content for your pages goes here -->
     </div>
-    <nav>
-        <a href="#" class="logolink">
-            <img src="../FCMS-Assets/images/culinarycue.png" width="160" height="30" alt="CulinaryCue - Home">
-        </a>
-        <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="">Menu</a></li>
-            <li><a href="">About</a></li>
-            <li><a href="">Our Team</a></li>
-            <li><a href="">Contact</a></li>
-        </ul>
-        <a href="" class="registrationbutton">Login</a>
-    </nav>
 </body>
 </html>
+
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "FCMS";
+
+// Check if the form has been submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['name'], $_POST['email'], $_POST['phone'], $_POST['feedback'])) {
+    // Create a connection
+    $conn = new mysqli($servername, $username, $password, $database);
+
+    // Check the connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Get data from the POST request
+    $feedback = $conn->real_escape_string($_POST['feedback']);
+    // $eventTime = $conn->real_escape_string($_POST['eventTime']);
+    // $eventDate = $conn->real_escape_string($_POST['eventDate']);
+    // $deliveryAddress = $conn->real_escape_string($_POST['deliveryAddress']);
+    // $attendees = $conn->real_escape_string($_POST['attendees']);
+    // $menuId = $conn->real_escape_string($_POST['menuId']);
+
+    // Set default values for OrderStatus and PaymentStatus
+    // $orderStatus = "Pending";
+    // $paymentStatus = "Received";
+    // $paymentID = "1";
+
+    // SQL query to insert data into the "requests" table
+    $sql = "INSERT INTO requests (Comments)
+            VALUES ('$feedback')";
+
+    // if ($conn->query($sql) === TRUE) {
+    //     // Data inserted successfully
+    //     echo "Order Successful";
+    //     // JavaScript for redirection and alert
+    //     echo "<script>
+    //         alert('Order Successful');
+    //         window.location.href = 'menu.php';
+    //     </script>";
+    // } else {
+    //     echo "Error: " . $sql . "<br>" . $conn->error;
+    // }
+
+    // Close the database connection
+    $conn->close();
+} else {
+    // Handle the case where not all required parameters are set
+    echo "Missing required parameters.";
+}
+?>
