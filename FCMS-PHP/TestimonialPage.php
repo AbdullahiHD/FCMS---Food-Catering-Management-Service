@@ -229,13 +229,13 @@
         </div>
     </div>
     <div class="button-container">
-        <a href="Dashboard.html">
+        <a href="../FCMS-HTML/TahaIndex.html">
             <button>Home Page</button>
         </a>
     </div>
     <nav>
         <a href="#" class="logolink">
-            <img src="../FCMS-Assets/images/culinarycue.png" width="10" height="60" alt="CulinaryCue - Home">
+        <img src="../FCMS-Assets/images/culinarycue.png" width="100px" height="60px" alt="CulinaryCue - Home">
         </a>
         <ul>
             <li><a href="">Home</a></li>
@@ -245,7 +245,7 @@
             <li><a href="">Contact</a></li>
         </ul>
         <a href="" class="registrationbutton">Login</a>
-        <a href="" class="registrationbutton">Login</a>
+        
     </nav>
 </body>
 </html>

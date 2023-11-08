@@ -53,10 +53,7 @@ nav {
     font-size: 17px;
   
   }
-  .feedbackbutton {
-    background-color: goldenrod;
-  
-  }
+
   
   .registrationbutton {
     background-color: goldenrod;
@@ -167,7 +164,7 @@ nav {
   .container {
     display: flex;
     justify-content: center;
-    margin-top: 1px;
+    margin-top: -70px;
     align-items: center;
     height: 100vh;
 }
@@ -223,7 +220,7 @@ nav {
 
 .textpayment{
   color: white;
-  margin-top: 180px;
+  margin-top: 110px;
   text-align: center;
 } 
 
@@ -239,8 +236,25 @@ label {
   padding-right: 200px;
   text-align: center;
   font-size: 30px;
+  margin-bottom: 50px;
 }
 
 
+.feedbackbutton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: goldenrod;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 300px;
+  text-decoration: none;
+  margin: 0 auto; /* Center horizontally */
+}
 
  

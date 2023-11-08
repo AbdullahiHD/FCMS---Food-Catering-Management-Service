@@ -31,6 +31,8 @@
      Please consider leaving a review on our website to help us improve and serve you better in the future.
     </p>
 
+
+    <a class="feedbackbutton" href="Feedback and Reviewing Page.php">FeedBack</a>
     
 
 
@@ -39,9 +41,11 @@
 </html>
 
 
+
+
+
+
 <?php
-
-
 session_start();
 $servername = "localhost";
 $username = "root";
@@ -53,26 +57,18 @@ if (isset($_SESSION['orderDetails'])) {
     // Retrieve the order details from the session
     $orderDetails = $_SESSION['orderDetails'];
 
-    // Display the order details
-    echo "<h1>Payment Successful</h1>";
-    echo "<p>Thank you for your payment. Your order details:</p>";
-    echo "<ul>";
-    echo "<li>Customer Name: " . htmlspecialchars($orderDetails['name']) . "</li>";
-    echo "<li>Event Time: " . htmlspecialchars($orderDetails['eventTime']) . "</li>";
-    echo "<li>Event Date: " . htmlspecialchars($orderDetails['eventDate']) . "</li>";
-    echo "<li>Delivery Address: " . htmlspecialchars($orderDetails['deliveryAddress']) . "</li>";
-    echo "<li>Number of Attendees: " . htmlspecialchars($orderDetails['attendees']) . "</li>";
-    echo "<li>Menu ID: " . htmlspecialchars($orderDetails['menuId']) . "</li>";
-    // Add more details as needed
-    echo "</ul>";
-
     // Clear the session data to avoid displaying it again on refresh
     unset($_SESSION['orderDetails']);
-} else {
+
+    // Redirect to another page (replace 'AnotherPage.php' with your desired page)
+    header('Location: Feedback and Reviewing Page.php');
+    exit(); // Prevent further script execution after redirection
+} //else {
     // Redirect to an error page or display an error message if the session data is missing
-    echo "Session data not found. Please check your session handling.";
-}
+   // echo "Session data not found. Please check your session handling.";
+//}
 ?>
+
 
 
 
