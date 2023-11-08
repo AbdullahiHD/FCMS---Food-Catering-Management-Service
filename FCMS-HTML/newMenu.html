@@ -39,7 +39,6 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        
         }
 
         .social-icon,
@@ -229,10 +228,15 @@
         }
 
         input[type="text"],
-        input[type="time"],
-        input[id="event-date"],
-        input[type="number"],
-        select[id="event-type"] {
+        input[type="number"] {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        input[type="file"] {
             padding: 8px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
@@ -240,18 +244,7 @@
             font-size: 14px;
         }
         
-        .selected-output {
-            margin-top: 10px;
-            background-color: #FFD100;
-            color: #202020;
-            margin-bottom: 10px;
-        }
-        .selected-output p {
-            display: none;
-            padding: 0px 10px;
-        }
-        @media screen and (max-width: 768px) {
-        /* Add responsive styles for smaller screens */
+        @media screen and (max-width: 768px) {}
         .menu-box {
             flex-direction: column;
             align-items: center;
@@ -261,7 +254,22 @@
             background-color: red; /* Set the background color for highlighted dates */
             color: white; /* Set the text color for highlighted dates */
         }
-            
+        
+        .image-placeholder {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 300px;
+            height: 300px;
+            border: 2px solid #FFD100;
+            margin: 0 auto;
+        }
+
+        .image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure the image covers the container */
+        }        
     </style>
 </head>
 
@@ -287,195 +295,40 @@
     </nav>
 
     <div class="form-container">
-        <h2>Event Details Form</h2>
-        <form>
-            <label for="name">Name:</label>
+        <h2>Create New Menu</h2>
+
+        <div class="image-placeholder">
+            <img id="menu-preview" img src="placeholder.jpg" alt="Menu-Image">
+        </div>
+
+        <form method="post" action="../FCMS-PHP/create_menu.php">
+
+            <label for="name">Menu Name:</label>
             <input type="text" id="name" name="name" required>
 
-            <label for="event-type">Event Type:</label>
-            <select id="event-type" name="event-type" required>
-                <option value="" disabled selected>Select Event Type</option>
-                <option value="Wedding">Wedding</option>
-                <option value="Birthday">Birthday</option>
-                <option value="Corporate">Corporate</option>
-                <option value="Other">Other</option>
-            </select>
+            <label for="menu-price">Menu Price</label>
+            <input type="number" id="menu-price" name="menu-price" required>
 
-            <label for="event-time">Event Time:</label>
-            <input type="time" id="event-time" name="event-time" required>
-
-            
-            <label for="event-date">Event Date:</label>
-            <input id="event-date" name="event-date" required>
+            <label for="menu-app">Appetiser</label>
+            <input type="text" id="menu-app" name="menu-app" required>
            
-            
-            <label for="delivery-address">Delivery Address:</label>
-            <input type="text" id="delivery-address" name="delivery-address" required>
+            <label for="menu-main">Main Dish:</label>
+            <input type="text" id="menu-main" name="menu-main" required>
 
-            <label for="attendees">Number Of Attendees:</label>
-            <input type="number" id="attendees" name="attendees" required>
+            <label for="menu-des">Dessert:</label>
+            <input type="text" id="menu-des" name="menu-des" required>
+
+            <label for="menu-drink">Drink:</label>
+            <input type="text" id="menu-drink" name="menu-drink" required>
+
+            <label for="menu-image">Upload Menu Image:</label>
+            <input type="file" id="menu-image" name="menu-image" accept="image/*">
+
+            <button type="submit" value="Submit" name="submit" class="create-new-menu">Create New Menu</button>
         </form>
     </div>
 
-    <!-- Added php code on 18th/10/2023 Abdullahi -->
-    <?php
 
-    // session_start();
-
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $databaseName = "FCMS";
-
-    // Creating a new mysqli connection
-    $conn = new mysqli($servername, $username, $password, $databaseName);
-
-    // Check if the connection was successful
-    if ($conn->connect_error) 
-    {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    // Query to fetch data for all menus, including the image file path
-    $sql = "SELECT * FROM menus";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        echo '<div class="menu-box">';
-        while ($row = $result->fetch_assoc()) {
-            echo '<div class="menu-item" id="Menu ' . $row["MenuID"] . '" data-price="' . $row["Price"] . '">';
-            
-            // Retrieve the image file path from the database
-            $imagePath = $row["file_path"];
-
-            // Display the image with the retrieved file path on hover effect
-            echo '    <img src="' . $imagePath . '" alt="' . $row["MenuName"] . '">';
-            
-            echo '    <br>';
-            echo '    <p id="menu_' . $row["MenuID"] . '">' . $row["MenuName"] . '</p>';
-            echo '    <p id="price_' . $row["MenuID"] . '">' . $row["Price"] . ' RM</p>';
-            echo '    <div class="additional-info">';
-            echo '        <img src="' . $imagePath . '" alt="' . $row["MenuName"] . ' Enlarged">';
-            echo '        <div class="text-container">';
-            echo '            <h3>' . $row["MenuName"] . '</h3>';
-            echo '            <p>' . $row["Appetizer"] . '</p>';
-            echo '            <p>' . $row["MainDish"] . '</p>';
-            echo '            <p>' . $row["Dessert"] . '</p>';
-            echo '            <p>' . $row["Drink"] . '</p>';
-            echo '        </div>';
-            echo '    </div>';
-            echo '    <button class="menu-select-button">Select</button>';
-            echo '</div>';
-        }
-        echo '</div>';
-    } else {
-        echo "No menu items found.";
-    }
-    // Query to fetch event dates from ORDERS table
-    $sql = "SELECT eventDate FROM ORDERS";
-    $result = $conn->query($sql);
-
-    $eventDates = array();
-
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            $eventDates[] = $row["eventDate"];
-        }
-    }
-
-
-    // Close the database connection
-    $conn->close();
-
-    // Echo the $eventDates array as a JSON object into a JavaScript variable
-    echo '<script>';
-    echo 'const eventDatesArray = ' . json_encode($eventDates) . ';';
-    echo '</script>';
-?>
-
-    <!-- ?> -->
-
-    
-    <!-- <div class="menu-box"> -->
-        <!-- <div class="menu-item" id="Menu 1" data-price="60"> 
-            <img src="../FCMS-Assets/images/hero-slider-1.jpg" alt="Menu 1">
-            <br>
-            <p id="menu_1">Menu 1</p>
-            <p id="price_1">60 RM</p>
-            <div class="additional-info">
-                <img src="../FCMS-Assets/images/hero-slider-1.jpg" alt="Menu 1 Enlarged">
-                <div class="text-container">
-                    <h3>Menu 1</h3>
-                    <p>Appetiser</p>
-                    <p>Main Dish</p>
-                    <p>Dessert</p>
-                    <p>Drink</p>
-                </div>
-            </div> -->
-
-            <!-- <button class="menu-select-button">Select</button>
-        </div>
-        <div class="menu-item" id="Menu 2" data-price="60">
-            <img src="../FCMS-Assets/images/hero-slider-2.jpg" alt="Menu 2"> 
-            <br>
-            <p id="menu_2">Menu 2</p>
-            <p id="price_2">60 RM</p>
-            <div class="additional-info">
-                <img src="../FCMS-Assets/images/hero-slider-2.jpg" alt="Menu 2 Enlarged">
-                <div class="text-container">
-                    <h3>Menu 2</h3>
-                    <p>Appetiser</p>
-                    <p>Main Dish</p>
-                    <p>Dessert</p>
-                    <p>Drink</p>
-                </div>
-            </div>
-            <button class="menu-select-button">Select</button>
-
-        </div>
-        <div class="menu-item" id="Menu 3" data-price="80">
-            <img src="../FCMS-Assets/images/hero-slider-3.jpg"alt="Menu 3">
-            <br>
-            <p id="menu_3">Menu 3</p>
-            <p id="price_3">80 RM</p>
-            <div class="additional-info">
-                <img src="../FCMS-Assets/images/hero-slider-3.jpg"alt="Menu 3">
-                <div class="text-container">
-                    <h3>Menu 3</h3>
-                    <p>Appetiser</p>
-                    <p>Main Dish</p>
-                    <p>Dessert</p>
-                    <p>Drink</p>
-                </div>
-            </div>
-            <button class="menu-select-button">Select</button>
-
-        </div>
-        <div class="menu-item" id="Menu 4" data-price="90">
-            <img src="../FCMS-Assets/images/hero-slider-3.jpg" alt="Menu 3">
-            <br>
-            <p id="menu_4">Somali Cuisine</p>
-            <p id="price_4">90 RM</p>
-            <div class="additional-info">
-                <img src="../FCMS-Assets/images/hero-slider-3.jpg" alt="Menu 4">
-                <div class="text-container">
-                    <h3>Somali Cuisine</h3>
-                    <p>Appetiser</p>
-                    <p>Main Dish</p>
-                    <p>Dessert</p>
-                    <p>Drink</p>
-                </div>
-            </div>
-            <button class="menu-select-button">Select</button>
-        
-        </div> -->
-    </div>
-
-    <div class="selected-output">
-        <p id="selected-menu"></p>
-    </div>
-   
-    <button type="submit" value="Submit" name="submit" class="create-event-button create-event">Create Event Booking</button>
 
     <footer class="footer">
         <ul class="social-icon">
@@ -504,6 +357,36 @@
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="../FCMS-JavaScripts/menuScript.js"></script>
+    <script>
+        // Get the image preview element
+    const menuPreview = document.getElementById("menu-preview");
+    
+    // Get the file input element
+    const menuImageInput = document.getElementById("menu-image");
+
+    // Add an event listener to the file input
+    menuImageInput.addEventListener("change", function(event) {
+        // Get the selected file from the input
+        const file = event.target.files[0];
+
+        // Check if a file was selected
+        if (file) {
+            // Create a FileReader to read the selected file
+            const reader = new FileReader();
+
+            // Set up the FileReader onload event
+            reader.onload = function(e) {
+                // Update the image preview src with the data URL of the selected file
+                menuPreview.src = e.target.result;
+            };
+
+            // Read the selected file as a data URL
+            reader.readAsDataURL(file);
+        } else {
+            // If no file is selected, revert back to the default placeholder image
+            menuPreview.src = "placeholder.jpg";
+        }
+    });
+    </script>
 </body>
 </html>

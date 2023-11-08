@@ -227,7 +227,9 @@
             background-color: red; /* Set the background color for highlighted dates */
             color: white; /* Set the text color for highlighted dates */
         }
-            
+        .create-new-menu {
+            margin-right: 10px;
+        }
     </style>
 </head>
 
@@ -239,21 +241,21 @@
           <img src="../FCMS-Assets/images/culinarycue.png" width="100" height="60" alt="CulinaryCue - Home">
         </a>
         <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="">Menu</a></li>
-            <li><a href="">About</a></li>
-            <li><a href="">Our Team</a></li>
-            <li><a href="">Contact</a></li>
+            <li><a href="../FCMS-HTML/TahaIndex.html">Home</a></li>
+            <li><a href="../FCMS-PHP/menu.php">Menu</a></li>
+            <li><a href="../FCMS-HTML/TahaIndex.html">About</a></li>
+            <li><a href="../FCMS-HTML/TahaIndex.html">Our Team</a></li>
+            <li><a href="../FCMS-HTML/TahaIndex.html">Contact</a></li>
             
         </ul>
-        <a href="" class="registrationbutton">Login</a>
-    
-    
-    
+        <div class="create-new-menu">
+        <button class="create-new-menu" onclick="redirectToNewMenuPage()">Add New Menu</button>
+        </div>
     </nav>
-
+    
     <!-- Added php code on 18th/10/2023 Abdullahi -->
     <?php
+
     // session_start();
 
     $servername = "localhost";
@@ -274,7 +276,6 @@
     $sql = "SELECT * FROM menus";
     $result = $conn->query($sql);
 
-    
     if ($result->num_rows > 0) {
         echo '<div class="menu-box">';
         while ($row = $result->fetch_assoc()) {
@@ -299,8 +300,7 @@
             echo '            <p>' . $row["Drink"] . '</p>';
             echo '        </div>';
             echo '    </div>';
-            echo '    <button class="menu-select-button">Edit</button>';
-            echo '    <button class="menu-select-button">Delete</button>';
+            echo '    <button class="edit-menu">Edit Menu</button>';
             echo '</div>';
         }
         echo '</div>';
@@ -310,23 +310,9 @@
     // Query to fetch event dates from ORDERS table
     $sql = "SELECT eventDate FROM ORDERS";
     $result = $conn->query($sql);
-
-    $eventDates = array();
-
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            $eventDates[] = $row["eventDate"];
-        }
-    }
-
-
+    
     // Close the database connection
     $conn->close();
-
-    // Echo the $eventDates array as a JSON object into a JavaScript variable
-    echo '<script>';
-    echo 'const eventDatesArray = ' . json_encode($eventDates) . ';';
-    echo '</script>';
 ?>
 
     <!-- ?> -->
@@ -407,11 +393,6 @@
         </div> -->
     </div>
 
-    <div class="selected-output">
-        <p id="selected-menu"></p>
-    </div>
-   
-    <button type="submit" value="Submit" name="submit" class="create-event-button create-event">Create Event Booking</button>
 
     <footer class="footer">
         <ul class="social-icon">
@@ -438,6 +419,11 @@
         
     </footer>
 
+    <script>
+    function redirectToNewMenuPage() {
+        window.location.href = '../FCMS-HTML/newMenu.html';
+    }
+    </script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="../FCMS-JavaScripts/menuScript.js"></script>
