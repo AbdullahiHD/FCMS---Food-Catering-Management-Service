@@ -7,7 +7,7 @@
     <meta name="description" content="Online Food and Beverage Catering Service">
     <meta name="keywords" content="Create Customer Account">
     <meta name="author" content="Abdullahi">
-    <title>Staff Statistic</title>
+    <title>Order Statistic View</title>
 
     <!-- Link the general layout css -->
     <link rel="stylesheet" href="../FCMS-Assets/Main.css"> 
@@ -37,60 +37,58 @@
     
     <!-- Brief Heading and content -->
     <div class="hcontent">
-        <br><br>
-        <h1> Staff Statistics</h1>
+        <br>
+        <h1> Order Statistics</h1>
     </div>
 
     <div id="chart-container">
         <svg id="bar-chart"></svg>
     </div>
-    <div id="tooltip" style="opacity: 0; position: absolute; background-color: blue; border: 1px solid #000; border-radius: 5px; padding: 10px; pointer-events: none;"></div>
 
-    <!-- PHP script for database connection and fetching data -->
+    <!-- Your PHP script for database connection and data fetching should be placed here. -->
     <?php
-        // Database configuration
-        $host = "localhost";
-        $username = "root";
-        $password = "";
-        $database = "FCMS";
+    // Database configuration
+    $host = "localhost"; // Corrected variable name here
+    $username = "root";
+    $password = "";
+    $database = "FCMS"; // Corrected variable name here
 
-        // Create database connection
-        $conn = new mysqli($host, $username, $password, $database);
+    // Create database connection
+    $conn = new mysqli($host, $username, $password, $database);
 
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 
-        // SQL query to select rates and tasks_completed from employees
-        $sql = "SELECT employeeName, occupation, rates, tasks_completed FROM employees";
-        $result = $conn->query($sql);
+    // SQL query to count customers per city
+    $sql = "SELECT City, COUNT(*) as NumberOfCustomers FROM customers GROUP BY City";
+    $result = $conn->query($sql);
 
-        $employeeEfficiencyData = array();
-        while ($row = $result->fetch_assoc()) {
-            $employeeEfficiencyData[] = $row;
-        }
+    $customerData = array();
+    while ($row = $result->fetch_assoc()) {
+        $customerData[] = $row;
+    }
 
-        // Free result set
-        $result->close();
+    // Free result set
+    $result->close();
 
-        // Close connection
-        $conn->close();
+    // Close connection
+    $conn->close();
 
-        // Print the data in JSON format
-        echo "<script>var employeeEfficiencyData = " . json_encode($employeeEfficiencyData) . ";</script>";
-        ?>
-
+    // Print the data in JSON format
+    echo "<script>var customerData = " . json_encode($customerData) . ";</script>";
+    ?>
 
     <!-- Including Validation and D3 scripts -->
     <script src="../FCMS-JavaScripts/Validation.js"></script>
-    <script src="../FCMS-JavaScripts/StaffD3.js"></script>
+    <script src="../FCMS-JavaScripts/CustomerD3.js"></script>
 
         <!-- <button class="sortAsc-button">Sort - Ascending </button>
         <button class="sortDesc-button">Sort - Descending</button>
         -->
 
-        <!-- <br><br><br><br><br><br><br><br> -->
+        <!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
     <footer class="footer">
     <ul class="social-icon">
       <li class="social-icon__item"><a class="social-icon__link" href="#">
@@ -118,8 +116,6 @@
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-  
-    
 </body>
 
 </html>

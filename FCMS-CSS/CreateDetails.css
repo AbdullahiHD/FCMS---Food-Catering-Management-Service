@@ -146,26 +146,62 @@ button[type="reset"]:hover {
 /* CSS for the chart container and the SVG canvas */
 #chart-container {
     width: 700px;
-    margin: 20px auto;
-    background-color: #f9f9f9;
-    border: 1px solid #0b0303;
+    margin: 40px auto;
+    background: linear-gradient(to right, #f0e4d7, #e9d2af);
+    /* Smooth gradient background */
+    border: 1px solid #423e3b;
+    /* Subtle border color */
     padding: 30px;
-    box-shadow: 0 0 10px rgba(185, 26, 26, 0.1);
-    margin-bottom: 70px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Soft shadow for depth */
+    border-radius: 8px;
+    /* Slightly rounded corners */
+    transition: all 0.3s ease-in-out;
+    /* Smooth transitions for hover effects */
+    margin-bottom: 40px;
+}
+
+#chart-container:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    /* More pronounced shadow on hover */
+    transform: translateY(-2px);
+    /* Slight lift effect on hover */
 }
 
 #bar-chart {
-    /* width: 100%; */
     max-width: 700px;
     margin: auto;
     height: 530px;
     display: block;
     font-family: 'Arial', sans-serif;
+    background: linear-gradient(to top, #d9a85c, #e0b374);
+    /* Warm gradient for the chart background */
+    border-radius: 4px;
+    /* Slightly rounded corners for the chart */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Inner shadow for depth */
+    transition: all 0.3s ease-in-out;
+    /* Smooth transitions for effects */
+}
+
+/* Add some animation to your dots for when they appear */
+.dot {
+    /* Assuming .dot is the class for your scatterplot points */
+    opacity: 0;
+    transition: opacity 0.6s ease-out;
+    animation: fadeInDots 1.2s forwards;
+    /* Animation to fade in the dots */
+}
+
+@keyframes fadeInDots {
+    to {
+        opacity: 1;
+    }
 }
 
 /* CSS for the bars on mouseover */
 rect:hover {
-    fill: #ffa500;
+    fill: #09f382;
     cursor: pointer;
 }
 
@@ -184,6 +220,16 @@ rect:hover {
     opacity: 0;
 }
 
+/* #tooltip
+{
+    opacity: 0; 
+    position: absolute; 
+    background-color: blue; 
+    border: 1px solid #000; 
+    border-radius: 5px; 
+    padding: 10px;
+    pointer-events: none;
+} */
 /* Adding classes for axis labels */
 /* .axis-label {
     font-size: 12px;

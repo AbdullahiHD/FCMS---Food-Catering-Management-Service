@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const svgContainer = d3.select('#bar-chart');
 
     // Set dimensions and margins for the graph
-    var margin = { top: 20, right: 10, bottom: 50, left: 20 };
+    var margin = { top: 20, right: 10, bottom: 50, left: 60 };
     var width = 560 - margin.left - margin.right;
     var height = 500 - margin.top - margin.bottom;
 
@@ -55,10 +55,10 @@ document.addEventListener('DOMContentLoaded', function () {
             // Ensure the SVG container has the correct ID
             const svgContainer = d3.select('#bar-chart');
 
-            // Set dimensions and margins for the graph
-            var margin = { top: 20, right: 10, bottom: 50, left: 20 };
-            var width = 560 - margin.left - margin.right;
-            var height = 500 - margin.top - margin.bottom;
+            // // Set dimensions and margins for the graph
+            // var margin = { top: 20, right: 10, bottom: 50, left: 60 };
+            // var width = 560 - margin.left - margin.right;
+            // var height = 500 - margin.top - margin.bottom;
 
             // Append SVG object to the chart div
             const svg = svgContainer
@@ -184,19 +184,20 @@ document.addEventListener('DOMContentLoaded', function () {
         .attr("text-anchor", "end")
         .attr("x", width / 2 + margin.left)
         .attr("y", height + margin.top + 40) // Adjust the position based on your margins
-        .text("City")
+        .text("Region")
         .attr("fill", "black")
         .attr("font-weight", "bold");
 
     // Add Y axis label:
     svg.append("text")
         .attr("text-anchor", "end")
-        .attr("transform", "rotate(-90)") // Rotate the text for Y-axis
-        .attr("y", -margin.left + 10) // Adjust the position based on your margins
-        .attr("x", -margin.top - height/2 + 20)
+        .attr("transform", "rotate(-90)")
+        .attr("y", -margin.left + 30) // Move the label further from the Y axis if needed
+        .attr("x", -height / 2 + 50) // Center the label in the middle of the Y axis
         .text("Number of Customers")
-        .attr("fill", "black")
+        .style("font-size", "16px") // Adjust font size as needed
         .attr("font-weight", "bold");
+
 
     // Tooltip (assuming you have the correct CSS for .tooltip)
     const tooltip = d3.select("body").append("div")

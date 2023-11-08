@@ -110,7 +110,7 @@ $createTableQuery = "
         RequestID INT AUTO_INCREMENT PRIMARY KEY,
         CustomerName VARCHAR(255),
         EventTime TIME,
-        EventDate DATETIME,
+        EventDate DATE,
         DeliveryAddress VARCHAR(255),
         NumberOfAttendees INT,
         MenuID INT,

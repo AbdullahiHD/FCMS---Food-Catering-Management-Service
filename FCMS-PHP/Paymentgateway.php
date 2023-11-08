@@ -98,8 +98,7 @@
             <form method="POST" action="Paymentgateway.php"> <!-- Changed to POST method for secure data transmission -->
                 <?php
                 // Check if data was passed from the quotation and billing forms
-                if (isset($_GET['name'], $_GET['eventType'], $_GET['eventTime'], $_GET['eventDate'], $_GET['deliveryAddress'], $_GET['attendees'], $_GET['menuId'], $_GET['menuName'], $_GET['menuPrice'], $_GET['totalPrice'])) 
-                {
+                if (isset($_GET['name'], $_GET['eventType'], $_GET['eventTime'], $_GET['eventDate'], $_GET['deliveryAddress'], $_GET['attendees'], $_GET['menuId'], $_GET['menuName'], $_GET['menuPrice'], $_GET['totalPrice'])) {
                     // Output hidden input fields to store this data
                     echo '<input type="hidden" name="name" value="' . htmlspecialchars($_GET['name']) . '">';
                     echo '<input type="hidden" name="eventType" value="' . htmlspecialchars($_GET['eventType']) . '">';
