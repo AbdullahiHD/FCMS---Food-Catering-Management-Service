@@ -16,7 +16,7 @@ if ($conn->connect_error) {
 
 if (isset($_POST['submit'])) {
     $username = $_POST['username'];
-    $newPassword=$_POST['newpassword'];
+    $newPassword = $_POST['newpassword'];
     $confirmNewPassword = $_POST['confirmnewpassword'];
 
     // Check if the new password and confirmation match
@@ -24,41 +24,38 @@ if (isset($_POST['submit'])) {
         echo '<script>alert("New password and confirmation do not match. Please try again.");</script>';
     } else {
         // Query to check if the username exists in the database
-    $sql = "SELECT * FROM users WHERE Username = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
+        $sql = "SELECT * FROM users WHERE Username = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-    if ($result->num_rows === 1) {
+        if ($result->num_rows === 1) {
 
-        // Hash the new password before storing it in the database
-        $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+            // Hash the new password before storing it in the database
+            $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
 
-        // Update the user's password in the database
-        $updateSql = "UPDATE users SET Password = ? WHERE Username = ?";
-        $updateStmt = $conn->prepare($updateSql);
-        $updateStmt->bind_param("ss", $hashedPassword, $username);
-        $updateStmt->execute();
-        $updateStmt->close();
+            // Update the user's password in the database
+            $updateSql = "UPDATE users SET Password = ? WHERE Username = ?";
+            $updateStmt = $conn->prepare($updateSql);
+            $updateStmt->bind_param("ss", $hashedPassword, $username);
+            $updateStmt->execute();
+            $updateStmt->close();
 
-        // Display the new password in a JavaScript alert
-        echo '<script>alert("Your new password: ' . $newPassword . '");</script>';
-        header("Location: ../FCMS-PHP/Login.php");
-    } else {
-        // Email not found
-        echo '<script>alert("Username not found. Please try again.");</script>';
+            // Display the new password in a JavaScript alert
+            echo '<script>alert("Your new password: ' . $newPassword . '");</script>';
+            header("Location: ../FCMS-PHP/Login.php");
+        } else {
+            // Username not found
+            echo '<script>alert("Username not found. Please try again.");</script>';
+        }
+
+        $stmt->close(); // Close the statement here
     }
-        
-    }
 
-    
-    
-    $stmt->close();
+    // Close the database connection
+    $conn->close();
 }
-
-// Close the database connection
-$conn->close();
 ?>
 
 <html>

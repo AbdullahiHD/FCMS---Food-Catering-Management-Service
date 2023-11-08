@@ -64,13 +64,26 @@ mysqli_close($conn);
         }
 
         #nav {
+            /* background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;    */
+
+
             background-color: #3b3d41;
             color: goldenrod;
+            height: 100%;
             min-height: 83vh;
-            /* Set minimum height to cover the entire viewport */
-            width: 150px;
+            width: 210px;
             float: left;
             padding: 5px;
+            top: 120;
+            overflow-y: auto;
+            position: fixed;
+            /* position: fixed;
+            top: 100;
+            left: 0;
+            overflow-y: auto; */
         }
 
         #section {
@@ -90,7 +103,7 @@ mysqli_close($conn);
 
         li a {
             font-family: Calibri;
-            font-size: 14pt;
+            font-size: 18pt;
             font-style: none;
             display: block;
             color: #FFFFFF;
@@ -99,10 +112,7 @@ mysqli_close($conn);
             color: goldenrod;
         }
 
-        li a:visited {
-            background-color: #4CAF50;
-            color: #FFFFFF;
-        }
+       
 
         li a:hover {
             background: hsla(180, 2%, 8%, 1);
@@ -111,6 +121,8 @@ mysqli_close($conn);
 
         #boxes {
             display: flex;
+            margin-top: -10px;
+            margin-left: 240px;
         }
 
         .box {
@@ -122,6 +134,7 @@ mysqli_close($conn);
             margin: 10px;
             padding: 10px;
             text-align: center;
+            border-radius: 10px;
         }
 
         .box h2 {
@@ -131,17 +144,19 @@ mysqli_close($conn);
         .box p {
             background-color: #3b3d41;
             margin: 10px 0;
+            font-size: 18pt;
         }
 
         .box button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            border: none;
             background-color: goldenrod;
-            color: white;
-            font-family: 'Franklin Gothic Medium', sans-serif;
-            text-decoration: none;
-            border: 2px dotted transparent;
-            font-weight: bold;
-            padding: 10px 25px;
-            border-radius: 40px;
+            color: #333;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+
             align-self: flex-end;
         }
     </style>
