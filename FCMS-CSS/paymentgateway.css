@@ -53,6 +53,10 @@ nav {
     font-size: 17px;
   
   }
+  .feedbackbutton {
+    background-color: goldenrod;
+  
+  }
   
   .registrationbutton {
     background-color: goldenrod;
@@ -163,7 +167,7 @@ nav {
   .container {
     display: flex;
     justify-content: center;
-    margin-top: 30px;
+    margin-top: 1px;
     align-items: center;
     height: 100vh;
 }
@@ -227,5 +231,16 @@ label {
   font-family: 'Franklin Gothic Medium', sans-serif;
 
 }
+
+.Thankyou {
+  color: white;
+  margin-top: 100px;
+  padding-left: 200px;
+  padding-right: 200px;
+  text-align: center;
+  font-size: 30px;
+}
+
+
 
  

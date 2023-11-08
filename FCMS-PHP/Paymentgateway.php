@@ -63,8 +63,14 @@
         }
 
         function validateForm() {
-            return validateCardNumber() && validateCardHolder() && validateExpiryMonth() && validateExpiryYear() && validateCvv();
-        }
+    // Perform the validation checks
+    if (validateCardNumber() && validateCardHolder() && validateExpiryMonth() && validateExpiryYear() && validateCvv()) {
+        // If all validations pass, redirect to the PaymentSuccessful.php page
+        window.location.href = 'PaymentSuccessful.php';
+        return false; // Prevent the default form submission since we are redirecting
+    }
+    return false; // If any validation fails, prevent the form submission
+}
     </script>
 </head>
 <body>
@@ -142,6 +148,9 @@
 
 
 <?php
+
+session_start();
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -175,15 +184,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['name'], $_POST['eventT
             VALUES ('$name', '$eventTime', '$eventDate', '$deliveryAddress', '$attendees', '$menuId', '$orderStatus', '$paymentStatus', '$paymentID')";
 
     if ($conn->query($sql) === TRUE) {
-        // Data inserted successfully
-        echo "Order Successful";
-        // JavaScript for redirection and alert
-        echo "<script>
-            alert('Order Successful');
-            window.location.href = 'menu.php';
-        </script>";
+        // Store data in the session to pass to the next page
+        $_SESSION['orderDetails'] = [
+            'name' => $name,
+            'eventTime' => $eventTime,
+            'eventDate' => $eventDate,
+            'deliveryAddress' => $deliveryAddress,
+            'attendees' => $attendees,
+            'menuId' => $menuId,
+            // ... Add any other details you might need on the PaymentSuccessful.php page
+        ];
+
+        // Redirect to PaymentSuccessful.php without using an alert
+        header('Location: PaymentSuccessful.php');
+        exit(); // Prevent further script execution after redirection
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
+
     }
 
     // Close the database connection
