@@ -147,6 +147,7 @@
 
 .order-details-content{
   margin-top: 100px;
+  margin-bottom: 200px;
 }
 
 .order-content {
@@ -193,11 +194,12 @@
   border-radius: 5px;
   display: block;
   text-align: left;
-  width: 650px;
+  width: 30%;
   position: absolute;
   top: 0;
   right: 0;
   flex-direction: column;
+  flex: 1;
 }
 
 /* Style the dropdown labels */
@@ -240,7 +242,18 @@ strong {
 
 /* ORDER DETAILS PAGE */
 
-.orderdetails-div{
+.order-details-content {
+  flex: 1;
+  width: 70%; 
   margin-left: 20px;
   margin-right: 20px;
+}
+
+.order-details-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 1200px;
 }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../FCMS-Assets/Main.css">
     <link rel="stylesheet" href="../FCMS-CSS/StaffDashboardFahad.css">
+    <link rel="stylesheet" href="../FCMS-CSS/EventExecutionWorkflow.css" />
     <title>Order Details</title>
 </head>
 <body>
@@ -19,6 +20,7 @@
             <li><a href="StaffActiveOrdersFahad.php">Active Orders</a></li>
         </ul>
     </nav>
+
 
     <!-- Content for Order Details page -->
     <div class="order-details-content">
@@ -116,5 +118,38 @@
             $conn->close();
         ?>
     </div>
+    <div class="board">
+      <h2>Event Execution Workflow</h2>
+      <form id="todo-form">
+        <input type="text" placeholder="New TODO..." id="todo-input" />
+        <button type="submit">Add +</button>
+      </form>
+
+      <div class="lanes">
+        <div class="swim-lane" id="todo-lane">
+          <h3 class="heading">TODO</h3>
+
+          <p class="task" draggable="true">Clean-Up</p> 
+          <p class="task" draggable="true">Leftover Food Management</p> 
+          <p class="task" draggable="true">Staff Evaluation</p> 
+        </div>
+
+        <div class="swim-lane">
+          <h3 class="heading">Doing</h3>
+
+          <p class="task" draggable="true">Event Setup</p>
+          <p class="task" draggable="true">Quality Control</p>
+        </div>
+
+        <div class="swim-lane">
+          <h3 class="heading">Done</h3>
+          <p class="task" draggable="true">Food Preparation</p>
+          <p class="task" draggable="true">Transport Equipment</p>
+          <p class="task" draggable="true">Decor and Presentation</p>
+
+        </div>
+      </div>
+    </div>
+    <script src="../FCMS-JavaScripts/EventExecutionWorkflow.js" defer></script>
 </body>
 </html>
