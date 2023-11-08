@@ -257,3 +257,8 @@ strong {
     padding: 20px;
     max-width: 1200px;
 }
+
+/* STAFF PROFILE PAGE */
+.profile-content{
+  margin-top: 150px;
+}
