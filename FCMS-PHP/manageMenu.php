@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu</title>
+    <title>Menu Manager</title>
     <link rel="stylesheet" href="../FCMS-Assets/Main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- Include jQuery UI Datepicker styles -->
@@ -23,9 +23,9 @@
             min-height:100vh;
             margin: 0;
             padding: 0;
+            padding-top: 95px;
             background-image: url(../FCMS-Assets/images/hero-slider-1.jpg);
         }
-
         @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
 
         .footer {
@@ -92,16 +92,16 @@
 
         .menu-box {
             display: flex;
-            flex-wrap:wrap;
+            flex-wrap: wrap;
             justify-content: space-around;
             align-items: flex-start;
             border: 2px solid #FFD100;
-            padding: 10px;
-            width: 100%; /* Set the width to 100% */
-            max-width: 960px; /* Set a maximum width for larger screens */
+            padding: 5px;
+            width: 50%; /* Set the width to 90% of the parent container */
+            max-width: 50%; /* Set a maximum width for larger screens */
+            margin: 0; /* Center the menu-box */
             background-color: black;
             z-index: 1;
-            margin-top: 100px;
         }
         .menu-item p{
             margin-top: 5px;
@@ -110,7 +110,7 @@
         }
         .menu-item {
             text-align: center;
-            flex: 0 0 80%; /* Set the flex basis to 30% */
+            flex: 1 1 250%; /* Set the flex basis to 30% */
             max-width: calc(33.333% - 20px); /* Set the maximum width for 3 items with margin */
             margin: 10px;
             position: relative;
@@ -125,8 +125,8 @@
 
 
         .menu-item img {
-            width: 250px;
-            height: 250px;
+            width: 200px;
+            height: 200px;
             border: 1px solid #FFD100;
             transition: transform 0.3s ease;
         }
@@ -153,7 +153,10 @@
          .menu-item .additional-info {
             pointer-events: none;
         }
-
+        
+        .menu-item img:hover{
+            transform: scale(1.05);
+        }
         .menu-item img:hover ~ .additional-info,
         .menu-item .additional-info:hover {
             opacity: 1;
@@ -164,8 +167,8 @@
 
         /* Style the additional info elements */
         .menu-item .additional-info img {
-            width: 400px; /* Adjust the image size as needed */
-            height: 400px; /* Adjust the image size as needed */
+            width: 350px; /* Adjust the image size as needed */
+            height: 350px; /* Adjust the image size as needed */
         }
 
         .menu-item .additional-info .text-container {
@@ -177,7 +180,7 @@
 
         .menu-item .additional-info .text-container h3 {
             color: #FFD100;
-            font-size: 40px;
+            font-size: 30px;
             margin: 0;
         }
 
