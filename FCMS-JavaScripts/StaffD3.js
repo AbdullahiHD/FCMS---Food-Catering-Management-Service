@@ -235,9 +235,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // Add X axis label:
     svg.append("text")
         .attr("text-anchor", "end")
-        .attr("x", width / 2 + margin.left)
+        .attr("x", width / 2 + margin.left + 25)
         .attr("y", height + margin.top + 25)
-        .text("Rates")
+        .text("Hourly Rates (RM)")
         .attr("font-weight", "bold");
 
     // Add Y axis label:

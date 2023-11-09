@@ -21,7 +21,7 @@
             <li><a href="StaffProfilePage.php">Profile</a></li>
         </ul>
     </nav>
-    
+    <p>Fahad is capping</p>
 
     <!-- Staff Profile content -->
     <div class="profile-content">
@@ -67,7 +67,7 @@
                         echo '<h2>User Information</h2>';
                         echo '<p><strong>User ID:</strong> ' . $user['UserId'] . '</p>';
                         echo '<p><strong>Username:</strong> ' . $user['Username'] . '</p>';
-                        echo '<p><strong>Email:</strong> ' . $user['Email'] . '</p>';
+                        // echo '<p><strong>Email:</strong> ' . $user['Email'] . '</p>';
                         echo '<p><strong>Permission:</strong> ' . $user['Permission'] . '</p>';
 
                         echo '<h2>Staff Information</h2>';

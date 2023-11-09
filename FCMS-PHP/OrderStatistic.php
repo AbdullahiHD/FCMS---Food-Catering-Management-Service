@@ -82,7 +82,7 @@
 
     <!-- Including Validation and D3 scripts -->
     <script src="../FCMS-JavaScripts/Validation.js"></script>
-    <script src="../FCMS-JavaScripts/CustomerD3.js"></script>
+    <!-- <script src="../FCMS-JavaScripts/CustomerD3.js"></script> -->
 
         <!-- <button class="sortAsc-button">Sort - Ascending </button>
         <button class="sortDesc-button">Sort - Descending</button>
@@ -109,7 +109,7 @@
       <li class="menu__item"><a class="menu__link" href="../FCMS-HTML/TahaIndex.html">Menu</a></li>
       <li class="menu__item"><a class="menu__link" href="../FCMS-HTML/TahaIndex.html">About</a></li>
       <li class="menu__item"><a class="menu__link" href="../FCMS-HTML/TahaIndex.html">Our Team</a></li>
-      <li class="menu__item"><a class="menu__link" href="../FCMS-HTML/TahaIndex.html">Contact</a></li>
+      <li class="menu__item"><a class="menu__link" href="../FCMS-HTML/TahaIndex.html">Contact1</a></li>
     </ul>
 
   </footer>
