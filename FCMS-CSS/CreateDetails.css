@@ -201,7 +201,7 @@ button[type="reset"]:hover {
 
 /* CSS for the bars on mouseover */
 rect:hover {
-    fill: #09f382;
+    fill: #bcdde0;
     cursor: pointer;
 }
 
@@ -219,6 +219,14 @@ rect:hover {
     pointer-events: none;
     opacity: 0;
 }
+
+.line {
+    fill: none;
+    stroke: #000;
+    stroke-width: 2px;
+}
+
+
 
 /* #tooltip
 {

@@ -47,42 +47,43 @@
 
     <!-- Your PHP script for database connection and data fetching should be placed here. -->
     <?php
-    // Database configuration
-    $host = "localhost"; // Corrected variable name here
-    $username = "root";
-    $password = "";
-    $database = "FCMS"; // Corrected variable name here
+        $host = "localhost";
+        $username = "root";
+        $password = "";
+        $database = "FCMS";
 
-    // Create database connection
-    $conn = new mysqli($host, $username, $password, $database);
+        // Create database connection
+        $conn = new mysqli($host, $username, $password, $database);
 
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
 
-    // SQL query to count customers per city
-    $sql = "SELECT City, COUNT(*) as NumberOfCustomers FROM customers GROUP BY City";
-    $result = $conn->query($sql);
+        // SQL query to get the menu names and count the number of orders for each
+        $sql = "SELECT m.MenuName, COUNT(*) as Frequency FROM Orders o JOIN Menus m ON o.MenuID = m.MenuID GROUP BY m.MenuName ORDER BY Frequency DESC";
+        $result = $conn->query($sql);
 
-    $customerData = array();
-    while ($row = $result->fetch_assoc()) {
-        $customerData[] = $row;
-    }
+        $menuData = array();
+        while ($row = $result->fetch_assoc()) {
+            $menuData[] = $row;
+        }
 
-    // Free result set
-    $result->close();
+        // Free result set and close connection
+        $result->close();
+        $conn->close();
 
-    // Close connection
-    $conn->close();
+        // Output the data in JSON format
+        // header('Content-Type: application/json');
+        echo "<script>var customerData = " . json_encode($menuData) . ";</script>";
+        // echo json_encode($menuData);
+        ?>
 
-    // Print the data in JSON format
-    echo "<script>var customerData = " . json_encode($customerData) . ";</script>";
-    ?>
+
 
     <!-- Including Validation and D3 scripts -->
     <script src="../FCMS-JavaScripts/Validation.js"></script>
-    <!-- <script src="../FCMS-JavaScripts/CustomerD3.js"></script> -->
+    <script src="../FCMS-JavaScripts/OrderD3.js"></script>
 
         <!-- <button class="sortAsc-button">Sort - Ascending </button>
         <button class="sortDesc-button">Sort - Descending</button>

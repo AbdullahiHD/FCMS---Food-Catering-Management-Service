@@ -7,7 +7,7 @@
     <meta name="description" content="Online Food and Beverage Catering Service">
     <meta name="keywords" content="Create Customer Account">
     <meta name="author" content="Abdullahi">
-    <title>Creating Customer Account</title>
+    <title>Customer Statistic Page</title>
 
     <!-- Link the general layout css -->
     <link rel="stylesheet" href="../FCMS-Assets/Main.css"> 
@@ -48,10 +48,10 @@
     <!-- Your PHP script for database connection and data fetching should be placed here. -->
     <?php
     // Database configuration
-    $host = "localhost"; // Corrected variable name here
+    $host = "localhost";
     $username = "root";
     $password = "";
-    $database = "FCMS"; // Corrected variable name here
+    $database = "FCMS";
 
     // Create database connection
     $conn = new mysqli($host, $username, $password, $database);
@@ -61,13 +61,16 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // SQL query to count customers per city
-    $sql = "SELECT City, COUNT(*) as NumberOfCustomers FROM customers GROUP BY City";
+    // SQL query to retrieve customer names and their number of orders
+    $sql = "SELECT FirstName, LastName, NumberOfOrders 
+            FROM customers 
+            WHERE NumberOfOrders >= 3 
+            ORDER BY NumberOfOrders DESC";
     $result = $conn->query($sql);
 
-    $customerData = array();
+    $customerOrderData = array();
     while ($row = $result->fetch_assoc()) {
-        $customerData[] = $row;
+        $customerOrderData[] = $row;
     }
 
     // Free result set
@@ -77,16 +80,18 @@
     $conn->close();
 
     // Print the data in JSON format
-    echo "<script>var customerData = " . json_encode($customerData) . ";</script>";
-    ?>
+    echo "<script>var customerOrderData = " . json_encode($customerOrderData) . ";</script>";
+    // echo json_encode($customerOrderData)
+?>
+
 
     <!-- Including Validation and D3 scripts -->
     <script src="../FCMS-JavaScripts/Validation.js"></script>
     <script src="../FCMS-JavaScripts/CustomerD3.js"></script>
 
-        <!-- <button class="sortAsc-button">Sort - Ascending </button>
+        <button class="sortAsc-button">Sort - Ascending </button>
         <button class="sortDesc-button">Sort - Descending</button>
-        -->
+        
 
         <!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
     <footer class="footer">

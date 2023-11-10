@@ -48,10 +48,44 @@
     <!-- Your PHP script for database connection and data fetching should be placed here. -->
     <?php
     // Database configuration
-    $host = "localhost"; // Corrected variable name here
+    // $host = "localhost";
+    // $username = "root";
+    // $password = "";
+    // $database = "FCMS";
+
+    // // Create database connection
+    // $conn = new mysqli($host, $username, $password, $database);
+
+    // // Check connection
+    // if ($conn->connect_error) {
+    //     die("Connection failed: " . $conn->connect_error);
+    // }
+
+    // // SQL query to retrieve total sales over time
+    // // Adjust the DATE_FORMAT as per your requirement (e.g., '%Y-%m-%d' for daily)
+    // $sql = "SELECT DATE_FORMAT(CreatedAt, '%Y-%m') as SalesMonth, SUM(TotalPrice) as TotalSales FROM sales GROUP BY SalesMonth ORDER BY SalesMonth";
+    // $result = $conn->query($sql);
+
+    // $salesData = array();
+    // while ($row = $result->fetch_assoc()) {
+    //     $salesData[] = $row;
+    // }
+
+    // // Free result set
+    // $result->close();
+
+    // // Close connection
+    // $conn->close();
+
+    // // Print the data in JSON format for front-end use
+    // echo "<script>var salesData = " . json_encode($salesData) . ";</script>";
+    // echo json_encode($salesData);
+    
+    // Database configuration
+    $host = "localhost";
     $username = "root";
     $password = "";
-    $database = "FCMS"; // Corrected variable name here
+    $database = "FCMS";
 
     // Create database connection
     $conn = new mysqli($host, $username, $password, $database);
@@ -61,13 +95,13 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // SQL query to count customers per city
-    $sql = "SELECT City, COUNT(*) as NumberOfCustomers FROM customers GROUP BY City";
+    // SQL query to retrieve total sales per day
+    $sql = "SELECT DATE_FORMAT(CreatedAt, '%Y-%m-%d') as SalesDate, SUM(TotalPrice) as TotalSales FROM sales GROUP BY SalesDate ORDER BY SalesDate";
     $result = $conn->query($sql);
 
-    $customerData = array();
+    $salesData = array();
     while ($row = $result->fetch_assoc()) {
-        $customerData[] = $row;
+        $salesData[] = $row;
     }
 
     // Free result set
@@ -76,13 +110,15 @@
     // Close connection
     $conn->close();
 
-    // Print the data in JSON format
-    echo "<script>var customerData = " . json_encode($customerData) . ";</script>";
-    ?>
+    // Print the data in JSON format for front-end use
+    echo "<script>var salesData = " . json_encode($salesData) . ";</script>";
+    // echo json_encode($salesData); Debugging
+?>
+
 
     <!-- Including Validation and D3 scripts -->
     <script src="../FCMS-JavaScripts/Validation.js"></script>
-    <!-- <script src="../FCMS-JavaScripts/CustomerD3.js"></script> -->
+    <script src="../FCMS-JavaScripts/RevenueD3.js"></script>
 
         <!-- <button class="sortAsc-button">Sort - Ascending </button>
         <button class="sortDesc-button">Sort - Descending</button>
