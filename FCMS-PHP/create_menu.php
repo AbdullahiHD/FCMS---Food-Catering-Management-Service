@@ -1,49 +1,54 @@
 <?php
-    // Connect to the MySQL database 
     $servername = "localhost";
     $username = "root";
     $password = "";
     $database = "FCMS";
 
-    // Check if the form is submitted
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['MenuId'], $_POST['MenuName'], $_POST['Appetizer'], $_POST['MainDish'], $_POST['Dessert'], $_POST['Drink'], $_POST['Price'])) {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['name'], $_POST['menu-price'], $_POST['menu-app'], $_POST['menu-main'], $_POST['menu-des'], $_POST['menu-drink'])) {
+        $conn = new mysqli($servername, $username, $password, $database);
 
-        // Create a connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // Check the connection
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
 
-        // Retrieve form data
         $menuName = $conn->real_escape_string($_POST["name"]);
+        $price = $conn->real_escape_string($_POST["menu-price"]);
         $appetizer = $conn->real_escape_string($_POST["menu-app"]);
         $mainDish = $conn->real_escape_string($_POST["menu-main"]);
         $dessert = $conn->real_escape_string($_POST["menu-des"]);
         $drink = $conn->real_escape_string($_POST["menu-drink"]);
-        $price = $conn->real_escape_string($_POST["menu-price"]);
+        // Validate input (example: ensure price is a valid numeric value)
+        if (!is_numeric($price)) {
+            echo "Invalid price input.";
+            $conn->close();
+            exit();
+        }
 
-        // Calculate menuId
         $sqlCountRows = "SELECT COUNT(*) as total FROM menus";
         $result = $conn->query($sqlCountRows);
-        $row = $result->fetch_assoc();
-        $menuId = $row["total"] + 1;
 
-        // Insert data into the menu table
-        $sql = "INSERT INTO menus (MenuID, MenuName, Appetizer, MainDish, Dessert, Drink, Price) VALUES ('$menuId', '$menuName', '$appetizer', '$mainDish', '$dessert', '$drink', '$price')";
+        if ($result) {
+            $row = $result->fetch_assoc();
+            $menuId = isset($row["total"]) ? $row["total"] + 1 : 1;
+            $result->free();
+        } else {
+            echo "Error: Unable to fetch menu count.";
+            $conn->close();
+            exit();
+        }
+
+        $sql = "INSERT INTO menus (MenuID, MenuName, Appetizer, MainDish, Dessert, Drink, Price) 
+                VALUES ('$menuId', '$menuName', '$appetizer', '$mainDish', '$dessert', '$drink', '$price')";
 
         if ($conn->query($sql) === TRUE) {
-            // Return success message with menuID as response
-            echo "Menu added successfully with menuID: " . $menuId;
+            echo"errpr";
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            echo "Error: Unable to add menu. Please try again later.";
+            // Log detailed error for your reference: echo "Error: " . $sql . "<br>" . $conn->error;
         }
-    
-            // Close the database connection
-            $conn->close();
-        } else {
-            // Handle the case where not all required parameters are set
-            echo "Missing required parameters.";
-        }
-    ?>
+
+        $conn->close();
+    } else {
+        echo "Missing required parameters.";
+    }
+?>
