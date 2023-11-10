@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="../FCMS-CSS/StaffDashboardFahad.css">
     <link rel="stylesheet" href="../FCMS-CSS/EventExecutionWorkflow.css" />
     <title>Order Details</title>
+    <style>
+        .edit-delete-buttons {
+        display: flex;
+        gap: 10px; /* Adjust the gap between buttons as needed */
+        margin-top: 10px; /* Add margin for spacing */
+        }
+    </style>
 </head>
 <body>
     <!-- Navbar -->
@@ -60,30 +67,7 @@
                     echo '<p><strong>Delivery Address:</strong> ' . $row['DeliveryAddress'] . '</p>';
                     echo '<p><strong>Menu ID:</strong> ' . $row['MenuID'] . '</p>';
                     echo '</div>';
-                    echo '<div class="task-assignment">';
-                    echo '<h3>Task Assignment System</h3>';
-                    echo '<form method="post" action="">';
-
-                    // Create a dropdown for each occupation and populate from Employees table
-                    $occupations = ['EventPlanner', 'EventManager', 'ExecutiveChef', 'SousChef', 'LineCook', 'Dishwasher', 'Server', 'DeliveryDriver'];
-                    foreach ($occupations as $occupation) {
-                        echo "<label for='$occupation'>$occupation:</label>";
-                        echo "<select name='$occupation' id='$occupation'>";
-                        // Query to retrieve employees by occupation
-                        $employeeQuery = "SELECT EmployeeName FROM Employees WHERE Occupation = '$occupation'";
-                        $employeeResult = $conn->query($employeeQuery);
-                        while ($employee = $employeeResult->fetch_assoc()) {
-                            echo "<option value='{$employee['EmployeeName']}'>{$employee['EmployeeName']}</option>";
-                        }
-                        echo "</select>";
-                    }
-
-                    echo '<input type="hidden" name="orderID" value="' . $orderID . '">';
-                    echo '<button type="submit" name="saveButton">Save</button>';
-                    echo '</form>';
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</div>';
+                    
                 } else {
                     echo "Order not found.";
                 }
@@ -91,26 +75,39 @@
                 echo "Order ID not provided.";
             }
 
-            // Handle form submission
-            if (isset($_POST['saveButton'])) {
-                // Get the selected employees and update the "AssignedEmployees" field in the "Orders" table
-                $assignedEmployees = '';
-                foreach ($occupations as $occupation) {
-                    if (isset($_POST[$occupation])) {
-                        $selectedEmployee = $_POST[$occupation];
-                        $assignedEmployees .= "$selectedEmployee ($occupation), ";
-                    }
-                }
+            // // Handle form submission
+            // if (isset($_POST['saveButton'])) {
+            //     // Get the selected employees and update the "AssignedEmployees" field in the "Orders" table
+            //     $assignedEmployees = '';
+            //     foreach ($occupations as $occupation) {
+            //         if (isset($_POST[$occupation])) {
+            //             $selectedEmployee = $_POST[$occupation];
+            //             $assignedEmployees .= "$selectedEmployee ($occupation), ";
+            //         }
+            //     }
 
-                // Remove the trailing comma and space
-                $assignedEmployees = rtrim($assignedEmployees, ', ');
+            //     // Remove the trailing comma and space
+            //     $assignedEmployees = rtrim($assignedEmployees, ', ');
 
-                $updateQuery = "UPDATE Orders SET AssignedEmployees = '$assignedEmployees' WHERE OrderID = $orderID";
+            //     $updateQuery = "UPDATE Orders SET AssignedEmployees = '$assignedEmployees' WHERE OrderID = $orderID";
 
-                if ($conn->query($updateQuery) === TRUE) {
-                    echo "Assigned employees saved successfully for Order #$orderID.";
+            //     if ($conn->query($updateQuery) === TRUE) {
+            //         echo "Assigned employees saved successfully for Order #$orderID.";
+            //     } else {
+            //         echo "Error updating record: " . $conn->error;
+            //     }
+            // }
+
+            if (isset($_POST['deleteButton'])) {
+                $deleteQuery = "DELETE FROM Orders WHERE OrderID = $orderID";
+            
+                if ($conn->query($deleteQuery) === TRUE) {
+                    echo "Order deleted successfully.";
+                    // Redirect to a page after deletion
+                    header("Location: AdminActiveOrders.php");
+                    exit();
                 } else {
-                    echo "Error updating record: " . $conn->error;
+                    echo "Error deleting order: " . $conn->error;
                 }
             }
 
@@ -118,7 +115,7 @@
             $conn->close();
         ?>
     </div>
-    <div class="board">
+    <!-- <div class="board">
       <h2>Event Execution Workflow</h2>
       <form id="todo-form">
         <input type="text" placeholder="New TODO..." id="todo-input" />
@@ -149,7 +146,17 @@
 
         </div>
       </div>
-    </div>
+    </div> -->
+    <div class="edit-delete-buttons">
+        <!-- <button onclick="document.location=AdminEditOrder.php?orderID=" class="edit-button">Edit</button> -->
+        <!-- <a href="AdminEditOrder.php?orderID=<?php echo $orderID; ?>" class="edit-button">Edit</a> -->
+        <a href="AdminEditOrder.php?orderID=<?php echo $orderID; ?>"><button type="button" class="edit-button">Edit</button></a>
+    <!-- <button type="submit" name="deleteButton">Delete</button> -->
+    <form method="post" action="">
+        <input type="hidden" name="orderID" value="<?php echo $orderID; ?>">
+        <button type="submit" name="deleteButton">Delete</button>
+    </form>
+</div>
     <script src="../FCMS-JavaScripts/EventExecutionWorkflow.js" defer></script>
 </body>
 </html>

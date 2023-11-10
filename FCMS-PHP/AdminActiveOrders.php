@@ -15,7 +15,7 @@
         </a>
         <ul>
             <li><a href="../FCMS-HTML/Dashboard.html">Dashboard</a></li>
-            <li><a href="AdminPendingOrders.php">Pending Requests</a></li>
+            <li><a href="AdminPendingRequests.php">Pending Requests</a></li>
             <li><a href="#">Active Orders</a></li>
         </ul>
     </nav>
