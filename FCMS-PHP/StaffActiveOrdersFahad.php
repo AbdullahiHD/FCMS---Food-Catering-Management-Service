@@ -51,7 +51,7 @@
                 while ($row = $result->fetch_assoc()) {
                     $orderID = $row['OrderID'];
                     echo '<div class="order-div">';
-                    echo '<div class="order-content">';
+                    echo '<div class="order-content-active">';
                     echo '<div class="order-title">Order #' . $orderID . '</div>';
                     echo '<a href="OrderDetailsPage.php?orderID=' . $orderID . '">View Order Details and Task Assignment</a>';
                     echo '</div>';

@@ -64,16 +64,19 @@
 
                         // Display user and staff details here
                         echo '<h1>User Profile</h1>';
-                        echo '<h2>User Information</h2>';
-                        echo '<p><strong>User ID:</strong> ' . $user['UserId'] . '</p>';
-                        echo '<p><strong>Username:</strong> ' . $user['Username'] . '</p>';
-                        echo '<p><strong>Permission:</strong> ' . $user['Permission'] . '</p>';
 
-                        echo '<h2>Staff Information</h2>';
+                        // Display image
+                        $imagePath = $staff['Image'];
+                        echo '<img src="uploads/' . basename($imagePath) . '" alt="Profile Image" style="max-width: 200px; max-height: 200px;">';
+
                         echo '<p><strong>First Name:</strong> ' . $staff['FirstName'] . '</p>';
                         echo '<p><strong>Last Name:</strong> ' . $staff['LastName'] . '</p>';
                         echo '<p><strong>Joining Date:</strong> ' . $staff['JoiningDate'] . '</p>';
                         echo '<p><strong>Position:</strong> ' . $staff['Position'] . '</p>';
+
+                        echo '<p><strong>User ID:</strong> ' . $user['UserId'] . '</p>';
+                        echo '<p><strong>Username:</strong> ' . $user['Username'] . '</p>';
+                        echo '<p><strong>Permission:</strong> ' . $user['Permission'] . '</p>';
 
                         echo '<div class="logout-button"><button onclick="window.location.href=\'Login.php\'">Logout</button></div>';
 

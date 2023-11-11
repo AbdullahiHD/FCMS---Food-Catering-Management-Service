@@ -180,52 +180,44 @@
     </style>
 </head>
 <body>
-    <div class="container">
+<div class="container">
         <h1>Thank You For Your Feedback</h1>
         <h2>What Our Customers Are Saying...</h2>
         <div class="testimonials">
-            <div class="testimonial">
-                <p>"I had an amazing experience with this service. The quality and speed of delivery exceeded my expectations."</p>
-                <div class="author">
-                    <img src="user1.jpg" alt="User 1">
-                    John Doe
-                </div>
-            </div>
-            <div class="testimonial">
-                <p>"I've been a customer for years, and the consistent quality of their products is impressive. Highly recommended!"</p>
-                <div class="author">
-                    <img src="user2.jpg" alt="User 2">
-                    Jane Smith
-                </div>
-            </div>
-            <div class="testimonial">
-                <p>"Outstanding customer support! They went above and beyond to help me with my issue."</p>
-                <div class="author">
-                    <img src="user3.jpg" alt="User 3">
-                    Michael Johnson
-                </div>
-            </div>
-            <div class="testimonial">
-                <p>"Outstanding customer support! They went above and beyond to help me with my issue."</p>
-                <div class="author">
-                    <img src="user4.jpg" alt="User 4">
-                         Johnson
-                </div>
-            </div>
-            <div class="testimonial">
-                <p>"Outstanding customer support! They went above and beyond to help me with my issue."</p>
-                <div class="author">
-                    <img src="user4.jpg" alt="User 4">
-                         Johnson
-                </div>
-            </div>
-            <div class="testimonial">
-                <p>"Outstanding customer support! They went above and beyond to help me with my issue."</p>
-                <div class="author">
-                    <img src="user4.jpg" alt="User 4">
-                         Johnson
-                </div>
-            </div>
+
+            <?php
+            // Database connection
+            $servername = "localhost";
+            $username = "root";
+            $password = "";  // Replace with your database password
+            $dbname = "fcms";
+
+            // Create a connection
+            $conn = new mysqli($servername, $username, $password, $dbname);
+
+            // Check the connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            // Fetch comments from the database
+            $sql = "SELECT Comments, CustomerName FROM requests";
+            $result = $conn->query($sql);
+
+            // Output testimonials dynamically
+            while ($row = $result->fetch_assoc()) {
+                echo '<div class="testimonial">';
+                echo '<p>"' . $row['Comments'] . '"</p>';
+                echo '<div class="author">';
+                echo '<p>"' . $row['CustomerName'] . '"</p>';
+                echo '</div>';
+                echo '</div>';
+            }
+
+            // Close the database connection
+            $conn->close();
+            ?>
+
         </div>
     </div>
     <div class="button-container">
