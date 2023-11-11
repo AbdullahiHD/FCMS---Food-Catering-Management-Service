@@ -23,6 +23,18 @@
       border-radius: 5px;
     }
 
+    #header {
+      background-image: url("background.png");
+      background-color: #000000;
+      height: 100px;
+      color: #FFFFFF;
+      text-align: left;
+      padding-left: 20px;
+      padding-top: 20px;
+      font-family: "Arial";
+      color: goldenrod;
+    }
+
     th,
     td {
       border: 1px solid #ccc;
@@ -72,13 +84,15 @@
     }
 
     .navbar {
-      background-color: #ccc;
+      background-color: #3b3d41;
+      color: goldenrod;
       width: 210px;
       height: 100%;
       position: fixed;
-      top: 0;
+      top: 120;
       left: 0;
       overflow-y: auto;
+      min-height: 83vh;
     }
 
     .navbar ul {
@@ -94,7 +108,7 @@
 
     .navbar a {
       text-decoration: none;
-      color: black;
+      color: goldenrod;
       display: block;
     }
 
@@ -109,7 +123,7 @@
       color: white;
     }
 
-    nav {
+    /* nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -123,6 +137,7 @@
       left: 0;
       width: 100%;
       z-index: 1000;
+
     }
 
     span {
@@ -190,7 +205,7 @@
     nav ul li a:hover::before,
     nav ul li a:hover::after {
       width: 100%;
-    }
+    } */
 
     .back-button {
       display: inline-block;
@@ -201,14 +216,14 @@
 
     /* Style the dropdown button */
     .dropbtn {
-      background-color: #ccc;
-      color: black;
+      background-color: #3b3d41;
+      color: goldenrod;
       padding: 10px;
       font-size: 16px;
       border: none;
       cursor: pointer;
       margin-left: 60px;
-      font-family: 'Times New Roman', sans-serif;
+      font-family: Calibri;
       font-size: 18px;
 
     }
@@ -225,7 +240,7 @@
 
     /* Style the dropdown links */
     .dropdown-content a {
-      color: black;
+      color: goldenrod;
       padding: 12px 16px;
       text-decoration: none;
       display: block;
@@ -258,12 +273,12 @@
     .box {
       border: 2px solid #333;
       padding: 10px;
-      background: #f0f0f0;
+      background: white;
       text-align: center;
-      height: 220px;
+      height: 250px;
       width: 350px;
       box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
+      border-radius: 20px;
       transition: transform 0.3s;
     }
 
@@ -283,7 +298,7 @@
       /* Adjust the font size */
       color: gold;
       /* Set the text color to black */
-      margin-top: 20px;
+      margin-top: 40px;
       /* Adjust the margin between image and text */
       text-decoration: none;
     }
@@ -295,15 +310,19 @@
 </head>
 
 <body>
+  <div id="header">
+    <h1>Dashboard</h1>
+  </div>
   <div class="navbar">
+
     <ul>
       <br>
       <br>
       <br>
-      <br>
-      <li><a href="#">
-          <h1>Dashboard</h1>
-        </a></li>
+
+      <!-- <li><a href="#">
+          
+        </a></li> -->
       <li><a href="../FCMS-PHP/EventManagement.php">Events</a></li>
       <li><a href="../FCMS-PHP/">Menus</a></li>
       <li><a href="../FCMS-PHP/CreateStaff.php">Staff</a></li>
@@ -370,7 +389,7 @@
   <div class="content">
     <!-- Content for your pages goes here -->
   </div>
-  <nav>
+  <!-- <nav>
     <a href="#" class="logolink">
       <img src="../FCMS-Assets/images/culinarycue.png" width="100" height="60" alt="CulinaryCue - Home">
     </a>
@@ -381,9 +400,9 @@
       <li><a href="">Our Team</a></li>
       <li><a href="">Contact</a></li>
     </ul>
-    <!-- <a href="" class="registrationbutton">Login</a>
-        <a href="" class="registrationbutton">Login</a> -->
-  </nav>
+    <a href="" class="registrationbutton">Login</a>
+        <a href="" class="registrationbutton">Login</a> 
+  </nav>  -->
 
   <div class="grid">
     <!-- Box 1 -->
