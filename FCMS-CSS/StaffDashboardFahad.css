@@ -304,3 +304,11 @@ strong {
 .logout-button {
   text-align: center;
 }
+
+.staff-img{
+  max-width: 200px; 
+  max-height: 200px; 
+  display: block; 
+  margin: 0 auto 0 0;
+  margin-bottom: 20px;
+}

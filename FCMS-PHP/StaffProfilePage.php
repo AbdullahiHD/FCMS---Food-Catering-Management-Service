@@ -65,9 +65,10 @@
                         // Display user and staff details here
                         echo '<h1>User Profile</h1>';
 
-                        // Display image
-                        $imagePath = $staff['Image'];
-                        echo '<img src="uploads/' . basename($imagePath) . '" alt="Profile Image" style="max-width: 200px; max-height: 200px;">';
+                        // Display image if available
+
+                        $imagePath = $staff["image"];
+                        echo '    <img class="staff-img" src="' . $imagePath . '">';
 
                         echo '<p><strong>First Name:</strong> ' . $staff['FirstName'] . '</p>';
                         echo '<p><strong>Last Name:</strong> ' . $staff['LastName'] . '</p>';
