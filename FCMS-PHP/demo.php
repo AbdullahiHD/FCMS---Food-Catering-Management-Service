@@ -89,48 +89,7 @@
 
     <div class="container">
         <div class="card-form">
-            <form method="POST" action="Paymentgateway.php"> <!-- Changed to POST method for secure data transmission -->
-                <?php
-                // Check if data was passed from the quotation and billing forms
-                if (isset($_GET['name'], $_GET['eventType'], $_GET['eventTime'], $_GET['eventDate'], $_GET['deliveryAddress'], $_GET['attendees'], $_GET['menuId'], $_GET['menuName'], $_GET['menuPrice'], $_GET['totalPrice'])) {
-                    // Output hidden input fields to store this data
-                    echo '<input type="hidden" name="name" value="' . htmlspecialchars($_GET['name']) . '">';
-                    echo '<input type="hidden" name="eventType" value="' . htmlspecialchars($_GET['eventType']) . '">';
-                    echo '<input type="hidden" name="eventTime" value="' . htmlspecialchars($_GET['eventTime']) . '">';
-                    echo '<input type="hidden" name="eventDate" value="' . htmlspecialchars($_GET['eventDate']) . '">';
-                    echo '<input type="hidden" name="deliveryAddress" value="' . htmlspecialchars($_GET['deliveryAddress']) . '">';
-                    echo '<input type="hidden" name="attendees" value="' . htmlspecialchars($_GET['attendees']) . '">';
-                    echo '<input type="hidden" name="menuId" value="' . htmlspecialchars($_GET['menuId']) . '">';
-                    echo '<input type="hidden" name="menuName" value="' . htmlspecialchars($_GET['menuName']) . '">';
-                    echo '<input type="hidden" name="menuPrice" value="' . htmlspecialchars($_GET['menuPrice']) . '">';
-                    echo '<input type="hidden" name="totalPrice" value="' . htmlspecialchars($_GET['totalPrice']) . '">';
-                }
-                ?>
-                <label for="card-number">Card Number</label>
-                <input type="text" id="card-number" name="cardNumber" oninput="validateCardNumber()">
-                <span id="card-number-error" style="color:red;"></span>
-
-                <label for="card-holder">Card Holder's Name</label>
-                <input type="text" id="card-holder" name="cardHolder" oninput="validateCardHolder()">
-                <span id="card-holder-error" style="color:red;"></span>
-
-                <div class="expiry-cvv">
-                    <div>
-                        <label for="expiry-month">Expiration Month (MM)</label>
-                        <input type="text" id="expiry-month" name="expiryMonth" oninput="validateExpiryMonth()">
-                        <span id="expiry-month-error" style="color:red;"></span>
-
-                        <label for="expiry-year">Expiration Year (YYYY)</label>
-                        <input type="text" id="expiry-year" name="expiryYear" oninput="validateExpiryYear()">
-                        <span id="expiry-year-error" style="color:red;"></span>
-                    </div>
-
-                    <div>
-                        <label for="cvv">CVV</label>
-                        <input type="text" id="cvv" name="cvv" oninput="validateCvv()">
-                        <span id="cvv-error" style="color:red;"></span>
-                    </div>
-                </div>
+            <!--  -->
 
                 <button type="submit" class="submitbutton" onclick="return validateForm();">Submit</button>
             </form>
@@ -144,7 +103,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$database = "fcms";
+$database = "FCMS";
 
 // Check if the form has been submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['name'], $_POST['eventTime'], $_POST['eventDate'], $_POST['deliveryAddress'], $_POST['attendees'], $_POST['menuId'])) {
@@ -156,22 +115,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['name'], $_POST['eventT
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Get data from the POST request
-    $name = $conn->real_escape_string($_POST['name']);
-    $eventTime = $conn->real_escape_string($_POST['eventTime']);
-    $eventDate = $conn->real_escape_string($_POST['eventDate']);
-    $deliveryAddress = $conn->real_escape_string($_POST['deliveryAddress']);
-    $attendees = $conn->real_escape_string($_POST['attendees']);
-    $menuId = $conn->real_escape_string($_POST['menuId']);
+    // // Get data from the POST request
+    // $name = $conn->real_escape_string($_POST['name']);
+    // $eventTime = $conn->real_escape_string($_POST['eventTime']);
+    // $eventDate = $conn->real_escape_string($_POST['eventDate']);
+    // $deliveryAddress = $conn->real_escape_string($_POST['deliveryAddress']);
+    // $attendees = $conn->real_escape_string($_POST['attendees']);
+    // $menuId = $conn->real_escape_string($_POST['menuId']);
 
-    // Set default values for OrderStatus and PaymentStatus
-    $orderStatus = "Pending";
-    $paymentStatus = "Received";
-    $paymentID = "1";
+    // // Set default values for OrderStatus and PaymentStatus
+    // $orderStatus = "Pending";
+    // $paymentStatus = "Received";
+    // $paymentID = "1";
 
     // SQL query to insert data into the "requests" table
-    $sql = "INSERT INTO requests1 (CustomerName, EventTime, EventDate, DeliveryAddress, NumberOfAttendees, MenuID, OrderStatus, PaymentStatus, PaymentID)
-            VALUES ('$name', '$eventTime', '$eventDate', '$deliveryAddress', '$attendees', '$menuId', '$orderStatus', '$paymentStatus', '$paymentID')";
+    $sql = "INSERT INTO requests (CustomerName, EventTime, EventDate, DeliveryAddress, NumberOfAttendees, MenuID, OrderStatus, PaymentStatus, PaymentID)
+            VALUES ('Ali', '13:00;00', '24/01/2028', 'Simpang', '100', '6', 'pending', 'pending', '1')";
 
     if ($conn->query($sql) === TRUE) {
         // Data inserted successfully

@@ -178,7 +178,23 @@
     <div class="container">
         <div class="feedback-form">
             <h1>Feedback Form</h1>
-            <form>
+            <form method="POST" action="PaymentSuccessful.php">
+                 <?php
+                // Check if data was passed from the quotation and billing forms
+                if (isset($_GET['name'], $_GET['eventType'], $_GET['eventTime'], $_GET['eventDate'], $_GET['deliveryAddress'], $_GET['attendees'], $_GET['menuId'], $_GET['menuName'], $_GET['menuPrice'], $_GET['totalPrice'])) {
+                    // Output hidden input fields to store this data
+                    echo '<input type="hidden" name="name" value="' . htmlspecialchars($_GET['name']) . '">';
+                    echo '<input type="hidden" name="eventType" value="' . htmlspecialchars($_GET['eventType']) . '">';
+                    echo '<input type="hidden" name="eventTime" value="' . htmlspecialchars($_GET['eventTime']) . '">';
+                    echo '<input type="hidden" name="eventDate" value="' . htmlspecialchars($_GET['eventDate']) . '">';
+                    echo '<input type="hidden" name="deliveryAddress" value="' . htmlspecialchars($_GET['deliveryAddress']) . '">';
+                    echo '<input type="hidden" name="attendees" value="' . htmlspecialchars($_GET['attendees']) . '">';
+                    echo '<input type="hidden" name="menuId" value="' . htmlspecialchars($_GET['menuId']) . '">';
+                    echo '<input type="hidden" name="menuName" value="' . htmlspecialchars($_GET['menuName']) . '">';
+                    echo '<input type="hidden" name="menuPrice" value="' . htmlspecialchars($_GET['menuPrice']) . '">';
+                    echo '<input type="hidden" name="totalPrice" value="' . htmlspecialchars($_GET['totalPrice']) . '">';
+                }
+                ?>
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name">
 
@@ -205,54 +221,54 @@
 </html>
 
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "FCMS";
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $database = "FCMS";
 
-// Check if the form has been submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['name'], $_POST['email'], $_POST['phone'], $_POST['feedback'])) {
-    // Create a connection
-    $conn = new mysqli($servername, $username, $password, $database);
+// // Check if the form has been submitted
+// if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['name'], $_POST['email'], $_POST['phone'], $_POST['feedback'])) {
+//     // Create a connection
+//     $conn = new mysqli($servername, $username, $password, $database);
 
-    // Check the connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+//     // Check the connection
+//     if ($conn->connect_error) {
+//         die("Connection failed: " . $conn->connect_error);
+//     }
 
-    // Get data from the POST request
-    $feedback = $conn->real_escape_string($_POST['feedback']);
-    // $eventTime = $conn->real_escape_string($_POST['eventTime']);
-    // $eventDate = $conn->real_escape_string($_POST['eventDate']);
-    // $deliveryAddress = $conn->real_escape_string($_POST['deliveryAddress']);
-    // $attendees = $conn->real_escape_string($_POST['attendees']);
-    // $menuId = $conn->real_escape_string($_POST['menuId']);
+//     // Get data from the POST request
+//     $feedback = $conn->real_escape_string($_POST['feedback']);
+//     // $eventTime = $conn->real_escape_string($_POST['eventTime']);
+//     // $eventDate = $conn->real_escape_string($_POST['eventDate']);
+//     // $deliveryAddress = $conn->real_escape_string($_POST['deliveryAddress']);
+//     // $attendees = $conn->real_escape_string($_POST['attendees']);
+//     // $menuId = $conn->real_escape_string($_POST['menuId']);
 
-    // Set default values for OrderStatus and PaymentStatus
-    // $orderStatus = "Pending";
-    // $paymentStatus = "Received";
-    // $paymentID = "1";
+//     // Set default values for OrderStatus and PaymentStatus
+//     // $orderStatus = "Pending";
+//     // $paymentStatus = "Received";
+//     // $paymentID = "1";
 
-    // SQL query to insert data into the "requests" table
-    $sql = "INSERT INTO requests (Comments)
-            VALUES ('$feedback')";
+//     // SQL query to insert data into the "requests" table
+//     $sql = "INSERT INTO requests (Comments)
+//             VALUES ('$feedback')";
 
-    // if ($conn->query($sql) === TRUE) {
-    //     // Data inserted successfully
-    //     echo "Order Successful";
-    //     // JavaScript for redirection and alert
-    //     echo "<script>
-    //         alert('Order Successful');
-    //         window.location.href = 'menu.php';
-    //     </script>";
-    // } else {
-    //     echo "Error: " . $sql . "<br>" . $conn->error;
-    // }
+//     // if ($conn->query($sql) === TRUE) {
+//     //     // Data inserted successfully
+//     //     echo "Order Successful";
+//     //     // JavaScript for redirection and alert
+//     //     echo "<script>
+//     //         alert('Order Successful');
+//     //         window.location.href = 'menu.php';
+//     //     </script>";
+//     // } else {
+//     //     echo "Error: " . $sql . "<br>" . $conn->error;
+//     // }
 
-    // Close the database connection
-    $conn->close();
-} else {
-    // Handle the case where not all required parameters are set
-    echo "Missing required parameters.";
-}
+//     // Close the database connection
+//     $conn->close();
+// } else {
+//     // Handle the case where not all required parameters are set
+//     echo "Missing required parameters.";
+// }
 ?>
