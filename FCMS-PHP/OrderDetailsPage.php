@@ -119,6 +119,7 @@
             $conn->close();
         ?>
     </div>
+    <hr class="separation-line">
     <div class="board">
       <h2>Event Execution Workflow</h2>
       <form id="todo-form">

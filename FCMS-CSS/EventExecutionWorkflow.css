@@ -15,7 +15,8 @@
   }
   
   .board {
-    margin-top: 100px;
+    margin-top: 10px;
+    margin-left: 127px;
     padding: 20px;
     width: 100%;
     height: 100vh;
@@ -25,6 +26,10 @@
     background-size: cover;
   }
   
+  .board h2{
+    margin-top: 30px;
+    margin-left: 29px;
+  }
   /* ---- FORM ---- */
   #todo-form {
     padding: 32px 32px 0;

@@ -148,6 +148,12 @@
 .order-details-content{
   margin-top: 100px;
   margin-bottom: 200px;
+  width: 100%;
+}
+
+.order-details-content h1{
+  margin-left: 150px;
+  margin-top: 30px;
 }
 
 .order-content {
@@ -156,6 +162,7 @@
   align-items: flex-start;
   flex: 1;
   margin-right: 10px;
+  margin-left: 150px;
 }
 
 .order-div {
@@ -189,12 +196,13 @@
 
 .task-assignment {
   margin-top: 100px;
+  margin-right: 150px;
   background-color: #202020;
   padding: 10px;
   border-radius: 5px;
   display: block;
   text-align: left;
-  width: 30%;
+  width: 40%;
   position: absolute;
   top: 0;
   right: 0;
@@ -247,6 +255,16 @@ strong {
   width: 70%; 
   margin-left: 20px;
   margin-right: 20px;
+}
+
+.separation-line{
+  width: 82%;
+  margin-top: 260px;
+  margin-left: 150px;
+  height: 2px;
+  border-width: 0;
+  color: #FFD100;
+  background-color: #FFD100;
 }
 
 .order-details-container{
