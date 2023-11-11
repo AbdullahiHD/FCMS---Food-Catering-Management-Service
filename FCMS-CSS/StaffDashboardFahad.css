@@ -259,6 +259,20 @@ strong {
 }
 
 /* STAFF PROFILE PAGE */
-.profile-content{
-  margin-top: 150px;
+
+.profile-content {
+  margin-top: 200px; /* Increase the top margin to move the box further down */
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #333533;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  top: 100px; /* Add this line to move the box down further */
+}
+
+.logout-button {
+  text-align: center;
 }
