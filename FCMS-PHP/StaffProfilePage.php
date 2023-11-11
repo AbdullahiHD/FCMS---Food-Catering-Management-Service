@@ -21,7 +21,6 @@
             <li><a href="StaffProfilePage.php">Profile</a></li>
         </ul>
     </nav>
-    <p>Fahad is capping</p>
 
     <!-- Staff Profile content -->
     <div class="profile-content">

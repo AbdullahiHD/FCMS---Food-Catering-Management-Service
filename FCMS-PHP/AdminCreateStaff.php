@@ -11,6 +11,19 @@
 
 <body>
 
+    <!-- Navbar -->
+    <nav>
+        <a href="#" class="logolink">
+            <img src="../FCMS-Assets/images/culinarycue.png" width="100px" height="60px" alt="CulinaryCue - Home">
+        </a>
+        <ul>
+            <li><a href="StaffDashboardFahad.php">Dashboard</a></li>
+            <li><a href="StaffPendingRequestsFahad.php">Pending Requests</a></li>
+            <li><a href="StaffActiveOrdersFahad.php">Active Orders</a></li>
+            <li><a href="StaffProfilePage.php">Profile</a></li>
+        </ul>
+    </nav>
+    
     <?php
     // Database connection
     $servername = "localhost";
