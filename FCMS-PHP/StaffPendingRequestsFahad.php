@@ -50,10 +50,92 @@
                 
                 if ($conn->query($sql) === TRUE) {
                     // Order data successfully inserted
-                    echo '<script>alert("Request has been transferred to Orders.");</script>';
+            
+                    // Fetch relevant data from 'Requests' table
+                    $requestDataSql = "SELECT RequestID, MenuID, NumberOfAttendees FROM Requests";
+                    $requestDataResult = $conn->query($requestDataSql);
+
+                    if ($requestDataResult === FALSE) {
+                        echo "Error: " . $conn->error;
+                    } else {
+                    $requestDataRows = $requestDataResult->fetch_all(MYSQLI_ASSOC);
+
+                    if (empty($requestDataRows)) {
+                        echo "Error: No rows returned from the Requests table. SQL: $requestDataSql <br>";
+                    } else {
+                    foreach ($requestDataRows as $requestData) {
+                    $requestID = $requestData['RequestID'];
+                    $menuID = $requestData['MenuID'];
+                    $numberOfAttendees = $requestData['NumberOfAttendees'];
+
+                    // Fetch 'MenuName' from 'Menus' table
+                    $menuNameSql = "SELECT MenuName FROM Menus WHERE MenuID = $menuID";
+                    $menuNameResult = $conn->query($menuNameSql);
+
+                    if ($menuNameResult === FALSE) {
+                        echo "Error: " . $conn->error;
+                    } else {
+                $menuNameRows = $menuNameResult->fetch_all(MYSQLI_ASSOC);
+
+                if (empty($menuNameRows)) {
+                    echo "Error: No corresponding MenuID found in the Menus table for the given MenuID. SQL: $menuNameSql <br>";
                 } else {
-                    echo "Error: " . $sql . "<br>" . $conn->error;
+                    // Use the first row (assuming MenuID is unique)
+                    $menuName = $menuNameRows[0]['MenuName'];
+
+                    // Fetch 'UnitPrice' from 'Menus' table
+                    $unitPriceSql = "SELECT Price FROM Menus WHERE MenuID = $menuID";
+                    $unitPriceResult = $conn->query($unitPriceSql);
+
+                    if ($unitPriceResult === FALSE) {
+                        echo "Error: " . $conn->error;
+                    } else {
+                        $unitPriceRows = $unitPriceResult->fetch_all(MYSQLI_ASSOC);
+
+                        if (empty($unitPriceRows)) {
+                            echo "Error: No corresponding MenuID found in the Menus table for the given MenuID. SQL: $unitPriceSql <br>";
+                        } else {
+                            // Use the first row (assuming MenuID is unique)
+                            $unitPrice = $unitPriceRows[0]['Price'];
+
+                            // Calculate TotalPrice based on NumberOfAttendees and UnitPrice
+                            $totalPrice = $numberOfAttendees * $unitPrice;
+
+                            // Insert relevant data into the "Sales" table
+                            $salesSql = "INSERT INTO Sales (CustomerName, OrderID, MenuID, MenuName, UnitPrice, TotalPrice, CreatedAt, UpdatedAt)
+                                SELECT CustomerName, OrderID, $menuID, '$menuName', $unitPrice, $totalPrice, NOW(), NOW()
+                                FROM Orders
+                                WHERE OrderID = LAST_INSERT_ID()";
+
+                            if ($conn->query($salesSql) === TRUE) {
+                                // Sales data successfully inserted
+                                echo '<script>alert("Requests have been transferred to Orders and Sales.");</script>';
+                            } else {
+                                echo "Error: " . $salesSql . "<br>" . $conn->error;
+                            }
+                        }
+                    }
+
+
+                    if ($conn->query($salesSql) === TRUE) {
+                        // Sales data successfully inserted
+                        echo '<script>alert("Requests have been transferred to Orders and Sales.");</script>';
+                    } else {
+                        echo "Error: " . $salesSql . "<br>" . $conn->error;
+                    }
                 }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+                }
+
 
                 //delete the request from the "Requests" table
                 $sql = "DELETE FROM Requests WHERE RequestID = $requestId";

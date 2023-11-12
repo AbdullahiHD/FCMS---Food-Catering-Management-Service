@@ -150,8 +150,42 @@
           <p class="task" draggable="true">Decor and Presentation</p>
 
         </div>
+        
+
       </div>
     </div>
+
+        <form method="post" class="complete-order-form" action="">
+            <input type="hidden" name="completeOrder" value="<?php echo $orderID; ?>">
+            <button class="complete-order-button" type="submit">Complete Order</button>
+        </form>
+    </div>
+    <!-- Add the Complete Order button -->
+        
+        <?php
+            // Handle the form submission to complete the order
+            if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['completeOrder'])) {
+                $completeOrderID = $_POST['completeOrder'];
+
+                // Update the OrderStatus to 'Complete'
+                $updateSql = "UPDATE Orders SET OrderStatus = 'Complete' WHERE OrderID = $completeOrderID";
+
+                $conn = new mysqli($servername, $username, $password, $dbname);
+
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+
+                if ($conn->query($updateSql) === TRUE) {
+                    echo '<script>alert("Order marked as Complete."); window.location.href = "StaffActiveOrdersFahad.php";</script>';
+                } else {
+                    echo "Error updating record: " . $conn->error;
+                }
+
+                $conn->close();
+            }
+        ?>
+
     <script src="../FCMS-JavaScripts/EventExecutionWorkflow.js" defer></script>
 </body>
 </html>
