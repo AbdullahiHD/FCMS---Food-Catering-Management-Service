@@ -89,121 +89,7 @@
         font-weight: 300;
         }
 
-        .menu-box {
-            display: flex;
-            flex-wrap:wrap;
-            justify-content: space-around;
-            align-items: flex-start;
-            border: 2px solid #FFD100;
-            padding: 10px;
-            width: 100%; /* Set the width to 100% */
-            max-width: 960px; /* Set a maximum width for larger screens */
-            background-color: black;
-            z-index: 1;
-        }
-        .menu-item p{
-            margin-top: 5px;
-            color: #FFD100;
-            font-family: 'Helvetica Neue', sans-serif;
-        }
-        .menu-item {
-            text-align: center;
-            flex: 0 0 80%; /* Set the flex basis to 30% */
-            max-width: calc(33.333% - 20px); /* Set the maximum width for 3 items with margin */
-            margin: 10px;
-            position: relative;
-            padding: 10px;
-            box-sizing: border-box; /* Include padding and border in the element's total width and height */
-        }
-
-        .menu-item .image-container {
-            position: relative;
-            overflow: hidden;
-        }
-
-
-        .menu-item img {
-            width: 250px;
-            height: 250px;
-            border: 1px solid #FFD100;
-            transition: transform 0.3s ease;
-        }
-
-        .menu-item .additional-info {
-            position: fixed;
-            top: 0;
-            left: 0px;
-            width: 24vw;
-            height: 100vh;
-            background-color: rgba(0, 0, 0, 0.8); /* Adjust the background color and opacity */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            z-index: 2;
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-
-         /* Use pointer-events to prevent hover on .additional-info */
-         .menu-item .additional-info {
-            pointer-events: none;
-        }
-
-        .menu-item img:hover ~ .additional-info,
-        .menu-item .additional-info:hover {
-            opacity: 1;
-            transform: scale(1);
-            pointer-events: auto; /* Re-enable pointer events on hover */
-            visibility: visible;
-        }
-
-        /* Style the additional info elements */
-        .menu-item .additional-info img {
-            width: 400px; /* Adjust the image size as needed */
-            height: 400px; /* Adjust the image size as needed */
-        }
-
-        .menu-item .additional-info .text-container {
-            margin-top:20px;
-            display: flex;
-            flex-direction: column; /* Stack content top to bottom */
-            align-items: center; /* Align content to the left */
-        }
-
-        .menu-item .additional-info .text-container h3 {
-            color: #FFD100;
-            font-size: 40px;
-            margin: 0;
-        }
-
-        .menu-item .additional-info .text-container p {
-            color: white;
-            font-size: 24px;
-            margin: 0;
-            margin-top: 5px;
-        }
-
-        .menu-select-button {
-            margin-top: 10px;
-            display: inline-block;
-            background-color: #FFD100;
-            color: #202020;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .menu-select-button:hover {
-            background-color: #FFEE32;
-            color: #333533;
-        }
-
+        
         .form-container {
             align-items: center;
             margin-top: 100px;
@@ -218,9 +104,31 @@
         form {
             display: flex;
             flex-direction: column;
+            
+        }
+        /* Style for the buttons container */
+        .button-container {
+            display: flex;
+            justify-content: space-between; /* Align buttons to the left and right */
+            width: 100%;
+            margin-top: 10px; /* Add some margin to separate from the form inputs */
         }
 
-        label {
+        /* Style for the buttons */
+        button {
+            width: 48%; /* Set width to less than 50% to allow for spacing between buttons */
+        }
+
+        /* Style for the delete button */
+        .delete-menu {
+            max-width: 150px;
+        }
+
+        /* Style for the update button */
+        .update-menu {
+            max-width: 150px; 
+        }
+                label {
             margin-bottom: 5px;
             color: #FFD100;
             font-family: 'Helvetica Neue', sans-serif;
@@ -295,35 +203,87 @@
     </nav>
 
     <div class="form-container">
-        <h2>Create New Menu</h2>
+        <h2>Edit Menu</h2>
 
         <div class="image-placeholder">
-            <img id="menu-preview" src="placeholder.jpg" alt="Menu-Image">
+            <img id="menu-preview" img src="placeholder.jpg" alt="Menu-Image">
         </div>
 
-        <form action="../FCMS-PHP/create_menu.php" method="post" enctype="multipart/form-data">
+        <?php
+        // Check if menuId is set in the URL
+        if (isset($_GET['menuId'])) {
+            // Get the menuId from the URL
+            $menuId = $_GET['menuId'];
+
+            // Assuming you have a database connection
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $databaseName = "FCMS";
+
+            // Create a connection
+            $conn = new mysqli($servername, $username, $password, $databaseName);
+
+            // Check the connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            // Fetch menu details based on menuId
+            $sql = "SELECT * FROM menus WHERE MenuID = $menuId";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+
+                // Assign values to variables
+                $MenuID = $row['MenuID'];
+                $MenuName = $row['MenuName'];
+                $menu_price = $row['Price'];
+                $appetizer = $row['Appetizer'];
+                $mainDish = $row['MainDish'];
+                $dessert = $row['Dessert'];
+                $drink = $row['Drink'];
+                $existingFilePath = $row['file_path'];
+
+                // Close the database connection
+                $conn->close();
+            }
+        }
+        ?>
+
+        <form method="post" action="../FCMS-PHP/update_menu.php" enctype="multipart/form-data">
+            <!-- Add a hidden input field to store the menu ID -->
+            <input type="hidden" name="menuId" id="menuId" value="<?php echo $MenuID; ?>">
+
             <label for="name">Menu Name:</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="name" value="<?php echo $MenuName; ?>" required>
 
-            <label for="menu-price">Menu Price</label>
-            <input type="number" id="menu-price" name="menu-price" required>
+            <label for="menu-price">Menu Price:</label>
+            <input type="number" id="menu-price" name="menu-price" value="<?php echo $menu_price; ?>" required>
 
-            <label for="menu-app">Appetiser</label>
-            <input type="text" id="menu-app" name="menu-app" required>
-           
+            <label for="menu-app">Appetiser:</label>
+            <input type="text" id="menu-app" name="menu-app" value="<?php echo $appetizer; ?>" required>
+
             <label for="menu-main">Main Dish:</label>
-            <input type="text" id="menu-main" name="menu-main" required>
+            <input type="text" id="menu-main" name="menu-main" value="<?php echo $mainDish; ?>" required>
 
             <label for="menu-des">Dessert:</label>
-            <input type="text" id="menu-des" name="menu-des" required>
+            <input type="text" id="menu-des" name="menu-des" value="<?php echo $dessert; ?>" required>
 
             <label for="menu-drink">Drink:</label>
-            <input type="text" id="menu-drink" name="menu-drink" required>
+            <input type="text" id="menu-drink" name="menu-drink" value="<?php echo $drink; ?>" required>
+
+            <!-- Add a hidden input field to store the existing file path -->
+            <input type="hidden" name="existingFilePath" value="<?php echo $existingFilePath; ?>">
 
             <label for="file_path">Upload Menu Image:</label>
-            <input type="file" id="file" name="file" accept="image/*" required>
+            <input type="file" id="file" name="file" accept="image/*">
 
-            <button type="submit" value="Submit" name="submit" class="create-new-menu">Create New Menu</button>
+            <div class="button-container">
+                <button type="button" class="delete-menu" onclick="deleteMenu()">Delete Menu</button>
+                <button type="submit" value="Submit" name="submit" class="update-menu">Update Menu</button>
+            </div>
         </form>
     </div>
 
@@ -357,8 +317,12 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script>
-        // Get the image preview element
+        // Assuming you have a JavaScript section for other scripts...
+        // Update the image preview with the existing file path
+        const existingFilePath = "<?php echo $existingFilePath; ?>";
         const menuPreview = document.getElementById("menu-preview");
+        menuPreview.src = "<?php echo $existingFilePath; ?>";
+
         
         // Get the file input element
         const menuImageInput = document.getElementById("file");
@@ -386,6 +350,13 @@
                 menuPreview.src = "placeholder.jpg";
             }
         });
+        // Function to delete the menu
+        function deleteMenu() {
+            if (confirm("Are you sure you want to delete this menu?")) {
+                // Redirect to delete_menu.php with the menuId
+                window.location.href = "../FCMS-PHP/delete_menu.php?menuId=<?php echo $MenuID; ?>";
+            }
+        }
     </script>
 </body>
 </html>
