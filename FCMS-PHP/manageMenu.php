@@ -278,8 +278,9 @@
     // Query to fetch data for all menus, including the image file path
     $sql = "SELECT * FROM menus";
     $result = $conn->query($sql);
-
+    
     if ($result->num_rows > 0) {
+        echo '<h1>Menu Manager</h1>';
         echo '<div class="menu-box">';
         while ($row = $result->fetch_assoc()) {
             echo '<div class="menu-item" id="Menu ' . $row["MenuID"] . '" data-price="' . $row["Price"] . '">';
@@ -303,7 +304,7 @@
             echo '            <p>' . $row["Drink"] . '</p>';
             echo '        </div>';
             echo '    </div>';
-            echo '    <button class="edit-menu">Edit Menu</button>';
+            echo '    <button class="edit-menu" onclick="redirectToEditMenu(' . $row["MenuID"] . ')">Edit Menu</button>';
             echo '</div>';
         }
         echo '</div>';
@@ -430,5 +431,10 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="../FCMS-JavaScripts/menuScript.js"></script>
+    <script>
+    function redirectToEditMenu(menuId) {
+        window.location.href = 'editMenu.php?menuId=' + menuId;
+    }
+    </script>
 </body>
 </html>
