@@ -177,6 +177,30 @@
                 }
 
                 if ($conn->query($updateSql) === TRUE) {
+                    // Retrieve assigned employees for the specific order
+                    $getAssignedEmployeesQuery = "SELECT AssignedEmployees FROM Orders WHERE OrderID = $completeOrderID";
+                    $result = $conn->query($getAssignedEmployeesQuery);
+            
+                    if ($result->num_rows > 0) {
+                        $row = $result->fetch_assoc();
+                        $assignedEmployeesString = $row['AssignedEmployees'];
+            
+                        // Extract employee names and occupations
+                        $employees = explode(", ", $assignedEmployeesString);
+            
+                        // Increment tasks_completed for each employee
+                        foreach ($employees as $employee) {
+                            list($employeeName, $occupation) = explode(" (", $employee);
+                            $employeeName = trim($employeeName);
+                            $occupation = rtrim($occupation, ")");
+                            
+                            $incrementTasksCompletedQuery = "UPDATE Employees SET tasks_completed = tasks_completed + 1 WHERE EmployeeName = '$employeeName' AND Occupation = '$occupation'";
+                            $conn->query($incrementTasksCompletedQuery);
+                        }
+                    }
+                }
+                
+                if ($conn->query($updateSql) === TRUE) {
                     echo '<script>alert("Order marked as Complete."); window.location.href = "StaffActiveOrdersFahad.php";</script>';
                 } else {
                     echo "Error updating record: " . $conn->error;
