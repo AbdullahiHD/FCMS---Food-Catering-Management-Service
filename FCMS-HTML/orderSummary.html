@@ -25,7 +25,7 @@
             padding: 5px;
             border-radius: 10px;
             border: 2px solid #FFD100;
-            margin-top: 100px;
+            margin-top: 120px;
             margin-bottom: auto;
         }
 
@@ -37,19 +37,18 @@
         }
 
         .order-summary-box h2 {
-            font-size: 44px;
             text-align: left;
         }
 
         .order-summary-box h3 {
-            font-size: 24px;
             text-align: left;
         }
 
         .order-summary-box p {
             text-align: left;
-            font-size: 20px;
+            font-size: 18px;
             color: white;
+            font-weight: bold;
         }
 
         .customer-details{
@@ -101,10 +100,14 @@
             cursor: pointer;
         }
 
+        .order-buttons button:hover {
+            background-color: #FFEE32;
+            color: #333533;
+        }
         @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
 
         .footer {
-        margin-top: 20px;
+        margin-top: 50px;
         position: relative;
         width: 100%;
         background: #000000;
@@ -190,11 +193,11 @@
     <div class="container">
         <!-- Order Summary Box -->
         <div class="order-summary-box">
-            <h2>Order Summary</h2>
+            <h1>Order Summary</h1>
             <div class="customer-details">
-                <h3>
+                <h2>
                     Customer Details:
-                </h3>
+                </h2>
                 <!-- Display customer details from URL parameters -->
                 <p>Name: <span id="name"></span></p>
                 <p>Event Type: <span id="event-type"></span></p>
@@ -206,9 +209,9 @@
 
             <div class="menu-details">
                 <div class="menu-info">
-                    <h3>
+                    <h2>
                         Menu Details:
-                    </h3>
+                    </h2>
                     <p>Menu ID: <span id="menu-id"></span></p>
                     <p>Menu Choice: <span id="menu-name"></span></p>
                 </div>

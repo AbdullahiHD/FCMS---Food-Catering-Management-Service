@@ -29,7 +29,7 @@
         @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
 
         .footer {
-        margin-top: 20px;
+        margin-top: auto;
         position: relative;
         width: 100%;
         background: #000000;
@@ -103,10 +103,8 @@
             background-color: black;
             z-index: 1;
         }
-        .menu-item p{
-            margin-top: 5px;
-            color: #FFD100;
-            font-family: 'Helvetica Neue', sans-serif;
+        .menu-item h3{
+            margin-top: 8px;
         }
         .menu-item {
             text-align: center;
@@ -192,14 +190,13 @@
         }
 
         .menu-select-button {
-            margin-top: 10px;
             display: inline-block;
             background-color: #FFD100;
             color: #202020;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
-            font-size: 16px;
+            font-size: 18px;
             cursor: pointer;
             transition: background-color 0.3s;
         }
@@ -211,13 +208,13 @@
 
         .form-container {
             align-items: center;
-            margin-top: 100px;
+            margin-top: 120px;
             width: 40%;
             padding: 10px;
-            border: 0px solid white;
+            border: 1px solid #FFD100;
             border-radius: 1px;
             background-color:black;
-            margin-bottom: 10px;
+            margin-bottom: 30px;
         }
 
         form {
@@ -230,6 +227,7 @@
             color: #FFD100;
             font-family: 'Helvetica Neue', sans-serif;
             font-size: 18px;
+            font-weight: bold;
         }
 
         input[type="text"],
@@ -241,29 +239,85 @@
             margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: 14px;
+            font-size: 16px;
+            font-family: Arial, Helvetica, sans-serif;
         }
         
         .selected-output {
-            margin-top: 10px;
+            margin-top: 20px;
             background-color: #FFD100;
             color: #202020;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
         }
         .selected-output p {
+            color:#202020;
             display: none;
-            padding: 0px 10px;
+            font-size: 18px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #FFD100;
+            border: none;
+            align-items: center;
+            height: 30px;
+            border-radius: 5px;
         }
         @media screen and (max-width: 768px) {
-        /* Add responsive styles for smaller screens */
-        .menu-box {
-            flex-direction: column;
-            align-items: center;
+            /* Add responsive styles for smaller screens */
+            .menu-box {
+                flex-direction: column;
+                align-items: center;
+            }
         }
 
+        /* Add this style for highlighted dates */
         .highlighted-date {
-            background-color: red; /* Set the background color for highlighted dates */
-            color: white; /* Set the text color for highlighted dates */
+            background-color: red;
+            color: white; /* Set the text color to white for better visibility */
+        }
+
+        /* Style the jQuery UI Datepicker */
+        .ui-datepicker {
+            outline: 2px solid #FFD100;
+            background-color: #202020;
+            padding: 5px;
+            font-size: 18px; 
+            font-weight: bold;
+            width: 300px;
+        }
+
+        /* Style the individual date cells */
+        .ui-datepicker-calendar td {
+        }
+
+        /* Style the header of the datepicker */
+        .ui-datepicker-header {
+            background-color: #202020; /* Set the background color to your desired color */
+            border: 1px solid #FFD100; /* Add a border with the desired color */
+            font-size: 18px;
+        }
+
+        /* Style the selected date */
+        .ui-datepicker-calendar .ui-state-active {
+            background-color: #FFD100; /* Set the background color to the desired color */
+            color: #202020; /* Set the text color to red */
+            font-size: 16px;
+        }
+
+        /* Style the hover effect on date cells */
+        .ui-datepicker-calendar td:hover {
+            background-color: #FFD100; /* Set the background color on hover to the desired color */
+        }
+
+
+        .create-event-button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #FFD100;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
         }
             
     </style>
@@ -291,7 +345,7 @@
     </nav>
 
     <div class="form-container">
-        <h2>Event Details Form</h2>
+        <h1>Event Booking Form</h1>
         <form>
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
@@ -354,10 +408,8 @@
 
             // Display the image with the retrieved file path on hover effect
             echo '    <img src="' . $imagePath . '" alt="' . $row["MenuName"] . '">';
-            
-            echo '    <br>';
-            echo '    <p id="menu_' . $row["MenuID"] . '">' . $row["MenuName"] . '</p>';
-            echo '    <p id="price_' . $row["MenuID"] . '">' . $row["Price"] . ' RM</p>';
+            echo '    <h3 id="menu_' . $row["MenuID"] . '">' . $row["MenuName"] . '</h3>';
+            echo '    <h3 id="price_' . $row["MenuID"] . '">RM ' . $row["Price"] . ' </h3>';
             echo '    <div class="additional-info">';
             echo '        <img src="' . $imagePath . '" alt="' . $row["MenuName"] . ' Enlarged">';
             echo '        <div class="text-container">';
@@ -396,84 +448,6 @@
     echo 'const eventDatesArray = ' . json_encode($eventDates) . ';';
     echo '</script>';
 ?>
-
-    <!-- ?> -->
-
-    
-    <!-- <div class="menu-box"> -->
-        <!-- <div class="menu-item" id="Menu 1" data-price="60"> 
-            <img src="../FCMS-Assets/images/hero-slider-1.jpg" alt="Menu 1">
-            <br>
-            <p id="menu_1">Menu 1</p>
-            <p id="price_1">60 RM</p>
-            <div class="additional-info">
-                <img src="../FCMS-Assets/images/hero-slider-1.jpg" alt="Menu 1 Enlarged">
-                <div class="text-container">
-                    <h3>Menu 1</h3>
-                    <p>Appetiser</p>
-                    <p>Main Dish</p>
-                    <p>Dessert</p>
-                    <p>Drink</p>
-                </div>
-            </div> -->
-
-            <!-- <button class="menu-select-button">Select</button>
-        </div>
-        <div class="menu-item" id="Menu 2" data-price="60">
-            <img src="../FCMS-Assets/images/hero-slider-2.jpg" alt="Menu 2"> 
-            <br>
-            <p id="menu_2">Menu 2</p>
-            <p id="price_2">60 RM</p>
-            <div class="additional-info">
-                <img src="../FCMS-Assets/images/hero-slider-2.jpg" alt="Menu 2 Enlarged">
-                <div class="text-container">
-                    <h3>Menu 2</h3>
-                    <p>Appetiser</p>
-                    <p>Main Dish</p>
-                    <p>Dessert</p>
-                    <p>Drink</p>
-                </div>
-            </div>
-            <button class="menu-select-button">Select</button>
-
-        </div>
-        <div class="menu-item" id="Menu 3" data-price="80">
-            <img src="../FCMS-Assets/images/hero-slider-3.jpg"alt="Menu 3">
-            <br>
-            <p id="menu_3">Menu 3</p>
-            <p id="price_3">80 RM</p>
-            <div class="additional-info">
-                <img src="../FCMS-Assets/images/hero-slider-3.jpg"alt="Menu 3">
-                <div class="text-container">
-                    <h3>Menu 3</h3>
-                    <p>Appetiser</p>
-                    <p>Main Dish</p>
-                    <p>Dessert</p>
-                    <p>Drink</p>
-                </div>
-            </div>
-            <button class="menu-select-button">Select</button>
-
-        </div>
-        <div class="menu-item" id="Menu 4" data-price="90">
-            <img src="../FCMS-Assets/images/hero-slider-3.jpg" alt="Menu 3">
-            <br>
-            <p id="menu_4">Somali Cuisine</p>
-            <p id="price_4">90 RM</p>
-            <div class="additional-info">
-                <img src="../FCMS-Assets/images/hero-slider-3.jpg" alt="Menu 4">
-                <div class="text-container">
-                    <h3>Somali Cuisine</h3>
-                    <p>Appetiser</p>
-                    <p>Main Dish</p>
-                    <p>Dessert</p>
-                    <p>Drink</p>
-                </div>
-            </div>
-            <button class="menu-select-button">Select</button>
-        
-        </div> -->
-    </div>
 
     <div class="selected-output">
         <p id="selected-menu"></p>

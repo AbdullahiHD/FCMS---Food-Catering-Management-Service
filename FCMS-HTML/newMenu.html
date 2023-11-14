@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu</title>
+    <title>New Menu</title>
     <link rel="stylesheet" href="../FCMS-Assets/Main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- Include jQuery UI Datepicker styles -->
@@ -29,7 +29,7 @@
         @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
 
         .footer {
-        margin-top: 20px;
+        margin-top: auto;
         position: relative;
         width: 100%;
         background: #000000;
@@ -89,135 +89,50 @@
         font-weight: 300;
         }
 
-        .menu-box {
-            display: flex;
-            flex-wrap:wrap;
-            justify-content: space-around;
-            align-items: flex-start;
-            border: 2px solid #FFD100;
-            padding: 10px;
-            width: 100%; /* Set the width to 100% */
-            max-width: 960px; /* Set a maximum width for larger screens */
-            background-color: black;
-            z-index: 1;
-        }
-        .menu-item p{
-            margin-top: 5px;
-            color: #FFD100;
-            font-family: 'Helvetica Neue', sans-serif;
-        }
-        .menu-item {
-            text-align: center;
-            flex: 0 0 80%; /* Set the flex basis to 30% */
-            max-width: calc(33.333% - 20px); /* Set the maximum width for 3 items with margin */
-            margin: 10px;
-            position: relative;
-            padding: 10px;
-            box-sizing: border-box; /* Include padding and border in the element's total width and height */
-        }
-
-        .menu-item .image-container {
-            position: relative;
-            overflow: hidden;
-        }
-
-
-        .menu-item img {
-            width: 250px;
-            height: 250px;
-            border: 1px solid #FFD100;
-            transition: transform 0.3s ease;
-        }
-
-        .menu-item .additional-info {
-            position: fixed;
-            top: 0;
-            left: 0px;
-            width: 24vw;
-            height: 100vh;
-            background-color: rgba(0, 0, 0, 0.8); /* Adjust the background color and opacity */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            z-index: 2;
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-
-         /* Use pointer-events to prevent hover on .additional-info */
-         .menu-item .additional-info {
-            pointer-events: none;
-        }
-
-        .menu-item img:hover ~ .additional-info,
-        .menu-item .additional-info:hover {
-            opacity: 1;
-            transform: scale(1);
-            pointer-events: auto; /* Re-enable pointer events on hover */
-            visibility: visible;
-        }
-
-        /* Style the additional info elements */
-        .menu-item .additional-info img {
-            width: 400px; /* Adjust the image size as needed */
-            height: 400px; /* Adjust the image size as needed */
-        }
-
-        .menu-item .additional-info .text-container {
-            margin-top:20px;
-            display: flex;
-            flex-direction: column; /* Stack content top to bottom */
-            align-items: center; /* Align content to the left */
-        }
-
-        .menu-item .additional-info .text-container h3 {
-            color: #FFD100;
-            font-size: 40px;
-            margin: 0;
-        }
-
-        .menu-item .additional-info .text-container p {
-            color: white;
-            font-size: 24px;
-            margin: 0;
-            margin-top: 5px;
-        }
-
-        .menu-select-button {
-            margin-top: 10px;
-            display: inline-block;
-            background-color: #FFD100;
-            color: #202020;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .menu-select-button:hover {
-            background-color: #FFEE32;
-            color: #333533;
-        }
-
         .form-container {
+            display: flex;
+            flex-direction: column;
             align-items: center;
             margin-top: 100px;
-            width: 40%;
-            padding: 10px;
-            border: 0px solid white;
+            width: calc(40% - 10px);
+            padding: 30px;
+            border: 2px solid #FFD100;
             border-radius: 1px;
-            background-color:black;
-            margin-bottom: 10px;
+            background-color: black;
+            margin-bottom: 20px;
+            margin-top: 120px;
         }
 
         form {
             display: flex;
             flex-direction: column;
+            width: 100%;
+            
+        }
+        /* Style for the buttons container */
+        .button-container {
+            display: flex;
+            justify-content: space-between; /* Align buttons to the left and right */
+            width: 100%;
+            margin-top: 10px; /* Add some margin to separate from the form inputs */
+        }
+        /* Style for the buttons */
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #FFD100;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: calc(33% - 10px); 
+        }
+        .go-back {
+            max-width: 150px;
+        }
+        .create-new-menu {
+            max-width: 190px;
         }
 
         label {
@@ -225,6 +140,9 @@
             color: #FFD100;
             font-family: 'Helvetica Neue', sans-serif;
             font-size: 18px;
+            text-align: left;
+            width: 50%;
+            font-weight: bold;
         }
 
         input[type="text"],
@@ -233,7 +151,8 @@
             margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: 14px;
+            font-size: 16px;
+            width: 100%;
         }
 
         input[type="file"] {
@@ -241,19 +160,12 @@
             margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: 14px;
+            font-size: 16px;
+            width: calc(50% - 10px);
         }
         
         @media screen and (max-width: 768px) {}
-        .menu-box {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .highlighted-date {
-            background-color: red; /* Set the background color for highlighted dates */
-            color: white; /* Set the text color for highlighted dates */
-        }
+        
         
         .image-placeholder {
             display: flex;
@@ -261,8 +173,9 @@
             align-items: center;
             width: 300px;
             height: 300px;
-            border: 2px solid #FFD100;
+            border: 1px solid #FFD100;
             margin: 0 auto;
+            margin-bottom: 20px;
         }
 
         .image-placeholder img {
@@ -288,14 +201,13 @@
             <li><a href="../FCMS-HTML/TahaIndex.html">Contact</a></li>
             
         </ul>
-        <a href="" class="registrationbutton">Login</a>
-    
+        
     
     
     </nav>
 
     <div class="form-container">
-        <h2>Create New Menu</h2>
+        <h1>Create New Menu</h1>
 
         <div class="image-placeholder">
             <img id="menu-preview" src="placeholder.jpg" alt="Menu-Image">
@@ -323,7 +235,10 @@
             <label for="file_path">Upload Menu Image:</label>
             <input type="file" id="file" name="file" accept="image/*" required>
 
-            <button type="submit" value="Submit" name="submit" class="create-new-menu">Create New Menu</button>
+            <div class="button-container">
+                <button type="button" class="go-back" onclick="goBack()">Go Back</button>
+                <button type="submit" value="Submit" name="submit" class="create-new-menu">Create New Menu</button>
+            </div>
         </form>
     </div>
 
@@ -357,6 +272,9 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script>
+        function goBack() {
+            window.location.href = '../FCMS-PHP/manageMenu.php';
+        }
         // Get the image preview element
         const menuPreview = document.getElementById("menu-preview");
         

@@ -28,8 +28,14 @@
         }
         @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
 
+        .wrapper {
+            flex: 1;
+        }
+        body h1{
+            margin-top: 10px;
+        }
         .footer {
-        margin-top: 20px;
+        margin-top: auto;
         position: relative;
         width: 100%;
         background: #000000;
@@ -93,17 +99,18 @@
         .menu-box {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-around;
-            align-items: flex-start;
+            justify-content: center;
+            align-items: center; /* Center items vertically */
             border: 2px solid #FFD100;
             padding: 5px;
-            width: 50%; /* Set the width to 90% of the parent container */
-            max-width: 50%; /* Set a maximum width for larger screens */
-            margin: 0; /* Center the menu-box */
+            width: 50%;
+            max-width: 50%;
+            margin: 0;
+            margin-bottom: 30px;
             background-color: black;
             z-index: 1;
         }
-        .menu-item p{
+        .menu-item h3{
             margin-top: 5px;
             color: #FFD100;
             font-family: 'Helvetica Neue', sans-serif;
@@ -191,17 +198,14 @@
             margin-top: 5px;
         }
 
-        .menu-select-button {
-            margin-top: 10px;
-            display: inline-block;
-            background-color: #FFD100;
-            color: #202020;
+        .edit-menu {
             padding: 10px 20px;
+            font-size: 18px;
+            background-color: #FFD100;
             border: none;
             border-radius: 5px;
-            font-size: 16px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            margin-bottom: 10px;
         }
 
         .menu-select-button:hover {
@@ -209,23 +213,16 @@
             color: #333533;
         }
         
-        .selected-output {
-            margin-top: 10px;
-            background-color: #FFD100;
-            color: #202020;
-            margin-bottom: 10px;
-        }
-        .selected-output p {
-            display: none;
-            padding: 0px 10px;
-        }
-        @media screen and (max-width: 768px) {
-        /* Add responsive styles for smaller screens */
-        .menu-box {
-            flex-direction: column;
-            align-items: center;
-        }
+        @media screen and (max-width: 768px){
+            .menu-box {
+                flex-direction: column;
+                align-items: center;
+            }
 
+            .wrapper {
+                margin-top: 95px;
+            }
+        }
         .highlighted-date {
             background-color: red; /* Set the background color for highlighted dates */
             color: white; /* Set the text color for highlighted dates */
@@ -290,10 +287,8 @@
 
             // Display the image with the retrieved file path on hover effect
             echo '    <img src="' . $imagePath . '" alt="' . $row["MenuName"] . '">';
-            
-            echo '    <br>';
-            echo '    <p id="menu_' . $row["MenuID"] . '">' . $row["MenuName"] . '</p>';
-            echo '    <p id="price_' . $row["MenuID"] . '">' . $row["Price"] . ' RM</p>';
+            echo '    <h3 id="menu_' . $row["MenuID"] . '">' . $row["MenuName"] . '</h3>';
+            echo '    <h3 id="price_' . $row["MenuID"] . '">RM ' . $row["Price"] . ' </h3>';
             echo '    <div class="additional-info">';
             echo '        <img src="' . $imagePath . '" alt="' . $row["MenuName"] . ' Enlarged">';
             echo '        <div class="text-container">';
@@ -318,85 +313,6 @@
     // Close the database connection
     $conn->close();
 ?>
-
-    <!-- ?> -->
-
-    
-    <!-- <div class="menu-box"> -->
-        <!-- <div class="menu-item" id="Menu 1" data-price="60"> 
-            <img src="../FCMS-Assets/images/hero-slider-1.jpg" alt="Menu 1">
-            <br>
-            <p id="menu_1">Menu 1</p>
-            <p id="price_1">60 RM</p>
-            <div class="additional-info">
-                <img src="../FCMS-Assets/images/hero-slider-1.jpg" alt="Menu 1 Enlarged">
-                <div class="text-container">
-                    <h3>Menu 1</h3>
-                    <p>Appetiser</p>
-                    <p>Main Dish</p>
-                    <p>Dessert</p>
-                    <p>Drink</p>
-                </div>
-            </div> -->
-
-            <!-- <button class="menu-select-button">Select</button>
-        </div>
-        <div class="menu-item" id="Menu 2" data-price="60">
-            <img src="../FCMS-Assets/images/hero-slider-2.jpg" alt="Menu 2"> 
-            <br>
-            <p id="menu_2">Menu 2</p>
-            <p id="price_2">60 RM</p>
-            <div class="additional-info">
-                <img src="../FCMS-Assets/images/hero-slider-2.jpg" alt="Menu 2 Enlarged">
-                <div class="text-container">
-                    <h3>Menu 2</h3>
-                    <p>Appetiser</p>
-                    <p>Main Dish</p>
-                    <p>Dessert</p>
-                    <p>Drink</p>
-                </div>
-            </div>
-            <button class="menu-select-button">Select</button>
-
-        </div>
-        <div class="menu-item" id="Menu 3" data-price="80">
-            <img src="../FCMS-Assets/images/hero-slider-3.jpg"alt="Menu 3">
-            <br>
-            <p id="menu_3">Menu 3</p>
-            <p id="price_3">80 RM</p>
-            <div class="additional-info">
-                <img src="../FCMS-Assets/images/hero-slider-3.jpg"alt="Menu 3">
-                <div class="text-container">
-                    <h3>Menu 3</h3>
-                    <p>Appetiser</p>
-                    <p>Main Dish</p>
-                    <p>Dessert</p>
-                    <p>Drink</p>
-                </div>
-            </div>
-            <button class="menu-select-button">Select</button>
-
-        </div>
-        <div class="menu-item" id="Menu 4" data-price="90">
-            <img src="../FCMS-Assets/images/hero-slider-3.jpg" alt="Menu 3">
-            <br>
-            <p id="menu_4">Somali Cuisine</p>
-            <p id="price_4">90 RM</p>
-            <div class="additional-info">
-                <img src="../FCMS-Assets/images/hero-slider-3.jpg" alt="Menu 4">
-                <div class="text-container">
-                    <h3>Somali Cuisine</h3>
-                    <p>Appetiser</p>
-                    <p>Main Dish</p>
-                    <p>Dessert</p>
-                    <p>Drink</p>
-                </div>
-            </div>
-            <button class="menu-select-button">Select</button>
-        
-        </div> -->
-    </div>
-
 
     <footer class="footer">
         <ul class="social-icon">

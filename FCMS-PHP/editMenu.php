@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu</title>
+    <title>Edit Menu</title>
     <link rel="stylesheet" href="../FCMS-Assets/Main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <!-- Include jQuery UI Datepicker styles -->
@@ -91,19 +91,22 @@
 
         
         .form-container {
+            display: flex;
+            flex-direction: column;
             align-items: center;
             margin-top: 100px;
-            width: 40%;
-            padding: 10px;
-            border: 0px solid white;
+            width: calc(40% - 10px);
+            padding: 30px;
+            border: 2px solid #FFD100;
             border-radius: 1px;
-            background-color:black;
+            background-color: black;
             margin-bottom: 10px;
         }
 
         form {
             display: flex;
             flex-direction: column;
+            width: 100%;
             
         }
         /* Style for the buttons container */
@@ -116,23 +119,38 @@
 
         /* Style for the buttons */
         button {
-            width: 48%; /* Set width to less than 50% to allow for spacing between buttons */
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #FFD100;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            width: calc(33% - 10px); 
         }
 
-        /* Style for the delete button */
-        .delete-menu {
-            max-width: 150px;
-        }
-
-        /* Style for the update button */
+        .go-back,
+        .delete-menu,
         .update-menu {
-            max-width: 150px; 
+            max-width: 146px;
         }
-                label {
+        .delete-menu{
+            background-color: #EE4B2B;
+            color: #fff;
+        }
+        .delete-menu:hover {
+            background-color: #EE4B2B;
+            color: #fff;
+        }
+        label {
             margin-bottom: 5px;
             color: #FFD100;
             font-family: 'Helvetica Neue', sans-serif;
             font-size: 18px;
+            font-weight: bold;
+            text-align: left;
+            width: 50%;
         }
 
         input[type="text"],
@@ -141,7 +159,8 @@
             margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: 14px;
+            font-size: 16px;
+            width: 100%;
         }
 
         input[type="file"] {
@@ -149,19 +168,12 @@
             margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            font-size: 14px;
+            font-size: 16px;
+            width: calc(50% - 10px);
         }
         
         @media screen and (max-width: 768px) {}
-        .menu-box {
-            flex-direction: column;
-            align-items: center;
-        }
 
-        .highlighted-date {
-            background-color: red; /* Set the background color for highlighted dates */
-            color: white; /* Set the text color for highlighted dates */
-        }
         
         .image-placeholder {
             display: flex;
@@ -169,8 +181,9 @@
             align-items: center;
             width: 300px;
             height: 300px;
-            border: 2px solid #FFD100;
+            border: 1px solid #FFD100;
             margin: 0 auto;
+            margin-bottom: 10px;
         }
 
         .image-placeholder img {
@@ -196,14 +209,12 @@
             <li><a href="../FCMS-HTML/TahaIndex.html">Contact</a></li>
             
         </ul>
-        <a href="" class="registrationbutton">Login</a>
-    
     
     
     </nav>
 
     <div class="form-container">
-        <h2>Edit Menu</h2>
+        <h1>Edit Menu</h1>
 
         <div class="image-placeholder">
             <img id="menu-preview" img src="placeholder.jpg" alt="Menu-Image">
@@ -281,8 +292,9 @@
             <input type="file" id="file" name="file" accept="image/*">
 
             <div class="button-container">
-                <button type="button" class="delete-menu" onclick="deleteMenu()">Delete Menu</button>
+                <button type="button" class="go-back" onclick="goBack()">Go Back</button>
                 <button type="submit" value="Submit" name="submit" class="update-menu">Update Menu</button>
+                <button type="button" class="delete-menu" onclick="deleteMenu()">Delete Menu</button>
             </div>
         </form>
     </div>
@@ -317,8 +329,9 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script>
-        // Assuming you have a JavaScript section for other scripts...
-        // Update the image preview with the existing file path
+        function goBack() {
+            window.location.href = 'manageMenu.php';
+        }
         const existingFilePath = "<?php echo $existingFilePath; ?>";
         const menuPreview = document.getElementById("menu-preview");
         menuPreview.src = "<?php echo $existingFilePath; ?>";

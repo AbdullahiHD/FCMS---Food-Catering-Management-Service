@@ -45,7 +45,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['name'], $_POST['menu-p
         $fileSize = $_FILES['file']['size'];
         $fileError = $_FILES['file']['error'];
         $fileType = $_FILES['file']['type'];
-
         $fileExt = explode(".", $fileName);
         $fileActualExt = strtolower(end($fileExt));
 
@@ -54,8 +53,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['name'], $_POST['menu-p
         if (in_array($fileActualExt, $allowed)) {
             if ($fileError === 0) {
                 if ($fileSize < 10000000) {
-                    $uniqueID = ('menu'. $menuId); // Generate a unique ID
-                    $fileNameNew = $uniqueID . '.' . $fileActualExt;
+                    $uniqueId = uniqid(); // Generate a unique identifier
+                    $fileNameNew = 'menu_' . $uniqueId . '.' . $fileActualExt;
                     $fileDestination = 'uploads/' . $fileNameNew;
                     move_uploaded_file($fileTmpName, $fileDestination);
                 } else {

@@ -6,7 +6,7 @@ $databaseName = "FCMS";
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
+
     // Create a connection
     $conn = new mysqli($servername, $username, $password, $databaseName);
 
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $existingFilePath = $_POST['existingFilePath'];
 
     // Check if a file was uploaded
-    $fileDestination = '';
+    $fileDestination = $existingFilePath;
 
     if (isset($_FILES['file']) && $_FILES['file']['error'] === 0) {
         $file = $_FILES['file'];
@@ -41,27 +41,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $fileActualExt = strtolower(end($fileExt));
 
         $allowed = array('jpg', 'jpeg', 'png');
-
+        $uniqueId = uniqid(); // Generate a unique identifier
         if (in_array($fileActualExt, $allowed)) {
             if ($fileError === 0) {
                 if ($fileSize < 10000000) {
                     // Delete existing file
                     if (file_exists($existingFilePath)) {
-                        unlink($existingFilePath);
+                        if (!unlink($existingFilePath)) {
+                            die("Error deleting existing file.");
+                        }
                     }
 
-                    $uniqueID = uniqid('menu_', true); // Generate a unique ID
-                    $fileNameNew = $uniqueID . '.' . $fileActualExt;
+                    $fileNameNew = 'menu_' . $uniqueId . '.' . $fileActualExt;
                     $fileDestination = 'uploads/' . $fileNameNew;
-                    move_uploaded_file($fileTmpName, $fileDestination);
+                    if (!move_uploaded_file($fileTmpName, $fileDestination)) {
+                        die("Error uploading file.");
+                    }
                 } else {
-                    echo "Your file is too big.";
+                    die("Your file is too big.");
                 }
             } else {
-                echo "There was an error uploading your file.";
+                die("There was an error uploading your file.");
             }
         } else {
-            echo "You cannot upload files of this type.";
+            die("You cannot upload files of this type.");
         }
     }
 
