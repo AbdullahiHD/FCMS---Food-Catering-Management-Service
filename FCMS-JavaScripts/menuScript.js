@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
         menuItem.addEventListener('click', function () {
             // Get the selected menu item's attributes
             var selectedMenuId = menuItem.id;
-            var selectedMenuName = menuItem.querySelector('p').textContent;
+            var selectedMenuName = menuItem.querySelector('h3').textContent;
             var selectedMenuPrice = menuItem.getAttribute('data-price');
             
             // Show the selected menu and set its text
