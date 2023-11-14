@@ -102,6 +102,7 @@
             justify-content: center;
             align-items: center; /* Center items vertically */
             border: 2px solid #FFD100;
+            border-radius: 15px;
             padding: 5px;
             width: 50%;
             max-width: 50%;
@@ -135,6 +136,7 @@
             width: 200px;
             height: 200px;
             border: 1px solid #FFD100;
+            border-radius: 15px;
             transition: transform 0.3s ease;
         }
 

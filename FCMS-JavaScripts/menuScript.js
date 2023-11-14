@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         onSelect: function(selectedEventDate) {
             var formattedDate = $.datepicker.formatDate('yy-mm-dd', new Date(selectedEventDate));
-            alert('Dates Booked: ' + takenDates);
             alert('Date selected: ' + formattedDate);
             // Here you can update eventDateInput if needed
             eventDateInput.value = formattedDate;

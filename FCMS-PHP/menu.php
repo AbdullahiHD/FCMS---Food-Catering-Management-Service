@@ -102,6 +102,7 @@
             margin: 0 auto; /* Center the menu-box */
             background-color: black;
             z-index: 1;
+            border-radius: 15px;
         }
         .menu-item h3{
             margin-top: 8px;
@@ -126,6 +127,7 @@
             width: 200px;
             height: 200px;
             border: 1px solid #FFD100;
+            border-radius: 15px;
             transition: transform 0.3s ease;
         }
 
@@ -210,11 +212,11 @@
             align-items: center;
             margin-top: 120px;
             width: 40%;
-            padding: 10px;
-            border: 1px solid #FFD100;
-            border-radius: 1px;
+            padding: 15px;
+            border: 2px solid #FFD100;
             background-color:black;
             margin-bottom: 30px;
+            border-radius: 15px;
         }
 
         form {

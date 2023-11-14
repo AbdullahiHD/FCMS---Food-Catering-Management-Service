@@ -162,7 +162,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['name'], $_POST['eventT
     $eventDate = $conn->real_escape_string($_POST['eventDate']);
     $deliveryAddress = $conn->real_escape_string($_POST['deliveryAddress']);
     $attendees = $conn->real_escape_string($_POST['attendees']);
-    $menuId = $conn->real_escape_string($_POST['menuId']);
+     // Extract numeric part from menuId
+    $menuId = preg_replace('/\D/', '', $_POST['menuId']);
 
     // Set default values for OrderStatus and PaymentStatus
     $orderStatus = "Pending";
@@ -170,11 +171,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['name'], $_POST['eventT
     $paymentID = "1";
 
     // SQL query to insert data into the "requests" table
-    $sql = "INSERT INTO requests1 (CustomerName, EventTime, EventDate, DeliveryAddress, NumberOfAttendees, MenuID, OrderStatus, PaymentStatus, PaymentID)
+    $sql = "INSERT INTO requests (CustomerName, EventTime, EventDate, DeliveryAddress, NumberOfAttendees, MenuID, OrderStatus, PaymentStatus, PaymentID)
             VALUES ('$name', '$eventTime', '$eventDate', '$deliveryAddress', '$attendees', '$menuId', '$orderStatus', '$paymentStatus', '$paymentID')";
 
     if ($conn->query($sql) === TRUE) {
         // Data inserted successfully
+        // Debugging
         echo "Order Successful";
         // JavaScript for redirection and alert
         echo "<script>

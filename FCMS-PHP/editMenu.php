@@ -98,7 +98,7 @@
             width: calc(40% - 10px);
             padding: 30px;
             border: 2px solid #FFD100;
-            border-radius: 1px;
+            border-radius: 15px;
             background-color: black;
             margin-bottom: 10px;
         }
@@ -181,7 +181,8 @@
             align-items: center;
             width: 300px;
             height: 300px;
-            border: 1px solid #FFD100;
+            border: 2px solid #FFD100;
+            border-radius: 15px;
             margin: 0 auto;
             margin-bottom: 10px;
         }
@@ -190,6 +191,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover; /* Ensure the image covers the container */
+            border-radius: 15px;
         }        
     </style>
 </head>
