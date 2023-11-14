@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +10,7 @@
     <title>Creating Staff Profile</title>
 
     <!-- Linl the general layout css -->
-    <link rel="stylesheet" href="../FCMS-Assets/Main.css"> 
+    <link rel="stylesheet" href="../FCMS-Assets/Main.css">
 
     <!-- Link to this pages css -->
     <link rel="stylesheet" href="../FCMS-CSS/CreateDetails.css">
@@ -30,7 +29,7 @@
 
             <!-- Adding logo -->
             <a href="#" class="logolink">
-            <img src="../FCMS-Assets/images/culinarycue.png" width="100px" height="60px" alt="CulinaryCue - Home">
+                <img src="../FCMS-Assets/images/culinarycue.png" width="100px" height="60px" alt="CulinaryCue - Home">
             </a>
             <ul>
                 <li><a href="../FCMS-HTML/TahaIndex.html">Home</a></li>
@@ -42,19 +41,19 @@
 
         </nav>
     </header>
-    
-        <!-- Brief Heading and content -->
-        <div class="hcontent">
-            <h1>Staff Profile</h1>
-        </div>
-       
+
+    <!-- Brief Heading and content -->
+    <div class="hcontent">
+        <h1>Staff Profile</h1>
+    </div>
+
 
     <form id="form" method="post" action="CustomerDetails.php" onsubmit="return validateForm()">
         <!--Fieldset1-Personal Details-->
         <fieldset>
             <legend class="leg"> PERSONAL DETAILS</legend>
             <label for="hfname">First Name</label>
-            <input type="text" id="hfname" name="hfname"  placeholder="Your first name"> <br>
+            <input type="text" id="hfname" name="hfname" placeholder="Your first name"> <br>
 
             <label for="hlname">Last Name</label>
             <input type="text" id="hlname" name="hlname" placeholder="Your last name"> <br>
@@ -84,10 +83,10 @@
 
         <!--Buttons-->
         <div class="button-container">
-            <button  type="submit" value="Submit" name="submit">Proceed</button>
+            <button type="submit" value="Submit" name="submit">Proceed</button>
             <button type="reset" value="Reset">Reset</button>
         </div>
-    </form> 
+    </form>
 </body>
 
 </html>

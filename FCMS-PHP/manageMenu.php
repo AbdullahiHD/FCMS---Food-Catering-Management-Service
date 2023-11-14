@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,94 +14,100 @@
     <!-- Include jQuery and jQuery UI libraries -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-
+    <!-- Link to navbar css -->
+    <link rel="stylesheet" href="../FCMS-CSS/AdminNav.css">
     <style>
         /* Additional CSS for this specific page */
         body {
-            display:flex;
+            display: flex;
             align-items: center;
             flex-direction: column;
-            min-height:100vh;
+            min-height: 100vh;
             margin: 0;
             padding: 0;
             padding-top: 95px;
             background-image: url(../FCMS-Assets/images/hero-slider-1.jpg);
         }
+
         @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
 
         .wrapper {
             flex: 1;
         }
-        body h1{
+
+        body h1 {
             margin-top: 10px;
         }
+
         .footer {
-        margin-top: auto;
-        position: relative;
-        width: 100%;
-        background: #000000;
-        min-height: 100px;
-        padding: 20px 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        
+            margin-top: auto;
+            position: relative;
+            width: 100%;
+            background: #000000;
+            min-height: 100px;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
         }
 
         .social-icon,
         .menu {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 10px 0;
-        flex-wrap: wrap;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0;
+            flex-wrap: wrap;
         }
 
         .social-icon__item,
         .menu__item {
-        list-style: none;
+            list-style: none;
         }
 
         .social-icon__link {
-        font-size: 2rem;
-        color: #fff;
-        margin: 0 10px;
-        display: inline-block;
-        transition: 0.5s;
+            font-size: 2rem;
+            color: #fff;
+            margin: 0 10px;
+            display: inline-block;
+            transition: 0.5s;
         }
+
         .social-icon__link:hover {
-        transform: translateY(-10px);
+            transform: translateY(-10px);
         }
 
         .menu__link {
-        font-size: 1.2rem;
-        color: #fff;
-        margin: 0 10px;
-        display: inline-block;
-        transition: 0.5s;
-        text-decoration: none;
-        opacity: 0.75;
-        font-weight: 300;
+            font-size: 1.2rem;
+            color: #fff;
+            margin: 0 10px;
+            display: inline-block;
+            transition: 0.5s;
+            text-decoration: none;
+            opacity: 0.75;
+            font-weight: 300;
         }
 
         .menu__link:hover {
-        opacity: 1;
+            opacity: 1;
         }
 
         .footer p {
-        color: #fff;
-        margin: 15px 0 10px 0;
-        font-size: 1rem;
-        font-weight: 300;
+            color: #fff;
+            margin: 15px 0 10px 0;
+            font-size: 1rem;
+            font-weight: 300;
         }
 
         .menu-box {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            align-items: center; /* Center items vertically */
+            align-items: center;
+            /* Center items vertically */
             border: 2px solid #FFD100;
             border-radius: 15px;
             padding: 5px;
@@ -111,19 +118,24 @@
             background-color: black;
             z-index: 1;
         }
-        .menu-item h3{
+
+        .menu-item h3 {
             margin-top: 5px;
             color: #FFD100;
             font-family: 'Helvetica Neue', sans-serif;
         }
+
         .menu-item {
             text-align: center;
-            flex: 1 1 250%; /* Set the flex basis to 30% */
-            max-width: calc(33.333% - 20px); /* Set the maximum width for 3 items with margin */
+            flex: 1 1 250%;
+            /* Set the flex basis to 30% */
+            max-width: calc(33.333% - 20px);
+            /* Set the maximum width for 3 items with margin */
             margin: 10px;
             position: relative;
             padding: 10px;
-            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+            box-sizing: border-box;
+            /* Include padding and border in the element's total width and height */
         }
 
         .menu-item .image-container {
@@ -146,7 +158,8 @@
             left: 0px;
             width: 24vw;
             height: 100vh;
-            background-color: rgba(0, 0, 0, 0.8); /* Adjust the background color and opacity */
+            background-color: rgba(0, 0, 0, 0.8);
+            /* Adjust the background color and opacity */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -158,33 +171,39 @@
             transition: opacity 0.3s ease, visibility 0.3s ease;
         }
 
-         /* Use pointer-events to prevent hover on .additional-info */
-         .menu-item .additional-info {
+        /* Use pointer-events to prevent hover on .additional-info */
+        .menu-item .additional-info {
             pointer-events: none;
         }
-        
-        .menu-item img:hover{
+
+        .menu-item img:hover {
             transform: scale(1.05);
         }
-        .menu-item img:hover ~ .additional-info,
+
+        .menu-item img:hover~.additional-info,
         .menu-item .additional-info:hover {
             opacity: 1;
             transform: scale(1);
-            pointer-events: auto; /* Re-enable pointer events on hover */
+            pointer-events: auto;
+            /* Re-enable pointer events on hover */
             visibility: visible;
         }
 
         /* Style the additional info elements */
         .menu-item .additional-info img {
-            width: 350px; /* Adjust the image size as needed */
-            height: 350px; /* Adjust the image size as needed */
+            width: 350px;
+            /* Adjust the image size as needed */
+            height: 350px;
+            /* Adjust the image size as needed */
         }
 
         .menu-item .additional-info .text-container {
-            margin-top:20px;
+            margin-top: 20px;
             display: flex;
-            flex-direction: column; /* Stack content top to bottom */
-            align-items: center; /* Align content to the left */
+            flex-direction: column;
+            /* Stack content top to bottom */
+            align-items: center;
+            /* Align content to the left */
         }
 
         .menu-item .additional-info .text-container h3 {
@@ -214,8 +233,8 @@
             background-color: #FFEE32;
             color: #333533;
         }
-        
-        @media screen and (max-width: 768px){
+
+        @media screen and (max-width: 768px) {
             .menu-box {
                 flex-direction: column;
                 align-items: center;
@@ -225,22 +244,30 @@
                 margin-top: 95px;
             }
         }
+
         .highlighted-date {
-            background-color: red; /* Set the background color for highlighted dates */
-            color: white; /* Set the text color for highlighted dates */
+            background-color: red;
+            /* Set the background color for highlighted dates */
+            color: white;
+            /* Set the text color for highlighted dates */
         }
+
         .create-new-menu {
-            margin-right: 10px;
+            margin-left: 12px;
+            background-color: #3b3d41;
+            color: goldenrod;
+            font-size: 20px;
+            font-family: 'Times New Roman', Times, serif;
         }
     </style>
 </head>
 
 <body class="">
 
-    <nav>
-    
+    <!-- <nav>
+
         <a href="#" class="logolink">
-          <img src="../FCMS-Assets/images/culinarycue.png" width="100" height="60" alt="CulinaryCue - Home">
+            <img src="../FCMS-Assets/images/culinarycue.png" width="100" height="60" alt="CulinaryCue - Home">
         </a>
         <ul>
             <li><a href="../FCMS-HTML/TahaIndex.html">Home</a></li>
@@ -248,13 +275,87 @@
             <li><a href="../FCMS-HTML/TahaIndex.html">About</a></li>
             <li><a href="../FCMS-HTML/TahaIndex.html">Our Team</a></li>
             <li><a href="../FCMS-HTML/TahaIndex.html">Contact</a></li>
-            
+
         </ul>
         <div class="create-new-menu">
-        <button class="create-new-menu" onclick="redirectToNewMenuPage()">Add New Menu</button>
+            <button class="create-new-menu" onclick="redirectToNewMenuPage()">Add New Menu</button>
         </div>
-    </nav>
-    
+    </nav> -->
+
+    <div id="header">
+        <h1>Manage Menus</h1>
+    </div>
+    <div class="navbar">
+        <ul>
+
+            <li><a href="../FCMS-HTML/Dashboard.html">Dashboard</a></li>
+            <li><a href="../FCMS-PHP/EventManagement.php">Events</a></li>
+            <li><a href="../FCMS-PHP/manageMenu.php">Menu</a></li>
+            <li><a href="../FCMS-PHP/AdminCreateStaff.php">Staff</a></li>
+            <div class="create-new-menu">
+                <button class="create-new-menu" onclick="redirectToNewMenuPage()">Add New Menu</button>
+            </div>
+
+            <div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn" style="font-size: 15;">Statistics</button>
+                <div id="myDropdown" class="dropdown-content">
+                    <li><a href="../FCMS-PHP/StaffStatistic.php">Staff</a></li>
+                    <li><a href="../FCMS-PHP/OrderStatistic.php">Orders</a></li>
+                    <li><a href="../FCMS-PHP/CustomerStatistics.php">Customers</a></li>
+                    <li><a href="../FCMS-PHP/RevenueStatistic.php">Profits</a></li>
+                </div>
+
+                <!-- <br><br><br><br> -->
+
+            </div>
+
+            <!-- <li><a class="back-button" href="javascript:history.back()">Go Back</a></li> -->
+
+
+
+            <script>
+                function myFunction() {
+                    document.getElementById("myDropdown").classList.toggle("show");
+                }
+
+                // Close the dropdown menu if the user clicks outside of it
+                window.onclick = function(event) {
+                    if (!event.target.matches('.dropbtn')) {
+                        var dropdowns = document.getElementsByClassName("dropdown-content");
+                        var i;
+                        for (i = 0; i < dropdowns.length; i++) {
+                            var openDropdown = dropdowns[i];
+                            if (openDropdown.classList.contains('show')) {
+                                openDropdown.classList.remove('show');
+                            }
+                        }
+                    }
+                }
+            </script>
+
+
+            <script>
+                function myFunction() {
+                    document.getElementById("myDropdown").classList.toggle("show");
+                }
+
+                // Close the dropdown menu if the user clicks outside of it
+                window.onclick = function(event) {
+                    if (!event.target.matches('.dropbtn')) {
+                        var dropdowns = document.getElementsByClassName("dropdown-content");
+                        var i;
+                        for (i = 0; i < dropdowns.length; i++) {
+                            var openDropdown = dropdowns[i];
+                            if (openDropdown.classList.contains('show')) {
+                                openDropdown.classList.remove('show');
+                            }
+                        }
+                    }
+                }
+            </script>
+        </ul>
+    </div>
+
     <!-- Added php code on 18th/10/2023 Abdullahi -->
     <?php
 
@@ -269,21 +370,20 @@
     $conn = new mysqli($servername, $username, $password, $databaseName);
 
     // Check if the connection was successful
-    if ($conn->connect_error) 
-    {
+    if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
     // Query to fetch data for all menus, including the image file path
     $sql = "SELECT * FROM menus";
     $result = $conn->query($sql);
-    
+
     if ($result->num_rows > 0) {
         echo '<h1>Menu Manager</h1>';
         echo '<div class="menu-box">';
         while ($row = $result->fetch_assoc()) {
             echo '<div class="menu-item" id="Menu ' . $row["MenuID"] . '" data-price="' . $row["Price"] . '">';
-            
+
             // Retrieve the image file path from the database
             $imagePath = $row["file_path"];
 
@@ -311,25 +411,25 @@
     // Query to fetch event dates from ORDERS table
     $sql = "SELECT eventDate FROM ORDERS";
     $result = $conn->query($sql);
-    
+
     // Close the database connection
     $conn->close();
-?>
+    ?>
 
     <footer class="footer">
         <ul class="social-icon">
             <li class="social-icon__item"><a class="social-icon__link" href="#">
-                <ion-icon name="logo-facebook"></ion-icon>
-            </a></li>
+                    <ion-icon name="logo-facebook"></ion-icon>
+                </a></li>
             <li class="social-icon__item"><a class="social-icon__link" href="#">
-                <ion-icon name="logo-twitter"></ion-icon>
-            </a></li>
+                    <ion-icon name="logo-twitter"></ion-icon>
+                </a></li>
             <li class="social-icon__item"><a class="social-icon__link" href="#">
-                <ion-icon name="logo-linkedin"></ion-icon>
-            </a></li>
+                    <ion-icon name="logo-linkedin"></ion-icon>
+                </a></li>
             <li class="social-icon__item"><a class="social-icon__link" href="#">
-                <ion-icon name="logo-instagram"></ion-icon>
-            </a></li>
+                    <ion-icon name="logo-instagram"></ion-icon>
+                </a></li>
         </ul>
         <ul class="menu">
             <li class="menu__item"><a class="menu__link" href="#homenav">Home</a></li>
@@ -338,21 +438,22 @@
             <li class="menu__item"><a class="menu__link" href="#Navteam">Our Team</a></li>
             <li class="menu__item"><a class="menu__link" href="#Navcontact">Contact</a></li>
         </ul>
-        
+
     </footer>
 
     <script>
-    function redirectToNewMenuPage() {
-        window.location.href = '../FCMS-HTML/newMenu.html';
-    }
+        function redirectToNewMenuPage() {
+            window.location.href = '../FCMS-HTML/newMenu.html';
+        }
     </script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="../FCMS-JavaScripts/menuScript.js"></script>
     <script>
-    function redirectToEditMenu(menuId) {
-        window.location.href = 'editMenu.php?menuId=' + menuId;
-    }
+        function redirectToEditMenu(menuId) {
+            window.location.href = 'editMenu.php?menuId=' + menuId;
+        }
     </script>
 </body>
+
 </html>

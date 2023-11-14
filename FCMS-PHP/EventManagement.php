@@ -32,6 +32,8 @@ function getCount($conn, $tableName, $condition)
     }
 }
 
+
+
 function reqgetCount($conn, $tableName)
 {
     $countQuery = "SELECT COUNT(*) as count FROM $tableName";
@@ -54,6 +56,7 @@ function reqgetCount($conn, $tableName)
 $activeOrdersCount = getCount($conn, "Orders", "OrderStatus = 'Active'");
 // $activeRequestsCount = getCount($conn, "Requests", "RequestStatus = 'Active'");
 $requestsCount = reqgetCount($conn, "Requests");
+$completedorders = getCount($conn, "Orders", "OrderStatus = 'Complete'");
 
 // Close the database connection
 mysqli_close($conn);
@@ -74,7 +77,7 @@ mysqli_close($conn);
     <link rel="stylesheet" href="../FCMS-Assets/Main.css">
 
     <!-- Link to this page's css -->
-    <link rel="stylesheet" href="../FCMS-CSS/CreateDetails.css">
+    <!-- <link rel="stylesheet" href="../FCMS-CSS/CreateDetails.css"> -->
 
     <!-- Including D3 Library -->
     <script src="https://d3js.org/d3.v6.min.js"></script>
@@ -82,6 +85,11 @@ mysqli_close($conn);
     <!-- Link to navbar css -->
     <link rel="stylesheet" href="../FCMS-CSS/AdminNav.css">
     <style>
+        .dropdown .dropbtn {
+            font-size: 20px;
+            /* Adjust the font size as needed */
+        }
+
         #boxes {
             display: flex;
             margin-top: 100px;
@@ -131,9 +139,6 @@ mysqli_close($conn);
     </div>
     <div class="navbar">
         <ul>
-            <br>
-            <br>
-            <br>
 
             <li><a href="../FCMS-HTML/Dashboard.html">Dashboard</a></li>
             <li><a href="../FCMS-PHP/EventManagement.php">Events</a></li>
@@ -142,7 +147,7 @@ mysqli_close($conn);
 
 
             <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn" style="font-size: 15;">Statistics</button>
+                <button onclick="myFunction()" class="dropbtn">Statistics</button>
                 <div id="myDropdown" class="dropdown-content">
                     <li><a href="../FCMS-PHP/StaffStatistic.php">Staff</a></li>
                     <li><a href="../FCMS-PHP/OrderStatistic.php">Orders</a></li>
@@ -178,25 +183,7 @@ mysqli_close($conn);
             </script>
 
 
-            <script>
-                function myFunction() {
-                    document.getElementById("myDropdown").classList.toggle("show");
-                }
 
-                // Close the dropdown menu if the user clicks outside of it
-                window.onclick = function(event) {
-                    if (!event.target.matches('.dropbtn')) {
-                        var dropdowns = document.getElementsByClassName("dropdown-content");
-                        var i;
-                        for (i = 0; i < dropdowns.length; i++) {
-                            var openDropdown = dropdowns[i];
-                            if (openDropdown.classList.contains('show')) {
-                                openDropdown.classList.remove('show');
-                            }
-                        }
-                    }
-                }
-            </script>
         </ul>
     </div>
 
@@ -214,6 +201,13 @@ mysqli_close($conn);
             <p><?php echo $requestsCount; ?></p>
 
             <a href="AdminPendingRequests.php"><button>View</button></a>
+
+        </div>
+        <div class="box">
+            <h2>Completed Orders</h2>
+            <p><?php echo $completedorders; ?></p>
+
+            <a href="AdminCompletedOrders.php"><button>View</button></a>
 
         </div>
     </div>

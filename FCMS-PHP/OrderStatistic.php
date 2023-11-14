@@ -20,6 +20,12 @@
 
     <!-- Link to navbar css -->
     <link rel="stylesheet" href="../FCMS-CSS/AdminNav.css">
+    <style>
+        .dropdown .dropbtn {
+            font-size: 20px;
+            /* Adjust the font size as needed */
+        }
+    </style>
 </head>
 
 <body>

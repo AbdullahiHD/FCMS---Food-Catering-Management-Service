@@ -37,7 +37,7 @@
     padding: 10px;
     text-align: center;
     font-size: 20px;
-    font-family: Calibri;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .navbar a {
@@ -57,28 +57,19 @@
     color: white;
 }
 
+
+
 /* Style the dropdown button */
 .dropbtn {
     background-color: #3b3d41;
     color: goldenrod;
     padding: 10px;
+    font-size: 20px;
     border: none;
     cursor: pointer;
     margin-left: 60px;
-    font-family: Calibri;
-    font-size: 18px;
-    /* Adjust the font size as needed */
-    font-style: none;
+    font-family: 'Times New Roman', Times, serif;
 
-    /* background-color: #3b3d41;
-            color: goldenrod;
-      padding: 10px;
-      border: none;
-      cursor: pointer;
-      margin-left: 60px;
-      font-family: Calibri;
-            font-size: 1pt;
-            font-style: none; */
 
 }
 

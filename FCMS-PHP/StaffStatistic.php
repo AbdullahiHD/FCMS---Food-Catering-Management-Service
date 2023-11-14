@@ -20,6 +20,12 @@
 
     <!-- Including D3 Library -->
     <script src="https://d3js.org/d3.v6.min.js"></script>
+    <style>
+        .dropdown .dropbtn {
+            font-size: 20px;
+            /* Adjust the font size as needed */
+        }
+    </style>
 
 
 </head>

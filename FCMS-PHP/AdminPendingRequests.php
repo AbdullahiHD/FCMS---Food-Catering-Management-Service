@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="../FCMS-CSS/AdminNav.css">
     <title>Pending Requests</title>
     <style>
+        .dropdown .dropbtn {
+            font-size: 20px;
+            /* Adjust the font size as needed */
+        }
+
         .requests-content {
             margin-left: 300px;
         }

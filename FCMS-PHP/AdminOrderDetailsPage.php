@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="../FCMS-CSS/AdminNav.css">
     <title>Order Details</title>
     <style>
+        .dropdown .dropbtn {
+            font-size: 20px;
+            /* Adjust the font size as needed */
+        }
+
         .order-details-content {
             margin-left: 100px;
         }
@@ -33,9 +38,8 @@
     </div>
     <div class="navbar">
         <ul>
-            <br>
-            <br>
-            <br>
+
+
             <li><a href="../FCMS-HTML/Dashboard.html">Dashboard</a></li>
             <li><a href="../FCMS-PHP/EventManagement.php">Events</a></li>
             <li><a href="../FCMS-PHP/manageMenu.php">Menu</a></li>
@@ -79,25 +83,7 @@
             </script>
 
 
-            <script>
-                function myFunction() {
-                    document.getElementById("myDropdown").classList.toggle("show");
-                }
 
-                // Close the dropdown menu if the user clicks outside of it
-                window.onclick = function(event) {
-                    if (!event.target.matches('.dropbtn')) {
-                        var dropdowns = document.getElementsByClassName("dropdown-content");
-                        var i;
-                        for (i = 0; i < dropdowns.length; i++) {
-                            var openDropdown = dropdowns[i];
-                            if (openDropdown.classList.contains('show')) {
-                                openDropdown.classList.remove('show');
-                            }
-                        }
-                    }
-                }
-            </script>
         </ul>
     </div>
     <!-- Navbar

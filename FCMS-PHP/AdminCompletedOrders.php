@@ -34,7 +34,7 @@
         </ul>
     </nav> -->
     <div id="header">
-        <h1>Active Orders</h1>
+        <h1>Completed Orders</h1>
     </div>
     <div class="navbar">
         <ul>
@@ -108,7 +108,7 @@
         $orderID = null;
 
         // SQL query to retrieve data from the "Orders" table
-        $sql = "SELECT * FROM Orders WHERE OrderStatus = 'Active' LIMIT 5";
+        $sql = "SELECT * FROM Orders WHERE OrderStatus = 'Complete'";
         $result = $conn->query($sql);
 
         // Check if there are any active orders

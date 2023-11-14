@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,16 +37,20 @@
             margin-top: 20px;
             margin-bottom: 20px;
             color: goldenrod;
+            font-size: 30px;
+            margin-left: -200px;
         }
 
         .feedback-form input[type="text"],
         .feedback-form input[type="email"],
         .feedback-form input[type="tel"],
         .feedback-form textarea {
-            width: 100%;
+            width: 200%;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            text-align: center;
+            margin-left: -210px;
         }
 
         .button-container {
@@ -160,6 +165,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <nav>
@@ -179,7 +185,7 @@
         <div class="feedback-form">
             <h1>Feedback Form</h1>
             <form method="POST" action="PaymentSuccessful.php">
-                 <?php
+                <?php
                 // Check if data was passed from the quotation and billing forms
                 if (isset($_GET['name'], $_GET['eventType'], $_GET['eventTime'], $_GET['eventDate'], $_GET['deliveryAddress'], $_GET['attendees'], $_GET['menuId'], $_GET['menuName'], $_GET['menuPrice'], $_GET['totalPrice'])) {
                     // Output hidden input fields to store this data
@@ -195,17 +201,17 @@
                     echo '<input type="hidden" name="totalPrice" value="' . htmlspecialchars($_GET['totalPrice']) . '">';
                 }
                 ?>
-                <label for="name">Name:</label>
+                <!-- <label for="name">Name:</label>
                 <input type="text" id="name" name="name">
 
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email">
 
                 <label for ="phone">Phone Number:</label>
-                <input type="tel" id="phone" name="phone">
+                <input type="tel" id="phone" name="phone"> -->
 
                 <label for="feedback">Feedback:</label>
-                <textarea id="feedback" name="feedback" rows="10"></textarea>
+                <textarea id="feedback" name="feedback" rows="25"></textarea>
             </form>
         </div>
         <div class="button-container">
@@ -218,6 +224,7 @@
         <!-- Content for your pages goes here -->
     </div>
 </body>
+
 </html>
 
 <?php
