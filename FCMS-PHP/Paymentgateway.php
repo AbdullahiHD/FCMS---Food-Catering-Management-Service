@@ -180,8 +180,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['name'], $_POST['eventT
         echo "Order Successful";
         // JavaScript for redirection and alert
         echo "<script>
-            alert('Order Successful');
-            window.location.href = 'menu.php';
+            window.location.href = 'PaymentSuccessful.php';
         </script>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
