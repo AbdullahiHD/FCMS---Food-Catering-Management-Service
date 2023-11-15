@@ -86,7 +86,7 @@ mysqli_close($conn);
     <style>
         #boxes {
             display: flex;
-            margin-top: 250px;
+            margin-top: 100px;
             margin-left: 350px;
         }
 
@@ -173,6 +173,7 @@ mysqli_close($conn);
     </nav>
 
 
+    <h1 style="margin-top: 120px; margin-left: 20px;">Events Management</h1>
 
     <div id="boxes">
         <div class="box">

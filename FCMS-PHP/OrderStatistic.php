@@ -153,7 +153,6 @@
             <li><a href="../FCMS-PHP/AdminCreateStaff.php">Staff</a></li>
 
         </ul>
-<<<<<<< Updated upstream
         <div class="dropdown">
             <button onclick="myFunction()" class="dropbtn">Statistics</button>
             <div id="myDropdown" class="dropdown-content">
@@ -196,12 +195,10 @@
             </ul>
         </nav>
     </header> -->
-=======
-    </div>
->>>>>>> Stashed changes
 
     <!-- Brief Heading and content -->
     <div class="hcontent">
+    <h1 style="margin-top: 150px;">Order Statistic</h1>
         <br><br><br>
         <div class="page-description">
             <h4>Menu Frequency in Orders Visualization<br> The menu name is plotted against the number of times it has been ordered <br> For More Interactivity, mouse over each bar</h4> 

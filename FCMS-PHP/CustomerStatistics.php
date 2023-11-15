@@ -185,6 +185,7 @@
 
     <!-- Brief Heading and content -->
     <div class="hcontent">
+    <h1 style="margin-top: 150px;">Customer Statistic</h1>
         <br><br><br>
         <div class="page-description">
             <h4>Customer Frequency and Retention Visualization<br> The customers total number of orders against individual customer <br> For More Interactivity Use the sort buttons as well data mouse over on bars </h4> 

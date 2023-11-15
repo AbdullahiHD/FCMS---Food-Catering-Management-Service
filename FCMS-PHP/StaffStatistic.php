@@ -144,7 +144,7 @@
 </head>
 
 <body>
-    <nav>
+<nav>
         <a href="../FCMS-HTML/TahaIndex.html" class="logolink">
             <img src="../FCMS-Assets/images/culinarycue.png" width="100px" height="60px" alt="CulinaryCue - Home">
         </a>
@@ -188,6 +188,7 @@
 
     <!-- Brief Heading and content -->
     <div class="hcontent">
+    <h1 style="margin-top: 150px;">Staff Statistic</h1>
         <br><br><br>
          <div class="page-description">
             <h4>Employee Efficiency Visualization<br> The employees task completed is plotted against the hourly rates <br> For More Interactivity, mouse over each scatter plot to get employee name and role</h4> 
