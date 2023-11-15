@@ -60,7 +60,7 @@
 
 
 /* Style the dropdown button */
-.dropbtn {
+/* .dropbtn {
     background-color: #3b3d41;
     color: goldenrod;
     padding: 10px;
@@ -71,9 +71,10 @@
     font-family: 'Times New Roman', Times, serif;
 
 
-}
+} */
 
 /* Style the dropdown content (hidden by default) */
+
 .dropdown-content {
     display: none;
     position: absolute;
@@ -81,6 +82,14 @@
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     margin-left: 25px;
+
+
+    background-color: rgb(11, 11, 10);
+    color: rgb(11, 11, 10);
+}
+
+.dropdown-content li {
+    background-color: rgb(11, 11, 10);
 }
 
 /* Style the dropdown links */
@@ -89,6 +98,7 @@
     padding: 12px 16px;
     text-decoration: none;
     display: block;
+    background-color: rgb(11, 11, 10);
 }
 
 /* Change color on hover */
@@ -99,4 +109,6 @@
 /* Show the dropdown content when the button is clicked */
 .show {
     display: block;
+    background-color: rgb(11, 11, 10);
+    color: rgb(11, 11, 10);
 }

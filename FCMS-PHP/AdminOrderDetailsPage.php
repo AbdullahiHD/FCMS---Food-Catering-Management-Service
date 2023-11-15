@@ -7,96 +7,184 @@
     <link rel="stylesheet" href="../FCMS-Assets/Main.css">
     <link rel="stylesheet" href="../FCMS-CSS/StaffDashboardFahad.css">
     <link rel="stylesheet" href="../FCMS-CSS/EventExecutionWorkflow.css" />
+    <title>Order Details</title>
     <!-- Link to navbar css -->
     <link rel="stylesheet" href="../FCMS-CSS/AdminNav.css">
-    <title>Order Details</title>
     <style>
+        nav ul {
+            margin-left: 150px;
+            background-color: rgb(11, 11, 10);
+        }
+
+        nav ul li {
+            list-style-type: none;
+            display: inline-block;
+            padding: 10px 70px;
+            background-color: rgb(11, 11, 10);
+        }
+
+        nav ul li a {
+            color: goldenrod;
+            text-decoration: none;
+            font-family: 'Franklin Gothic Medium', sans-serif;
+            font-weight: bold;
+            text-transform: capitalize;
+            font-size: 17px;
+
+        }
+
+        nav ul li a {
+            position: relative;
+            /* ... (rest of your styles) */
+        }
+
+        /* Before and After pseudo-elements represent the two lines */
+        nav ul li a::before,
+        nav ul li a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            /* Height of the line */
+            background-color: goldenrod;
+            /* Line color */
+            transition: all 0.3s ease;
+        }
+
+        /* First line appears from the left */
+        nav ul li a::before {
+            bottom: 1px;
+            /* Slight offset from the bottom to create gap between two lines */
+        }
+
+        /* Second line appears from the right */
+        nav ul li a::after {
+            bottom: -3px;
+            /* Slight offset from the bottom */
+            right: 0;
+            left: auto;
+            transform: scaleX(-1);
+            /* Invert it to make it appear from right */
+        }
+
+        /* On hover, the lines animate to full width */
+        nav ul li a:hover::before,
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
         .dropdown .dropbtn {
             font-size: 20px;
-            /* Adjust the font size as needed */
+            color: goldenrod;
+            text-decoration: none;
+            font-family: 'Franklin Gothic Medium', sans-serif;
+            font-weight: bold;
+            text-transform: capitalize;
+            font-size: 17px;
+            background-color: rgb(11, 11, 10);
+            position: relative;
+            margin-right: 400px;
         }
 
-        .order-details-content {
-            margin-left: 100px;
+        .dropdown .dropbtn::before,
+        .dropdown .dropbtn::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            /* Height of the line */
+            background-color: goldenrod;
+            /* Line color */
+            transition: all 0.3s ease;
         }
 
-        .edit-delete-buttons {
+
+        .dropdown .dropbtn::before {
+            bottom: 1px;
+            /* Slight offset from the bottom to create gap between two lines */
+        }
+
+        /* Second line appears from the right */
+        .dropdown .dropbtn::after {
+            bottom: -3px;
+            /* Slight offset from the bottom */
+            right: 0;
+            left: auto;
+            transform: scaleX(-1);
+            /* Invert it to make it appear from right */
+        }
+
+        /* On hover, the lines animate to full width */
+        .dropdown .dropbtn:hover::before,
+        .dropdown .dropbtn:hover::after {
+            width: 100%;
+        }
+
+        /* .orderbuttons {
+            display: flex;
+            gap: 10px;
+            
+            margin-top: 10px;
+           
+            margin-left: 150px;
+        } */
+
+        .button-container {
             display: flex;
             gap: 10px;
             /* Adjust the gap between buttons as needed */
             margin-top: 10px;
-            /* Add margin for spacing */
             margin-left: 150px;
         }
     </style>
 </head>
 
 <body>
-
-    <div id="header">
-        <h1>Order Details</h1>
-    </div>
-    <div class="navbar">
+    <!-- Navbar -->
+    <nav>
+        <a href="../FCMS-HTML/TahaIndex.html" class="logolink">
+            <img src="../FCMS-Assets/images/culinarycue.png" width="100px" height="60px" alt="CulinaryCue - Home">
+        </a>
         <ul>
-
-
             <li><a href="../FCMS-HTML/Dashboard.html">Dashboard</a></li>
             <li><a href="../FCMS-PHP/EventManagement.php">Events</a></li>
             <li><a href="../FCMS-PHP/manageMenu.php">Menu</a></li>
             <li><a href="../FCMS-PHP/AdminCreateStaff.php">Staff</a></li>
 
-
-            <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn" style="font-size: 15;">Statistics</button>
-                <div id="myDropdown" class="dropdown-content">
-                    <li><a href="../FCMS-PHP/StaffStatistic.php">Staff</a></li>
-                    <li><a href="../FCMS-PHP/OrderStatistic.php">Orders</a></li>
-                    <li><a href="../FCMS-PHP/CustomerStatistics.php">Customers</a></li>
-                    <li><a href="../FCMS-PHP/RevenueStatistic.php">Profits</a></li>
-                </div>
-
-                <!-- <br><br><br><br> -->
-
+        </ul>
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Statistics</button>
+            <div id="myDropdown" class="dropdown-content">
+                <li><a href="../FCMS-PHP/StaffStatistic.php">Staff</a></li>
+                <li><a href="../FCMS-PHP/OrderStatistic.php">Orders</a></li>
+                <li><a href="../FCMS-PHP/CustomerStatistics.php">Customers</a></li>
+                <li><a href="../FCMS-PHP/RevenueStatistic.php">Profits</a></li>
             </div>
-            <!-- <li><a class="back-button" href="javascript:history.back()">Go Back</a></li> -->
+        </div>
 
+        <script>
+            function myFunction() {
+                document.getElementById("myDropdown").classList.toggle("show");
+            }
 
-
-            <script>
-                function myFunction() {
-                    document.getElementById("myDropdown").classList.toggle("show");
-                }
-
-                // Close the dropdown menu if the user clicks outside of it
-                window.onclick = function(event) {
-                    if (!event.target.matches('.dropbtn')) {
-                        var dropdowns = document.getElementsByClassName("dropdown-content");
-                        var i;
-                        for (i = 0; i < dropdowns.length; i++) {
-                            var openDropdown = dropdowns[i];
-                            if (openDropdown.classList.contains('show')) {
-                                openDropdown.classList.remove('show');
-                            }
+            window.onclick = function(event) {
+                if (!event.target.matches('.dropbtn')) {
+                    var dropdowns = document.getElementsByClassName("dropdown-content");
+                    var i;
+                    for (i = 0; i < dropdowns.length; i++) {
+                        var openDropdown = dropdowns[i];
+                        if (openDropdown.classList.contains('show')) {
+                            openDropdown.classList.remove('show');
                         }
                     }
                 }
-            </script>
-
-
-
-        </ul>
-    </div>
-    <!-- Navbar
-    <nav>
-        <a href="#" class="logolink">
-            <img src="../FCMS-Assets/images/culinarycue.png" width="100px" height="60px" alt="CulinaryCue - Home">
-        </a>
-        <ul>
-        <li><a href="../FCMS-HTML/Dashboard.html">Dashboard</a></li>
-            <li><a href="AdminPendingRequests.php">Pending Requests</a></li>
-            <li><a href="AdminActiveOrder">Active Orders</a></li>
-        </ul>
-    </nav> -->
+            }
+        </script>
+    </nav>
 
 
     <!-- Content for Order Details page -->
@@ -137,6 +225,30 @@
                 echo '<p><strong>Delivery Address:</strong> ' . $row['DeliveryAddress'] . '</p>';
                 echo '<p><strong>Menu ID:</strong> ' . $row['MenuID'] . '</p>';
                 echo '</div>';
+                echo '<div class="task-assignment">';
+                echo '<h3>Task Assignment System</h3>';
+                echo '<form method="post" action="">';
+
+                // Create a dropdown for each occupation and populate from Employees table
+                $occupations = ['EventPlanner', 'EventManager', 'ExecutiveChef', 'SousChef', 'LineCook', 'Dishwasher', 'Server', 'DeliveryDriver'];
+                foreach ($occupations as $occupation) {
+                    echo "<label for='$occupation'>$occupation:</label>";
+                    echo "<select name='$occupation' id='$occupation'>";
+                    // Query to retrieve employees by occupation
+                    $employeeQuery = "SELECT EmployeeName FROM Employees WHERE Occupation = '$occupation'";
+                    $employeeResult = $conn->query($employeeQuery);
+                    while ($employee = $employeeResult->fetch_assoc()) {
+                        echo "<option value='{$employee['EmployeeName']}'>{$employee['EmployeeName']}</option>";
+                    }
+                    echo "</select>";
+                }
+
+                echo '<input type="hidden" name="orderID" value="' . $orderID . '">';
+                echo '<button type="submit" name="saveButton">Save</button>';
+                echo '</form>';
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
             } else {
                 echo "Order not found.";
             }
@@ -144,39 +256,26 @@
             echo "Order ID not provided.";
         }
 
-        // // Handle form submission
-        // if (isset($_POST['saveButton'])) {
-        //     // Get the selected employees and update the "AssignedEmployees" field in the "Orders" table
-        //     $assignedEmployees = '';
-        //     foreach ($occupations as $occupation) {
-        //         if (isset($_POST[$occupation])) {
-        //             $selectedEmployee = $_POST[$occupation];
-        //             $assignedEmployees .= "$selectedEmployee ($occupation), ";
-        //         }
-        //     }
+        // Handle form submission
+        if (isset($_POST['saveButton'])) {
+            // Get the selected employees and update the "AssignedEmployees" field in the "Orders" table
+            $assignedEmployees = '';
+            foreach ($occupations as $occupation) {
+                if (isset($_POST[$occupation])) {
+                    $selectedEmployee = $_POST[$occupation];
+                    $assignedEmployees .= "$selectedEmployee ($occupation), ";
+                }
+            }
 
-        //     // Remove the trailing comma and space
-        //     $assignedEmployees = rtrim($assignedEmployees, ', ');
+            // Remove the trailing comma and space
+            $assignedEmployees = rtrim($assignedEmployees, ', ');
 
-        //     $updateQuery = "UPDATE Orders SET AssignedEmployees = '$assignedEmployees' WHERE OrderID = $orderID";
+            $updateQuery = "UPDATE Orders SET AssignedEmployees = '$assignedEmployees' WHERE OrderID = $orderID";
 
-        //     if ($conn->query($updateQuery) === TRUE) {
-        //         echo "Assigned employees saved successfully for Order #$orderID.";
-        //     } else {
-        //         echo "Error updating record: " . $conn->error;
-        //     }
-        // }
-
-        if (isset($_POST['deleteButton'])) {
-            $deleteQuery = "DELETE FROM Orders WHERE OrderID = $orderID";
-
-            if ($conn->query($deleteQuery) === TRUE) {
-                echo "Order deleted successfully.";
-                // Redirect to a page after deletion
-                header("Location: AdminActiveOrders.php");
-                exit();
+            if ($conn->query($updateQuery) === TRUE) {
+                echo "Assigned employees saved successfully for Order #$orderID.";
             } else {
-                echo "Error deleting order: " . $conn->error;
+                echo "Error updating record: " . $conn->error;
             }
         }
 
@@ -184,48 +283,121 @@
         $conn->close();
         ?>
     </div>
-    <!-- <div class="board">
-      <h2>Event Execution Workflow</h2>
-      <form id="todo-form">
-        <input type="text" placeholder="New TODO..." id="todo-input" />
-        <button type="submit">Add +</button>
-      </form>
+    <hr class="separation-line">
+    <div class="board">
+        <h2>Event Execution Workflow</h2>
+        <form id="todo-form">
+            <input type="text" placeholder="New TODO..." id="todo-input" />
+            <button type="submit">Add +</button>
+        </form>
 
-      <div class="lanes">
-        <div class="swim-lane" id="todo-lane">
-          <h3 class="heading">TODO</h3>
+        <div class="lanes">
+            <div class="swim-lane" id="todo-lane">
+                <h3 class="heading">TODO</h3>
 
-          <p class="task" draggable="true">Clean-Up</p> 
-          <p class="task" draggable="true">Leftover Food Management</p> 
-          <p class="task" draggable="true">Staff Evaluation</p> 
+                <p class="task" draggable="true">Clean-Up</p>
+                <p class="task" draggable="true">Leftover Food Management</p>
+                <p class="task" draggable="true">Staff Evaluation</p>
+            </div>
+
+            <div class="swim-lane">
+                <h3 class="heading">Doing</h3>
+
+                <p class="task" draggable="true">Event Setup</p>
+                <p class="task" draggable="true">Quality Control</p>
+            </div>
+
+            <div class="swim-lane">
+                <h3 class="heading">Done</h3>
+                <p class="task" draggable="true">Food Preparation</p>
+                <p class="task" draggable="true">Transport Equipment</p>
+                <p class="task" draggable="true">Decor and Presentation</p>
+
+            </div>
+
+
         </div>
-
-        <div class="swim-lane">
-          <h3 class="heading">Doing</h3>
-
-          <p class="task" draggable="true">Event Setup</p>
-          <p class="task" draggable="true">Quality Control</p>
+    </div>
+    <!-- <div class="orderbuttons">
+        <div class="edit-delete-buttons">
+            <a href="AdminEditOrder.php?orderID=<?php echo $orderID; ?>"><button type="button" class="edit-button">Edit</button></a>
+            <form method="post" action="">
+                <input type="hidden" name="orderID" value="<?php echo $orderID; ?>">
+                <button type="submit" name="deleteButton">Delete</button>
+            </form>
         </div>
-
-        <div class="swim-lane">
-          <h3 class="heading">Done</h3>
-          <p class="task" draggable="true">Food Preparation</p>
-          <p class="task" draggable="true">Transport Equipment</p>
-          <p class="task" draggable="true">Decor and Presentation</p>
-
-        </div>
-      </div>
+        <form method="post" class="complete-order-form" action="">
+            <input type="hidden" name="completeOrder" value="<?php echo $orderID; ?>">
+            <button class="complete-order-button" type="submit">Complete Order</button>
+        </form>
     </div> -->
-    <div class="edit-delete-buttons">
-        <!-- <button onclick="document.location=AdminEditOrder.php?orderID=" class="edit-button">Edit</button> -->
-        <!-- <a href="AdminEditOrder.php?orderID=<?php echo $orderID; ?>" class="edit-button">Edit</a> -->
-        <a href="AdminEditOrder.php?orderID=<?php echo $orderID; ?>"><button type="button" class="edit-button">Edit</button></a>
-        <!-- <button type="submit" name="deleteButton">Delete</button> -->
-        <form method="post" action="">
+    <!-- Add a container div for the buttons -->
+    <div class="button-container">
+
+
+
+
+        <form method="post" class="complete-order-form" action="">
+            <a href="AdminEditOrder.php?orderID=<?php echo $orderID; ?>"><button type="button" class="edit-button">Edit</button></a>
             <input type="hidden" name="orderID" value="<?php echo $orderID; ?>">
             <button type="submit" name="deleteButton">Delete</button>
+            <input type="hidden" name="completeOrder" value="<?php echo $orderID; ?>">
+            <button class="complete-order-button" type="submit">Complete Order</button>
         </form>
     </div>
+
+
+    </div>
+    <!-- Add the Complete Order button -->
+
+    <?php
+    // Handle the form submission to complete the order
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['completeOrder'])) {
+        $completeOrderID = $_POST['completeOrder'];
+
+        // Update the OrderStatus to 'Complete'
+        $updateSql = "UPDATE Orders SET OrderStatus = 'Complete' WHERE OrderID = $completeOrderID";
+
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        if ($conn->query($updateSql) === TRUE) {
+            // Retrieve assigned employees for the specific order
+            $getAssignedEmployeesQuery = "SELECT AssignedEmployees FROM Orders WHERE OrderID = $completeOrderID";
+            $result = $conn->query($getAssignedEmployeesQuery);
+
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                $assignedEmployeesString = $row['AssignedEmployees'];
+
+                // Extract employee names and occupations
+                $employees = explode(", ", $assignedEmployeesString);
+
+                // Increment tasks_completed for each employee
+                foreach ($employees as $employee) {
+                    list($employeeName, $occupation) = explode(" (", $employee);
+                    $employeeName = trim($employeeName);
+                    $occupation = rtrim($occupation, ")");
+
+                    $incrementTasksCompletedQuery = "UPDATE Employees SET tasks_completed = tasks_completed + 1 WHERE EmployeeName = '$employeeName' AND Occupation = '$occupation'";
+                    $conn->query($incrementTasksCompletedQuery);
+                }
+            }
+        }
+
+        if ($conn->query($updateSql) === TRUE) {
+            echo '<script>alert("Order marked as Complete."); window.location.href = "AdminActiveOrders.php";</script>';
+        } else {
+            echo "Error updating record: " . $conn->error;
+        }
+
+        $conn->close();
+    }
+    ?>
+
     <script src="../FCMS-JavaScripts/EventExecutionWorkflow.js" defer></script>
 </body>
 

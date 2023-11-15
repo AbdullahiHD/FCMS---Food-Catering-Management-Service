@@ -9,102 +9,171 @@
     <!-- Link to navbar css -->
     <link rel="stylesheet" href="../FCMS-CSS/AdminNav.css">
     <title>Pending Requests</title>
+
     <style>
+        nav ul {
+            margin-left: 150px;
+            background-color: rgb(11, 11, 10);
+        }
+
+        nav ul li {
+            list-style-type: none;
+            display: inline-block;
+            padding: 10px 70px;
+            background-color: rgb(11, 11, 10);
+        }
+
+        nav ul li a {
+            color: goldenrod;
+            text-decoration: none;
+            font-family: 'Franklin Gothic Medium', sans-serif;
+            font-weight: bold;
+            text-transform: capitalize;
+            font-size: 17px;
+
+        }
+
+        nav ul li a {
+            position: relative;
+            /* ... (rest of your styles) */
+        }
+
+        /* Before and After pseudo-elements represent the two lines */
+        nav ul li a::before,
+        nav ul li a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            /* Height of the line */
+            background-color: goldenrod;
+            /* Line color */
+            transition: all 0.3s ease;
+        }
+
+        /* First line appears from the left */
+        nav ul li a::before {
+            bottom: 1px;
+            /* Slight offset from the bottom to create gap between two lines */
+        }
+
+        /* Second line appears from the right */
+        nav ul li a::after {
+            bottom: -3px;
+            /* Slight offset from the bottom */
+            right: 0;
+            left: auto;
+            transform: scaleX(-1);
+            /* Invert it to make it appear from right */
+        }
+
+        /* On hover, the lines animate to full width */
+        nav ul li a:hover::before,
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .dropdown .dropbtn {
+            font-size: 20px;
+            color: goldenrod;
+            text-decoration: none;
+            font-family: 'Franklin Gothic Medium', sans-serif;
+            font-weight: bold;
+            text-transform: capitalize;
+            font-size: 17px;
+            background-color: rgb(11, 11, 10);
+            position: relative;
+            margin-right: 400px;
+        }
+
+        .dropdown .dropbtn::before,
+        .dropdown .dropbtn::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            /* Height of the line */
+            background-color: goldenrod;
+            /* Line color */
+            transition: all 0.3s ease;
+        }
+
+
+        .dropdown .dropbtn::before {
+            bottom: 1px;
+            /* Slight offset from the bottom to create gap between two lines */
+        }
+
+        /* Second line appears from the right */
+        .dropdown .dropbtn::after {
+            bottom: -3px;
+            /* Slight offset from the bottom */
+            right: 0;
+            left: auto;
+            transform: scaleX(-1);
+            /* Invert it to make it appear from right */
+        }
+
+        /* On hover, the lines animate to full width */
+        .dropdown .dropbtn:hover::before,
+        .dropdown .dropbtn:hover::after {
+            width: 100%;
+        }
+
         .dropdown .dropbtn {
             font-size: 20px;
             /* Adjust the font size as needed */
         }
-
-        .requests-content {
-            margin-left: 300px;
-        }
     </style>
+
 </head>
 
 <body>
-    <div id="header">
-        <h1>Pending Requests</h1>
-    </div>
-    <div class="navbar">
+    <!-- Navbar -->
+    <nav>
+        <a href="../FCMS-HTML/TahaIndex.html" class="logolink">
+            <img src="../FCMS-Assets/images/culinarycue.png" width="100px" height="60px" alt="CulinaryCue - Home">
+        </a>
         <ul>
-            <br>
-            <br>
-            <br>
             <li><a href="../FCMS-HTML/Dashboard.html">Dashboard</a></li>
             <li><a href="../FCMS-PHP/EventManagement.php">Events</a></li>
             <li><a href="../FCMS-PHP/manageMenu.php">Menu</a></li>
             <li><a href="../FCMS-PHP/AdminCreateStaff.php">Staff</a></li>
 
-
-            <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn" style="font-size: 15;">Statistics</button>
-                <div id="myDropdown" class="dropdown-content">
-                    <li><a href="../FCMS-PHP/StaffStatistic.php">Staff</a></li>
-                    <li><a href="../FCMS-PHP/OrderStatistic.php">Orders</a></li>
-                    <li><a href="../FCMS-PHP/CustomerStatistics.php">Customers</a></li>
-                    <li><a href="../FCMS-PHP/RevenueStatistic.php">Profits</a></li>
-                </div>
-
-                <!-- <br><br><br><br> -->
-
+        </ul>
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Statistics</button>
+            <div id="myDropdown" class="dropdown-content">
+                <li><a href="../FCMS-PHP/StaffStatistic.php">Staff</a></li>
+                <li><a href="../FCMS-PHP/OrderStatistic.php">Orders</a></li>
+                <li><a href="../FCMS-PHP/CustomerStatistics.php">Customers</a></li>
+                <li><a href="../FCMS-PHP/RevenueStatistic.php">Profits</a></li>
             </div>
-            <!-- <li><a class="back-button" href="javascript:history.back()">Go Back</a></li> -->
+        </div>
 
+        <script>
+            function myFunction() {
+                document.getElementById("myDropdown").classList.toggle("show");
+            }
 
-
-            <script>
-                function myFunction() {
-                    document.getElementById("myDropdown").classList.toggle("show");
-                }
-
-                // Close the dropdown menu if the user clicks outside of it
-                window.onclick = function(event) {
-                    if (!event.target.matches('.dropbtn')) {
-                        var dropdowns = document.getElementsByClassName("dropdown-content");
-                        var i;
-                        for (i = 0; i < dropdowns.length; i++) {
-                            var openDropdown = dropdowns[i];
-                            if (openDropdown.classList.contains('show')) {
-                                openDropdown.classList.remove('show');
-                            }
+            window.onclick = function(event) {
+                if (!event.target.matches('.dropbtn')) {
+                    var dropdowns = document.getElementsByClassName("dropdown-content");
+                    var i;
+                    for (i = 0; i < dropdowns.length; i++) {
+                        var openDropdown = dropdowns[i];
+                        if (openDropdown.classList.contains('show')) {
+                            openDropdown.classList.remove('show');
                         }
                     }
                 }
-            </script>
-
-
-            <script>
-                function myFunction() {
-                    document.getElementById("myDropdown").classList.toggle("show");
-                }
-
-                // Close the dropdown menu if the user clicks outside of it
-                window.onclick = function(event) {
-                    if (!event.target.matches('.dropbtn')) {
-                        var dropdowns = document.getElementsByClassName("dropdown-content");
-                        var i;
-                        for (i = 0; i < dropdowns.length; i++) {
-                            var openDropdown = dropdowns[i];
-                            if (openDropdown.classList.contains('show')) {
-                                openDropdown.classList.remove('show');
-                            }
-                        }
-                    }
-                }
-            </script>
-        </ul>
-    </div>
-    <!-- Navbar -->
-    <!-- <nav>
-        <a href="#" class="logolink">
-            <img src="../FCMS-Assets/images/culinarycue.png" width="100px" height="60px" alt="CulinaryCue - Home">
-        </a>
-        <ul>
-        <li><a href="../FCMS-HTML/Dashboard.html">Dashboard</a></li>
-            <li><a href="#">Pending Requests</a></li>
-            <li><a href="AdminActiveOrders.php">Active Orders</a></li>
-        </ul>
-    </nav> -->
+            }
+        </script>
+    </nav>
 
     <!-- Content for Pending Requests page -->
     <div class="requests-content">
@@ -135,10 +204,86 @@
 
             if ($conn->query($sql) === TRUE) {
                 // Order data successfully inserted
-                echo '<script>alert("Request has been transferred to Orders.");</script>';
-            } else {
-                echo "Error: " . $sql . "<br>" . $conn->error;
+
+                // Fetch relevant data from 'Requests' table
+                $requestDataSql = "SELECT RequestID, MenuID, NumberOfAttendees FROM Requests";
+                $requestDataResult = $conn->query($requestDataSql);
+
+                if ($requestDataResult === FALSE) {
+                    echo "Error: " . $conn->error;
+                } else {
+                    $requestDataRows = $requestDataResult->fetch_all(MYSQLI_ASSOC);
+
+                    if (empty($requestDataRows)) {
+                        echo "Error: No rows returned from the Requests table. SQL: $requestDataSql <br>";
+                    } else {
+                        foreach ($requestDataRows as $requestData) {
+                            $requestID = $requestData['RequestID'];
+                            $menuID = $requestData['MenuID'];
+                            $numberOfAttendees = $requestData['NumberOfAttendees'];
+
+                            // Fetch 'MenuName' from 'Menus' table
+                            $menuNameSql = "SELECT MenuName FROM Menus WHERE MenuID = $menuID";
+                            $menuNameResult = $conn->query($menuNameSql);
+
+                            if ($menuNameResult === FALSE) {
+                                echo "Error: " . $conn->error;
+                            } else {
+                                $menuNameRows = $menuNameResult->fetch_all(MYSQLI_ASSOC);
+
+                                if (empty($menuNameRows)) {
+                                    echo "Error: No corresponding MenuID found in the Menus table for the given MenuID. SQL: $menuNameSql <br>";
+                                } else {
+                                    // Use the first row (assuming MenuID is unique)
+                                    $menuName = $menuNameRows[0]['MenuName'];
+
+                                    // Fetch 'UnitPrice' from 'Menus' table
+                                    $unitPriceSql = "SELECT Price FROM Menus WHERE MenuID = $menuID";
+                                    $unitPriceResult = $conn->query($unitPriceSql);
+
+                                    if ($unitPriceResult === FALSE) {
+                                        echo "Error: " . $conn->error;
+                                    } else {
+                                        $unitPriceRows = $unitPriceResult->fetch_all(MYSQLI_ASSOC);
+
+                                        if (empty($unitPriceRows)) {
+                                            echo "Error: No corresponding MenuID found in the Menus table for the given MenuID. SQL: $unitPriceSql <br>";
+                                        } else {
+                                            // Use the first row (assuming MenuID is unique)
+                                            $unitPrice = $unitPriceRows[0]['Price'];
+
+                                            // Calculate TotalPrice based on NumberOfAttendees and UnitPrice
+                                            $totalPrice = $numberOfAttendees * $unitPrice;
+
+                                            // Insert relevant data into the "Sales" table
+                                            $salesSql = "INSERT INTO Sales (CustomerName, OrderID, MenuID, MenuName, UnitPrice, TotalPrice, CreatedAt, UpdatedAt)
+                                SELECT CustomerName, OrderID, $menuID, '$menuName', $unitPrice, $totalPrice, NOW(), NOW()
+                                FROM Orders
+                                WHERE OrderID = LAST_INSERT_ID()";
+
+                                            if ($conn->query($salesSql) === TRUE) {
+                                                // Sales data successfully inserted
+                                                echo '<script>alert("Requests have been transferred to Orders and Sales.");</script>';
+                                            } else {
+                                                echo "Error: " . $salesSql . "<br>" . $conn->error;
+                                            }
+                                        }
+                                    }
+
+
+                                    if ($conn->query($salesSql) === TRUE) {
+                                        // Sales data successfully inserted
+                                        echo '<script>alert("Requests have been transferred to Orders and Sales.");</script>';
+                                    } else {
+                                        echo "Error: " . $salesSql . "<br>" . $conn->error;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
+
 
             //delete the request from the "Requests" table
             $sql = "DELETE FROM Requests WHERE RequestID = $requestId";
