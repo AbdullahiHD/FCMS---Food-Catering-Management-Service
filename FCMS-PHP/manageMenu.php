@@ -14,8 +14,7 @@
     <!-- Include jQuery and jQuery UI libraries -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    <!-- Link to navbar css -->
-    <link rel="stylesheet" href="../FCMS-CSS/AdminNav.css">
+
     <style>
         /* Additional CSS for this specific page */
         body {
@@ -259,146 +258,12 @@
             font-size: 17px;
             font-family: 'Franklin Gothic Medium', sans-serif;
         }
-
-        nav ul {
-            margin-left: 100px;
-            background-color: rgb(11, 11, 10);
-        }
-
-        nav ul li {
-            list-style-type: none;
-            display: inline-block;
-            padding: 10px 70px;
-            background-color: rgb(11, 11, 10);
-        }
-
-        nav ul li a {
-            color: goldenrod;
-            text-decoration: none;
-            font-family: 'Franklin Gothic Medium', sans-serif;
-            font-weight: bold;
-            text-transform: capitalize;
-            font-size: 17px;
-
-        }
-
-        nav ul li a {
-            position: relative;
-            /* ... (rest of your styles) */
-        }
-
-        /* Before and After pseudo-elements represent the two lines */
-        nav ul li a::before,
-        nav ul li a::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            /* Height of the line */
-            background-color: goldenrod;
-            /* Line color */
-            transition: all 0.3s ease;
-        }
-
-        /* First line appears from the left */
-        nav ul li a::before {
-            bottom: 1px;
-            /* Slight offset from the bottom to create gap between two lines */
-        }
-
-        /* Second line appears from the right */
-        nav ul li a::after {
-            bottom: -3px;
-            /* Slight offset from the bottom */
-            right: 0;
-            left: auto;
-            transform: scaleX(-1);
-            /* Invert it to make it appear from right */
-        }
-
-        /* On hover, the lines animate to full width */
-        nav ul li a:hover::before,
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        .dropdown .dropbtn {
-            font-size: 20px;
-            color: goldenrod;
-            text-decoration: none;
-            font-family: 'Franklin Gothic Medium', sans-serif;
-            font-weight: bold;
-            text-transform: capitalize;
-            font-size: 17px;
-            background-color: rgb(11, 11, 10);
-            position: relative;
-            margin-right: 130px;
-        }
-
-        .dropdown .dropbtn::before,
-        .dropdown .dropbtn::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            /* Height of the line */
-            background-color: goldenrod;
-            /* Line color */
-            transition: all 0.3s ease;
-        }
-
-
-        .dropdown .dropbtn::before {
-            bottom: 1px;
-            /* Slight offset from the bottom to create gap between two lines */
-        }
-
-        /* Second line appears from the right */
-        .dropdown .dropbtn::after {
-            bottom: -3px;
-            /* Slight offset from the bottom */
-            right: 0;
-            left: auto;
-            transform: scaleX(-1);
-            /* Invert it to make it appear from right */
-        }
-
-        /* On hover, the lines animate to full width */
-        .dropdown .dropbtn:hover::before,
-        .dropdown .dropbtn:hover::after {
-            width: 100%;
-        }
-
-        .dropdown .dropbtn {
-            font-size: 20px;
-            /* Adjust the font size as needed */
-        }
     </style>
 </head>
 
 <body class="">
 
-    <!-- <nav>
 
-        <a href="#" class="logolink">
-            <img src="../FCMS-Assets/images/culinarycue.png" width="100" height="60" alt="CulinaryCue - Home">
-        </a>
-        <ul>
-            <li><a href="../FCMS-HTML/TahaIndex.html">Home</a></li>
-            <li><a href="../FCMS-PHP/menu.php">Menu</a></li>
-            <li><a href="../FCMS-HTML/TahaIndex.html">About</a></li>
-            <li><a href="../FCMS-HTML/TahaIndex.html">Our Team</a></li>
-            <li><a href="../FCMS-HTML/TahaIndex.html">Contact</a></li>
-
-        </ul>
-        <div class="create-new-menu">
-            <button class="create-new-menu" onclick="redirectToNewMenuPage()">Add New Menu</button>
-        </div>
-    </nav> -->
 
     <nav>
         <a href="../FCMS-HTML/TahaIndex.html" class="logolink">
@@ -409,20 +274,26 @@
             <li><a href="../FCMS-PHP/EventManagement.php">Events</a></li>
             <li><a href="../FCMS-PHP/manageMenu.php">Menu</a></li>
             <li><a href="../FCMS-PHP/AdminCreateStaff.php">Staff</a></li>
+            <li>
+                <div class="dropdown">
+                    <button onclick="myFunction()" class="dropbtn">Statistics</button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <a href="../FCMS-PHP/StaffStatistic.php">Staff</a>
+                        <a href="../FCMS-PHP/OrderStatistic.php">Order</a>
+                        <a href="../FCMS-PHP/CustomerStatistics.php">Customer</a>
+                        <a href="../FCMS-PHP/RevenueStatistic.php">Profit</a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="create-new-menu">
+                    <button class="create-new-menu" onclick="redirectToNewMenuPage()">Add New Menu</button>
+                </div>
+            </li>
 
         </ul>
-        <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn">Statistics</button>
-            <div id="myDropdown" class="dropdown-content">
-                <li><a href="../FCMS-PHP/StaffStatistic.php">Staff</a></li>
-                <li><a href="../FCMS-PHP/OrderStatistic.php">Orders</a></li>
-                <li><a href="../FCMS-PHP/CustomerStatistics.php">Customers</a></li>
-                <li><a href="../FCMS-PHP/RevenueStatistic.php">Profits</a></li>
-            </div>
-        </div>
-        <div class="create-new-menu">
-            <button class="create-new-menu" onclick="redirectToNewMenuPage()">Add New Menu</button>
-        </div>
+
+
         <script>
             function myFunction() {
                 document.getElementById("myDropdown").classList.toggle("show");
@@ -442,7 +313,6 @@
             }
         </script>
     </nav>
-
     <!-- Added php code on 18th/10/2023 Abdullahi -->
     <?php
 
