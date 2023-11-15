@@ -78,7 +78,7 @@
 
                         echo '<p><strong>User ID:</strong> ' . $user['UserId'] . '</p>';
                         echo '<p><strong>Username:</strong> ' . $user['Username'] . '</p>';
-                        echo '<p><strong>Permission:</strong> ' . $user['Permission'] . '</p>';
+                        // echo '<p><strong>Permission:</strong> ' . $user['Permission'] . '</p>';
 
                         echo '<div class="logout-button"><button onclick="window.location.href=\'Login.php\'">Logout</button></div>';
 
