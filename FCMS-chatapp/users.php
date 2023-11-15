@@ -19,6 +19,8 @@
             <li><a href="../FCMS-PHP/StaffPendingRequestsFahad.php">Pending Requests</a></li>
             <li><a href="../FCMS-PHP/StaffActiveOrdersFahad.php">Active Orders</a></li>
             <li><a href="../FCMS-PHP/StaffProfilePage.php">Profile</a></li>
+            <li><a href="../FCMS-PHP/Guides.php">Guides</a></li>
+            
         </ul>
     </nav>
   <div class="wrapper">
