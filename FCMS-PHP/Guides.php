@@ -130,11 +130,10 @@
   <div id="trainingMaterials">
     <h2>Training Materials</h2>
     <div class="youtube-video">
-        <iframe width="1058" height="595" src="https://www.youtube.com/embed/U-z6z_7Xt9A" title="POP SMOKE - DREAMING (Official Lyric Video)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <iframe width="1058" height="595" src="https://www.youtube.com/embed/v_0ka95U15g" title="FCMS Training Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
   </div>
 </div>
-
 
 <!-- JavaScript to handle active link indication and content visibility -->
 <script>
