@@ -125,6 +125,93 @@ nav ul li a:hover::after {
   width: 100%;
 }
 
+.dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  margin-left: 25px;
+
+
+  background-color: rgb(11, 11, 10);
+  color: rgb(11, 11, 10);
+}
+
+.dropdown-content li {
+  background-color: rgb(11, 11, 10);
+}
+
+/* Style the dropdown links */
+.dropdown-content a {
+  color: goldenrod;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  background-color: rgb(11, 11, 10);
+}
+
+/* Change color on hover */
+.dropdown-content a:hover {
+  background-color: black;
+}
+
+/* Show the dropdown content when the button is clicked */
+.show {
+  display: block;
+  background-color: rgb(11, 11, 10);
+  color: rgb(11, 11, 10);
+}
+
+.dropdown .dropbtn {
+  font-size: 20px;
+  color: goldenrod;
+  text-decoration: none;
+  font-family: 'Franklin Gothic Medium', sans-serif;
+  font-weight: bold;
+  text-transform: capitalize;
+  font-size: 17px;
+  background-color: rgb(11, 11, 10);
+  position: relative;
+  margin-right: 100px;
+}
+
+.dropdown .dropbtn::before,
+.dropdown .dropbtn::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  /* Height of the line */
+  background-color: goldenrod;
+  /* Line color */
+  transition: all 0.3s ease;
+}
+
+
+.dropdown .dropbtn::before {
+  bottom: 1px;
+  /* Slight offset from the bottom to create gap between two lines */
+}
+
+/* Second line appears from the right */
+.dropdown .dropbtn::after {
+  bottom: -3px;
+  /* Slight offset from the bottom */
+  right: 0;
+  left: auto;
+  transform: scaleX(-1);
+  /* Invert it to make it appear from right */
+}
+
+/* On hover, the lines animate to full width */
+.dropdown .dropbtn:hover::before,
+.dropdown .dropbtn:hover::after {
+  width: 100%;
+}
+
 /* =================================== */
 /* =================================== */
 
