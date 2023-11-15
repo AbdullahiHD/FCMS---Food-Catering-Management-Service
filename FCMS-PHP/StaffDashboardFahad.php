@@ -16,6 +16,7 @@
         <img src="../FCMS-Assets/images/culinarycue.png" width="100px" height="60px" alt="CulinaryCue - Home">
         </a>
         <ul>
+            <li><a href="../FCMS-chatapp/users.php">Chat</a></li>
             <li><a href="StaffDashboardFahad.php">Dashboard</a></li>
             <li><a href="StaffPendingRequestsFahad.php">Pending Requests</a></li>
             <li><a href="StaffActiveOrdersFahad.php">Active Orders</a></li>
