@@ -184,98 +184,62 @@
     <div class="container">
         <div class="feedback-form">
             <h1>Feedback Form</h1>
-            <form method="POST" action="PaymentSuccessful.php">
-                <?php
-                // Check if data was passed from the quotation and billing forms
-                if (isset($_GET['name'], $_GET['eventType'], $_GET['eventTime'], $_GET['eventDate'], $_GET['deliveryAddress'], $_GET['attendees'], $_GET['menuId'], $_GET['menuName'], $_GET['menuPrice'], $_GET['totalPrice'])) {
-                    // Output hidden input fields to store this data
-                    echo '<input type="hidden" name="name" value="' . htmlspecialchars($_GET['name']) . '">';
-                    echo '<input type="hidden" name="eventType" value="' . htmlspecialchars($_GET['eventType']) . '">';
-                    echo '<input type="hidden" name="eventTime" value="' . htmlspecialchars($_GET['eventTime']) . '">';
-                    echo '<input type="hidden" name="eventDate" value="' . htmlspecialchars($_GET['eventDate']) . '">';
-                    echo '<input type="hidden" name="deliveryAddress" value="' . htmlspecialchars($_GET['deliveryAddress']) . '">';
-                    echo '<input type="hidden" name="attendees" value="' . htmlspecialchars($_GET['attendees']) . '">';
-                    echo '<input type="hidden" name="menuId" value="' . htmlspecialchars($_GET['menuId']) . '">';
-                    echo '<input type="hidden" name="menuName" value="' . htmlspecialchars($_GET['menuName']) . '">';
-                    echo '<input type="hidden" name="menuPrice" value="' . htmlspecialchars($_GET['menuPrice']) . '">';
-                    echo '<input type="hidden" name="totalPrice" value="' . htmlspecialchars($_GET['totalPrice']) . '">';
+            <form method="POST" action="">
+            <?php
+                if (isset($_GET['requestID'])) {
+                    $requestID = $_GET['requestID'];
+                    echo '<input type="hidden" name="requestID" value="' . $requestID . '">';
                 }
                 ?>
-                <!-- <label for="name">Name:</label>
-                <input type="text" id="name" name="name">
-
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email">
-
-                <label for ="phone">Phone Number:</label>
-                <input type="tel" id="phone" name="phone"> -->
-
                 <label for="feedback">Feedback:</label>
-                <textarea id="feedback" name="feedback" rows="25"></textarea>
+                <textarea id="feedback" name="feedback" rows="5"></textarea>
+                <div class="button-container">
+                        <button type="submit" name="submit">Submit Feedback</button>
+                </div>
             </form>
         </div>
-        <div class="button-container">
-            <a href="TestimonialPage.php">
-                <button>Submit Feedback</button>
-            </a>
-        </div>
-    </div>
-    <div class="content">
-        <!-- Content for your pages goes here -->
     </div>
 </body>
 
 </html>
 
 <?php
-// $servername = "localhost";
-// $username = "root";
-// $password = "";
-// $database = "FCMS";
+session_start();
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "FCMS";
 
-// // Check if the form has been submitted
-// if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['name'], $_POST['email'], $_POST['phone'], $_POST['feedback'])) {
-//     // Create a connection
-//     $conn = new mysqli($servername, $username, $password, $database);
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['requestID'], $_POST['feedback'])) {
+    $requestID = $_POST['requestID'];
+    $feedback = $_POST['feedback'];
 
-//     // Check the connection
-//     if ($conn->connect_error) {
-//         die("Connection failed: " . $conn->connect_error);
-//     }
+    // Create a connection
+    $conn = new mysqli($servername, $username, $password, $database);
 
-//     // Get data from the POST request
-//     $feedback = $conn->real_escape_string($_POST['feedback']);
-//     // $eventTime = $conn->real_escape_string($_POST['eventTime']);
-//     // $eventDate = $conn->real_escape_string($_POST['eventDate']);
-//     // $deliveryAddress = $conn->real_escape_string($_POST['deliveryAddress']);
-//     // $attendees = $conn->real_escape_string($_POST['attendees']);
-//     // $menuId = $conn->real_escape_string($_POST['menuId']);
+    // Check the connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
 
-//     // Set default values for OrderStatus and PaymentStatus
-//     // $orderStatus = "Pending";
-//     // $paymentStatus = "Received";
-//     // $paymentID = "1";
+    // Update the record in the requests table with the feedback
+    $sql = "UPDATE requests SET Comments = '$feedback' WHERE RequestID = $requestID";
 
-//     // SQL query to insert data into the "requests" table
-//     $sql = "INSERT INTO requests (Comments)
-//             VALUES ('$feedback')";
+    if ($conn->query($sql) === TRUE) {
+        // Feedback successfully submitted
+        // Redirect to a success page or perform other actions
+        echo "<script>
+            window.location.href = 'TestimonialPage.php';
+        </script>";
+        exit();
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
 
-//     // if ($conn->query($sql) === TRUE) {
-//     //     // Data inserted successfully
-//     //     echo "Order Successful";
-//     //     // JavaScript for redirection and alert
-//     //     echo "<script>
-//     //         alert('Order Successful');
-//     //         window.location.href = 'menu.php';
-//     //     </script>";
-//     // } else {
-//     //     echo "Error: " . $sql . "<br>" . $conn->error;
-//     // }
-
-//     // Close the database connection
-//     $conn->close();
-// } else {
-//     // Handle the case where not all required parameters are set
-//     echo "Missing required parameters.";
-// }
+    // Close the database connection
+    $conn->close();
+} else {
+    // Handle the case where not all required parameters are set
+    echo "Missing required parameters.";
+}
 ?>

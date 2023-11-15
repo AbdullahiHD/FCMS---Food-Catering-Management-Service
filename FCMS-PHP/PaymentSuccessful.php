@@ -1,3 +1,20 @@
+<?php
+session_start();
+
+// Check if the requestID is provided in the GET parameters
+if (isset($_GET['requestID'])) {
+    // Retrieve the requestID from the GET parameters
+    $requestID = $_GET['requestID'];
+
+    // Store the requestID in the session for future use
+    $_SESSION['requestID'] = $requestID;
+} else {
+    // Handle the case where requestID is not present in the URL
+    echo "RequestID not provided.";
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +22,6 @@
     <title>FCMS</title>
     <link rel="stylesheet" href="../FCMS-CSS/paymentgateway.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    
 </head>
 <body>
     <div>
@@ -19,9 +35,7 @@
                 <li><a href="../FCMS-HTML/TahaIndex.html">About</a></li>
                 <li><a href="../FCMS-HTML/TahaIndex.html">Our Team</a></li>
                 <li><a href="../FCMS-HTML/TahaIndex.html">Contact</a></li>
-            
             </ul>
-            <!-- <a class="registrationbutton" href="Login.html">Profile</a> -->
         </nav>
     </div>
 
@@ -31,46 +45,16 @@
      Please consider leaving a review on our website to help us improve and serve you better in the future.
     </p>
 
+    <?php
+    // Check if the requestID is set in the session
+    if (isset($_SESSION['requestID'])) {
+        // Output the feedback button with the requestID in the URL
+        echo '<a class="feedbackbutton" href="Feedback and Reviewing Page.php?requestID=' . $_SESSION['requestID'] . '">FeedBack</a>';
+    } else {
+        // Handle the case where requestID is not set in the session
+        echo "RequestID not found in the session.";
+    }
+    ?>
 
-    <a class="feedbackbutton" href="Feedback and Reviewing Page.php">FeedBack</a>
-    
-
-
-    
 </body>
 </html>
-
-
-
-
-
-
-<?php
-session_start();
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "FCMS";
-
-// Check if the session variable exists
-if (isset($_SESSION['orderDetails'])) {
-    // Retrieve the order details from the session
-    $orderDetails = $_SESSION['orderDetails'];
-
-    // Clear the session data to avoid displaying it again on refresh
-    unset($_SESSION['orderDetails']);
-
-    // Redirect to another page (replace 'AnotherPage.php' with your desired page)
-    header('Location: Feedback and Reviewing Page.php');
-    exit(); // Prevent further script execution after redirection
-} //else {
-    // Redirect to an error page or display an error message if the session data is missing
-   // echo "Session data not found. Please check your session handling.";
-//}
-?>
-
-
-
-
-
-

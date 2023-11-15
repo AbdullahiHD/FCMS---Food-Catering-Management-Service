@@ -175,12 +175,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['name'], $_POST['eventT
             VALUES ('$name', '$eventTime', '$eventDate', '$deliveryAddress', '$attendees', '$menuId', '$orderStatus', '$paymentStatus', '$paymentID')";
 
     if ($conn->query($sql) === TRUE) {
-        // Data inserted successfully
-        // Debugging
-        echo "Order Successful";
-        // JavaScript for redirection and alert
+        $requestID = $conn->insert_id;
         echo "<script>
-            window.location.href = 'PaymentSuccessful.php';
+            window.location.href = 'PaymentSuccessful.php?requestID=$requestID';
         </script>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
