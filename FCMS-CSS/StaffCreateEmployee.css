@@ -1,0 +1,72 @@
+.form-container {
+    background-color: #202020;
+    color: #D6D6D6;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+    text-align: center;
+    color: #FFD100;
+    font-size: 24px;
+}
+
+.form-container form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 8px;
+    color: #FFD100;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #d6d6d6;
+    border-radius: 5px;
+    background-color: #333533;
+    color: #d6d6d6;
+    margin-bottom: 10px;
+}
+
+.form-container input[type="submit"] {
+    background-color: #FFD100;
+    color: #333533;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.form-container input[type="submit"]:hover {
+    background-color: #FFEE32;
+    color: #202020;
+}
+
+/* Add a new style for success messages */
+.form-container .success-message {
+    color: #00FF00; /* Green color for success */
+    margin-top: 10px;
+}
+
+/* Add a new style for error messages */
+.form-container .error-message {
+    color: #FF0000; /* Red color for errors */
+    margin-top: 10px;
+}
+
+.separate-dashboard{
+    width: 82%;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    margin-left: 150px;
+    height: 2px;
+    border-width: 0;
+    color: #FFD100;
+    background-color: #FFD100;
+}
