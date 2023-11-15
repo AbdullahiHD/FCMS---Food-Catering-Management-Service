@@ -153,7 +153,6 @@
             <li><a href="../FCMS-PHP/AdminCreateStaff.php">Staff</a></li>
 
         </ul>
-<<<<<<< Updated upstream
         <div class="dropdown">
             <button onclick="myFunction()" class="dropbtn">Statistics</button>
             <div id="myDropdown" class="dropdown-content">
@@ -183,11 +182,6 @@
             }
         </script>
     </nav>
-=======
-    </div>
-    
-    
->>>>>>> Stashed changes
 
     <!-- Brief Heading and content -->
     <div class="hcontent">
@@ -195,8 +189,8 @@
         <div class="page-description">
             <h4>Customer Frequency and Retention Visualization<br> The customers total number of orders against individual customer <br> For More Interactivity Use the sort buttons as well data mouse over on bars </h4> 
         </div>
-         <button class="sortAsc-button">Sort - Ascending </button>
-        <button class="sortDesc-button">Sort - Descending</button>
+         <!-- <button class="sortAsc-button">Sort - Ascending </button>
+        <button class="sortDesc-button">Sort - Descending</button> -->
     </div>
         
 
@@ -254,25 +248,25 @@
     <!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
     <footer class="footer">
         <ul class="social-icon">
-            <li class="social-icon__item"><a class="social-icon__link" href="#">
+            <li class="social-icon_item"><a class="social-icon_link" href="#">
                     <ion-icon name="logo-facebook"></ion-icon>
                 </a></li>
-            <li class="social-icon__item"><a class="social-icon__link" href="#">
+            <li class="social-icon_item"><a class="social-icon_link" href="#">
                     <ion-icon name="logo-twitter"></ion-icon>
                 </a></li>
-            <li class="social-icon__item"><a class="social-icon__link" href="#">
+            <li class="social-icon_item"><a class="social-icon_link" href="#">
                     <ion-icon name="logo-linkedin"></ion-icon>
                 </a></li>
-            <li class="social-icon__item"><a class="social-icon__link" href="#">
+            <li class="social-icon_item"><a class="social-icon_link" href="#">
                     <ion-icon name="logo-instagram"></ion-icon>
                 </a></li>
         </ul>
         <ul class="menu">
-            <li class="menu__item"><a class="menu__link" href="../FCMS-HTML/TahaIndex.html">Home</a></li>
-            <li class="menu__item"><a class="menu__link" href="../FCMS-HTML/TahaIndex.html">Menu</a></li>
-            <li class="menu__item"><a class="menu__link" href="../FCMS-HTML/TahaIndex.html">About</a></li>
-            <li class="menu__item"><a class="menu__link" href="../FCMS-HTML/TahaIndex.html">Our Team</a></li>
-            <li class="menu__item"><a class="menu__link" href="../FCMS-HTML/TahaIndex.html">Contact</a></li>
+            <li class="menu_item"><a class="menu_link" href="../FCMS-HTML/TahaIndex.html">Home</a></li>
+            <li class="menu_item"><a class="menu_link" href="../FCMS-HTML/TahaIndex.html">Menu</a></li>
+            <li class="menu_item"><a class="menu_link" href="../FCMS-HTML/TahaIndex.html">About</a></li>
+            <li class="menu_item"><a class="menu_link" href="../FCMS-HTML/TahaIndex.html">Our Team</a></li>
+            <li class="menu_item"><a class="menu_link" href="../FCMS-HTML/TahaIndex.html">Contact</a></li>
         </ul>
 
     </footer>

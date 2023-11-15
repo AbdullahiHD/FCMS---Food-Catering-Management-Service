@@ -1,4 +1,3 @@
-
 // /*
 // filename: [script.js]
 // author: [Abdullahi Hussein Dahir]
@@ -137,7 +136,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Sort-Descending Function
-    // Sort-Descending Function
     function sortBarsDescending() {
         // Sort the data in descending order
         customerOrderData.sort((a, b) => b.NumberOfOrders - a.NumberOfOrders);
@@ -146,9 +144,10 @@ document.addEventListener('DOMContentLoaded', function () {
         x.domain(customerOrderData.map(d => d.FirstName + " " + d.LastName));
 
         // Select and transition the bars to their new positions
-        svg.selectAll("rect")
-            .data(customerOrderData, d => d.FirstName + " " + d.LastName)
-            .transition()
+        const bars = svg.selectAll("rect")
+            .data(customerOrderData, d => d.FirstName + " " + d.LastName);
+
+        bars.transition()
             .duration(1000)
             .attr("x", d => x(d.FirstName + " " + d.LastName))
             .attr("y", d => y(d.NumberOfOrders))
@@ -158,9 +157,8 @@ document.addEventListener('DOMContentLoaded', function () {
         svg.select(".x-axis")
             .transition()
             .duration(1000)
-            .call(d3.axisBottom(x)) // Redraw the x-axis with the new scale
+            .call(d3.axisBottom(x)) 
             .selectAll("text")
-            .delay((d, i) => i * 100) // Optional: add a delay for each label transition
             .attr("transform", "translate(-10,0)rotate(-45)")
             .style("text-anchor", "end");
     }
@@ -170,7 +168,3 @@ document.addEventListener('DOMContentLoaded', function () {
     d3.select(".sortDesc-button").on("click", sortBarsDescending);
 
 });
-
-
-
-

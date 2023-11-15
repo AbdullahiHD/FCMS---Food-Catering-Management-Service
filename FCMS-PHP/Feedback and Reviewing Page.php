@@ -1,3 +1,45 @@
+<?php
+session_start();
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "FCMS";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['requestID'], $_POST['feedback'])) {
+    $requestID = $_POST['requestID'];
+    $feedback = $_POST['feedback'];
+
+    // Create a connection
+    $conn = new mysqli($servername, $username, $password, $database);
+
+    // Check the connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Update the record in the requests table with the feedback
+    $sql = "UPDATE requests SET Comments = '$feedback' WHERE RequestID = $requestID";
+
+    if ($conn->query($sql) === TRUE) {
+        // Feedback successfully submitted
+        // Redirect to a success page or perform other actions
+        echo "<script>
+            window.location.href = 'TestimonialPage.php';
+        </script>";
+        exit();
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    // Close the database connection
+    $conn->close();
+} else {
+    // Handle the case where not all required parameters are set
+    echo "Missing required parameters.";
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +76,7 @@
 
         .feedback-form label {
             display: block;
-            margin-top: 20px;
+            margin-top: 80px;
             margin-bottom: 20px;
             color: goldenrod;
             font-size: 30px;
@@ -191,8 +233,8 @@
                     echo '<input type="hidden" name="requestID" value="' . $requestID . '">';
                 }
                 ?>
-                <label for="feedback">Feedback:</label>
-                <textarea id="feedback" name="feedback" rows="5"></textarea>
+                <label for="feedback">We appreciate your feedback:</label>
+                <textarea id="feedback" name="feedback" rows="18"></textarea>
                 <div class="button-container">
                         <button type="submit" name="submit">Submit Feedback</button>
                 </div>
@@ -203,43 +245,3 @@
 
 </html>
 
-<?php
-session_start();
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "FCMS";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['requestID'], $_POST['feedback'])) {
-    $requestID = $_POST['requestID'];
-    $feedback = $_POST['feedback'];
-
-    // Create a connection
-    $conn = new mysqli($servername, $username, $password, $database);
-
-    // Check the connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    // Update the record in the requests table with the feedback
-    $sql = "UPDATE requests SET Comments = '$feedback' WHERE RequestID = $requestID";
-
-    if ($conn->query($sql) === TRUE) {
-        // Feedback successfully submitted
-        // Redirect to a success page or perform other actions
-        echo "<script>
-            window.location.href = 'TestimonialPage.php';
-        </script>";
-        exit();
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-
-    // Close the database connection
-    $conn->close();
-} else {
-    // Handle the case where not all required parameters are set
-    echo "Missing required parameters.";
-}
-?>
