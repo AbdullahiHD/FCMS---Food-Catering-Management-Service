@@ -153,6 +153,7 @@
             <li><a href="../FCMS-PHP/AdminCreateStaff.php">Staff</a></li>
 
         </ul>
+<<<<<<< Updated upstream
         <div class="dropdown">
             <button onclick="myFunction()" class="dropbtn">Statistics</button>
             <div id="myDropdown" class="dropdown-content">
@@ -195,18 +196,22 @@
             </ul>
         </nav>
     </header> -->
+=======
+    </div>
+>>>>>>> Stashed changes
 
     <!-- Brief Heading and content -->
     <div class="hcontent">
         <br><br><br>
-        <h1> Order Statistics</h1>
+        <div class="page-description">
+            <h4>Menu Frequency in Orders Visualization<br> The menu name is plotted against the number of times it has been ordered <br> For More Interactivity, mouse over each bar</h4> 
+        </div>
     </div>
 
     <div id="chart-container">
         <svg id="bar-chart"></svg>
     </div>
 
-    <!-- Your PHP script for database connection and data fetching should be placed here. -->
     <?php
     $host = "localhost";
     $username = "root";
@@ -230,14 +235,11 @@
         $menuData[] = $row;
     }
 
-    // Free result set and close connection
+    // Freeing result set and close connection
     $result->close();
     $conn->close();
 
-    // Output the data in JSON format
-    // header('Content-Type: application/json');
     echo "<script>var customerData = " . json_encode($menuData) . ";</script>";
-    // echo json_encode($menuData);
     ?>
 
 
@@ -246,11 +248,6 @@
     <script src="../FCMS-JavaScripts/Validation.js"></script>
     <script src="../FCMS-JavaScripts/OrderD3.js"></script>
 
-    <!-- <button class="sortAsc-button">Sort - Ascending </button>
-        <button class="sortDesc-button">Sort - Descending</button>
-        -->
-
-    <!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
     <footer class="footer">
         <ul class="social-icon">
             <li class="social-icon__item"><a class="social-icon__link" href="#">

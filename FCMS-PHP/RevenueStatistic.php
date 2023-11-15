@@ -185,48 +185,16 @@
     <!-- Brief Heading and content -->
     <div class="hcontent">
         <br><br><br>
-        <h1> Revenue Statistics</h1>
+        <div class="page-description">
+            <h4>Revenue Generated Visualization<br> The revenue generated is plotted against the date <br> For More Interactivity, mouse over each end-line circle to get the exact amount and date</h4> 
+        </div>
     </div>
 
     <div id="chart-container">
         <svg id="bar-chart"></svg>
     </div>
 
-    <!-- Your PHP script for database connection and data fetching should be placed here. -->
     <?php
-    // Database configuration
-    // $host = "localhost";
-    // $username = "root";
-    // $password = "";
-    // $database = "FCMS";
-
-    // // Create database connection
-    // $conn = new mysqli($host, $username, $password, $database);
-
-    // // Check connection
-    // if ($conn->connect_error) {
-    //     die("Connection failed: " . $conn->connect_error);
-    // }
-
-    // // SQL query to retrieve total sales over time
-    // // Adjust the DATE_FORMAT as per your requirement (e.g., '%Y-%m-%d' for daily)
-    // $sql = "SELECT DATE_FORMAT(CreatedAt, '%Y-%m') as SalesMonth, SUM(TotalPrice) as TotalSales FROM sales GROUP BY SalesMonth ORDER BY SalesMonth";
-    // $result = $conn->query($sql);
-
-    // $salesData = array();
-    // while ($row = $result->fetch_assoc()) {
-    //     $salesData[] = $row;
-    // }
-
-    // // Free result set
-    // $result->close();
-
-    // // Close connection
-    // $conn->close();
-
-    // // Print the data in JSON format for front-end use
-    // echo "<script>var salesData = " . json_encode($salesData) . ";</script>";
-    // echo json_encode($salesData);
 
     // Database configuration
     $host = "localhost";

@@ -189,7 +189,10 @@
     <!-- Brief Heading and content -->
     <div class="hcontent">
         <br><br><br>
-        <h1> Staff Statistics</h1>
+         <div class="page-description">
+            <h4>Employee Efficiency Visualization<br> The employees task completed is plotted against the hourly rates <br> For More Interactivity, mouse over each scatter plot to get employee name and role</h4> 
+        </div>
+
     </div>
 
     <div id="chart-container">

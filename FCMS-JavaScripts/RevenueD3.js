@@ -1,8 +1,6 @@
 // filename: [script.js]
 // author: [Abdullahi Hussein Dahir]
-// created: [7th September 2023]
-// last modified: [24th October 2023]
-// description: [html files it works on: Index.html]
+// description: [files it works on: RevenueStatistic.php]
 
 document.addEventListener('DOMContentLoaded', function () {
     const svgContainer = d3.select('#bar-chart');
@@ -37,25 +35,25 @@ document.addEventListener('DOMContentLoaded', function () {
     x.domain(d3.extent(salesData, function (d) { return d.SalesDate; }));
     y.domain([0, d3.max(salesData, function (d) { return d.TotalSales; })]);
 
-    // Add the valueline path
+    // Adding the valueline path
     svg.append("path")
         .data([salesData])
         .attr("class", "line")
         .attr("d", valueline);
 
-    // Add the X Axis
+    // Adding the X Axis
     svg.append("g")
         .attr("transform", `translate(0, ${height})`)
         .call(d3.axisBottom(x))
         .attr("color", "black"); // Set the color of the axis line and ticks to black
 
-    // Add the Y Axis
+    // Adding the Y Axis
     svg.append("g")
         .call(d3.axisLeft(y))
         .attr("color", "black"); // Set the color of the axis line and ticks to black
 
 
-    // Add the X Axis label
+    // Adding the X Axis label
     svg.append("text")
         .attr("text-anchor", "end")
         .attr("x", width / 2)
@@ -63,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .text("Date")
         .attr("font-weight", "bold");
 
-    // Add the Y Axis label
+    // Adding the Y Axis label
     svg.append("text")
         .attr("text-anchor", "end")
         .attr("transform", "rotate(-90)")
@@ -71,8 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .attr("x", -height / 2 + 20)
         .text("Total Sales (RM)")
         .attr("font-weight", "bold");
-    
-    // ... rest of your code ...
+
 
     // Define the div for the tooltip
     var tooltip = d3.select("body").append("div")

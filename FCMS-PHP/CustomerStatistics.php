@@ -153,6 +153,7 @@
             <li><a href="../FCMS-PHP/AdminCreateStaff.php">Staff</a></li>
 
         </ul>
+<<<<<<< Updated upstream
         <div class="dropdown">
             <button onclick="myFunction()" class="dropbtn">Statistics</button>
             <div id="myDropdown" class="dropdown-content">
@@ -182,12 +183,22 @@
             }
         </script>
     </nav>
+=======
+    </div>
+    
+    
+>>>>>>> Stashed changes
 
     <!-- Brief Heading and content -->
     <div class="hcontent">
         <br><br><br>
-        <h1> Customer Statistics</h1>
+        <div class="page-description">
+            <h4>Customer Frequency and Retention Visualization<br> The customers total number of orders against individual customer <br> For More Interactivity Use the sort buttons as well data mouse over on bars </h4> 
+        </div>
+         <button class="sortAsc-button">Sort - Ascending </button>
+        <button class="sortDesc-button">Sort - Descending</button>
     </div>
+        
 
     <div id="chart-container">
         <svg id="bar-chart"></svg>
@@ -237,8 +248,7 @@
     <script src="../FCMS-JavaScripts/Validation.js"></script>
     <script src="../FCMS-JavaScripts/CustomerD3.js"></script>
 
-    <button class="sortAsc-button">Sort - Ascending </button>
-    <button class="sortDesc-button">Sort - Descending</button>
+    
 
 
     <!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
