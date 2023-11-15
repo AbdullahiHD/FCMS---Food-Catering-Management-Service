@@ -111,7 +111,9 @@
                 $updateQuery = "UPDATE Orders SET AssignedEmployees = '$assignedEmployees' WHERE OrderID = $orderID";
 
                 if ($conn->query($updateQuery) === TRUE) {
-                    echo "Assigned employees saved successfully for Order #$orderID.";
+                    echo '<script>';
+                    echo 'alert("Assigned employees saved successfully for Order #' . $orderID . '");';
+                    echo '</script>';
                 } else {
                     echo "Error updating record: " . $conn->error;
                 }

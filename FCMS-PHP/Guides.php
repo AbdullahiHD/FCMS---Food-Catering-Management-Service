@@ -129,21 +129,24 @@
 
   <div id="trainingMaterials">
     <h2>Training Materials</h2>
-    <p>This is the content for Training Materials.</p>
+    <div class="youtube-video">
+        <iframe width="1058" height="595" src="https://www.youtube.com/embed/U-z6z_7Xt9A" title="POP SMOKE - DREAMING (Official Lyric Video)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
   </div>
 </div>
+
 
 <!-- JavaScript to handle active link indication and content visibility -->
 <script>
   document.getElementById('customerInteractionLink').addEventListener('click', function() {
-    document.getElementById('customerInteractionLink').style.borderBottom = '2px solid #FFDD10';
+    document.getElementById('customerInteractionLink').style.borderBottom = '4px solid #FFDD10';
     document.getElementById('trainingMaterialsLink').style.borderBottom = 'none';
     document.getElementById('customerInteraction').style.display = 'block';
     document.getElementById('trainingMaterials').style.display = 'none';
   });
 
   document.getElementById('trainingMaterialsLink').addEventListener('click', function() {
-    document.getElementById('trainingMaterialsLink').style.borderBottom = '2px solid #FFDD10';
+    document.getElementById('trainingMaterialsLink').style.borderBottom = '4px solid #FFDD10';
     document.getElementById('customerInteractionLink').style.borderBottom = 'none';
     document.getElementById('customerInteraction').style.display = 'none';
     document.getElementById('trainingMaterials').style.display = 'block';
