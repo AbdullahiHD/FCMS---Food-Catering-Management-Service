@@ -1,9 +1,7 @@
 // /*
-// filename: [script.js]
+// filename: [CustomerD3.js]
 // author: [Abdullahi Hussein Dahir]
-// created: [7th September 2023]
-// last modified: [24th October 2023]
-// description: [html files it works on : Index.html]
+// description: [html files it works on : CustomerStatistics.php]
 // */
 
 // Ensure the SVG container has the correct ID
@@ -33,11 +31,21 @@ document.addEventListener('DOMContentLoaded', function () {
         .range([0, width])
         .domain(customerOrderData.map(d => d.FirstName + " " + d.LastName)) // Combine first and last names
         .padding(0.1);
-
+    
     const xAxisGroup = svg.append("g")
-        .attr("transform", `translate(0, ${height})`)
-        .call(d3.axisBottom(x))
-        .selectAll("text")
+        .attr("transform", `translate(0,${height})`)
+        .call(d3.axisBottom(x));
+
+    // const xAxisGroup = svg.append("g")
+    //     .attr("transform", `translate(0, ${height})`)
+    //     .call(d3.axisBottom(x))
+    //     .selectAll("text")
+    //     .attr("transform", "translate(-10,0)rotate(-45)")
+    //     .style("text-anchor", "end")
+    //     .attr("fill", "black") // Set the color of the text to black
+    //     .attr("font-weight", "bold");
+
+    xAxisGroup.selectAll("text")
         .attr("transform", "translate(-10,0)rotate(-45)")
         .style("text-anchor", "end")
         .attr("fill", "black") // Set the color of the text to black
@@ -102,37 +110,31 @@ document.addEventListener('DOMContentLoaded', function () {
                 .duration(500)
                 .style("opacity", 0);
         });
-
-
+    
     // Sort-Ascending Function
     function sortBarsAscending() {
         // Sort the data in ascending order
         customerOrderData.sort((a, b) => a.NumberOfOrders - b.NumberOfOrders);
 
-        // Updating the x-scale domain
+        // Update the x-scale domain to the sorted order of names
         x.domain(customerOrderData.map(d => d.FirstName + " " + d.LastName));
 
-        // binding the sorted data to the bars
-        const bars = svg.selectAll("rect")
-            .data(customerOrderData, d => d.FirstName + " " + d.LastName);
-
-        // Transition the bars after sorting
-        bars.transition()
+        // Select and transition the bars to their new positions
+        svg.selectAll("rect")
+            .data(customerOrderData, d => d.FirstName + " " + d.LastName)
+            .transition()
             .duration(1000)
             .attr("x", d => x(d.FirstName + " " + d.LastName))
             .attr("y", d => y(d.NumberOfOrders))
             .attr("height", d => height - y(d.NumberOfOrders));
-
-
-        // Transition the x-axis labels to reflect the new order
-        svg.select(".x-axis")
-            .transition()
+        
+        // Update and transition the x-axis
+        xAxisGroup.transition()
             .duration(1000)
-            .call(d3.axisBottom(x)) // Redraw the x-axis with the new scale
+            .call(d3.axisBottom(x))
             .selectAll("text")
             .attr("transform", "translate(-10,0)rotate(-45)")
             .style("text-anchor", "end");
-
     }
 
     // Sort-Descending Function
@@ -144,24 +146,24 @@ document.addEventListener('DOMContentLoaded', function () {
         x.domain(customerOrderData.map(d => d.FirstName + " " + d.LastName));
 
         // Select and transition the bars to their new positions
-        const bars = svg.selectAll("rect")
-            .data(customerOrderData, d => d.FirstName + " " + d.LastName);
-
-        bars.transition()
+        svg.selectAll("rect")
+            .data(customerOrderData, d => d.FirstName + " " + d.LastName)
+            .transition()
             .duration(1000)
             .attr("x", d => x(d.FirstName + " " + d.LastName))
             .attr("y", d => y(d.NumberOfOrders))
             .attr("height", d => height - y(d.NumberOfOrders));
-
-        // Transition the x-axis to reflect the new order
-        svg.select(".x-axis")
-            .transition()
+        
+        // Update and transition the x-axis
+        xAxisGroup.transition()
             .duration(1000)
-            .call(d3.axisBottom(x)) 
+            .call(d3.axisBottom(x))
             .selectAll("text")
             .attr("transform", "translate(-10,0)rotate(-45)")
             .style("text-anchor", "end");
     }
+
+
 
     // Event listeners for the sorting buttons
     d3.select(".sortAsc-button").on("click", sortBarsAscending);

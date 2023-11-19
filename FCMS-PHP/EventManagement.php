@@ -84,6 +84,7 @@ mysqli_close($conn);
 
 
     <style>
+        body {background-image: url(../FCMS-Assets/images/hero-slider-1.jpg);}
         #boxes {
             display: flex;
             margin-top: 100px;
@@ -91,7 +92,7 @@ mysqli_close($conn);
         }
 
         .box {
-            background-color: #3b3d41;
+            background-color: rgb(11, 11, 10);
             width: 300px;
             height: 300px;
             border: 1px solid #666666;
@@ -100,6 +101,7 @@ mysqli_close($conn);
             padding: 10px;
             text-align: center;
             border-radius: 10px;
+            
         }
 
         .box h2 {
@@ -107,9 +109,10 @@ mysqli_close($conn);
         }
 
         .box p {
-            background-color: #3b3d41;
-            margin: 10px 0;
-            font-size: 18pt;
+            background-color: rgb(11, 11, 10);
+            margin: 53px 0;
+            font-size: 40pt;
+
         }
 
         .box button {
@@ -121,7 +124,7 @@ mysqli_close($conn);
             cursor: pointer;
             border-radius: 5px;
             transition: background-color 0.3s;
-
+            margin-top: 20px;
             align-self: flex-end;
         }
     </style>
@@ -173,26 +176,27 @@ mysqli_close($conn);
     </nav>
 
 
-    <h1 style="margin-top: 120px; margin-left: 20px;">Events Management</h1>
+    <h1 style="margin-top: 160px;
+    margin-left: 641px;">Events Management</h1>
 
     <div id="boxes">
         <div class="box">
             <h2>Active Orders</h2>
-            <p><?php echo $activeOrdersCount; ?></p>
+            <p><strong><?php echo $activeOrdersCount; ?></strong></p>
 
             <a href="AdminActiveOrders.php"><button>View</button></a>
 
         </div>
         <div class="box">
             <h2>Pending Requests</h2>
-            <p><?php echo $requestsCount; ?></p>
+            <p><strong><?php echo $requestsCount; ?></strong></p>
 
             <a href="AdminPendingRequests.php"><button>View</button></a>
 
         </div>
         <div class="box">
             <h2>Completed Orders</h2>
-            <p><?php echo $completedorders; ?></p>
+            <p><strong><?php echo $completedorders; ?></strong></p>
 
             <a href="AdminCompletedOrders.php"><button>View</button></a>
 

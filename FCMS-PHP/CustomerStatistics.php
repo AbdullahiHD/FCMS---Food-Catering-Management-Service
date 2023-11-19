@@ -21,6 +21,7 @@
     <!-- Link to navbar css -->
     <link rel="stylesheet" href="../FCMS-CSS/AdminNav.css">
     <style>
+        body {background-image: url(../FCMS-Assets/images/hero-slider-1.jpg);}
         nav ul {
             margin-left: 150px;
             background-color: rgb(11, 11, 10);
@@ -186,12 +187,12 @@
     <!-- Brief Heading and content -->
     <div class="hcontent">
     <h1 style="margin-top: 150px;">Customer Statistic</h1>
-        <br><br><br>
+        
         <div class="page-description">
             <h4>Customer Frequency and Retention Visualization<br> The customers total number of orders against individual customer <br> For More Interactivity Use the sort buttons as well data mouse over on bars </h4> 
         </div>
-         <!-- <button class="sortAsc-button">Sort - Ascending </button>
-        <button class="sortDesc-button">Sort - Descending</button> -->
+         <button class="sortAsc-button">Sort - Ascending </button>
+        <button class="sortDesc-button">Sort - Descending</button>
     </div>
         
 

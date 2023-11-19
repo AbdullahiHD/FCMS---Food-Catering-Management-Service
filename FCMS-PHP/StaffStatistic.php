@@ -21,6 +21,7 @@
     <!-- Including D3 Library -->
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <style>
+        body {background-image: url(../FCMS-Assets/images/hero-slider-1.jpg);}
         nav ul {
             margin-left: 150px;
             background-color: rgb(11, 11, 10);
@@ -189,7 +190,7 @@
     <!-- Brief Heading and content -->
     <div class="hcontent">
     <h1 style="margin-top: 150px;">Staff Statistic</h1>
-        <br><br><br>
+       
          <div class="page-description">
             <h4>Employee Efficiency Visualization<br> The employees task completed is plotted against the hourly rates <br> For More Interactivity, mouse over each scatter plot to get employee name and role</h4> 
         </div>

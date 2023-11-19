@@ -138,6 +138,7 @@
             font-size: 20px;
             /* Adjust the font size as needed */
         }
+        body {background-image: url(../FCMS-Assets/images/hero-slider-1.jpg);}
     </style>
 </head>
 
@@ -185,7 +186,7 @@
     <!-- Brief Heading and content -->
     <div class="hcontent">
     <h1 style="margin-top: 150px;">Revenue Statistic</h1>
-        <br><br><br>
+        
         <div class="page-description">
             <h4>Revenue Generated Visualization<br> The revenue generated is plotted against the date <br> For More Interactivity, mouse over each end-line circle to get the exact amount and date</h4> 
         </div>

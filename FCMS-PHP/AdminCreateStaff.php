@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../FCMS-CSS/AdminCreateStaff.css">
     <link rel="stylesheet" href="../FCMS-Assets/Main.css">
     <title>Create Staff</title>
-
+    <style>body {background-image: url(../FCMS-Assets/images/hero-slider-1.jpg);}</style>
 </head>
 
 <body>
